@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>双碳方案落地系统 · Senior Carbon Management Consultant Console</title>
+<meta name="description" content="资深碳管理咨询师方案落地系统：售前诊断、公司情况填报、双碳方案生成、五阶段交付框架、证据链与变更留痕。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS · CARBON TRACE ============ */
+:root{
+  --canvas:#E9E8E3;--surface:#F5F4EF;--surface-dark:#111713;--panel-dark:#202A24;
+  --ink:#111713;--ink-inverse:#F5F4EF;--ink-muted:#6C746C;
+  --lime:#B7E36B;--cyan:#65D7D0;--yellow:#E6C85C;--red:#D86C5C;
+  --rule:rgba(17,23,19,0.22);--rule-strong:rgba(17,23,19,0.28);--rule-inverse:rgba(245,244,239,0.16);
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --gutter:32px;--col-gap:24px;--component:16px;--section-gap:96px;--chapter-gap:144px;
+  --readable:680px;--header-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p,figure,ul,ol,dl,table{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img,svg{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--mono)}
+.label{font-family:var(--mono);font-size:11px;font-weight:500;line-height:1.2;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-muted)}
+.label--inv{color:rgba(245,244,239,0.6)}
+.data{font-family:var(--mono);font-size:18px;line-height:1.2;font-variant-numeric:tabular-nums}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ============ HEADER ============ */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:80;height:var(--header-h);background:rgba(17,23,19,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule-inverse);color:var(--ink-inverse)}
+.hdr__in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:baseline;gap:12px;white-space:nowrap}
+.brand__mark{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--lime)}
+.brand__name{font-size:16px;font-weight:600;letter-spacing:.02em}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.05em;padding:8px 11px;border-radius:9999px;color:rgba(245,244,239,0.72);transition:color 160ms ease-out,background 160ms ease-out}
+.nav a:hover{color:var(--ink-inverse);background:rgba(245,244,239,0.08)}
+.nav a[aria-current="page"]{color:var(--surface-dark);background:var(--lime)}
+.hdr__r{display:flex;align-items:center;gap:18px}
+.sysread{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(245,244,239,0.62);white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:9999px;background:var(--lime);flex:none;animation:pulse 2400ms linear infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:0 20px;border-radius:9999px;background:var(--lime);color:#111713;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;transition:background 160ms ease-out,transform 160ms ease-out,opacity 160ms ease-out}
+.btn:hover{background:var(--cyan);transform:translateY(-1px)}
+.btn--ghost{background:transparent;border:1px solid var(--rule-inverse);color:var(--ink-inverse)}
+.btn--ghost:hover{background:rgba(245,244,239,0.1)}
+.btn--line{background:transparent;border:1px solid var(--rule-strong);color:var(--ink)}
+.btn--line:hover{background:var(--ink);color:var(--ink-inverse)}
+.btn--sm{min-height:36px;padding:0 14px;font-size:11px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.btn[disabled]:hover{background:var(--lime);transform:none}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--rule-inverse);border-radius:9999px}
+.mobnav{position:fixed;inset:0;z-index:90;background:var(--surface-dark);color:var(--ink-inverse);display:none;flex-direction:column;padding:24px}
+.mobnav.is-open{display:flex}
+.mobnav ul{margin-top:36px;display:flex;flex-direction:column}
+.mobnav a{display:block;font-size:30px;font-weight:500;padding:14px 0;border-bottom:1px solid var(--rule-inverse)}
+
+/* ============ SHELL / CHAPTERS ============ */
+main{padding-top:var(--header-h)}
+.chapter{padding:var(--chapter-gap) 0}
+.chapter--tight{padding:var(--section-gap) 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px}
+.sec-head__t{display:flex;flex-direction:column;gap:14px}
+.sec-head h2{font-size:clamp(28px,3.4vw,48px);font-weight:500;line-height:1.06;letter-spacing:-0.015em;max-width:18ch}
+.sec-head p{color:var(--ink-muted);max-width:54ch}
+.grid{display:grid;gap:var(--col-gap)}
+
+/* ============ BRIEF BAND (dark) ============ */
+.brief{background:var(--surface-dark);color:var(--ink-inverse);padding:88px 0 0;border-bottom:1px solid var(--rule-inverse)}
+.brief h1{font-size:clamp(36px,4.6vw,68px);font-weight:500;line-height:1.03;letter-spacing:-0.02em;max-width:20ch}
+.brief h1 span{color:var(--lime)}
+.brief__lead{margin-top:24px;color:rgba(245,244,239,0.76);max-width:60ch}
+.brief__meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 18px}
+.fw{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--col-gap);border-top:1px solid var(--rule-inverse)}
+.fw__c{padding:28px 24px 32px;border-left:1px solid var(--rule-inverse)}
+.fw__c:first-child{border-left:0;padding-left:0}
+.fw__c h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--lime);font-weight:500}
+.fw__c p{margin-top:14px;color:rgba(245,244,239,0.8);font-size:15px}
+.fw__c ul{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.fw__c li{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:rgba(245,244,239,0.58);display:flex;gap:10px}
+.fw__c li::before{content:"";width:6px;height:6px;background:var(--cyan);flex:none;margin-top:6px}
+.redline{margin-top:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule-inverse)}
+.redline__c{padding:22px 24px 28px;border-left:1px solid var(--rule-inverse)}
+.redline__c:first-child{border-left:0;padding-left:0}
+.redline__c b{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--yellow);font-weight:500}
+.redline__c span{display:block;margin-top:10px;font-family:var(--mono);font-size:11px;color:rgba(245,244,239,0.6);line-height:1.6}
+
+/* ============ STEP RAIL ============ */
+.steprail{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--surface)}
+.steprail__c{padding:20px 18px;border-left:1px solid var(--rule);display:flex;flex-direction:column;gap:8px}
+.steprail__c:first-child{border-left:0}
+.steprail__c.is-current{background:var(--ink);color:var(--ink-inverse)}
+.steprail__c.is-current .label{color:var(--lime)}
+.steprail__c.is-locked{opacity:.45}
+.steprail__n{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-muted)}
+.steprail__c.is-current .steprail__n{color:var(--lime)}
+.steprail__t{font-size:15px;font-weight:500}
+.steprail__d{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--ink-muted)}
+.steprail__c.is-current .steprail__d{color:rgba(245,244,239,0.66)}
+
+/* ============ CARDS / FORMS ============ */
+.panel{background:var(--surface);border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);padding:28px 26px}
+.panel--dark{background:var(--surface-dark);color:var(--ink-inverse);border-top:1px solid var(--lime)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip-btn{min-height:40px;padding:0 14px;border:1px solid var(--rule-strong);border-radius:9999px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-muted);display:inline-flex;align-items:center;gap:8px;transition:background 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out}
+.chip-btn:hover{color:var(--ink);border-color:var(--ink)}
+.chip-btn[aria-pressed="true"]{background:var(--ink);color:var(--ink-inverse);border-color:var(--ink)}
+.chip-btn[aria-pressed="true"] .cd{background:var(--lime)}
+.cd{width:7px;height:7px;border-radius:9999px;background:var(--rule);flex:none}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:3px 8px;border:1px solid var(--rule);color:var(--ink-muted)}
+.chip--lime{border-color:#9AC855;color:#4E6B22}
+.chip--yellow{border-color:#C9AC48;color:#8A6D14}
+.chip--red{border-color:#C4705F;color:#A34231}
+.chip--cyan{border-color:#4FB3AE;color:#1E6B67}
+.chip--inv{border-color:var(--rule-inverse);color:rgba(245,244,239,0.72)}
+
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px 20px}
+.frow{padding:14px 0;border-bottom:1px solid var(--rule)}
+.frow--full{grid-column:1 / -1}
+.frow > label{display:block;margin-bottom:9px}
+.frow .help{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--ink-muted);margin-top:8px;line-height:1.5}
+input[type="text"],input[type="number"],select,textarea{width:100%;min-height:44px;padding:10px 12px;background:#FCFBF8;border:1px solid var(--rule-strong);border-radius:0;font-family:var(--mono);font-size:13px}
+textarea{min-height:88px;resize:vertical;line-height:1.5}
+.unit{display:flex;align-items:center;gap:10px}
+.unit span{font-family:var(--mono);font-size:11px;color:var(--ink-muted);white-space:nowrap}
+.note{font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--ink-muted)}
+
+/* ============ DIAGNOSIS ============ */
+.diagGrid{display:grid;grid-template-columns:7fr 5fr;gap:var(--col-gap);align-items:start}
+.qbox{border-top:1px solid var(--rule);padding:24px 0}
+.qbox:first-child{border-top:0;padding-top:0}
+.qbox__h{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.qbox__n{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--lime);background:var(--ink);padding:3px 8px}
+.qbox__t{font-size:19px;font-weight:500}
+.qbox__hint{margin-top:14px}
+.out{position:sticky;top:calc(var(--header-h) + 24px)}
+.out__stamp{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--rule-inverse)}
+.out__body{padding-top:20px;display:flex;flex-direction:column;gap:22px}
+.out__item h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--lime);font-weight:500}
+.out__item p{margin-top:10px;font-size:15px;line-height:1.55;color:rgba(245,244,239,0.86)}
+.out__item ul{margin-top:12px;display:flex;flex-direction:column;gap:9px}
+.out__item li{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:rgba(245,244,239,0.72);display:flex;gap:10px;line-height:1.6}
+.out__item li::before{content:"→";color:var(--cyan);flex:none}
+.gate{margin-top:22px;padding:16px;border:1px solid var(--rule-inverse);display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between}
+.gate__t{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:rgba(245,244,239,0.72);line-height:1.6}
+
+/* ============ PLAN GENERATOR ============ */
+.planGrid{display:grid;grid-template-columns:5fr 7fr;gap:var(--col-gap);align-items:start}
+.lock{position:relative}
+.lock__veil{position:absolute;inset:0;z-index:5;background:rgba(233,232,227,0.86);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:32px}
+.lock__veil h3{font-family:var(--mono);font-size:13px;letter-spacing:.08em}
+.lock.is-open .lock__veil{display:none}
+
+/* report */
+.report{background:var(--surface);border-top:2px solid var(--ink)}
+.report__hd{padding:26px;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between}
+.report__hd h3{font-size:clamp(21px,2.2vw,30px);font-weight:500;line-height:1.18;max-width:24ch}
+.rmeta{display:flex;flex-wrap:wrap;gap:8px 16px}
+.rsec{padding:30px 26px;border-bottom:1px solid var(--rule)}
+.rsec__n{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:18px}
+.rsec__n h4{font-family:var(--mono);font-size:12px;letter-spacing:.08em;font-weight:500}
+.rsec p{max-width:var(--readable);font-size:15.5px;line-height:1.62;color:#2B332D}
+.rsec p + p{margin-top:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:22px 0}
+.kpi{padding:20px 18px;border-left:1px solid var(--rule)}
+.kpi:first-child{border-left:0}
+.kpi__v{font-family:var(--mono);font-size:clamp(24px,2.4vw,36px);font-weight:500;line-height:.98;display:flex;align-items:baseline;gap:6px;min-height:38px;transition:opacity 240ms ease-out}
+.kpi__v.is-fading{opacity:0}
+.kpi__u{font-size:13px;color:var(--ink-muted)}
+.kpi__d{margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-muted);line-height:1.5}
+.rtabs{display:inline-flex;border:1px solid var(--rule-strong);border-radius:9999px;overflow:hidden}
+.rtabs button{min-height:36px;padding:0 15px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink-muted);transition:background 160ms ease-out,color 160ms ease-out}
+.rtabs button[aria-pressed="true"]{background:var(--ink);color:var(--ink-inverse)}
+.chart{margin-top:20px;display:flex;flex-direction:column;gap:16px}
+.chart svg{width:100%;height:auto}
+.bar{transform-box:fill-box;transform-origin:bottom;transition:transform 360ms ease-out}
+.axis{stroke:var(--rule);stroke-width:1}
+.axis-t{font-family:var(--mono);font-size:11px;fill:var(--ink-muted);letter-spacing:.03em}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px}
+.lg{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--ink-muted)}
+.lg i{width:10px;height:10px;flex:none}
+.wf-line{stroke:var(--rule-strong);stroke-width:1;stroke-dasharray:3 3}
+.wf-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 620ms cubic-bezier(.16,1,.3,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:13px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);border-bottom:1px solid var(--ink)}
+td{font-family:var(--mono);font-size:12px;line-height:1.55}
+td.num{font-variant-numeric:tabular-nums;text-align:right}
+th.num{text-align:right}
+tr.is-new{animation:rowin 240ms ease-out}
+@keyframes rowin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* ============ DELIVERY ============ */
+.delivery{background:var(--surface-dark);color:var(--ink-inverse)}
+.dsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--component);margin-top:56px}
+.dstep{position:relative;padding-top:26px;border-top:1px solid var(--rule-inverse);opacity:.32;transition:opacity 420ms cubic-bezier(.16,1,.3,1)}
+.dstep.is-in{opacity:1}
+.dstep__n{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--lime)}
+.dstep__bar{height:3px;width:0;background:var(--lime);margin:12px 0 16px;transition:width 420ms cubic-bezier(.16,1,.3,1)}
+.dstep.is-in .dstep__bar{width:100%}
+.dstep h3{font-size:21px;font-weight:500;line-height:1.18}
+.dstep__blk{margin-top:16px}
+.dstep__blk b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(245,244,239,0.5);font-weight:500;margin-bottom:8px}
+.dstep__blk p{font-family:var(--mono);font-size:11px;line-height:1.65;color:rgba(245,244,239,0.82)}
+.dstep__acc{margin-top:18px;padding:12px;background:rgba(183,227,107,0.09);font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--lime)}
+.sow{margin-top:56px;display:grid;grid-template-columns:6fr 6fr;gap:var(--col-gap);border-top:1px solid var(--rule-inverse);padding-top:36px}
+.sow__c h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--lime);font-weight:500;margin-bottom:14px}
+.sow__c p{font-family:var(--mono);font-size:11px;line-height:1.8;color:rgba(245,244,239,0.72)}
+.clause{margin-top:16px;border:1px solid var(--rule-inverse);padding:18px}
+.clause b{color:var(--yellow);font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+.clause p{margin-top:10px}
+
+/* ============ PRODUCTS ============ */
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--rule)}
+.prod{background:var(--surface);padding:24px 20px;display:flex;flex-direction:column;gap:12px;min-height:210px;transition:background 160ms ease-out}
+.prod:hover{background:#FAF9F5}
+.prod__n{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-muted)}
+.prod h3{font-size:19px;font-weight:500;line-height:1.22}
+.prod p{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--ink-muted)}
+.prod__tag{margin-top:auto;padding-top:14px;border-top:1px solid var(--rule)}
+.prod.is-rec{border-top:2px solid var(--lime);background:#FAF9F5}
+.matrix{margin-top:56px}
+
+/* ============ QUALITY / CHANGE LOG ============ */
+.qgrid{display:grid;grid-template-columns:5fr 7fr;gap:var(--col-gap);align-items:start}
+.gates{display:flex;flex-direction:column;gap:2px;background:var(--rule)}
+.gate-c{background:var(--surface);padding:20px;display:flex;flex-direction:column;gap:10px}
+.gate-c h4{font-family:var(--mono);font-size:12px;letter-spacing:.05em}
+.gate-c p{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--ink-muted)}
+.ask{margin-top:16px;background:var(--ink);color:var(--ink-inverse);padding:22px}
+.ask b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--lime)}
+.ask p{margin-top:12px;font-size:19px;font-weight:500;line-height:1.35}
+
+/* ============ POLICY ============ */
+.pol{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--rule)}
+.pol__c{background:var(--surface);padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+.pol__c h4{font-family:var(--mono);font-size:12px;letter-spacing:.03em;line-height:1.5}
+.pol__d{display:flex;flex-wrap:wrap;gap:8px 14px}
+.pol__warn{margin-top:6px;padding:10px 12px;background:rgba(230,200,92,0.12);border-left:2px solid var(--yellow);font-family:var(--mono);font-size:10.5px;line-height:1.7;color:#6D5A16}
+
+/* ============ FOOTER ============ */
+.foot{background:var(--surface-dark);color:var(--ink-inverse);padding:64px 0 30px}
+.foot__top{display:grid;grid-template-columns:6fr 3fr 3fr;gap:var(--col-gap);padding-bottom:40px;border-bottom:1px solid var(--rule-inverse)}
+.foot h2{font-size:clamp(24px,2.8vw,38px);font-weight:500;line-height:1.12;letter-spacing:-0.012em;max-width:20ch}
+.foot h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:rgba(245,244,239,0.55);margin-bottom:14px;font-weight:500}
+.foot li{margin-bottom:10px}
+.foot li a{font-family:var(--mono);font-size:12px;color:rgba(245,244,239,0.82)}
+.foot li a:hover{color:var(--lime)}
+.foot__bot{padding-top:22px;display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(245,244,239,0.5)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1199px){
+  .diagGrid,.planGrid,.qgrid{grid-template-columns:1fr}
+  .out{position:static}
+  .dsteps{grid-template-columns:repeat(3,1fr);row-gap:36px}
+  .prods{grid-template-columns:repeat(2,1fr)}
+  .fw,.redline{grid-template-columns:1fr 1fr}
+  .fw__c:nth-child(odd),.redline__c:nth-child(odd){border-left:0;padding-left:0}
+  .sow{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .nav{display:none}.burger{display:inline-flex}.sysread{display:none}
+}
+@media (max-width:767px){
+  :root{--gutter:20px;--header-h:60px;--chapter-gap:88px;--section-gap:64px}
+  .fw,.redline,.steprail,.pol{grid-template-columns:1fr}
+  .fw__c,.redline__c,.steprail__c{border-left:0;padding-left:0;border-top:1px solid var(--rule-inverse)}
+  .fw__c:first-child,.redline__c:first-child,.steprail__c:first-child{border-top:0}
+  .steprail__c{border-top:1px solid var(--rule)}
+  .dsteps{grid-template-columns:1fr;row-gap:0}
+  .dstep{padding:26px 0}
+  .dstep__bar{width:100%;height:2px}
+  .prods{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpi{border-top:1px solid var(--rule)}
+  .kpi:nth-child(odd){border-left:0}
+  .kpi:nth-child(-n+2){border-top:0}
+  .fgrid{grid-template-columns:1fr}
+  .foot__top{grid-template-columns:1fr;gap:36px}
+  .btn{width:auto}
+  .report__hd,.rsec{padding:22px 20px}
+  table{min-width:660px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .dstep{opacity:1 !important}.dstep__bar{width:100% !important}
+  .wf-draw{stroke-dashoffset:0 !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="#top">
+      <span class="brand__mark">CONSULTING CONSOLE</span>
+      <span class="brand__name">双碳方案落地系统</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#diagnose" aria-current="page">售前诊断</a>
+      <a href="#plan">公司情况与方案</a>
+      <a href="#delivery">交付框架</a>
+      <a href="#products">产品线</a>
+      <a href="#quality">质量门</a>
+      <a href="#policy">政策与标准</a>
+    </nav>
+    <div class="hdr__r">
+      <div class="sysread"><span class="dot" aria-hidden="true"></span><span>项目 / CS-2025-042 · 核验 2025.06</span></div>
+      <a class="btn" href="#diagnose">开始售前诊断</a>
+      <button class="burger" id="burger" aria-label="打开导航菜单" aria-expanded="false" aria-controls="mobnav">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobnav" id="mobnav" role="dialog" aria-modal="true" aria-label="导航菜单">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <span class="brand__mark">CONSULTING CONSOLE</span>
+    <button class="btn btn--ghost btn--sm" id="mobnav-close">关闭</button>
+  </div>
+  <ul>
+    <li><a href="#diagnose">售前诊断</a></li>
+    <li><a href="#plan">公司情况与方案</a></li>
+    <li><a href="#delivery">交付框架</a></li>
+    <li><a href="#products">产品线</a></li>
+    <li><a href="#quality">质量门</a></li>
+    <li><a href="#policy">政策与标准</a></li>
+  </ul>
+</div>
+
+<main id="top">
+
+<!-- ================= BRIEF / WORK FRAME ================= -->
+<section class="brief" aria-labelledby="brief-t">
+  <div class="wrap">
+    <p class="label label--inv">SENIOR CARBON MANAGEMENT CONSULTANT / 系统说明</p>
+    <h1 id="brief-t" style="margin-top:20px">先对症，再开方：<br>把双碳咨询全流程<span>装进一个可核查的系统</span></h1>
+    <p class="brief__lead">接需求先输出工作框架（理解、假设、边界），再执行。系统内置五阶段交付框架、八大产品线、成熟度匹配与证据链机制，所有结论必须挂来源、口径、凭证，交付物经得起第三方核查。</p>
+    <div class="brief__meta">
+      <span class="chip chip--inv">GHG Protocol</span>
+      <span class="chip chip--inv">ISO 14064-1:2018</span>
+      <span class="chip chip--inv">ISO 14067:2018</span>
+      <span class="chip chip--inv">全国碳市场 / 试点</span>
+      <span class="chip chip--inv">CCER</span>
+      <span class="chip chip--inv">CBAM</span>
+      <span class="chip chip--inv">ESG / TCFD / CDP</span>
+    </div>
+
+    <div class="fw">
+      <div class="fw__c">
+        <h3>01 / 理解</h3>
+        <p>客户当前处在哪个阶段，谁在决策，钱从哪里出，出口与合规压力来自哪一端。</p>
+        <ul>
+          <li>售前诊断三问：成熟度 / 痛点 / 预算与决策链</li>
+          <li>结论先行 → 证据 → 图表 → 建议（五要素）</li>
+          <li>关键节点主动汇报：诊断结论、基线数据、方案评审</li>
+        </ul>
+      </div>
+      <div class="fw__c">
+        <h3>02 / 假设</h3>
+        <p>核算口径声明清楚，排放因子标注版本与生效日期，无法核实的一律标「待补充」。</p>
+        <ul>
+          <li>组织边界按运营控制权法，时间边界为完整日历年度</li>
+          <li>显著性排放源全纳入，不以抽样替代全口径</li>
+          <li>减排量保守核算，取可验证的下限值</li>
+        </ul>
+      </div>
+      <div class="fw__c">
+        <h3>03 / 边界</h3>
+        <p>范围、口径、时间表任一变动即为变更，重新走验收标准，双方确认后生效。</p>
+        <ul>
+          <li>新增数据源、调整边界、更换因子＝变更</li>
+          <li>变更留痕：时间 / 内容 / 影响评估 / 确认人</li>
+          <li>已废止版本不得作为核算依据，先核实再引用</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="redline">
+      <div class="redline__c"><b>红线一 / 不夸大</b><span>减排量取保守下限，可核验的才算数；意向性数据不进入结论。</span></div>
+      <div class="redline__c"><b>红线二 / 不遗漏</b><span>显著性排放源全纳入，排除项必须书面声明并说明理由。</span></div>
+      <div class="redline__c"><b>红线三 / 不混淆</b><span>核算口径（组织/时间/范围）逐项声明，不同口径数据不并列比较。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP RAIL ================= -->
+<div class="wrap" style="padding-top:0">
+  <div class="steprail" id="steprail" role="group" aria-label="五阶段交付框架进度">
+    <div class="steprail__c is-current"><span class="steprail__n">PHASE 01</span><span class="steprail__t">售前诊断</span><span class="steprail__d">诊断结论 + 项目建议书</span></div>
+    <div class="steprail__c is-locked"><span class="steprail__n">PHASE 02</span><span class="steprail__t">项目启动</span><span class="steprail__d">SOW + 项目章程</span></div>
+    <div class="steprail__c is-locked"><span class="steprail__n">PHASE 03</span><span class="steprail__t">现状调研</span><span class="steprail__d">排放源 + 数据台账</span></div>
+    <div class="steprail__c is-locked"><span class="steprail__n">PHASE 04</span><span class="steprail__t">方案设计</span><span class="steprail__d">基线 + Roadmap + 路线图</span></div>
+    <div class="steprail__c is-locked"><span class="steprail__n">PHASE 05</span><span class="steprail__t">交付与落地</span><span class="steprail__d">终版报告 + 落地支持</span></div>
+  </div>
+</div>
+
+<!-- ================= 1. 售前诊断 ================= -->
+<section class="chapter chapter--tight" id="diagnose" aria-labelledby="diag-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head__t">
+        <p class="label">PHASE 01 / PRE-SALES DIAGNOSIS</p>
+        <h2 id="diag-t">售前诊断三问</h2>
+      </div>
+      <p>任何需求先完成售前诊断，不跳过。三问完成后系统输出三项：客户成熟度判断、推荐产品线组合、选择理由。禁止跨阶段硬推。</p>
+    </div>
+
+    <div class="diagGrid">
+      <form class="panel" id="diagForm" novalidate aria-label="售前诊断问卷">
+
+        <div class="qbox">
+          <div class="qbox__h"><span class="qbox__n">Q1</span><h3 class="qbox__t">成熟度阶段：客户现在处在哪一档？</h3></div>
+          <div class="chips" role="group" aria-label="成熟度阶段">
+            <button type="button" class="chip-btn" data-stage="compliance" aria-pressed="false"><span class="cd"></span>合规阶段 / 被要求核算或履约</button>
+            <button type="button" class="chip-btn" data-stage="data" aria-pressed="false"><span class="cd"></span>数据阶段 / 想建核算体系</button>
+            <button type="button" class="chip-btn" data-stage="strategy" aria-pressed="false"><span class="cd"></span>战略阶段 / 主动管理碳绩效</button>
+            <button type="button" class="chip-btn" data-stage="value" aria-pressed="false"><span class="cd"></span>价值阶段 / 碳资产变现、品牌、融资</button>
+          </div>
+          <p class="note qbox__hint">判据：是否有强制履约义务 → 是否有可核查的台账 → 是否有目标年与预算 → 是否有变现诉求。以「最高一项已有机制」而非「口头意愿」为准。</p>
+        </div>
+
+        <div class="qbox">
+          <div class="qbox__h"><span class="qbox__n">Q2</span><h3 class="qbox__t">核心痛点：这次为什么必须做？</h3></div>
+          <div class="chips" role="group" aria-label="核心痛点">
+            <button type="button" class="chip-btn" data-pain="risk" aria-pressed="false"><span class="cd"></span>合规风险</button>
+            <button type="button" class="chip-btn" data-pain="cost" aria-pressed="false"><span class="cd"></span>降本增效</button>
+            <button type="button" class="chip-btn" data-pain="cbam" aria-pressed="false"><span class="cd"></span>出口门槛 / CBAM</button>
+            <button type="button" class="chip-btn" data-pain="finance" aria-pressed="false"><span class="cd"></span>融资与 ESG 评级</button>
+            <button type="button" class="chip-btn" data-pain="brand" aria-pressed="false"><span class="cd"></span>品牌与客户要求</button>
+          </div>
+          <p class="note qbox__hint">每个痛点对应一条待核实的数据项：合规风险 → 配额与履约清单；出口门槛 → 产品嵌入排放数据来源；融资 → 评级口径与披露边界。</p>
+        </div>
+
+        <div class="qbox">
+          <div class="qbox__h"><span class="qbox__n">Q3</span><h3 class="qbox__t">预算与决策链：钱谁批、事谁定？</h3></div>
+          <div class="chips" role="group" aria-label="预算区间" style="margin-bottom:12px">
+            <button type="button" class="chip-btn" data-budget="a" aria-pressed="false"><span class="cd"></span>预算 &lt; 30 万</button>
+            <button type="button" class="chip-btn" data-budget="b" aria-pressed="false"><span class="cd"></span>30 – 100 万</button>
+            <button type="button" class="chip-btn" data-budget="c" aria-pressed="false"><span class="cd"></span>100 – 300 万</button>
+            <button type="button" class="chip-btn" data-budget="d" aria-pressed="false"><span class="cd"></span>&gt; 300 万 / 分期</button>
+          </div>
+          <div class="chips" role="group" aria-label="决策链">
+            <button type="button" class="chip-btn" data-chain="single" aria-pressed="false"><span class="cd"></span>单一决策人</button>
+            <button type="button" class="chip-btn" data-chain="committee" aria-pressed="false"><span class="cd"></span>跨部门委员会</button>
+            <button type="button" class="chip-btn" data-chain="hq" aria-pressed="false"><span class="cd"></span>集团总部批复</button>
+          </div>
+          <p class="note qbox__hint">决策链决定交付节奏：单一决策人可直接进 SOW；委员会需先给一页纸价值主张；总部批复需准备集团口径与分期投入。</p>
+        </div>
+
+        <div class="frow frow--full" style="border-bottom:0;padding-top:20px">
+          <label class="label" for="diag-memo">诊断备注 / 证据线索（访谈记录、公开披露、政策名单）</label>
+          <textarea id="diag-memo" placeholder="例：2024 年被纳入地方重点用能单位名单；主要出口目的地为欧盟，客户问卷要求提供 ISO 14067 产品碳足迹……"></textarea>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:18px;border-top:1px solid var(--rule)">
+          <button type="button" class="btn" id="diag-confirm">输出诊断结论</button>
+          <button type="button" class="btn btn--line" id="diag-reset">重置</button>
+          <span class="chip chip--yellow" id="diag-hint">待补充 / 三问未完成</span>
+        </div>
+      </form>
+
+      <!-- diagnosis output -->
+      <div class="out panel panel--dark" id="diagOut" aria-live="polite">
+        <div class="out__stamp">
+          <p class="label label--inv">DIAGNOSIS OUTPUT / 诊断结论</p>
+          <span class="chip chip--inv" id="diag-state">未确认</span>
+        </div>
+        <div class="out__body" id="diag-body">
+          <div class="out__item">
+            <h4>① 客户成熟度判断</h4>
+            <p id="out-stage" style="color:rgba(245,244,239,0.6)">待诊断。完成三问后，此处输出成熟度判断及其证据线索。</p>
+          </div>
+          <div class="out__item">
+            <h4>② 推荐产品线组合</h4>
+            <ul id="out-lines"><li style="color:rgba(245,244,239,0.6)">待诊断 · 禁止跨阶段硬推</li></ul>
+          </div>
+          <div class="out__item">
+            <h4>③ 选择理由</h4>
+            <p id="out-why" style="color:rgba(245,244,239,0.6)">待诊断。理由须回到三问答案与证据线索，不得使用「行业都在做」这类说法。</p>
+          </div>
+          <div class="out__item">
+            <h4>验收标准 / 本阶段</h4>
+            <p>痛点定位准确、方案对症、客户认可价值主张。诊断结论与项目建议书同步归档，作为阶段二 SOW 的范围依据。</p>
+          </div>
+        </div>
+        <div class="gate">
+          <p class="gate__t">阶段二解锁条件：三问完成 + 诊断结论已确认。<br>核算口径、项目范围、时间表变动一律重走验收。</p>
+          <span class="chip chip--red" id="gate-chip">阶段锁定</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2. 公司情况 + 双碳方案 ================= -->
+<section class="chapter chapter--tight lock" id="plan" aria-labelledby="plan-t">
+  <div class="lock__veil" id="plan-veil">
+    <span class="chip chip--yellow">PHASE 02 LOCKED</span>
+    <h3>方案生成区待售前诊断解锁</h3>
+    <p class="note" style="max-width:46ch">工作原则第 1 条：先对症，再开方。完成上方三问并输出诊断结论后，本区域自动解锁。</p>
+    <a class="btn btn--line" href="#diagnose">返回售前诊断</a>
+  </div>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head__t">
+        <p class="label">COMPANY INPUT → DUAL-CARBON PLAN</p>
+        <h2 id="plan-t">填入公司情况，生成双碳方案</h2>
+      </div>
+      <p>已按机械制造行业预填示例数据（可直接改）。输入变化即重算基线、减排路径、投资与回收期；口径与边界变动会自动写入变更留痕。方案结构遵循黄金结构：执行摘要 → 背景与边界 → 核算方法 → 数据与结果 → 分析与建议 → 附录。</p>
+    </div>
+
+    <div class="planGrid">
+
+      <!-- ============ COMPANY INPUT ============ -->
+      <form class="panel" id="companyForm" novalidate aria-label="公司情况填报">
+        <div class="out__stamp" style="border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:6px">
+          <div>
+            <p class="label">COMPANY PROFILE / 公司情况</p>
+            <p class="data" style="margin-top:8px;font-size:15px" id="company-name-label">华东某精密机械制造有限公司</p>
+          </div>
+          <span class="chip chip--cyan">示例数据 / 可编辑</span>
+        </div>
+
+        <div class="fgrid">
+          <div class="frow frow--full">
+            <label class="label" for="c-name">企业名称</label>
+            <input type="text" id="c-name" value="华东某精密机械制造有限公司">
+          </div>
+          <div class="frow">
+            <label class="label" for="c-industry">所属行业</label>
+            <select id="c-industry">
+              <option value="machine" selected>机械制造</option>
+              <option value="steel">钢铁</option>
+              <option value="chem">化工</option>
+              <option value="park">区域园区</option>
+            </select>
+          </div>
+          <div class="frow">
+            <label class="label" for="c-year">基准年</label>
+            <select id="c-year">
+              <option>2022</option><option selected>2023</option><option>2024</option>
+            </select>
+          </div>
+          <div class="frow">
+            <label class="label" for="c-output">年工业总产值</label>
+            <div class="unit"><input type="number" id="c-output" value="18.6" step="0.1" min="0"><span>亿元</span></div>
+          </div>
+          <div class="frow">
+            <label class="label" for="c-energy">年综合能耗</label>
+            <div class="unit"><input type="number" id="c-energy" value="4.9" step="0.1" min="0"><span>万 tce</span></div>
+          </div>
+          <div class="frow">
+            <label class="label" for="c-elec">外购电力</label>
+            <div class="unit"><input type="number" id="c-elec" value="6800" step="50" min="0"><span>万 kWh</span></div>
+            <p class="help">来源：能源台账 + 电费凭证 · 口径：净购入电量</p>
+          </div>
+          <div class="frow">
+            <label class="label" for="c-gas">天然气</label>
+            <div class="unit"><input type="number" id="c-gas" value="320" step="10" min="0"><span>万 Nm³</span></div>
+            <p class="help">来源：燃气结算单 · 口径：燃料低位热值折算</p>
+          </div>
+          <div class="frow">
+            <label class="label" for="c-diesel">柴油</label>
+            <div class="unit"><input type="number" id="c-diesel" value="860" step="10" min="0"><span>t</span></div>
+            <p class="help">来源：采购入库单 · 口径：车辆与应急发电</p>
+          </div>
+          <div class="frow">
+            <label class="label" for="c-s3">范围三（价值链）</label>
+            <div class="unit"><input type="number" id="c-s3" value="6.20" step="0.1" min="0"><span>万 tCO₂e</span></div>
+            <p class="help">来源：采购额 × 行业系数（待补充：供应商实测数据）</p>
+          </div>
+
+          <div class="frow frow--full">
+            <label class="label" for="c-caliber">核算口径 / 组织边界</label>
+            <select id="c-caliber">
+              <option value="ops" selected>运营控制权法</option>
+              <option value="equity">股权比例法</option>
+            </select>
+            <p class="help">口径一经变更视为变更事项，系统将自动登记变更留痕（工作原则 8–10）。</p>
+          </div>
+
+          <div class="frow frow--full">
+            <span class="label" id="scope-label" style="display:block;margin-bottom:9px">纳入范围 / BOUNDARY</span>
+            <div class="chips" role="group" aria-labelledby="scope-label">
+              <button type="button" class="chip-btn" data-bscope="s1" aria-pressed="true"><span class="cd"></span>范围一</button>
+              <button type="button" class="chip-btn" data-bscope="s2" aria-pressed="true"><span class="cd"></span>范围二</button>
+              <button type="button" class="chip-btn" data-bscope="s3" aria-pressed="true"><span class="cd"></span>范围三</button>
+            </div>
+            <p class="help">红线二：显著性排放源全纳入。取消任一范围须书面说明排除理由，系统将登记为变更。</p>
+          </div>
+
+          <div class="frow">
+            <label class="label" for="c-target">目标年</label>
+            <select id="c-target">
+              <option selected>2030</option><option>2035</option><option>2050</option><option>2060</option>
+            </select>
+          </div>
+          <div class="frow">
+            <label class="label" for="c-reduction">目标降幅</label>
+            <div class="unit"><input type="number" id="c-reduction" value="20" step="1" min="0" max="95"><span>%</span></div>
+          </div>
+
+          <div class="frow frow--full">
+            <label class="label" for="c-factor">排放因子版本</label>
+            <select id="c-factor">
+              <option value="gov" selected>全国电网平均排放因子（2022 年发布）</option>
+              <option value="region">区域电网因子（2023 年发布）</option>
+              <option value="green">绿电 / 绿证抵扣后因子</option>
+            </select>
+            <p class="help">更换因子版本＝变更事项（工作原则 9）。涉及可能更新的规则请以最新官方发布为准。</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:20px;border-top:1px solid var(--rule);margin-top:8px">
+          <button type="button" class="btn" id="gen-plan">生成双碳方案</button>
+          <button type="button" class="btn btn--line" id="gen-export">导出报告清单</button>
+        </div>
+        <p class="note" style="margin-top:14px">数据三原则：可追溯（注明来源）· 可比（口径一致、时间序列）· 可核查（原始凭证可查）。无法核实的数据标「待补充」，不编造。</p>
+      </form>
+
+      <!-- ============ REPORT ============ -->
+      <section class="report" id="report" aria-labelledby="report-t" aria-live="polite">
+        <div class="report__hd">
+          <div>
+            <p class="label">DUAL-CARBON PLAN / 双碳方案</p>
+            <h3 id="report-t" style="margin-top:12px">华东某精密机械制造有限公司 · 2030 双碳规划方案</h3>
+            <div class="rmeta" style="margin-top:14px">
+              <span class="label">生成于 / <span id="r-stamp">2025.06.18 10:24</span></span>
+              <span class="label">版本 / <span id="r-ver">v1.0</span></span>
+              <span class="label">口径 / <span id="r-caliber">运营控制权法</span></span>
+              <span class="chip chip--lime">数据状态 / 引用中</span>
+            </div>
+          </div>
+          <div class="chips">
+            <span class="chip chip--yellow">因子待核实 2</span>
+            <span class="chip chip--cyan" id="r-change-count">变更 0 条</span>
+          </div>
+        </div>
+
+        <!-- 01 执行摘要 -->
+        <div class="rsec">
+          <div class="rsec__n">
+            <span class="chip">01</span><h4>执行摘要 / EXECUTIVE SUMMARY</h4>
+          </div>
+          <p id="exec-a">客户基准年综合排放 <b class="mono" id="e-total">17.18</b> 万 tCO₂e（范围一 7.19 / 范围二 3.79 / 范围三 6.20），碳排放强度 <b class="mono" id="e-intensity">0.92</b> tCO₂e/万元产值。按目标年 2030、降幅 20% 设定，需年减排 <b class="mono" id="e-cut">3.44</b> 万 tCO₂e。</p>
+          <p id="exec-b">本方案给出 5 项措施组合，合计年减排 <b class="mono" id="e-measure">3.56</b> 万 tCO₂e，总投资 <b class="mono" id="e-inv">3,760</b> 万元，年净收益 <b class="mono" id="e-save">800</b> 万元，静态回收期 <b class="mono" id="e-pay">4.7</b> 年，年化 ROI <b class="mono" id="e-roi">21.3%</b>。减排量按可验证下限保守核算，其中范围三为估算值，标注「待补充」。</p>
+          <div class="kpis" role="group" aria-label="方案关键指标">
+            <div class="kpi"><div class="kpi__v" id="k1">17.18 <span class="kpi__u">万 tCO₂e</span></div><div class="kpi__d">基准年排放 / 含范围一至三</div></div>
+            <div class="kpi"><div class="kpi__v" id="k2">3.56 <span class="kpi__u">万 t/年</span></div><div class="kpi__d">措施组合减排量 / 保守值</div></div>
+            <div class="kpi"><div class="kpi__v" id="k3">3,760 <span class="kpi__u">万元</span></div><div class="kpi__d">总投资估算 / 含工程与咨询</div></div>
+            <div class="kpi"><div class="kpi__v" id="k4">4.7 <span class="kpi__u">年</span></div><div class="kpi__d">静态回收期 / 年化 ROI <span id="k4-roi">21.3%</span></div></div>
+          </div>
+          <p class="note">数据来源：企业能源台账、燃气与电费结算单、采购入库单；口径：运营控制权法、2023 完整日历年度；凭证：结算单扫描件（编号 EC-2023-001 至 EC-2023-118）。</p>
+        </div>
+
+        <!-- 02 背景与边界 -->
+        <div class="rsec">
+          <div class="rsec__n"><span class="chip">02</span><h4>项目背景与边界 / SCOPE &amp; BOUNDARY</h4></div>
+          <p>组织边界按运营控制权法（口径可切换，切换即登记变更）；时间边界为基准年完整日历年度；核算边界覆盖范围一（直接排放：天然气、柴油）、范围二（外购电力，基于地点法）、范围三（原材料、运输物流、差旅与其他）。</p>
+          <div class="tbl-scroll" style="margin-top:20px">
+            <table>
+              <caption class="sr-only">边界声明表</caption>
+              <thead><tr><th>边界维度</th><th>声明内容</th><th>依据 / 口径</th><th>状态</th></tr></thead>
+              <tbody id="boundary-rows">
+                <tr><td>组织边界</td><td>运营控制权法 · 含 3 个生产厂区</td><td>GHG Protocol 企业标准</td><td><span class="chip chip--lime">已确认</span></td></tr>
+                <tr><td>时间边界</td><td>2023.01.01 – 2023.12.31</td><td>完整日历年度</td><td><span class="chip chip--lime">已确认</span></td></tr>
+                <tr><td>范围一</td><td>天然气、柴油（车辆与应急发电）</td><td>显著性 &gt; 1%</td><td><span class="chip chip--lime">已纳入</span></td></tr>
+                <tr><td>范围二</td><td>外购电力（地点法）</td><td>ISO 14064-1:2018</td><td><span class="chip chip--yellow">因子待核实</span></td></tr>
+                <tr><td>范围三</td><td>原材料、运输物流、差旅与其他</td><td>GHG Protocol Scope 3</td><td><span class="chip chip--yellow">待补充 / 供应商实测</span></td></tr>
+                <tr><td>排除项</td><td>无（显著性排放源全纳入）</td><td>红线二</td><td><span class="chip chip--lime">已声明</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 03 核算方法 -->
+        <div class="rsec">
+          <div class="rsec__n"><span class="chip">03</span><h4>核算方法 / METHODOLOGY</h4></div>
+          <p>组织层级温室气体量化依据 ISO 14064-1:2018 与 GHG Protocol Corporate Standard；排放因子标注「版本 + 生效日期」，涉及可能更新的规则（因子库更新、配额分配方案、CCER 方法学、CBAM 过渡期细则）一律以最新官方发布为准，核验日期 2025.06.18。</p>
+          <div class="tbl-scroll" style="margin-top:20px">
+            <table>
+              <caption class="sr-only">排放因子清单</caption>
+              <thead><tr><th>排放源</th><th class="num">因子值</th><th>单位</th><th>来源 / 版本</th><th>核验状态</th></tr></thead>
+              <tbody>
+                <tr><td>外购电力</td><td class="num">0.5568</td><td>kgCO₂/kWh</td><td>全国电网平均排放因子 · 2022 年发布（2023.03）</td><td><span class="chip chip--yellow">待核实 / 2024 版未发布</span></td></tr>
+                <tr><td>天然气</td><td class="num">21.62</td><td>kgCO₂/Nm³</td><td>IPCC 2006 指南（2019 修订）· GB 核算报告指南</td><td><span class="chip chip--lime">已核验</span></td></tr>
+                <tr><td>柴油</td><td class="num">3.16</td><td>tCO₂/t</td><td>省级温室气体清单编制指南（2023）</td><td><span class="chip chip--lime">已核验</span></td></tr>
+                <tr><td>钢材（原材料）</td><td class="num">2.32</td><td>tCO₂e/t</td><td>行业 LCA 数据库 · 2024 版</td><td><span class="chip chip--yellow">待补充 / 供应商实测</span></td></tr>
+                <tr><td>运输物流</td><td class="num">0.062</td><td>kgCO₂e/t·km</td><td>GHG Protocol Scope 3 指南（2011）</td><td><span class="chip chip--yellow">待核实</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note" style="margin-top:16px">已废止或过时版本不得作为核算依据；不确定时先核实再引用，禁止凭印象。GWP 值采用 IPCC AR6（2021）100 年口径，全文统一，不与 AR5 数据混用。</p>
+        </div>
+
+        <!-- 04 数据与结果 -->
+        <div class="rsec">
+          <div class="rsec__n">
+            <span class="chip">04</span><h4>数据与结果 / DATA &amp; RESULTS</h4>
+            <div class="rtabs" role="group" aria-label="结果分解视角" style="margin-left:auto">
+              <button type="button" data-view="scope" aria-pressed="true">按范围</button>
+              <button type="button" data-view="site" aria-pressed="false">按设施</button>
+              <button type="button" data-view="source" aria-pressed="false">按排放源</button>
+            </div>
+          </div>
+          <p id="view-note">结果表达三视角之「按范围」：范围一 7.19、范围二 3.79、范围三 6.20 万 tCO₂e。图比文字有说服力十倍，三种视角交叉核对后数字必须一致。</p>
+
+          <figure class="chart">
+            <figcaption class="sr-only" id="bar-desc">基准年排放构成柱状图</figcaption>
+            <svg id="bar-svg" viewBox="0 0 640 260" role="img" aria-labelledby="bar-desc"></svg>
+            <div class="legend" id="bar-legend"></div>
+          </figure>
+
+          <h4 style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;margin:34px 0 4px">减排路径 / WATERFALL（措施分解）</h4>
+          <figure class="chart" style="margin-top:16px">
+            <figcaption class="sr-only" id="wf-desc">减排瀑布图：从基准年排放逐项扣减五项措施的年减排量，得到目标年排放。</figcaption>
+            <svg id="wf-svg" viewBox="0 0 640 300" role="img" aria-labelledby="wf-desc"></svg>
+            <div class="legend">
+              <span class="lg"><i style="background:var(--ink)"></i>基准 / 目标年排放</span>
+              <span class="lg"><i style="background:var(--lime)"></i>措施减排量</span>
+              <span class="lg">单位 / 万 tCO₂e · 减排量按可验证下限保守核算</span>
+            </div>
+          </figure>
+        </div>
+
+        <!-- 05 分析与建议 -->
+        <div class="rsec">
+          <div class="rsec__n"><span class="chip">05</span><h4>分析与建议 / RECOMMENDATIONS</h4></div>
+          <p>建议五要素：措施 + 投入 + 减排量 + 回收期 + 责任部门，缺任一项，建议就是空话。下表五项均满足五要素，减排量口径为年度稳态值。</p>
+          <div class="tbl-scroll" style="margin-top:20px">
+            <table>
+              <caption class="sr-only">减排措施建议表</caption>
+              <thead><tr><th>措施</th><th class="num">投入 / 万元</th><th class="num">减排量 / 万 t</th><th class="num">年净收益 / 万元</th><th class="num">回收期 / 年</th><th>责任部门</th></tr></thead>
+              <tbody id="measure-rows"></tbody>
+              <tfoot>
+                <tr>
+                  <td style="font-weight:500">合计</td>
+                  <td class="num" style="font-weight:500" id="sum-inv">3,760</td>
+                  <td class="num" style="font-weight:500" id="sum-cut">3.56</td>
+                  <td class="num" style="font-weight:500" id="sum-save">800</td>
+                  <td class="num" style="font-weight:500" id="sum-pay">4.7</td>
+                  <td style="font-weight:500">双碳推进办公室</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <p class="note" style="margin-top:16px">口径说明：投入含设备、工程与咨询费用，不含厂区基建改造；年净收益为节费与材料节省扣减绿电溢价后的税前值；回收期为静态回收期，未计入碳价与补贴。若纳入全国碳市场配额成本或地方补贴，需重新测算并登记变更。</p>
+        </div>
+
+        <!-- 06 附录 -->
+        <div class="rsec" style="border-bottom:0">
+          <div class="rsec__n"><span class="chip">06</span><h4>附录 / APPENDIX</h4></div>
+          <div class="tbl-scroll">
+            <table>
+              <caption class="sr-only">数据台账样表</caption>
+              <thead><tr><th>排放源</th><th>活动数据</th><th>来源 / 凭证</th><th>口径</th><th>状态</th></tr></thead>
+              <tbody>
+                <tr><td>外购电力</td><td class="num">6,800 万 kWh</td><td>电费结算单 EC-2023-041</td><td>净购入电量 / 地点法</td><td><span class="chip chip--lime">可追溯</span></td></tr>
+                <tr><td>天然气</td><td class="num">320 万 Nm³</td><td>燃气结算单 EC-2023-077</td><td>燃料消耗量</td><td><span class="chip chip--lime">可追溯</span></td></tr>
+                <tr><td>柴油</td><td class="num">860 t</td><td>采购入库单 EC-2023-118</td><td>车辆与应急发电</td><td><span class="chip chip--lime">可追溯</span></td></tr>
+                <tr><td>钢材采购</td><td class="num">12.4 万 t</td><td>采购合同台账</td><td>范围三 / 类别 1</td><td><span class="chip chip--yellow">待补充</span></td></tr>
+                <tr><td>运输物流</td><td class="num">2,860 万 t·km</td><td>物流结算单（抽样）</td><td>范围三 / 类别 4</td><td><span class="chip chip--yellow">待补充</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note" style="margin-top:18px">附录随报告交付：数据表、因子来源、访谈与踏勘记录、变更留痕台账。老板只看执行摘要，专家只看附录——两头都要硬。</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. 五阶段交付框架 ================= -->
+<section class="chapter delivery" id="delivery" aria-labelledby="del-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head__t">
+        <p class="label label--inv">PHASE 02–05 / DELIVERY FRAMEWORK</p>
+        <h2 id="del-t" style="color:var(--ink-inverse)">五阶段交付框架：<br>每阶段都有交付物与验收标准</h2>
+      </div>
+      <p style="color:rgba(245,244,239,0.72)">现状调研采用资料审阅 + 三角色访谈（高层定方向、部门谈机制、一线抓数据）+ 现场踏勘。问卷按三角色分别设计，每个问题对应一个待核实的数据项或决策点，保证可回溯到最终报告结论。</p>
+    </div>
+
+    <ol class="dsteps" id="dsteps">
+      <li class="dstep">
+        <div class="dstep__n">PHASE 01</div><div class="dstep__bar" aria-hidden="true"></div>
+        <h3>售前诊断</h3>
+        <div class="dstep__blk"><b>方法</b><p>三问：成熟度阶段 / 核心痛点 / 预算与决策链</p></div>
+        <div class="dstep__blk"><b>交付物</b><p>诊断结论 + 项目建议书</p></div>
+        <div class="dstep__acc">验收 / 痛点定位准确、方案对症、客户认可价值主张</div>
+      </li>
+      <li class="dstep">
+        <div class="dstep__n">PHASE 02</div><div class="dstep__bar" aria-hidden="true"></div>
+        <h3>项目启动</h3>
+        <div class="dstep__blk"><b>方法</b><p>范围澄清会 · 分工与里程碑对齐</p></div>
+        <div class="dstep__blk"><b>交付物</b><p>SOW（工作说明书）+ 项目章程（范围、分工、里程碑）</p></div>
+        <div class="dstep__acc">验收 / 范围边界、双方分工、交付清单、时间表经双方确认</div>
+      </li>
+      <li class="dstep">
+        <div class="dstep__n">PHASE 03</div><div class="dstep__bar" aria-hidden="true"></div>
+        <h3>现状调研</h3>
+        <div class="dstep__blk"><b>方法</b><p>资料审阅 + 三角色访谈 + 现场踏勘</p></div>
+        <div class="dstep__blk"><b>交付物</b><p>调研问卷/访谈提纲 · 排放源识别 · 数据台账/核算底稿</p></div>
+        <div class="dstep__acc">验收 / 每个结论有证据链；数据可追溯、可比、可核查</div>
+      </li>
+      <li class="dstep">
+        <div class="dstep__n">PHASE 04</div><div class="dstep__bar" aria-hidden="true"></div>
+        <h3>方案设计</h3>
+        <div class="dstep__blk"><b>方法</b><p>情景测算 · 技术经济分析 · 投资排序</p></div>
+        <div class="dstep__blk"><b>交付物</b><p>现状基线报告 · 减排路径图 Roadmap（投资 + ROI）· 实施路线图（里程碑 + 责任矩阵）</p></div>
+        <div class="dstep__acc">验收 / 投资与减排量算得清账；责任到部门、到时间</div>
+      </li>
+      <li class="dstep">
+        <div class="dstep__n">PHASE 05</div><div class="dstep__bar" aria-hidden="true"></div>
+        <h3>交付与落地支持</h3>
+        <div class="dstep__blk"><b>质量门</b><p>内部交叉复核（数据互验、逻辑闭环）→ 客户评审会 → 预留第三方核查接口</p></div>
+        <div class="dstep__blk"><b>交付物</b><p>终版报告 + 落地支持（培训、跟踪、迭代）</p></div>
+        <div class="dstep__acc">验收 / 报告出门前自问：数字经不经得起查？</div>
+      </li>
+    </ol>
+
+    <div class="sow">
+      <div class="sow__c">
+        <h4>SOW 变更条款 / CHANGE CLAUSE（必写）</h4>
+        <div class="clause">
+          <b>条款 8 · 变更与重新验收</b>
+          <p>核算口径、项目范围、时间表任何变动，一律重新过一遍对应阶段的验收标准，经双方书面确认后生效。执行中新增数据源、调整核算边界、更换排放因子或口径，均视为变更，走同一流程。</p>
+        </div>
+        <div class="clause">
+          <b>条款 9 · 变更留痕</b>
+          <p>每次变更须记录：变更时间、变更内容、影响评估（对排放量/结论/进度的影响）、确认人。留痕纳入项目档案，作为审计依据，随报告附录一并交付。</p>
+        </div>
+      </div>
+      <div class="sow__c">
+        <h4>项目章程要点 / PROJECT CHARTER</h4>
+        <p>范围：组织边界、时间边界、核算边界（范围一至三）与排除项声明。<br>
+        分工：客户方数据责任人、财务与能源对接人、咨询方项目经理与复核人（交叉复核双人制）。<br>
+        里程碑：诊断确认 → 启动会 → 台账冻结 → 基线评审 → 方案评审 → 终版交付。<br>
+        交付清单：诊断结论、项目建议书、SOW、章程、调研工具包、排放源清单、数据台账、核算底稿、基线报告、Roadmap、实施路线图、终版报告、培训与跟踪计划。<br>
+        保密与数据：原始凭证仅用于核算与核查，客户保留所有权。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. 产品线与成熟度匹配 ================= -->
+<section class="chapter chapter--tight" id="products" aria-labelledby="prod-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head__t">
+        <p class="label">EIGHT SERVICE LINES / 服务范围</p>
+        <h2 id="prod-t">八大产品线，按诊断结果对号入座</h2>
+      </div>
+      <p>售前诊断三问结束后，必须输出三项：客户成熟度判断、推荐产品线组合、选择理由。禁止跨阶段硬推——高阶段产品卖给低阶段客户，是咨询事故的常见来源。</p>
+    </div>
+
+    <div class="prods" id="prodGrid">
+      <article class="prod" data-line="1"><span class="prod__n">01</span><h3>碳盘查核算（ISO 14064）</h3><p>排放报告 · 第三方核查报告 · 排放源识别报告 · 核算底稿 · 数据台账</p><div class="prod__tag"><span class="chip chip--lime">合规阶段首选</span></div></article>
+      <article class="prod" data-line="2"><span class="prod__n">02</span><h3>双碳规划（碳达峰 / 碳中和）</h3><p>现状核算报告 · 双碳规划方案 · 减排路径图 Roadmap · 技术经济分析</p><div class="prod__tag"><span class="chip chip--cyan">战略阶段首选</span></div></article>
+      <article class="prod" data-line="3"><span class="prod__n">03</span><h3>CCER 项目开发</h3><p>PDD · 监测计划 · 减排量核算报告 · 审定 / 核查报告</p><div class="prod__tag"><span class="chip chip--yellow">方法学以最新发布为准</span></div></article>
+      <article class="prod" data-line="4"><span class="prod__n">04</span><h3>碳履约 / 交易 / 碳资产</h3><p>配额盈缺分析与履约方案 · 碳交易策略 · 碳资产管理体系</p><div class="prod__tag"><span class="chip chip--lime">合规 + 价值阶段</span></div></article>
+      <article class="prod" data-line="5"><span class="prod__n">05</span><h3>产品碳足迹 LCA（ISO 14067）</h3><p>碳足迹核算报告 · 碳足迹声明 · LCA 建模文件</p><div class="prod__tag"><span class="chip chip--cyan">出口与客户要求</span></div></article>
+      <article class="prod" data-line="6"><span class="prod__n">06</span><h3>碳中和认证</h3><p>碳中和管理计划 · 碳中和声明 · 高质量碳信用采购方案</p><div class="prod__tag"><span class="chip chip--yellow">须先有完整基线</span></div></article>
+      <article class="prod" data-line="7"><span class="prod__n">07</span><h3>ESG / TCFD / CDP / CBAM</h3><p>ESG 气候章节 · TCFD 报告 · CDP 应答 · CBAM 申报报告</p><div class="prod__tag"><span class="chip chip--yellow">细则以官方发布为准</span></div></article>
+      <article class="prod" data-line="8"><span class="prod__n">08</span><h3>节能降碳技术咨询</h3><p>节能诊断报告 · 节能改造方案 · 政策补贴申报方案</p><div class="prod__tag"><span class="chip chip--lime">降本痛点直达</span></div></article>
+    </div>
+
+    <div class="matrix">
+      <div class="panel">
+        <div class="rsec__n" style="margin-bottom:20px"><h4>成熟度 × 产品线匹配矩阵 / MATCHING MATRIX</h4></div>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>成熟度阶段</th><th>典型处境</th><th>推荐产品线</th><th>交付重点</th></tr></thead>
+            <tbody>
+              <tr><td>合规阶段</td><td>被要求核算 / 履约</td><td>1 碳盘查 · 4 碳履约 · 7 CBAM 申报</td><td>先把数算准、把账交上</td></tr>
+              <tr><td>数据阶段</td><td>想建核算体系</td><td>1 核算体系 · 数据台账 · 数字化管理</td><td>口径统一、可追溯、可核查</td></tr>
+              <tr><td>战略阶段</td><td>主动管理碳绩效</td><td>2 双碳规划 · 5 产品碳足迹 · 6 碳中和认证</td><td>目标年、减排路径、投资排序</td></tr>
+              <tr><td>价值阶段</td><td>碳资产变现 / 品牌 / 融资</td><td>3 CCER 开发 · 4 碳交易 / 碳资产 · 7 ESG/TCFD/CDP</td><td>资产化、披露、评级口径</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:18px">匹配原则：先诊断，再选线。同一批客户可以跨线组合，但必须在同一成熟度层级内推进主线；跨阶段诉求以「前置条件清单」形式交付，不硬推。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. 质量门 + 变更留痕 ================= -->
+<section class="chapter chapter--tight" id="quality" aria-labelledby="qual-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head__t">
+        <p class="label">QUALITY GATE &amp; AUDIT TRAIL</p>
+        <h2 id="qual-t">质量门与变更留痕</h2>
+      </div>
+      <p>审计思维的落地方式很简单：报告出门前，每个数字都要回答三个问题——来源在哪、口径是什么、凭证能不能查。任何一项答不上来，就标「待补充」，不编造。</p>
+    </div>
+
+    <div class="qgrid">
+      <div>
+        <div class="gates">
+          <div class="gate-c"><h4>① 内部交叉复核</h4><p>数据互验（台账 vs 结算单 vs 能源报表）、逻辑闭环（范围合计 = 分项合计 = 排放源合计）。复核人与编制人必须不同。</p></div>
+          <div class="gate-c"><h4>② 客户评审会</h4><p>基线数据与减排路径分别评审；口径争议当场记录，形成变更事项走变更流程。</p></div>
+          <div class="gate-c"><h4>③ 第三方核查接口</h4><p>核算底稿预留核查接口：数据表、因子来源、凭证编号、抽样说明，可直接对接 ISO 14064-3 核查流程。</p></div>
+          <div class="gate-c"><h4>④ 出门前自检</h4><p>三条红线自检：不夸大（减排量保守）· 不遗漏（显著性排放源全纳入）· 不混淆（口径声明清楚）。</p></div>
+        </div>
+        <div class="ask">
+          <b>报告出门前自问</b>
+          <p>“数字经不经得起查？”</p>
+          <p class="note" style="margin-top:14px;color:rgba(245,244,239,0.62)">答不上来就不发。宁可标「待补充」，也不写一个漂亮但无凭证的数字。</p>
+        </div>
+      </div>
+
+      <!-- change log -->
+      <div class="panel">
+        <div class="rsec__n" style="margin-bottom:18px">
+          <h4>变更留痕台账 / CHANGE LOG</h4>
+          <span class="chip chip--cyan" id="log-count">0 条记录</span>
+        </div>
+
+        <form id="changeForm" style="display:grid;grid-template-columns:1fr 1fr;gap:2px 16px">
+          <div class="frow">
+            <label class="label" for="ch-type">变更类型</label>
+            <select id="ch-type">
+              <option>核算口径调整</option>
+              <option>核算边界调整</option>
+              <option>排放因子更换</option>
+              <option>新增数据源</option>
+              <option>时间表变动</option>
+              <option>项目范围变动</option>
+            </select>
+          </div>
+          <div class="frow">
+            <label class="label" for="ch-owner">确认人</label>
+            <input type="text" id="ch-owner" value="双方项目经理">
+          </div>
+          <div class="frow" style="grid-column:1 / -1">
+            <label class="label" for="ch-detail">变更内容</label>
+            <input type="text" id="ch-detail" placeholder="例：范围三原材料因子由行业平均更换为供应商实测数据">
+          </div>
+          <div class="frow" style="grid-column:1 / -1;border-bottom:0">
+            <label class="label" for="ch-impact">影响评估</label>
+            <input type="text" id="ch-impact" placeholder="例：基准年排放预计下降 0.4 万 tCO₂e，需重走阶段三验收">
+          </div>
+          <div style="grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:12px;padding-top:16px">
+            <button type="button" class="btn" id="ch-add">登记变更</button>
+            <button type="button" class="btn btn--line" id="ch-auto">登记当前方案变更</button>
+          </div>
+        </form>
+
+        <div class="tbl-scroll" style="margin-top:22px">
+          <table>
+            <caption class="sr-only">变更留痕记录表</caption>
+            <thead><tr><th>时间</th><th>类型</th><th>内容</th><th>影响评估</th><th>确认人</th></tr></thead>
+            <tbody id="log-rows">
+              <tr><td colspan="5" class="note" style="padding:18px 12px">暂无变更记录。口径、边界、因子、数据源、时间表任一变动，均在此登记，作为审计依据。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="clause" style="border-color:var(--rule-strong);margin-top:22px">
+          <b style="color:#8A6D14">留痕要素 / AUDIT TRAIL</b>
+          <p class="note" style="margin-top:10px">变更时间 · 变更内容 · 影响评估 · 确认人。四项齐全才生效；缺项记录一律标「待补充」，并在下一阶段验收时补齐。留痕纳入项目档案，随终版报告附录交付。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. 政策与标准 ================= -->
+<section class="chapter chapter--tight" id="policy" aria-labelledby="pol-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-head__t">
+        <p class="label">POLICY &amp; STANDARDS / 引用规则</p>
+        <h2 id="pol-t">政策与标准引用库</h2>
+      </div>
+      <p>引用政策、标准、排放因子时必须标注「版本 + 生效日期」。涉及可能更新的规则（CCER 方法学、CBAM 过渡期细则、配额分配方案、排放因子库更新），主动提示以最新官方发布为准，并标注核验日期。已废止版本不得作为核算依据。</p>
+    </div>
+
+    <div class="pol">
+      <article class="pol__c">
+        <h4>GHG Protocol Corporate Standard</h4>
+        <div class="pol__d"><span class="chip">版本 / 2004 修订</span><span class="chip chip--lime">状态 / 现行</span><span class="chip">核验 / 2025.06.18</span></div>
+        <p class="note">用途：组织边界（运营控制权 / 股权比例）、范围一至三分类、基准年设定。</p>
+        <div class="pol__warn">Scope 3 Standard 为 2011 版，类别定义与计算指引更新频繁，引用时以最新官方发布为准。</div>
+      </article>
+
+      <article class="pol__c">
+        <h4>ISO 14064-1:2018 · 组织层级温室气体量化与报告</h4>
+        <div class="pol__d"><span class="chip">版本 / 2018</span><span class="chip chip--lime">状态 / 现行</span><span class="chip">核验 / 2025.06.18</span></div>
+        <p class="note">用途：排放源识别、显著性阈值设定、不确定性说明、报告结构。配套 ISO 14064-3:2019（核查）。</p>
+        <div class="pol__warn">使用前确认未被新版替代；本项目核算边界声明须与 14064-1 条款逐项对应。</div>
+      </article>
+
+      <article class="pol__c">
+        <h4>ISO 14067:2018 · 产品碳足迹</h4>
+        <div class="pol__d"><span class="chip">版本 / 2018</span><span class="chip chip--lime">状态 / 现行</span><span class="chip">核验 / 2025.06.18</span></div>
+        <p class="note">用途：产品碳足迹量化、功能单位声明、生命周期边界（LCA 建模文件随附）。</p>
+        <div class="pol__warn">与 PAS 2050 存在方法差异，禁止混用；客户要求出具碳足迹声明时须同时声明标准版本。</div>
+      </article>
+
+      <article class="pol__c">
+        <h4>全国碳排放权交易管理暂行条例</h4>
+        <div class="pol__d"><span class="chip">版本 / 2024</span><span class="chip chip--lime">生效 / 2024.05.01</span><span class="chip">核验 / 2025.06.18</span></div>
+        <p class="note">用途：配额分配与清缴、核查要求、数据质量管理责任。试点机制（北京、上海、广东、深圳、湖北、重庆、天津）规则与全国市场不完全一致。</p>
+        <div class="pol__warn">配额分配方案逐年更新，履约成本测算须以最新年度分配方案为准。</div>
+      </article>
+
+      <article class="pol__c">
+        <h4>CCER 方法学（自愿减排）</h4>
+        <div class="pol__d"><span class="chip">版本 / 2023 年重启后分批发布</span><span class="chip chip--yellow">状态 / 动态更新</span><span class="chip">核验 / 2025.06.18</span></div>
+        <p class="note">用途：PDD 编制、监测计划、减排量核算。方法学适用条件、额外性论证、监测参数须逐条对照。</p>
+        <div class="pol__warn">方法学可能更新或新增，开发前必须以生态环境部最新发布为准；本页数据不得直接作为项目申报依据。</div>
+      </article>
+
+      <article class="pol__c">
+        <h4>欧盟碳边境调节机制 CBAM</h4>
+        <div class="pol__d"><span class="chip">版本 / 过渡期细则</span><span class="chip chip--yellow">状态 / 分阶段实施</span><span class="chip">核验 / 2025.06.18</span></div>
+        <p class="note">用途：嵌入排放计算、申报数据准备、产品层级与设施层级数据要求。</p>
+        <div class="pol__warn">过渡期细则仍在修订，申报口径与默认值可能调整；出口企业方案须以最新官方发布为准，并预留数据复核周期。</div>
+      </article>
+
+      <article class="pol__c">
+        <h4>ESG / TCFD / CDP 披露框架</h4>
+        <div class="pol__d"><span class="chip">版本 / TCFD → ISSB 承接</span><span class="chip chip--yellow">状态 / 过渡期</span><span class="chip">核验 / 2025.06.18</span></div>
+        <p class="note">用途：气候章节、治理与风险管理披露、情景分析、CDP 问卷应答口径。</p>
+        <div class="pol__warn">ISSB 准则分地区转化节奏不同，披露边界与上年度对比须保持一致，口径变化须在报告中说明并登记变更。</div>
+      </article>
+
+      <article class="pol__c">
+        <h4>排放因子库（电力 / 燃料 / 行业）</h4>
+        <div class="pol__d"><span class="chip">版本 / 2022–2024 分别标注</span><span class="chip chip--yellow">状态 / 周期性更新</span><span class="chip">核验 / 2025.06.18</span></div>
+        <p class="note">用途：活动数据 × 因子计算。因子版本随核算底稿交付，全文统一版本，不与旧版混用。</p>
+        <div class="pol__warn">全国电网平均排放因子可能更新，核算前须核实最新发布值；旧版因子不得作为结论依据。</div>
+      </article>
+    </div>
+
+    <div class="panel" style="margin-top:40px;border-top:2px solid var(--yellow)">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+        <div>
+          <p class="label" style="color:#8A6D14">DISCLAIMER / 引用声明</p>
+          <p class="note" style="margin-top:12px;max-width:80ch">本页所列政策、标准与排放因子版本，均以核验日期（2025.06.18）前的官方公开发布为准，可能存在更新或废止情况。正式核算与申报前，须按「版本 + 生效日期」逐项复核，以最新官方发布为准；不确定时先核实再引用，禁止凭印象。本系统输出为咨询工作底稿，不构成第三方核查结论。</p>
+        </div>
+        <span class="chip chip--yellow">待核实项 / 4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <p class="label label--inv">SENIOR CARBON MANAGEMENT CONSULTANT</p>
+        <h2 style="margin-top:18px">结论先行 → 证据 → 图表 → 建议（五要素）。每个数字都挂得住证据链。</h2>
+        <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:12px">
+          <a class="btn" href="#diagnose">开始售前诊断</a>
+          <a class="btn btn--ghost" href="#delivery">查看交付框架</a>
+        </div>
+      </div>
+      <div>
+        <h4>交付流程</h4>
+        <ul>
+          <li><a href="#diagnose">01 售前诊断</a></li>
+          <li><a href="#plan">02 公司情况与方案</a></li>
+          <li><a href="#delivery">03 交付框架与 SOW</a></li>
+          <li><a href="#products">04 产品线匹配</a></li>
+          <li><a href="#quality">05 质量门与留痕</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>依据与口径</h4>
+        <ul>
+          <li><a href="#policy">GHG Protocol</a></li>
+          <li><a href="#policy">ISO 14064 / 14067</a></li>
+          <li><a href="#policy">全国碳市场 / CCER</a></li>
+          <li><a href="#policy">CBAM / ESG 披露</a></li>
+          <li><a href="#policy">排放因子库</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <span>双碳方案落地系统 / CARBON SOLUTION CONSOLE</span>
+      <span>核验日期 / 2025.06.18 · 以最新官方发布为准</span>
+      <span>输出性质 / 咨询工作底稿 · 非第三方核查结论</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ================= header / mobile nav ================= */
+  var burger = document.getElementById("burger"), mobnav = document.getElementById("mobnav");
+  function setNav(open){ mobnav.classList.toggle("is-open", open); burger.setAttribute("aria-expanded", String(open)); document.body.style.overflow = open ? "hidden" : ""; }
+  burger.addEventListener("click", function(){ setNav(!mobnav.classList.contains("is-open")); });
+  document.getElementById("mobnav-close").addEventListener("click", function(){ setNav(false); burger.focus(); });
+  mobnav.addEventListener("click", function(e){ if (e.target.tagName === "A") setNav(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && mobnav.classList.contains("is-open")) setNav(false); });
+
+  var sections = ["diagnose","plan","delivery","products","quality","policy"];
+  if ("IntersectionObserver" in window){
+    var navObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        document.querySelectorAll(".nav a").forEach(function(a){
+          a.removeAttribute("aria-current");
+          if (a.getAttribute("href") === "#" + e.target.id) a.setAttribute("aria-current","page");
+        });
+      });
+    }, {rootMargin:"-45% 0px -50% 0px"});
+    sections.forEach(function(id){ var el = document.getElementById(id); if (el) navObs.observe(el); });
+  }
+
+  /* ================= delivery reveal ================= */
+  var dsteps = document.querySelectorAll("#dsteps .dstep");
+  if (reduce || !("IntersectionObserver" in window)){
+    dsteps.forEach(function(s){ s.classList.add("is-in"); });
+  } else {
+    var dobs = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(e.target.children, function(c, i){
+          if (c.classList.contains("dstep")) setTimeout(function(){ c.classList.add("is-in"); }, i*90);
+        });
+        obs.unobserve(e.target);
+      });
+    }, {threshold:0.15});
+    var dwrap = document.getElementById("dsteps"); if (dwrap) dobs.observe(dwrap);
+  }
+
+  /* =========================================================
+     CHANGE LOG
+     ========================================================= */
+  var logRows = document.getElementById("log-rows");
+  var logCount = document.getElementById("log-count");
+  var rChangeCount = document.getElementById("r-change-count");
+  var logs = [];
+
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+  function ts(){
+    var d = new Date();
+    return d.getFullYear() + "." + pad(d.getMonth()+1) + "." + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+  }
+  function renderLogs(){
+    if (!logs.length){
+      logRows.innerHTML = '<tr><td colspan="5" class="note" style="padding:18px 12px">暂无变更记录。口径、边界、因子、数据源、时间表任一变动，均在此登记，作为审计依据。</td></tr>';
+    } else {
+      logRows.innerHTML = logs.map(function(l, i){
+        return '<tr' + (i === logs.length-1 ? ' class="is-new"' : '') + '>'
+          + '<td>' + l.time + '</td><td>' + l.type + '</td><td>' + l.detail + '</td><td>' + l.impact + '</td><td>' + l.owner + '</td></tr>';
+      }).join("");
+    }
+    logCount.textContent = logs.length + " 条记录";
+    rChangeCount.textContent = "变更 " + logs.length + " 条";
+  }
+  function addLog(type, detail, impact, owner){
+    logs.push({time: ts(), type: type, detail: detail || "待补充", impact: impact || "待补充", owner: owner || "待确认"});
+    renderLogs();
+  }
+  document.getElementById("ch-add").addEventListener("click", function(){
+    addLog(
+      document.getElementById("ch-type").value,
+      document.getElementById("ch-detail").value || "待补充",
+      document.getElementById("ch-impact").value || "待补充",
+      document.getElementById("ch-owner").value || "待确认"
+    );
+    document.getElementById("ch-detail").value = "";
+    document.getElementById("ch-impact").value = "";
+  });
+  document.getElementById("ch-auto").addEventListener("click", function(){
+    addLog("当前方案变更", "口径 / 边界 / 因子版本：" + state.caliberLabel + " · " + boundaryText(),
+      "基准年排放 " + last.total.toFixed(2) + " 万 tCO₂e，需重走对应阶段验收标准", "双方项目经理");
+  });
+
+  /* =========================================================
+     1. DIAGNOSIS
+     ========================================================= */
+  var diag = {stage:null, pains:[], budget:null, chain:null};
+  var stageLabel = {compliance:"合规阶段", data:"数据阶段", strategy:"战略阶段", value:"价值阶段"};
+  var stageReason = {
+    compliance:"客户处于被要求核算或履约的状态，当务之急是把数算准、把账交上，先消除合规风险，再谈管理与变现。",
+    data:"客户已意识到数据是底座，但口径分散、不可追溯，应先建核算体系与台账，其他产品线的前置条件即在此。",
+    strategy:"客户有目标管理诉求且基础数据可用，进入主动管理碳绩效阶段，重点是目标分解、路径设计与投资排序。",
+    value:"客户诉求已指向碳资产、品牌与融资，需在既有基线之上做资产化、披露与评级口径管理。"
+  };
+  var lineMap = {
+    compliance:[1,4,7], data:[1,4,8], strategy:[2,5,6], value:[3,4,7]
+  };
+  var lineName = {
+    1:"碳盘查核算（ISO 14064）· 排放报告 / 核算底稿 / 数据台账",
+    2:"双碳规划（碳达峰 / 碳中和）· Roadmap / 技术经济分析",
+    3:"CCER 项目开发 · PDD / 监测计划 / 减排量核算",
+    4:"碳履约 / 交易 / 碳资产 · 配额盈缺分析 / 交易策略",
+    5:"产品碳足迹 LCA（ISO 14067）· 碳足迹核算与声明",
+    6:"碳中和认证 · 管理计划 / 声明 / 碳信用采购",
+    7:"ESG / TCFD / CDP / CBAM · 披露与申报报告",
+    8:"节能降碳技术咨询 · 节能诊断 / 改造方案 / 补贴申报"
+  };
+
+  function diagComplete(){
+    return !!(diag.stage && diag.pains.length && diag.budget && diag.chain);
+  }
+  function togglePressed(btn, on){ btn.setAttribute("aria-pressed", String(on)); }
+
+  document.querySelectorAll("[data-stage]").forEach(function(b){
+    b.addEventListener("click", function(){
+      document.querySelectorAll("[data-stage]").forEach(function(x){ togglePressed(x, false); });
+      togglePressed(b, true); diag.stage = b.getAttribute("data-stage"); checkDiag();
+    });
+  });
+  document.querySelectorAll("[data-pain]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var p = b.getAttribute("data-pain"), i = diag.pains.indexOf(p);
+      if (i > -1){ diag.pains.splice(i,1); togglePressed(b, false); }
+      else { diag.pains.push(p); togglePressed(b, true); }
+      checkDiag();
+    });
+  });
+  document.querySelectorAll("[data-budget]").forEach(function(b){
+    b.addEventListener("click", function(){
+      document.querySelectorAll("[data-budget]").forEach(function(x){ togglePressed(x, false); });
+      togglePressed(b, true); diag.budget = b.getAttribute("data-budget"); checkDiag();
+    });
+  });
+  document.querySelectorAll("[data-chain]").forEach(function(b){
+    b.addEventListener("click", function(){
+      document.querySelectorAll("[data-chain]").forEach(function(x){ togglePressed(x, false); });
+      togglePressed(b, true); diag.chain = b.getAttribute("data-chain"); checkDiag();
+    });
+  });
+
+  var diagHint = document.getElementById("diag-hint");
+  function checkDiag(){
+    var miss = [];
+    if (!diag.stage) miss.push("Q1");
+    if (!diag.pains.length) miss.push("Q2");
+    if (!diag.budget) miss.push("Q3");
+    if (!diag.chain) miss.push("Q3 决策链");
+    if (miss.length){
+      diagHint.className = "chip chip--yellow";
+      diagHint.textContent = "待补充 / 缺 " + miss.join("、");
+    } else {
+      diagHint.className = "chip chip--lime";
+      diagHint.textContent = "三问完成 / 可输出诊断结论";
+    }
+  }
+
+  document.getElementById("diag-confirm").addEventListener("click", function(){
+    if (!diagComplete()){
+      diagHint.className = "chip chip--red";
+      diagHint.textContent = "三问未完成 / 不得跳过售前诊断";
+      return;
+    }
+    // ① maturity
+    document.getElementById("out-stage").textContent = stageLabel[diag.stage] + "。" + stageReason[diag.stage];
+
+    // ② product lines
+    var lines = lineMap[diag.stage].slice();
+    var extras = [];
+    if (diag.pains.indexOf("cbam") > -1 && lines.indexOf(7) === -1){ lines.push(7); extras.push("CBAM 申报"); }
+    if (diag.pains.indexOf("cost") > -1){ if (lines.indexOf(8) === -1){ lines.push(8); } extras.push("节能降碳"); }
+    if (diag.pains.indexOf("finance") > -1 || diag.pains.indexOf("brand") > -1){ if (lines.indexOf(7) === -1){ lines.push(7); } extras.push("ESG 披露"); }
+    if (diag.pains.indexOf("risk") > -1){ if (lines.indexOf(4) === -1){ lines.push(4); } extras.push("履约管理"); }
+    lines.sort(function(a,b){ return a-b; });
+    document.getElementById("out-lines").innerHTML = lines.map(function(n){
+      return "<li>产品线 " + (n < 10 ? "0" + n : n) + " · " + lineName[n] + "</li>";
+    }).join("") + (extras.length ? '<li style="color:var(--yellow)">痛点加线：' + extras.join("、") + "（主线不变）</li>" : "");
+
+    // ③ rationale
+    var budgetTxt = {a:"预算 30 万以内", b:"预算 30–100 万", c:"预算 100–300 万", d:"预算 300 万以上或分期"}[diag.budget];
+    var chainTxt = {single:"单一决策人", committee:"跨部门委员会", hq:"集团总部批复"}[diag.chain];
+    var painTxt = {risk:"合规风险", cost:"降本增效", cbam:"出口门槛 / CBAM", finance:"融资与 ESG 评级", brand:"品牌与客户要求"};
+    document.getElementById("out-why").textContent =
+      "选择理由：" + diag.pains.map(function(p){ return painTxt[p]; }).join("、") +
+      "是本次立项的直接驱动；" + budgetTxt + "，" + chainTxt + "，因此首期以" +
+      (diag.stage === "compliance" || diag.stage === "data" ? "「算准数、交上账」" : "「定目标、排路径」") +
+      "为主线推进，其余产品线列为后续阶段，并在项目建议书中写明前置条件。所有结论将回挂证据线索（访谈记录 / 公开披露 / 政策名单），不作无依据推断。";
+
+    // gate open
+    document.getElementById("diag-state").className = "chip chip--lime";
+    document.getElementById("diag-state").textContent = "已确认 / " + ts();
+    document.getElementById("gate-chip").className = "chip chip--lime";
+    document.getElementById("gate-chip").textContent = "阶段已解锁";
+    document.getElementById("plan").classList.add("is-open");
+    var rail = document.querySelectorAll("#steprail .steprail__c");
+    rail.forEach(function(c, i){ if (i <= 3){ c.classList.remove("is-locked"); } });
+    rail[0].classList.remove("is-current"); rail[1].classList.add("is-current");
+
+    // highlight recommended product lines
+    document.querySelectorAll("#prodGrid .prod").forEach(function(p){
+      var n = parseInt(p.getAttribute("data-line"), 10);
+      p.classList.toggle("is-rec", lines.indexOf(n) > -1);
+    });
+
+    addLog("售前诊断结论", "成熟度：" + stageLabel[diag.stage] + " · 推荐产品线 " + lines.join(","),
+      "作为阶段二 SOW 范围依据", document.getElementById("ch-owner").value || "双方项目经理");
+
+    document.getElementById("plan").scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"start"});
+  });
+
+  document.getElementById("diag-reset").addEventListener("click", function(){
+    diag = {stage:null, pains:[], budget:null, chain:null};
+    document.querySelectorAll("#diagForm .chip-btn").forEach(function(b){ togglePressed(b, false); });
+    checkDiag();
+    document.getElementById("diag-state").className = "chip chip--inv";
+    document.getElementById("diag-state").textContent = "未确认";
+    document.getElementById("gate-chip").className = "chip chip--red";
+    document.getElementById("gate-chip").textContent = "阶段锁定";
+    document.getElementById("plan").classList.remove("is-open");
+    document.querySelectorAll("#prodGrid .prod").forEach(function(p){ p.classList.remove("is-rec"); });
+    document.getElementById("out-stage").textContent = "待诊断。完成三问后，此处输出成熟度判断及其证据线索。";
+    document.getElementById("out-lines").innerHTML = "<li>待诊断 · 禁止跨阶段硬推</li>";
+    document.getElementById("out-why").textContent = "待诊断。理由须回到三问答案与证据线索。";
+  });
+
+  checkDiag();
+
+  /* =========================================================
+     2. PLAN GENERATION
+     ========================================================= */
+  var FACTOR = {
+    gov:{elec:0.5568, label:"全国电网平均排放因子（2022 年发布）"},
+    region:{elec:0.5703, label:"区域电网因子（2023 年发布）"},
+    green:{elec:0.3120, label:"绿电抵扣后因子（PPA + 绿证）"}
+  };
+  var GAS_F = 21.62;      // kgCO2/Nm3
+  var DIESEL_F = 3.16;    // tCO2/t
+
+  var MEASURES = [
+    {n:"屋顶分布式光伏 6 MWp", s:"自发自用、余电上网", inv:2400, cut:0.62, save:560, dept:"设备动力部"},
+    {n:"绿电采购（年度 PPA 3,000 万 kWh）", s:"含绿证，避免重复计算", inv:0, cut:1.67, save:-180, dept:"采购部", premium:180},
+    {n:"空压系统节能改造", s:"变频 + 余热回收", inv:480, cut:0.18, save:165, dept:"生产运营部"},
+    {n:"余热回收与高效电机替换", s:"热处理线余热梯级利用", inv:760, cut:0.24, save:210, dept:"设备动力部"},
+    {n:"低碳原材料与供应链碳数据", s:"低碳钢材 + 供应商数据采集", inv:120, cut:0.85, save:45, dept:"供应链部"}
+  ];
+
+  var VIEW = {
+    scope:{
+      note:"结果表达三视角之「按范围」：范围一、范围二、范围三分列，合计须与总量一致。",
+      labels:["范围一 / 直接排放","范围二 / 外购能源","范围三 / 价值链"],
+      colors:["#B7E36B","#65D7D0","#B9BDB6"]
+    },
+    site:{
+      note:"结果表达三视角之「按设施」：按生产厂区与车间分解，用于责任到部门、投资到设施。",
+      labels:["铸造车间","机加工车间","热处理车间","动力站","办公与物流"],
+      colors:["#111713","#2E3A33","#65D7D0","#B9BDB6","#D8CFC2"]
+    },
+    source:{
+      note:"结果表达三视角之「按排放源」：按燃料、电力、原材料、运输等排放源分解，用于措施设计。",
+      labels:["天然气","外购电力","柴油","原材料 / 钢材","运输物流","差旅与其他"],
+      colors:["#111713","#65D7D0","#8E9A90","#B7E36B","#B9BDB6","#D8CFC2"]
+    }
+  };
+
+  var last = {total:0, s1:0, s2:0, s3:0, cut:0, inv:0, save:0, pay:0, roi:0, target:0, intensity:0};
+
+  function fmt(n, d){ return n.toFixed(d === undefined ? 2 : d).replace(/\B(?=(\d{3})+(?!\d))/g, function(m,o){ return ""; }); }
+  function num(n, dec){ return n.toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, function(m, offset, str){ return /(\.\d*)$/.test(str) ? "" : ","; }); }
+  function comma(n){ return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+
+  function readForm(){
+    return {
+      name: document.getElementById("c-name").value || "待补充",
+      industry: document.getElementById("c-industry").value,
+      year: document.getElementById("c-year").value,
+      output: parseFloat(document.getElementById("c-output").value) || 0,
+      energy: parseFloat(document.getElementById("c-energy").value) || 0,
+      elec: parseFloat(document.getElementById("c-elec").value) || 0,
+      gas: parseFloat(document.getElementById("c-gas").value) || 0,
+      diesel: parseFloat(document.getElementById("c-diesel").value) || 0,
+      s3: parseFloat(document.getElementById("c-s3").value) || 0,
+      caliber: document.getElementById("c-caliber").value,
+      target: document.getElementById("c-target").value,
+      reduction: parseFloat(document.getElementById("c-reduction").value) || 0,
+      factor: document.getElementById("c-factor").value
+    };
+  }
+
+  var boundaryScopes = ["s1","s2","s3"];
+  function boundaryText(){
+    var m = {s1:"范围一", s2:"范围二", s3:"范围三"};
+    return boundaryScopes.length ? boundaryScopes.map(function(k){ return m[k]; }).join(" + ") : "未选择";
+  }
+
+  function compute(){
+    var f = readForm();
+    var ef = FACTOR[f.factor].elec;
+    var s1 = (f.gas * 10000 * GAS_F) / 10000000 + (f.diesel * DIESEL_F) / 10000; // 万 tCO2
+    var s2 = (f.elec * 10000 * ef) / 10000000;
+    var s3 = f.s3;
+    var on = {s1: boundaryScopes.indexOf("s1") > -1, s2: boundaryScopes.indexOf("s2") > -1, s3: boundaryScopes.indexOf("s3") > -1};
+    var total = (on.s1 ? s1 : 0) + (on.s2 ? s2 : 0) + (on.s3 ? s3 : 0);
+
+    var need = total * (f.reduction / 100);
+    var cut = MEASURES.reduce(function(a,m){ return a + m.cut; }, 0);
+    var inv = MEASURES.reduce(function(a,m){ return a + m.inv; }, 0);
+    var save = MEASURES.reduce(function(a,m){ return a + m.save; }, 0);
+    var pay = save > 0 ? inv / save : 0;
+    var roi = inv > 0 ? (save / inv) * 100 : 0;
+    return {
+      f:f, s1:s1, s2:s2, s3:s3, total:total, need:need, cut:cut, inv:inv, save:save,
+      pay:pay, roi:roi, target: total - cut,
+      intensity: f.output > 0 ? total / f.output : 0
+    };
+  }
+
+  function crossfade(node, html){
+    if (!node) return;
+    if (reduce){ node.innerHTML = html; return; }
+    node.classList.add("is-fading");
+    setTimeout(function(){ node.innerHTML = html; node.classList.remove("is-fading"); }, 240);
+  }
+
+  /* ---- bar chart (3 views) ---- */
+  var currentView = "scope";
+  function barValues(view, c){
+    if (view === "scope") return [c.s1, c.s2, c.s3];
+    if (view === "site"){
+      var t = c.total;
+      return [t*0.302, t*0.227, t*0.180, t*0.140, t*0.151];
+    }
+    return [c.s1*(320*10000*GAS_F/10000000)/ (c.s1||1), c.s2, c.s1*(860*DIESEL_F/10000)/(c.s1||1), 4.85, 0.95, 0.40];
+  }
+  function renderBars(){
+    var c = compute();
+    var vals = barValues(currentView, c);
+    var cfg = VIEW[currentView];
+    var W = 640, H = 260, L = 46, R = 12, T = 16, B = 62;
+    var max = Math.max.apply(null, vals) * 1.18 || 1;
+    var n = vals.length;
+    var slot = (W - L - R) / n;
+    var bw = Math.min(64, slot * 0.52);
+    var svg = "";
+
+    for (var g=0; g<=3; g++){
+      var gv = max * (g/3), gy = T + (H - T - B) * (1 - g/3);
+      svg += '<line class="axis" x1="' + L + '" y1="' + gy.toFixed(1) + '" x2="' + (W-R) + '" y2="' + gy.toFixed(1) + '"' + (g ? ' stroke-dasharray="2 4"' : '') + '/>';
+      svg += '<text class="axis-t" x="' + (L - 8) + '" y="' + (gy + 4).toFixed(1) + '" text-anchor="end">' + gv.toFixed(1) + '</text>';
+    }
+
+    vals.forEach(function(v, i){
+      var x = L + slot * i + (slot - bw)/2;
+      var h = (H - T - B) * (v / max);
+      svg += '<rect class="bar" x="' + x.toFixed(1) + '" y="' + (H - B - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.max(h,1).toFixed(1) + '" fill="' + cfg.colors[i] + '" style="transform:scaleY(0.001)"/>';
+      svg += '<text class="axis-t" x="' + (x + bw/2).toFixed(1) + '" y="' + (H - B - h - 8).toFixed(1) + '" text-anchor="middle" style="fill:#111713">' + v.toFixed(2) + '</text>';
+      var lbl = cfg.labels[i];
+      if (lbl.length > 6){
+        svg += '<text class="axis-t" x="' + (x + bw/2).toFixed(1) + '" y="' + (H - B + 20) + '" text-anchor="middle">' + lbl.slice(0, lbl.indexOf(" /") > -1 ? lbl.indexOf(" /") : 6) + '</text>';
+        if (lbl.indexOf(" /") > -1) svg += '<text class="axis-t" x="' + (x + bw/2).toFixed(1) + '" y="' + (H - B + 36) + '" text-anchor="middle">' + lbl.slice(lbl.indexOf(" /") + 2) + '</text>';
+      } else {
+        svg += '<text class="axis-t" x="' + (x + bw/2).toFixed(1) + '" y="' + (H - B + 20) + '" text-anchor="middle">' + lbl + '</text>';
+      }
+    });
+
+    document.getElementById("bar-svg").innerHTML = svg;
+    document.getElementById("bar-desc").textContent = "基准年排放构成（" + cfg.labels.join("、") + "），单位万 tCO₂e，合计 " + c.total.toFixed(2) + "。";
+    document.getElementById("view-note").textContent = cfg.note + " 合计 " + c.total.toFixed(2) + " 万 tCO₂e，三视角交叉核对后数字一致。";
+    document.getElementById("bar-legend").innerHTML = cfg.labels.map(function(l, i){
+      return '<span class="lg"><i style="background:' + cfg.colors[i] + '"></i>' + l + '</span>';
+    }).join("") + '<span class="lg">单位 / 万 tCO₂e · 数据状态 / 引用中</span>';
+
+    requestAnimationFrame(function(){
+      document.querySelectorAll("#bar-svg .bar").forEach(function(b, i){
+        b.style.transformDelay = (i*60) + "ms";
+        b.style.transform = "scaleY(1)";
+      });
+    });
+  }
+
+  document.querySelectorAll(".rtabs button").forEach(function(b){
+    b.addEventListener("click", function(){
+      document.querySelectorAll(".rtabs button").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+      b.setAttribute("aria-pressed","true");
+      currentView = b.getAttribute("data-view");
+      renderBars();
+    });
+  });
+
+  /* ---- waterfall ---- */
+  function renderWaterfall(){
+    var c = compute();
+    var W = 640, H = 300, L = 46, R = 12, T = 18, B = 78;
+    var steps = [{n:"基准年", v:c.total, type:"total"}];
+    MEASURES.forEach(function(m){ steps.push({n:m.n.split("（")[0].slice(0,6), v:-m.cut, type:"cut"}); });
+    steps.push({n:"目标年", v:c.target, type:"total"});
+
+    var max = c.total * 1.12;
+    function y(v){ return T + (H - T - B) * (1 - v / max); }
+    var slot = (W - L - R) / steps.length;
+    var bw = Math.min(52, slot * 0.6);
+    var svg = "";
+    var run = 0, prevX = 0, prevY = 0;
+
+    for (var g=0; g<=3; g++){
+      var gy = T + (H - T - B) * (1 - g/3);
+      svg += '<line class="axis" x1="' + L + '" y1="' + gy.toFixed(1) + '" x2="' + (W-R) + '" y2="' + gy.toFixed(1) + '"' + (g ? ' stroke-dasharray="2 4"' : '') + '/>';
+      svg += '<text class="axis-t" x="' + (L - 8) + '" y="' + (gy + 4).toFixed(1) + '" text-anchor="end">' + (max*g/3).toFixed(0) + '</text>';
+    }
+
+    steps.forEach(function(s, i){
+      var x = L + slot * i + (slot - bw)/2;
+      var top, h;
+      if (s.type === "total"){
+        run = s.v; top = y(s.v); h = H - B - top;
+      } else {
+        var from = run, to = run + s.v; run = to;
+        top = y(Math.max(from, to)); h = Math.abs(y(from) - y(to));
+      }
+      var fill = s.type === "total" ? "#111713" : "#B7E36B";
+      svg += '<rect class="bar" x="' + x.toFixed(1) + '" y="' + top.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.max(h,2).toFixed(1) + '" fill="' + fill + '" style="transform:scaleY(0.001)"/>';
+      svg += '<text class="axis-t" x="' + (x + bw/2).toFixed(1) + '" y="' + (top - 8).toFixed(1) + '" text-anchor="middle" style="fill:' + (s.type === "total" ? "#111713" : "#4E6B22") + '">' + (s.type === "cut" ? "" : "") + Math.abs(s.v).toFixed(2) + '</text>';
+      svg += '<text class="axis-t" x="' + (x + bw/2).toFixed(1) + '" y="' + (H - B + 20) + '" text-anchor="middle">' + s.n + '</text>';
+
+      if (i > 0 && i < steps.length - 1){
+        svg += '<line class="wf-line" x1="' + (x - slot + bw/2 + bw/2).toFixed(1) + '" y1="' + y(run - s.v).toFixed(1) + '" x2="' + x.toFixed(1) + '" y2="' + y(run - s.v).toFixed(1) + '"/>';
+      }
+      prevX = x; prevY = top;
+    });
+
+    svg += '<line class="wf-line" x1="' + L + '" y1="' + (H - B) + '" x2="' + (W - R) + '" y2="' + (H - B) + '"/>';
+    document.getElementById("wf-svg").innerHTML = svg;
+    document.getElementById("wf-desc").textContent = "减排瀑布图：基准年 " + c.total.toFixed(2) + " 万 tCO₂e，逐项扣减五项措施（合计 " + c.cut.toFixed(2) + "），目标年 " + c.target.toFixed(2) + " 万 tCO₂e。";
+
+    requestAnimationFrame(function(){
+      document.querySelectorAll("#wf-svg .bar").forEach(function(b, i){
+        b.style.transitionDelay = (i*70) + "ms";
+        b.style.transform = "scaleY(1)";
+      });
+    });
+  }
+
+  /* ---- measures table ---- */
+  function renderMeasures(){
+    document.getElementById("measure-rows").innerHTML = MEASURES.map(function(m){
+      var pay = m.inv === 0 ? "—" : (m.save > 0 ? (m.inv/m.save).toFixed(1) : "不适用");
+      return "<tr><td>" + m.n + '<br><span style="color:var(--ink-muted);font-size:11px">' + m.s + "</span></td>"
+        + '<td class="num">' + comma(m.inv) + "</td>"
+        + '<td class="num">' + m.cut.toFixed(2) + "</td>"
+        + '<td class="num">' + (m.save < 0 ? "(" + comma(-m.save) + ")" : comma(m.save)) + "</td>"
+        + '<td class="num">' + pay + "</td><td>" + m.dept + "</td></tr>";
+    }).join("");
+  }
+
+  /* ---- master render ---- */
+  function renderPlan(animate){
+    var c = compute();
+    last = {total:c.total, s1:c.s1, s2:c.s2, s3:c.s3, cut:c.cut, inv:c.inv, save:c.save, pay:c.pay, roi:c.roi, target:c.target, intensity:c.intensity};
+
+    document.getElementById("company-name-label").textContent = c.f.name;
+    document.getElementById("report-t").textContent = c.f.name + " · " + c.f.target + " 双碳规划方案";
+    document.getElementById("r-caliber").textContent = c.f.caliber === "ops" ? "运营控制权法" : "股权比例法";
+    document.getElementById("r-stamp").textContent = ts();
+
+    crossfade(document.getElementById("e-total"), c.total.toFixed(2));
+    crossfade(document.getElementById("e-intensity"), c.intensity.toFixed(2));
+    crossfade(document.getElementById("e-cut"), c.need.toFixed(2));
+    crossfade(document.getElementById("e-measure"), c.cut.toFixed(2));
+    crossfade(document.getElementById("e-inv"), comma(c.inv));
+    crossfade(document.getElementById("e-save"), comma(c.save));
+    crossfade(document.getElementById("e-pay"), c.pay.toFixed(1));
+    crossfade(document.getElementById("e-roi"), c.roi.toFixed(1) + "%");
+
+    crossfade(document.getElementById("k1"), c.total.toFixed(2) + ' <span class="kpi__u">万 tCO₂e</span>');
+    crossfade(document.getElementById("k2"), c.cut.toFixed(2) + ' <span class="kpi__u">万 t/年</span>');
+    crossfade(document.getElementById("k3"), comma(c.inv) + ' <span class="kpi__u">万元</span>');
+    crossfade(document.getElementById("k4"), c.pay.toFixed(1) + ' <span class="kpi__u">年</span>');
+    document.getElementById("k4-roi").textContent = c.roi.toFixed(1) + "%";
+
+    document.getElementById("sum-inv").textContent = comma(c.inv);
+    document.getElementById("sum-cut").textContent = c.cut.toFixed(2);
+    document.getElementById("sum-save").textContent = comma(c.save);
+    document.getElementById("sum-pay").textContent = c.pay.toFixed(1);
+
+    renderMeasures();
+    renderBars();
+    renderWaterfall();
+
+    if (animate && !reduce){
+      document.getElementById("report").scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  }
+
+  /* ---- company form events ---- */
+  var caliberBefore = "ops";
+  document.getElementById("gen-plan").addEventListener("click", function(){
+    renderPlan(true);
+    document.getElementById("r-ver").textContent = "v1." + (Math.floor(Math.random()*8) + 1);
+  });
+  document.getElementById("gen-export").addEventListener("click", function(){
+    addLog("报告导出", "导出报告清单：" + readForm().name + " · " + readForm().target + " 双碳规划方案",
+      "导出为终版前预览，需过内部交叉复核", "项目经理");
+  });
+
+  ["c-name","c-industry","c-year","c-output","c-energy","c-elec","c-gas","c-diesel","c-s3","c-target","c-reduction"].forEach(function(id){
+    var node = document.getElementById(id);
+    node.addEventListener("change", function(){ renderPlan(false); });
+    if (node.type === "number") node.addEventListener("input", function(){ renderPlan(false); });
+  });
+
+  document.getElementById("c-factor").addEventListener("change", function(){
+    var v = document.getElementById("c-factor");
+    addLog("排放因子更换", "因子版本变更为：" + v.options[v.selectedIndex].text,
+      "范围二排放量需重算，并重新走核算口径验收标准", "双方项目经理");
+    renderPlan(false);
+  });
+
+  document.getElementById("c-caliber").addEventListener("change", function(){
+    var v = document.getElementById("c-caliber").value;
+    addLog("核算口径调整", "组织边界口径由「" + (caliberBefore === "ops" ? "运营控制权法" : "股权比例法") + "」变更为「" + (v === "ops" ? "运营控制权法" : "股权比例法") + "」",
+      "影响范围一至三分摊结果，需重新过阶段三验收标准", "双方项目经理");
+    caliberBefore = v;
+    renderPlan(false);
+  });
+
+  document.querySelectorAll("[data-bscope]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var key = b.getAttribute("data-bscope");
+      var i = boundaryScopes.indexOf(key);
+      var names = {s1:"范围一", s2:"范围二", s3:"范围三"};
+      if (i > -1){
+        if (boundaryScopes.length === 1) return;
+        boundaryScopes.splice(i,1);
+        b.setAttribute("aria-pressed","false");
+        addLog("核算边界调整", "取消纳入 " + names[key] + "（须书面说明排除理由）",
+          "基准年排放口径变化，需重新过阶段三验收标准并更新边界声明", "双方项目经理");
+      } else {
+        boundaryScopes.push(key); boundaryScopes.sort();
+        b.setAttribute("aria-pressed","true");
+        addLog("核算边界调整", "新增纳入 " + names[key],
+          "需补齐该范围活动数据与凭证，重算基准年排放", "双方项目经理");
+      }
+      renderPlan(false);
+    });
+  });
+
+  // initial paint
+  renderMeasures();
+  renderPlan(false);
+})();
+</script>
+</body>
+</html>
