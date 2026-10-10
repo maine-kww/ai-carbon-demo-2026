@@ -1,0 +1,2169 @@
+{
+  "source": "ember",
+  "version": "2024",
+  "year": 2024,
+  "description": "Ember Global Electricity Review - Country-level electricity emission factors",
+  "url": "https://ember-climate.org/data/",
+  "factors": [
+    {
+      "id": "ember_af",
+      "name": "Electricity - Afghanistan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1164,
+      "ch4_factor": 0.0012,
+      "n2o_factor": 0.00024,
+      "activity_unit": "kWh",
+      "region": "AF",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_al",
+      "name": "Electricity - Albania",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0097,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 2e-05,
+      "activity_unit": "kWh",
+      "region": "AL",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_dz",
+      "name": "Electricity - Algeria",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4656,
+      "ch4_factor": 0.0048,
+      "n2o_factor": 0.00096,
+      "activity_unit": "kWh",
+      "region": "DZ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ao",
+      "name": "Electricity - Angola",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2134,
+      "ch4_factor": 0.0022,
+      "n2o_factor": 0.00044,
+      "activity_unit": "kWh",
+      "region": "AO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ar",
+      "name": "Electricity - Argentina",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3298,
+      "ch4_factor": 0.0034,
+      "n2o_factor": 0.00068,
+      "activity_unit": "kWh",
+      "region": "AR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_am",
+      "name": "Electricity - Armenia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1746,
+      "ch4_factor": 0.0018,
+      "n2o_factor": 0.00036,
+      "activity_unit": "kWh",
+      "region": "AM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_au",
+      "name": "Electricity - Australia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5335,
+      "ch4_factor": 0.0055,
+      "n2o_factor": 0.0011,
+      "activity_unit": "kWh",
+      "region": "AU",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_at",
+      "name": "Electricity - Austria",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.097,
+      "ch4_factor": 0.001,
+      "n2o_factor": 0.0002,
+      "activity_unit": "kWh",
+      "region": "AT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_az",
+      "name": "Electricity - Azerbaijan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4656,
+      "ch4_factor": 0.0048,
+      "n2o_factor": 0.00096,
+      "activity_unit": "kWh",
+      "region": "AZ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_bh",
+      "name": "Electricity - Bahrain",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5432,
+      "ch4_factor": 0.0056,
+      "n2o_factor": 0.00112,
+      "activity_unit": "kWh",
+      "region": "BH",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_bd",
+      "name": "Electricity - Bangladesh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5432,
+      "ch4_factor": 0.0056,
+      "n2o_factor": 0.00112,
+      "activity_unit": "kWh",
+      "region": "BD",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_by",
+      "name": "Electricity - Belarus",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3298,
+      "ch4_factor": 0.0034,
+      "n2o_factor": 0.00068,
+      "activity_unit": "kWh",
+      "region": "BY",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_be",
+      "name": "Electricity - Belgium",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1455,
+      "ch4_factor": 0.0015,
+      "n2o_factor": 0.0003,
+      "activity_unit": "kWh",
+      "region": "BE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_bo",
+      "name": "Electricity - Bolivia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.388,
+      "ch4_factor": 0.004,
+      "n2o_factor": 0.0008,
+      "activity_unit": "kWh",
+      "region": "BO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ba",
+      "name": "Electricity - Bosnia Herzegovina",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.6596,
+      "ch4_factor": 0.0068,
+      "n2o_factor": 0.00136,
+      "activity_unit": "kWh",
+      "region": "BA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_br",
+      "name": "Electricity - Brazil",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0679,
+      "ch4_factor": 0.0007,
+      "n2o_factor": 0.00014,
+      "activity_unit": "kWh",
+      "region": "BR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_bn",
+      "name": "Electricity - Brunei",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5723,
+      "ch4_factor": 0.0059,
+      "n2o_factor": 0.00118,
+      "activity_unit": "kWh",
+      "region": "BN",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_bg",
+      "name": "Electricity - Bulgaria",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3395,
+      "ch4_factor": 0.0035,
+      "n2o_factor": 0.0007,
+      "activity_unit": "kWh",
+      "region": "BG",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_kh",
+      "name": "Electricity - Cambodia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5044,
+      "ch4_factor": 0.0052,
+      "n2o_factor": 0.00104,
+      "activity_unit": "kWh",
+      "region": "KH",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ca",
+      "name": "Electricity - Canada",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1067,
+      "ch4_factor": 0.0011,
+      "n2o_factor": 0.00022,
+      "activity_unit": "kWh",
+      "region": "CA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_cl",
+      "name": "Electricity - Chile",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3104,
+      "ch4_factor": 0.0032,
+      "n2o_factor": 0.00064,
+      "activity_unit": "kWh",
+      "region": "CL",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_cn",
+      "name": "Electricity - China",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5335,
+      "ch4_factor": 0.0055,
+      "n2o_factor": 0.0011,
+      "activity_unit": "kWh",
+      "region": "CN",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_co",
+      "name": "Electricity - Colombia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1552,
+      "ch4_factor": 0.0016,
+      "n2o_factor": 0.00032,
+      "activity_unit": "kWh",
+      "region": "CO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_cr",
+      "name": "Electricity - Costa Rica",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0194,
+      "ch4_factor": 0.0002,
+      "n2o_factor": 4e-05,
+      "activity_unit": "kWh",
+      "region": "CR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_hr",
+      "name": "Electricity - Croatia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1552,
+      "ch4_factor": 0.0016,
+      "n2o_factor": 0.00032,
+      "activity_unit": "kWh",
+      "region": "HR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_cu",
+      "name": "Electricity - Cuba",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.8245,
+      "ch4_factor": 0.0085,
+      "n2o_factor": 0.0017,
+      "activity_unit": "kWh",
+      "region": "CU",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_cy",
+      "name": "Electricity - Cyprus",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5335,
+      "ch4_factor": 0.0055,
+      "n2o_factor": 0.0011,
+      "activity_unit": "kWh",
+      "region": "CY",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_cz",
+      "name": "Electricity - Czechia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.388,
+      "ch4_factor": 0.004,
+      "n2o_factor": 0.0008,
+      "activity_unit": "kWh",
+      "region": "CZ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_dk",
+      "name": "Electricity - Denmark",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1164,
+      "ch4_factor": 0.0012,
+      "n2o_factor": 0.00024,
+      "activity_unit": "kWh",
+      "region": "DK",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_do",
+      "name": "Electricity - Dominican Republic",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5238,
+      "ch4_factor": 0.0054,
+      "n2o_factor": 0.00108,
+      "activity_unit": "kWh",
+      "region": "DO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ec",
+      "name": "Electricity - Ecuador",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1649,
+      "ch4_factor": 0.0017,
+      "n2o_factor": 0.00034,
+      "activity_unit": "kWh",
+      "region": "EC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_eg",
+      "name": "Electricity - Egypt",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4365,
+      "ch4_factor": 0.0045,
+      "n2o_factor": 0.0009,
+      "activity_unit": "kWh",
+      "region": "EG",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_sv",
+      "name": "Electricity - El Salvador",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1164,
+      "ch4_factor": 0.0012,
+      "n2o_factor": 0.00024,
+      "activity_unit": "kWh",
+      "region": "SV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ee",
+      "name": "Electricity - Estonia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4365,
+      "ch4_factor": 0.0045,
+      "n2o_factor": 0.0009,
+      "activity_unit": "kWh",
+      "region": "EE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_et",
+      "name": "Electricity - Ethiopia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0097,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 2e-05,
+      "activity_unit": "kWh",
+      "region": "ET",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_fi",
+      "name": "Electricity - Finland",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0679,
+      "ch4_factor": 0.0007,
+      "n2o_factor": 0.00014,
+      "activity_unit": "kWh",
+      "region": "FI",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_fr",
+      "name": "Electricity - France",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0582,
+      "ch4_factor": 0.0006,
+      "n2o_factor": 0.00012,
+      "activity_unit": "kWh",
+      "region": "FR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ge",
+      "name": "Electricity - Georgia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0873,
+      "ch4_factor": 0.0009,
+      "n2o_factor": 0.00018,
+      "activity_unit": "kWh",
+      "region": "GE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_de",
+      "name": "Electricity - Germany",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3395,
+      "ch4_factor": 0.0035,
+      "n2o_factor": 0.0007,
+      "activity_unit": "kWh",
+      "region": "DE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_gh",
+      "name": "Electricity - Ghana",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2716,
+      "ch4_factor": 0.0028,
+      "n2o_factor": 0.00056,
+      "activity_unit": "kWh",
+      "region": "GH",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_gr",
+      "name": "Electricity - Greece",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3104,
+      "ch4_factor": 0.0032,
+      "n2o_factor": 0.00064,
+      "activity_unit": "kWh",
+      "region": "GR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_gt",
+      "name": "Electricity - Guatemala",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3201,
+      "ch4_factor": 0.0033,
+      "n2o_factor": 0.00066,
+      "activity_unit": "kWh",
+      "region": "GT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_hn",
+      "name": "Electricity - Honduras",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3201,
+      "ch4_factor": 0.0033,
+      "n2o_factor": 0.00066,
+      "activity_unit": "kWh",
+      "region": "HN",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_hk",
+      "name": "Electricity - Hong Kong",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5723,
+      "ch4_factor": 0.0059,
+      "n2o_factor": 0.00118,
+      "activity_unit": "kWh",
+      "region": "HK",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_hu",
+      "name": "Electricity - Hungary",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2037,
+      "ch4_factor": 0.0021,
+      "n2o_factor": 0.00042,
+      "activity_unit": "kWh",
+      "region": "HU",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_is",
+      "name": "Electricity - Iceland",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "kWh",
+      "region": "IS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_in",
+      "name": "Electricity - India",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.6111,
+      "ch4_factor": 0.0063,
+      "n2o_factor": 0.00126,
+      "activity_unit": "kWh",
+      "region": "IN",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_id",
+      "name": "Electricity - Indonesia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.6305,
+      "ch4_factor": 0.0065,
+      "n2o_factor": 0.0013,
+      "activity_unit": "kWh",
+      "region": "ID",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ir",
+      "name": "Electricity - Iran",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4753,
+      "ch4_factor": 0.0049,
+      "n2o_factor": 0.00098,
+      "activity_unit": "kWh",
+      "region": "IR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_iq",
+      "name": "Electricity - Iraq",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.6596,
+      "ch4_factor": 0.0068,
+      "n2o_factor": 0.00136,
+      "activity_unit": "kWh",
+      "region": "IQ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ie",
+      "name": "Electricity - Ireland",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2522,
+      "ch4_factor": 0.0026,
+      "n2o_factor": 0.00052,
+      "activity_unit": "kWh",
+      "region": "IE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_il",
+      "name": "Electricity - Israel",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4074,
+      "ch4_factor": 0.0042,
+      "n2o_factor": 0.00084,
+      "activity_unit": "kWh",
+      "region": "IL",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_it",
+      "name": "Electricity - Italy",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3201,
+      "ch4_factor": 0.0033,
+      "n2o_factor": 0.00066,
+      "activity_unit": "kWh",
+      "region": "IT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_jm",
+      "name": "Electricity - Jamaica",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.6014,
+      "ch4_factor": 0.0062,
+      "n2o_factor": 0.00124,
+      "activity_unit": "kWh",
+      "region": "JM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_jp",
+      "name": "Electricity - Japan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4365,
+      "ch4_factor": 0.0045,
+      "n2o_factor": 0.0009,
+      "activity_unit": "kWh",
+      "region": "JP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_jo",
+      "name": "Electricity - Jordan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4268,
+      "ch4_factor": 0.0044,
+      "n2o_factor": 0.00088,
+      "activity_unit": "kWh",
+      "region": "JO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_kz",
+      "name": "Electricity - Kazakhstan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.6014,
+      "ch4_factor": 0.0062,
+      "n2o_factor": 0.00124,
+      "activity_unit": "kWh",
+      "region": "KZ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ke",
+      "name": "Electricity - Kenya",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0679,
+      "ch4_factor": 0.0007,
+      "n2o_factor": 0.00014,
+      "activity_unit": "kWh",
+      "region": "KE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_kw",
+      "name": "Electricity - Kuwait",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5529,
+      "ch4_factor": 0.0057,
+      "n2o_factor": 0.00114,
+      "activity_unit": "kWh",
+      "region": "KW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_kg",
+      "name": "Electricity - Kyrgyzstan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0582,
+      "ch4_factor": 0.0006,
+      "n2o_factor": 0.00012,
+      "activity_unit": "kWh",
+      "region": "KG",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_la",
+      "name": "Electricity - Laos",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2425,
+      "ch4_factor": 0.0025,
+      "n2o_factor": 0.0005,
+      "activity_unit": "kWh",
+      "region": "LA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_lv",
+      "name": "Electricity - Latvia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0776,
+      "ch4_factor": 0.0008,
+      "n2o_factor": 0.00016,
+      "activity_unit": "kWh",
+      "region": "LV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_lb",
+      "name": "Electricity - Lebanon",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.582,
+      "ch4_factor": 0.006,
+      "n2o_factor": 0.0012,
+      "activity_unit": "kWh",
+      "region": "LB",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ly",
+      "name": "Electricity - Libya",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.6305,
+      "ch4_factor": 0.0065,
+      "n2o_factor": 0.0013,
+      "activity_unit": "kWh",
+      "region": "LY",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_lt",
+      "name": "Electricity - Lithuania",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0582,
+      "ch4_factor": 0.0006,
+      "n2o_factor": 0.00012,
+      "activity_unit": "kWh",
+      "region": "LT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_lu",
+      "name": "Electricity - Luxembourg",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0776,
+      "ch4_factor": 0.0008,
+      "n2o_factor": 0.00016,
+      "activity_unit": "kWh",
+      "region": "LU",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_my",
+      "name": "Electricity - Malaysia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5141,
+      "ch4_factor": 0.0053,
+      "n2o_factor": 0.00106,
+      "activity_unit": "kWh",
+      "region": "MY",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_mx",
+      "name": "Electricity - Mexico",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.388,
+      "ch4_factor": 0.004,
+      "n2o_factor": 0.0008,
+      "activity_unit": "kWh",
+      "region": "MX",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_mn",
+      "name": "Electricity - Mongolia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.8245,
+      "ch4_factor": 0.0085,
+      "n2o_factor": 0.0017,
+      "activity_unit": "kWh",
+      "region": "MN",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ma",
+      "name": "Electricity - Morocco",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5432,
+      "ch4_factor": 0.0056,
+      "n2o_factor": 0.00112,
+      "activity_unit": "kWh",
+      "region": "MA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_mz",
+      "name": "Electricity - Mozambique",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0388,
+      "ch4_factor": 0.0004,
+      "n2o_factor": 8e-05,
+      "activity_unit": "kWh",
+      "region": "MZ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_mm",
+      "name": "Electricity - Myanmar",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3589,
+      "ch4_factor": 0.0037,
+      "n2o_factor": 0.00074,
+      "activity_unit": "kWh",
+      "region": "MM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_na",
+      "name": "Electricity - Namibia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0776,
+      "ch4_factor": 0.0008,
+      "n2o_factor": 0.00016,
+      "activity_unit": "kWh",
+      "region": "NA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_np",
+      "name": "Electricity - Nepal",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0097,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 2e-05,
+      "activity_unit": "kWh",
+      "region": "NP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_nl",
+      "name": "Electricity - Netherlands",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3007,
+      "ch4_factor": 0.0031,
+      "n2o_factor": 0.00062,
+      "activity_unit": "kWh",
+      "region": "NL",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_nz",
+      "name": "Electricity - New Zealand",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0776,
+      "ch4_factor": 0.0008,
+      "n2o_factor": 0.00016,
+      "activity_unit": "kWh",
+      "region": "NZ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ni",
+      "name": "Electricity - Nicaragua",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2716,
+      "ch4_factor": 0.0028,
+      "n2o_factor": 0.00056,
+      "activity_unit": "kWh",
+      "region": "NI",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ng",
+      "name": "Electricity - Nigeria",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3686,
+      "ch4_factor": 0.0038,
+      "n2o_factor": 0.00076,
+      "activity_unit": "kWh",
+      "region": "NG",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_kp",
+      "name": "Electricity - North Korea",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4074,
+      "ch4_factor": 0.0042,
+      "n2o_factor": 0.00084,
+      "activity_unit": "kWh",
+      "region": "KP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_no",
+      "name": "Electricity - Norway",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0097,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 2e-05,
+      "activity_unit": "kWh",
+      "region": "NO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_om",
+      "name": "Electricity - Oman",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.485,
+      "ch4_factor": 0.005,
+      "n2o_factor": 0.001,
+      "activity_unit": "kWh",
+      "region": "OM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_pk",
+      "name": "Electricity - Pakistan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3492,
+      "ch4_factor": 0.0036,
+      "n2o_factor": 0.00072,
+      "activity_unit": "kWh",
+      "region": "PK",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_pa",
+      "name": "Electricity - Panama",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1358,
+      "ch4_factor": 0.0014,
+      "n2o_factor": 0.00028,
+      "activity_unit": "kWh",
+      "region": "PA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_py",
+      "name": "Electricity - Paraguay",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0097,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 2e-05,
+      "activity_unit": "kWh",
+      "region": "PY",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_pe",
+      "name": "Electricity - Peru",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.194,
+      "ch4_factor": 0.002,
+      "n2o_factor": 0.0004,
+      "activity_unit": "kWh",
+      "region": "PE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ph",
+      "name": "Electricity - Philippines",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5335,
+      "ch4_factor": 0.0055,
+      "n2o_factor": 0.0011,
+      "activity_unit": "kWh",
+      "region": "PH",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_pl",
+      "name": "Electricity - Poland",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.6014,
+      "ch4_factor": 0.0062,
+      "n2o_factor": 0.00124,
+      "activity_unit": "kWh",
+      "region": "PL",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_pt",
+      "name": "Electricity - Portugal",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1455,
+      "ch4_factor": 0.0015,
+      "n2o_factor": 0.0003,
+      "activity_unit": "kWh",
+      "region": "PT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_qa",
+      "name": "Electricity - Qatar",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4559,
+      "ch4_factor": 0.0047,
+      "n2o_factor": 0.00094,
+      "activity_unit": "kWh",
+      "region": "QA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ro",
+      "name": "Electricity - Romania",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2328,
+      "ch4_factor": 0.0024,
+      "n2o_factor": 0.00048,
+      "activity_unit": "kWh",
+      "region": "RO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ru",
+      "name": "Electricity - Russia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3201,
+      "ch4_factor": 0.0033,
+      "n2o_factor": 0.00066,
+      "activity_unit": "kWh",
+      "region": "RU",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_sa",
+      "name": "Electricity - Saudi Arabia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5335,
+      "ch4_factor": 0.0055,
+      "n2o_factor": 0.0011,
+      "activity_unit": "kWh",
+      "region": "SA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_sn",
+      "name": "Electricity - Senegal",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.5044,
+      "ch4_factor": 0.0052,
+      "n2o_factor": 0.00104,
+      "activity_unit": "kWh",
+      "region": "SN",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_rs",
+      "name": "Electricity - Serbia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.582,
+      "ch4_factor": 0.006,
+      "n2o_factor": 0.0012,
+      "activity_unit": "kWh",
+      "region": "RS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_sg",
+      "name": "Electricity - Singapore",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3589,
+      "ch4_factor": 0.0037,
+      "n2o_factor": 0.00074,
+      "activity_unit": "kWh",
+      "region": "SG",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_sk",
+      "name": "Electricity - Slovakia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1164,
+      "ch4_factor": 0.0012,
+      "n2o_factor": 0.00024,
+      "activity_unit": "kWh",
+      "region": "SK",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_si",
+      "name": "Electricity - Slovenia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2134,
+      "ch4_factor": 0.0022,
+      "n2o_factor": 0.00044,
+      "activity_unit": "kWh",
+      "region": "SI",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_za",
+      "name": "Electricity - South Africa",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.873,
+      "ch4_factor": 0.009,
+      "n2o_factor": 0.0018,
+      "activity_unit": "kWh",
+      "region": "ZA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_kr",
+      "name": "Electricity - South Korea",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4074,
+      "ch4_factor": 0.0042,
+      "n2o_factor": 0.00084,
+      "activity_unit": "kWh",
+      "region": "KR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_es",
+      "name": "Electricity - Spain",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1649,
+      "ch4_factor": 0.0017,
+      "n2o_factor": 0.00034,
+      "activity_unit": "kWh",
+      "region": "ES",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_lk",
+      "name": "Electricity - Sri Lanka",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3492,
+      "ch4_factor": 0.0036,
+      "n2o_factor": 0.00072,
+      "activity_unit": "kWh",
+      "region": "LK",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_se",
+      "name": "Electricity - Sweden",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0291,
+      "ch4_factor": 0.0003,
+      "n2o_factor": 6e-05,
+      "activity_unit": "kWh",
+      "region": "SE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ch",
+      "name": "Electricity - Switzerland",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0097,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 2e-05,
+      "activity_unit": "kWh",
+      "region": "CH",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_tw",
+      "name": "Electricity - Taiwan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.485,
+      "ch4_factor": 0.005,
+      "n2o_factor": 0.001,
+      "activity_unit": "kWh",
+      "region": "TW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_tz",
+      "name": "Electricity - Tanzania",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2425,
+      "ch4_factor": 0.0025,
+      "n2o_factor": 0.0005,
+      "activity_unit": "kWh",
+      "region": "TZ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_th",
+      "name": "Electricity - Thailand",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4171,
+      "ch4_factor": 0.0043,
+      "n2o_factor": 0.00086,
+      "activity_unit": "kWh",
+      "region": "TH",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_tn",
+      "name": "Electricity - Tunisia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4074,
+      "ch4_factor": 0.0042,
+      "n2o_factor": 0.00084,
+      "activity_unit": "kWh",
+      "region": "TN",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_tr",
+      "name": "Electricity - Turkey",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3686,
+      "ch4_factor": 0.0038,
+      "n2o_factor": 0.00076,
+      "activity_unit": "kWh",
+      "region": "TR",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_tm",
+      "name": "Electricity - Turkmenistan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.679,
+      "ch4_factor": 0.007,
+      "n2o_factor": 0.0014,
+      "activity_unit": "kWh",
+      "region": "TM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ua",
+      "name": "Electricity - Ukraine",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.291,
+      "ch4_factor": 0.003,
+      "n2o_factor": 0.0006,
+      "activity_unit": "kWh",
+      "region": "UA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ae",
+      "name": "Electricity - UAE",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.388,
+      "ch4_factor": 0.004,
+      "n2o_factor": 0.0008,
+      "activity_unit": "kWh",
+      "region": "AE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_gb",
+      "name": "Electricity - United Kingdom",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.2037,
+      "ch4_factor": 0.0021,
+      "n2o_factor": 0.00042,
+      "activity_unit": "kWh",
+      "region": "GB",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_us",
+      "name": "Electricity - United States",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3589,
+      "ch4_factor": 0.0037,
+      "n2o_factor": 0.00074,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_uy",
+      "name": "Electricity - Uruguay",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0388,
+      "ch4_factor": 0.0004,
+      "n2o_factor": 8e-05,
+      "activity_unit": "kWh",
+      "region": "UY",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_uz",
+      "name": "Electricity - Uzbekistan",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4365,
+      "ch4_factor": 0.0045,
+      "n2o_factor": 0.0009,
+      "activity_unit": "kWh",
+      "region": "UZ",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_ve",
+      "name": "Electricity - Venezuela",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.1358,
+      "ch4_factor": 0.0014,
+      "n2o_factor": 0.00028,
+      "activity_unit": "kWh",
+      "region": "VE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_vn",
+      "name": "Electricity - Vietnam",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.3977,
+      "ch4_factor": 0.0041,
+      "n2o_factor": 0.00082,
+      "activity_unit": "kWh",
+      "region": "VN",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_zm",
+      "name": "Electricity - Zambia",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.0194,
+      "ch4_factor": 0.0002,
+      "n2o_factor": 4e-05,
+      "activity_unit": "kWh",
+      "region": "ZM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_zw",
+      "name": "Electricity - Zimbabwe",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.485,
+      "ch4_factor": 0.005,
+      "n2o_factor": 0.001,
+      "activity_unit": "kWh",
+      "region": "ZW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    },
+    {
+      "id": "ember_world",
+      "name": "Electricity - World Average",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.4074,
+      "ch4_factor": 0.0042,
+      "n2o_factor": 0.00084,
+      "activity_unit": "kWh",
+      "region": "WORLD",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "international"
+      ]
+    }
+  ]
+}

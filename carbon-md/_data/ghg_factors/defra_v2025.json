@@ -1,0 +1,2101 @@
+{
+  "source": "defra",
+  "version": "2025",
+  "year": 2025,
+  "description": "UK DEFRA/BEIS GHG Conversion Factors for Company Reporting",
+  "url": "https://www.gov.uk/government/collections/government-conversion-factors-for-company-reporting",
+  "factors": [
+    {
+      "id": "defra_travel_flight_domestic",
+      "name": "Domestic Flight",
+      "category": "business_travel",
+      "subcategory": "flights",
+      "fuel_type": null,
+      "co2_factor": 0.2337,
+      "ch4_factor": 0.00492,
+      "n2o_factor": 0.007379999999999999,
+      "co2e_factor": 0.246,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_flight_short_haul",
+      "name": "Short-Haul Flight (<3700km)",
+      "category": "business_travel",
+      "subcategory": "flights",
+      "fuel_type": null,
+      "co2_factor": 0.1482,
+      "ch4_factor": 0.00312,
+      "n2o_factor": 0.00468,
+      "co2e_factor": 0.156,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_flight_long_haul",
+      "name": "Long-Haul Flight (>3700km)",
+      "category": "business_travel",
+      "subcategory": "flights",
+      "fuel_type": null,
+      "co2_factor": 0.1425,
+      "ch4_factor": 0.003,
+      "n2o_factor": 0.0045,
+      "co2e_factor": 0.15,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_flight_intl_avg",
+      "name": "International Flight (Average)",
+      "category": "business_travel",
+      "subcategory": "flights",
+      "fuel_type": null,
+      "co2_factor": 0.15009999999999998,
+      "ch4_factor": 0.00316,
+      "n2o_factor": 0.00474,
+      "co2e_factor": 0.158,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_flight_economy",
+      "name": "Flight Economy Class",
+      "category": "business_travel",
+      "subcategory": "flights",
+      "fuel_type": null,
+      "co2_factor": 0.14059999999999997,
+      "ch4_factor": 0.00296,
+      "n2o_factor": 0.0044399999999999995,
+      "co2e_factor": 0.148,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_flight_business",
+      "name": "Flight Business Class",
+      "category": "business_travel",
+      "subcategory": "flights",
+      "fuel_type": null,
+      "co2_factor": 0.40754999999999997,
+      "ch4_factor": 0.00858,
+      "n2o_factor": 0.01287,
+      "co2e_factor": 0.429,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_flight_first",
+      "name": "Flight First Class",
+      "category": "business_travel",
+      "subcategory": "flights",
+      "fuel_type": null,
+      "co2_factor": 0.5614499999999999,
+      "ch4_factor": 0.011819999999999999,
+      "n2o_factor": 0.01773,
+      "co2e_factor": 0.591,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_rail_national",
+      "name": "National Rail",
+      "category": "business_travel",
+      "subcategory": "rail",
+      "fuel_type": null,
+      "co2_factor": 0.03325,
+      "ch4_factor": 0.0007000000000000001,
+      "n2o_factor": 0.0010500000000000002,
+      "co2e_factor": 0.035,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "rail",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_rail_intl",
+      "name": "International Rail (Eurostar)",
+      "category": "business_travel",
+      "subcategory": "rail",
+      "fuel_type": null,
+      "co2_factor": 0.0038,
+      "ch4_factor": 8e-05,
+      "n2o_factor": 0.00012,
+      "co2e_factor": 0.004,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "rail",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_rail_light",
+      "name": "Light Rail/Tram",
+      "category": "business_travel",
+      "subcategory": "rail",
+      "fuel_type": null,
+      "co2_factor": 0.02755,
+      "ch4_factor": 0.00058,
+      "n2o_factor": 0.00087,
+      "co2e_factor": 0.029,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "rail",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_taxi",
+      "name": "Taxi (Average)",
+      "category": "business_travel",
+      "subcategory": "road",
+      "fuel_type": null,
+      "co2_factor": 0.14154999999999998,
+      "ch4_factor": 0.00298,
+      "n2o_factor": 0.00447,
+      "co2e_factor": 0.149,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_bus_local",
+      "name": "Local Bus",
+      "category": "business_travel",
+      "subcategory": "road",
+      "fuel_type": null,
+      "co2_factor": 0.08454999999999999,
+      "ch4_factor": 0.00178,
+      "n2o_factor": 0.0026699999999999996,
+      "co2e_factor": 0.089,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_bus_coach",
+      "name": "Coach",
+      "category": "business_travel",
+      "subcategory": "road",
+      "fuel_type": null,
+      "co2_factor": 0.02565,
+      "ch4_factor": 0.00054,
+      "n2o_factor": 0.00081,
+      "co2e_factor": 0.027,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_ferry_foot",
+      "name": "Ferry (Foot Passenger)",
+      "category": "business_travel",
+      "subcategory": "sea",
+      "fuel_type": null,
+      "co2_factor": 0.01805,
+      "ch4_factor": 0.00038,
+      "n2o_factor": 0.00057,
+      "co2e_factor": 0.019,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "sea",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_travel_ferry_car",
+      "name": "Ferry (Car Passenger)",
+      "category": "business_travel",
+      "subcategory": "sea",
+      "fuel_type": null,
+      "co2_factor": 0.10735,
+      "ch4_factor": 0.0022600000000000003,
+      "n2o_factor": 0.00339,
+      "co2e_factor": 0.113,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "sea",
+        "business_travel"
+      ]
+    },
+    {
+      "id": "defra_commute_car_small",
+      "name": "Small Car (<1.4L)",
+      "category": "commuting",
+      "subcategory": "car",
+      "fuel_type": null,
+      "co2_factor": 0.1349,
+      "ch4_factor": 0.0028399999999999996,
+      "n2o_factor": 0.004259999999999999,
+      "co2e_factor": 0.142,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_car_medium",
+      "name": "Medium Car (1.4-2.0L)",
+      "category": "commuting",
+      "subcategory": "car",
+      "fuel_type": null,
+      "co2_factor": 0.1615,
+      "ch4_factor": 0.0034000000000000002,
+      "n2o_factor": 0.0051,
+      "co2e_factor": 0.17,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_car_large",
+      "name": "Large Car (>2.0L)",
+      "category": "commuting",
+      "subcategory": "car",
+      "fuel_type": null,
+      "co2_factor": 0.19854999999999998,
+      "ch4_factor": 0.00418,
+      "n2o_factor": 0.0062699999999999995,
+      "co2e_factor": 0.209,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_car_average",
+      "name": "Average Car",
+      "category": "commuting",
+      "subcategory": "car",
+      "fuel_type": null,
+      "co2_factor": 0.16245,
+      "ch4_factor": 0.0034200000000000003,
+      "n2o_factor": 0.00513,
+      "co2e_factor": 0.171,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_car_electric",
+      "name": "Electric Vehicle (BEV)",
+      "category": "commuting",
+      "subcategory": "car",
+      "fuel_type": null,
+      "co2_factor": 0.043699999999999996,
+      "ch4_factor": 0.00092,
+      "n2o_factor": 0.00138,
+      "co2e_factor": 0.046,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "electric",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_car_hybrid",
+      "name": "Hybrid Car",
+      "category": "commuting",
+      "subcategory": "car",
+      "fuel_type": null,
+      "co2_factor": 0.1102,
+      "ch4_factor": 0.00232,
+      "n2o_factor": 0.00348,
+      "co2e_factor": 0.116,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "hybrid",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_car_phev",
+      "name": "Plug-in Hybrid",
+      "category": "commuting",
+      "subcategory": "car",
+      "fuel_type": null,
+      "co2_factor": 0.06745,
+      "ch4_factor": 0.0014199999999999998,
+      "n2o_factor": 0.0021299999999999995,
+      "co2e_factor": 0.071,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "hybrid",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_motorbike_small",
+      "name": "Motorbike (<125cc)",
+      "category": "commuting",
+      "subcategory": "motorbike",
+      "fuel_type": null,
+      "co2_factor": 0.07885,
+      "ch4_factor": 0.00166,
+      "n2o_factor": 0.00249,
+      "co2e_factor": 0.083,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_motorbike_medium",
+      "name": "Motorbike (125-500cc)",
+      "category": "commuting",
+      "subcategory": "motorbike",
+      "fuel_type": null,
+      "co2_factor": 0.09595000000000001,
+      "ch4_factor": 0.00202,
+      "n2o_factor": 0.00303,
+      "co2e_factor": 0.101,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_motorbike_large",
+      "name": "Motorbike (>500cc)",
+      "category": "commuting",
+      "subcategory": "motorbike",
+      "fuel_type": null,
+      "co2_factor": 0.1254,
+      "ch4_factor": 0.00264,
+      "n2o_factor": 0.00396,
+      "co2e_factor": 0.132,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_bus",
+      "name": "Bus",
+      "category": "commuting",
+      "subcategory": "bus",
+      "fuel_type": null,
+      "co2_factor": 0.08454999999999999,
+      "ch4_factor": 0.00178,
+      "n2o_factor": 0.0026699999999999996,
+      "co2e_factor": 0.089,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_rail",
+      "name": "National Rail",
+      "category": "commuting",
+      "subcategory": "rail",
+      "fuel_type": null,
+      "co2_factor": 0.03325,
+      "ch4_factor": 0.0007000000000000001,
+      "n2o_factor": 0.0010500000000000002,
+      "co2e_factor": 0.035,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "rail",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_underground",
+      "name": "London Underground",
+      "category": "commuting",
+      "subcategory": "rail",
+      "fuel_type": null,
+      "co2_factor": 0.0266,
+      "ch4_factor": 0.0005600000000000001,
+      "n2o_factor": 0.00084,
+      "co2e_factor": 0.028,
+      "activity_unit": "passenger_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "rail",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_cycling",
+      "name": "Cycling",
+      "category": "commuting",
+      "subcategory": "active",
+      "fuel_type": null,
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "co2e_factor": 0.0,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "active",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_walking",
+      "name": "Walking",
+      "category": "commuting",
+      "subcategory": "active",
+      "fuel_type": null,
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "co2e_factor": 0.0,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "active",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_commute_ebike",
+      "name": "E-Bike",
+      "category": "commuting",
+      "subcategory": "active",
+      "fuel_type": null,
+      "co2_factor": 0.00475,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 0.00015,
+      "co2e_factor": 0.005,
+      "activity_unit": "km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "electric",
+        "commuting"
+      ]
+    },
+    {
+      "id": "defra_freight_van_petrol",
+      "name": "Van (Petrol, <1.305t)",
+      "category": "transport",
+      "subcategory": "van",
+      "fuel_type": null,
+      "co2_factor": 0.57095,
+      "ch4_factor": 0.00601,
+      "n2o_factor": 0.00601,
+      "co2e_factor": 0.601,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_van_diesel",
+      "name": "Van (Diesel, <1.305t)",
+      "category": "transport",
+      "subcategory": "van",
+      "fuel_type": null,
+      "co2_factor": 0.5481499999999999,
+      "ch4_factor": 0.00577,
+      "n2o_factor": 0.00577,
+      "co2e_factor": 0.577,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_van_average",
+      "name": "Van (Average)",
+      "category": "transport",
+      "subcategory": "van",
+      "fuel_type": null,
+      "co2_factor": 0.5519499999999999,
+      "ch4_factor": 0.00581,
+      "n2o_factor": 0.00581,
+      "co2e_factor": 0.581,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_rigid_hgv_small",
+      "name": "Rigid HGV (3.5-7.5t)",
+      "category": "transport",
+      "subcategory": "hgv",
+      "fuel_type": null,
+      "co2_factor": 0.4693,
+      "ch4_factor": 0.00494,
+      "n2o_factor": 0.00494,
+      "co2e_factor": 0.494,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_rigid_hgv_medium",
+      "name": "Rigid HGV (7.5-17t)",
+      "category": "transport",
+      "subcategory": "hgv",
+      "fuel_type": null,
+      "co2_factor": 0.28119999999999995,
+      "ch4_factor": 0.00296,
+      "n2o_factor": 0.00296,
+      "co2e_factor": 0.296,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_rigid_hgv_large",
+      "name": "Rigid HGV (>17t)",
+      "category": "transport",
+      "subcategory": "hgv",
+      "fuel_type": null,
+      "co2_factor": 0.1558,
+      "ch4_factor": 0.0016400000000000002,
+      "n2o_factor": 0.0016400000000000002,
+      "co2e_factor": 0.164,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_artic_hgv",
+      "name": "Articulated HGV (>33t)",
+      "category": "transport",
+      "subcategory": "hgv",
+      "fuel_type": null,
+      "co2_factor": 0.08645,
+      "ch4_factor": 0.00091,
+      "n2o_factor": 0.00091,
+      "co2e_factor": 0.091,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_hgv_average",
+      "name": "HGV (All Diesel, Average)",
+      "category": "transport",
+      "subcategory": "hgv",
+      "fuel_type": null,
+      "co2_factor": 0.10925,
+      "ch4_factor": 0.00115,
+      "n2o_factor": 0.00115,
+      "co2e_factor": 0.115,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "road",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_rail_freight",
+      "name": "Rail Freight",
+      "category": "transport",
+      "subcategory": "rail",
+      "fuel_type": null,
+      "co2_factor": 0.0228,
+      "ch4_factor": 0.00024,
+      "n2o_factor": 0.00024,
+      "co2e_factor": 0.024,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "rail",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_sea_container",
+      "name": "Sea Freight (Container)",
+      "category": "transport",
+      "subcategory": "sea",
+      "fuel_type": null,
+      "co2_factor": 0.0152,
+      "ch4_factor": 0.00016,
+      "n2o_factor": 0.00016,
+      "co2e_factor": 0.016,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "sea",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_sea_bulk",
+      "name": "Sea Freight (Bulk Carrier)",
+      "category": "transport",
+      "subcategory": "sea",
+      "fuel_type": null,
+      "co2_factor": 0.0038,
+      "ch4_factor": 4e-05,
+      "n2o_factor": 4e-05,
+      "co2e_factor": 0.004,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "sea",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_sea_tanker",
+      "name": "Sea Freight (Tanker)",
+      "category": "transport",
+      "subcategory": "sea",
+      "fuel_type": null,
+      "co2_factor": 0.00475,
+      "ch4_factor": 5e-05,
+      "n2o_factor": 5e-05,
+      "co2e_factor": 0.005,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "sea",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_air_freight_domestic",
+      "name": "Air Freight (Domestic)",
+      "category": "transport",
+      "subcategory": "air",
+      "fuel_type": null,
+      "co2_factor": 2.18975,
+      "ch4_factor": 0.02305,
+      "n2o_factor": 0.02305,
+      "co2e_factor": 2.305,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_air_freight_short",
+      "name": "Air Freight (Short-Haul)",
+      "category": "transport",
+      "subcategory": "air",
+      "fuel_type": null,
+      "co2_factor": 1.07255,
+      "ch4_factor": 0.01129,
+      "n2o_factor": 0.01129,
+      "co2e_factor": 1.129,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_freight_air_freight_long",
+      "name": "Air Freight (Long-Haul)",
+      "category": "transport",
+      "subcategory": "air",
+      "fuel_type": null,
+      "co2_factor": 0.5719,
+      "ch4_factor": 0.00602,
+      "n2o_factor": 0.00602,
+      "co2e_factor": 0.602,
+      "activity_unit": "tonne_km",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "air",
+        "freight"
+      ]
+    },
+    {
+      "id": "defra_fuel_natural_gas_kwh",
+      "name": "Natural Gas",
+      "category": "fuels",
+      "subcategory": "gas",
+      "fuel_type": "natural_gas",
+      "co2_factor": 0.17568,
+      "ch4_factor": 0.00183,
+      "n2o_factor": 0.000915,
+      "co2e_factor": 0.183,
+      "activity_unit": "kWh",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "gas",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_natural_gas_m3",
+      "name": "Natural Gas",
+      "category": "fuels",
+      "subcategory": "gas",
+      "fuel_type": "natural_gas",
+      "co2_factor": 1.9392,
+      "ch4_factor": 0.0202,
+      "n2o_factor": 0.0101,
+      "co2e_factor": 2.02,
+      "activity_unit": "m3",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "gas",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_diesel_litre",
+      "name": "Diesel",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "diesel",
+      "co2_factor": 2.45376,
+      "ch4_factor": 0.02556,
+      "n2o_factor": 0.01278,
+      "co2e_factor": 2.556,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_petrol_litre",
+      "name": "Petrol (Gasoline)",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "gasoline",
+      "co2_factor": 2.08128,
+      "ch4_factor": 0.02168,
+      "n2o_factor": 0.01084,
+      "co2e_factor": 2.168,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_lpg_litre",
+      "name": "LPG",
+      "category": "fuels",
+      "subcategory": "gas",
+      "fuel_type": "lpg",
+      "co2_factor": 1.4928,
+      "ch4_factor": 0.01555,
+      "n2o_factor": 0.007775,
+      "co2e_factor": 1.555,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "gas",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_lpg_kwh",
+      "name": "LPG",
+      "category": "fuels",
+      "subcategory": "gas",
+      "fuel_type": "lpg",
+      "co2_factor": 0.20543999999999998,
+      "ch4_factor": 0.00214,
+      "n2o_factor": 0.00107,
+      "co2e_factor": 0.214,
+      "activity_unit": "kWh",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "gas",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_fuel_oil_litre",
+      "name": "Fuel Oil",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "fuel_oil_no2",
+      "co2_factor": 2.64864,
+      "ch4_factor": 0.02759,
+      "n2o_factor": 0.013795,
+      "co2e_factor": 2.759,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_fuel_oil_kwh",
+      "name": "Fuel Oil",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "fuel_oil_no2",
+      "co2_factor": 0.25632,
+      "ch4_factor": 0.00267,
+      "n2o_factor": 0.001335,
+      "co2e_factor": 0.267,
+      "activity_unit": "kWh",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_coal_industrial_kg",
+      "name": "Coal (Industrial)",
+      "category": "fuels",
+      "subcategory": "solid",
+      "fuel_type": "coal_bituminous",
+      "co2_factor": 2.08032,
+      "ch4_factor": 0.02167,
+      "n2o_factor": 0.010835,
+      "co2e_factor": 2.167,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "solid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_coal_domestic_kg",
+      "name": "Coal (Domestic)",
+      "category": "fuels",
+      "subcategory": "solid",
+      "fuel_type": "coal_bituminous",
+      "co2_factor": 2.76768,
+      "ch4_factor": 0.02883,
+      "n2o_factor": 0.014415,
+      "co2e_factor": 2.883,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "solid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_wood_logs_kg",
+      "name": "Wood Logs",
+      "category": "fuels",
+      "subcategory": "solid",
+      "fuel_type": "wood",
+      "co2_factor": 0.05568,
+      "ch4_factor": 0.00058,
+      "n2o_factor": 0.00029,
+      "co2e_factor": 0.058,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "solid",
+        "biomass",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_wood_chips_kg",
+      "name": "Wood Chips",
+      "category": "fuels",
+      "subcategory": "solid",
+      "fuel_type": "wood",
+      "co2_factor": 0.01344,
+      "ch4_factor": 0.00014000000000000001,
+      "n2o_factor": 7.000000000000001e-05,
+      "co2e_factor": 0.014,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "solid",
+        "biomass",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_wood_pellets_kg",
+      "name": "Wood Pellets",
+      "category": "fuels",
+      "subcategory": "solid",
+      "fuel_type": "wood",
+      "co2_factor": 0.03744,
+      "ch4_factor": 0.00039,
+      "n2o_factor": 0.000195,
+      "co2e_factor": 0.039,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "solid",
+        "biomass",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_biogas_kwh",
+      "name": "Biogas",
+      "category": "fuels",
+      "subcategory": "gas",
+      "fuel_type": "landfill_gas",
+      "co2_factor": 0.0002112,
+      "ch4_factor": 2.2e-06,
+      "n2o_factor": 1.1e-06,
+      "co2e_factor": 0.00022,
+      "activity_unit": "kWh",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "gas",
+        "biomass",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_biodiesel_litre",
+      "name": "Biodiesel (ME)",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "b20",
+      "co2_factor": 0.16512,
+      "ch4_factor": 0.00172,
+      "n2o_factor": 0.00086,
+      "co2e_factor": 0.172,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "biofuel",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_bioethanol_litre",
+      "name": "Bioethanol",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "e85",
+      "co2_factor": 0.023039999999999998,
+      "ch4_factor": 0.00024,
+      "n2o_factor": 0.00012,
+      "co2e_factor": 0.024,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "biofuel",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_red_diesel_litre",
+      "name": "Red Diesel (Gas Oil)",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "diesel",
+      "co2_factor": 2.45376,
+      "ch4_factor": 0.02556,
+      "n2o_factor": 0.01278,
+      "co2e_factor": 2.556,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_aviation_fuel_litre",
+      "name": "Aviation Turbine Fuel",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "jet_fuel",
+      "co2_factor": 2.44608,
+      "ch4_factor": 0.025480000000000003,
+      "n2o_factor": 0.012740000000000001,
+      "co2e_factor": 2.548,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_fuel_marine_fuel_litre",
+      "name": "Marine Fuel Oil",
+      "category": "fuels",
+      "subcategory": "liquid",
+      "fuel_type": "residual_fuel_oil",
+      "co2_factor": 2.64864,
+      "ch4_factor": 0.02759,
+      "n2o_factor": 0.013795,
+      "co2e_factor": 2.759,
+      "activity_unit": "litre",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "liquid",
+        "fuel"
+      ]
+    },
+    {
+      "id": "defra_mat_paper_kg",
+      "name": "Paper (Virgin)",
+      "category": "materials",
+      "subcategory": "paper",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.919,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "recycling",
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_paper_recycled_kg",
+      "name": "Paper (Recycled)",
+      "category": "materials",
+      "subcategory": "paper",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.61,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "recycling",
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_cardboard_kg",
+      "name": "Cardboard (Virgin)",
+      "category": "materials",
+      "subcategory": "paper",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.919,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "recycling",
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_cardboard_recycled_kg",
+      "name": "Cardboard (Recycled)",
+      "category": "materials",
+      "subcategory": "paper",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.61,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "recycling",
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_plastic_pet_kg",
+      "name": "Plastic (PET)",
+      "category": "materials",
+      "subcategory": "plastic",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.732,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_plastic_hdpe_kg",
+      "name": "Plastic (HDPE)",
+      "category": "materials",
+      "subcategory": "plastic",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.578,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_plastic_pvc_kg",
+      "name": "Plastic (PVC)",
+      "category": "materials",
+      "subcategory": "plastic",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.39,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_plastic_ldpe_kg",
+      "name": "Plastic (LDPE/LLDPE)",
+      "category": "materials",
+      "subcategory": "plastic",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.082,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_plastic_pp_kg",
+      "name": "Plastic (PP)",
+      "category": "materials",
+      "subcategory": "plastic",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.498,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_plastic_ps_kg",
+      "name": "Plastic (PS)",
+      "category": "materials",
+      "subcategory": "plastic",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.83,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_plastic_avg_kg",
+      "name": "Plastic (Average)",
+      "category": "materials",
+      "subcategory": "plastic",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.289,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_glass_kg",
+      "name": "Glass (Virgin)",
+      "category": "materials",
+      "subcategory": "glass",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.853,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_glass_recycled_kg",
+      "name": "Glass (Recycled)",
+      "category": "materials",
+      "subcategory": "glass",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "recycling",
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_steel_kg",
+      "name": "Steel (Virgin)",
+      "category": "materials",
+      "subcategory": "metal",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.778,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_steel_recycled_kg",
+      "name": "Steel (Recycled)",
+      "category": "materials",
+      "subcategory": "metal",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.437,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "recycling",
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_aluminium_kg",
+      "name": "Aluminium (Virgin)",
+      "category": "materials",
+      "subcategory": "metal",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 9.167,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_aluminium_recycled_kg",
+      "name": "Aluminium (Recycled)",
+      "category": "materials",
+      "subcategory": "metal",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.69,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "recycling",
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_copper_kg",
+      "name": "Copper (Virgin)",
+      "category": "materials",
+      "subcategory": "metal",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3.71,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_textiles_kg",
+      "name": "Textiles (Average)",
+      "category": "materials",
+      "subcategory": "textile",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 5.34,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_concrete_kg",
+      "name": "Concrete",
+      "category": "materials",
+      "subcategory": "construction",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.132,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_cement_kg",
+      "name": "Cement",
+      "category": "materials",
+      "subcategory": "construction",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.74,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_bricks_kg",
+      "name": "Bricks",
+      "category": "materials",
+      "subcategory": "construction",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.23,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_aggregate_kg",
+      "name": "Aggregate",
+      "category": "materials",
+      "subcategory": "construction",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.005,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_timber_kg",
+      "name": "Timber",
+      "category": "materials",
+      "subcategory": "construction",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.263,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_electronics_kg",
+      "name": "Electronic Equipment (Avg)",
+      "category": "materials",
+      "subcategory": "electronics",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 5.8,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_batteries_kg",
+      "name": "Batteries",
+      "category": "materials",
+      "subcategory": "electronics",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3.2,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_rubber_kg",
+      "name": "Rubber",
+      "category": "materials",
+      "subcategory": "other",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3.18,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_food_waste_kg",
+      "name": "Food Waste (Average)",
+      "category": "materials",
+      "subcategory": "food",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "food",
+        "material"
+      ]
+    },
+    {
+      "id": "defra_mat_garden_waste_kg",
+      "name": "Garden Waste",
+      "category": "materials",
+      "subcategory": "organic",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.58,
+      "activity_unit": "kg",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "material"
+      ]
+    },
+    {
+      "id": "defra_waste_landfill_mixed_tonne",
+      "name": "Mixed Waste (Landfill)",
+      "category": "waste",
+      "subcategory": "landfill",
+      "fuel_type": "mixed_landfill",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 446,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "landfill"
+      ]
+    },
+    {
+      "id": "defra_waste_landfill_paper_tonne",
+      "name": "Paper/Card (Landfill)",
+      "category": "waste",
+      "subcategory": "landfill",
+      "fuel_type": "paper_landfill",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1042,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "landfill"
+      ]
+    },
+    {
+      "id": "defra_waste_landfill_food_tonne",
+      "name": "Food Waste (Landfill)",
+      "category": "waste",
+      "subcategory": "landfill",
+      "fuel_type": "food_landfill",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 580,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "landfill"
+      ]
+    },
+    {
+      "id": "defra_waste_landfill_wood_tonne",
+      "name": "Wood (Landfill)",
+      "category": "waste",
+      "subcategory": "landfill",
+      "fuel_type": "wood_landfill",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 828,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "landfill"
+      ]
+    },
+    {
+      "id": "defra_waste_landfill_textiles_tonne",
+      "name": "Textiles (Landfill)",
+      "category": "waste",
+      "subcategory": "landfill",
+      "fuel_type": "textiles_landfill",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 447,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "landfill"
+      ]
+    },
+    {
+      "id": "defra_waste_landfill_plastic_tonne",
+      "name": "Plastics (Landfill)",
+      "category": "waste",
+      "subcategory": "landfill",
+      "fuel_type": "plastic_landfill",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 21,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "landfill"
+      ]
+    },
+    {
+      "id": "defra_waste_incineration_mixed_tonne",
+      "name": "Mixed Waste (Incineration)",
+      "category": "waste",
+      "subcategory": "incineration",
+      "fuel_type": "mixed_incineration",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 21.35,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "incineration"
+      ]
+    },
+    {
+      "id": "defra_waste_incineration_plastic_tonne",
+      "name": "Plastics (Incineration)",
+      "category": "waste",
+      "subcategory": "incineration",
+      "fuel_type": "plastic_incineration",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2695,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "incineration"
+      ]
+    },
+    {
+      "id": "defra_waste_recycling_paper_tonne",
+      "name": "Paper/Card (Recycling)",
+      "category": "waste",
+      "subcategory": "recycling",
+      "fuel_type": "paper_recycling",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 21.35,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "recycling"
+      ]
+    },
+    {
+      "id": "defra_waste_recycling_plastic_tonne",
+      "name": "Plastics (Recycling)",
+      "category": "waste",
+      "subcategory": "recycling",
+      "fuel_type": "plastic_recycling",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 21.35,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "recycling"
+      ]
+    },
+    {
+      "id": "defra_waste_recycling_glass_tonne",
+      "name": "Glass (Recycling)",
+      "category": "waste",
+      "subcategory": "recycling",
+      "fuel_type": "glass_recycling",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 21.35,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "recycling"
+      ]
+    },
+    {
+      "id": "defra_waste_recycling_metal_tonne",
+      "name": "Metals (Recycling)",
+      "category": "waste",
+      "subcategory": "recycling",
+      "fuel_type": "metal_recycling",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 21.35,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "recycling"
+      ]
+    },
+    {
+      "id": "defra_waste_composting_food_tonne",
+      "name": "Food Waste (Composting)",
+      "category": "waste",
+      "subcategory": "composting",
+      "fuel_type": "food_composting",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 10.2,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "composting"
+      ]
+    },
+    {
+      "id": "defra_waste_composting_garden_tonne",
+      "name": "Garden Waste (Composting)",
+      "category": "waste",
+      "subcategory": "composting",
+      "fuel_type": "garden_composting",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 10.2,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "composting"
+      ]
+    },
+    {
+      "id": "defra_waste_ad_food_tonne",
+      "name": "Food Waste (Anaerobic Digestion)",
+      "category": "waste",
+      "subcategory": "anaerobic_digestion",
+      "fuel_type": "food_ad",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 10.2,
+      "activity_unit": "tonne",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "waste",
+        "anaerobic_digestion"
+      ]
+    },
+    {
+      "id": "defra_water_supply_m3",
+      "name": "Water Supply",
+      "category": "water",
+      "subcategory": "supply",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.149,
+      "activity_unit": "m3",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "water"
+      ]
+    },
+    {
+      "id": "defra_water_treatment_m3",
+      "name": "Water Treatment",
+      "category": "water",
+      "subcategory": "treatment",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.272,
+      "activity_unit": "m3",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "water"
+      ]
+    },
+    {
+      "id": "defra_hotel_uk_night",
+      "name": "Hotel Stay - UK",
+      "category": "hotel_stays",
+      "subcategory": "accommodation",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 10.3,
+      "activity_unit": "night",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "hotel",
+        "accommodation"
+      ]
+    },
+    {
+      "id": "defra_hotel_europe_night",
+      "name": "Hotel Stay - Europe (Avg)",
+      "category": "hotel_stays",
+      "subcategory": "accommodation",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 14.5,
+      "activity_unit": "night",
+      "region": "EU",
+      "year": 2025,
+      "tags": [
+        "hotel",
+        "accommodation"
+      ]
+    },
+    {
+      "id": "defra_hotel_usa_night",
+      "name": "Hotel Stay - USA",
+      "category": "hotel_stays",
+      "subcategory": "accommodation",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 20.4,
+      "activity_unit": "night",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "hotel",
+        "accommodation"
+      ]
+    },
+    {
+      "id": "defra_hotel_asia_night",
+      "name": "Hotel Stay - Asia (Avg)",
+      "category": "hotel_stays",
+      "subcategory": "accommodation",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 15.2,
+      "activity_unit": "night",
+      "region": "ASIA",
+      "year": 2025,
+      "tags": [
+        "hotel",
+        "accommodation"
+      ]
+    },
+    {
+      "id": "defra_hotel_global_night",
+      "name": "Hotel Stay - Global Average",
+      "category": "hotel_stays",
+      "subcategory": "accommodation",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 15.0,
+      "activity_unit": "night",
+      "region": "GLOBAL",
+      "year": 2025,
+      "tags": [
+        "hotel",
+        "accommodation"
+      ]
+    },
+    {
+      "id": "defra_elec_uk_kwh",
+      "name": "UK Grid Electricity",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "fuel_type": null,
+      "co2_factor": 0.207,
+      "ch4_factor": 1e-05,
+      "n2o_factor": 1e-06,
+      "co2e_factor": 0.212,
+      "activity_unit": "kWh",
+      "region": "UK",
+      "year": 2025,
+      "tags": [
+        "electricity",
+        "grid"
+      ]
+    }
+  ]
+}

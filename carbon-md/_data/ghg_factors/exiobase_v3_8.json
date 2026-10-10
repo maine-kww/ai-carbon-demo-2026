@@ -1,0 +1,4398 @@
+{
+  "source": "exiobase",
+  "version": "3.8",
+  "year": 2022,
+  "description": "EXIOBASE v3.8 - Multi-Regional Input-Output emission factors",
+  "url": "https://www.exiobase.eu/",
+  "factors": [
+    {
+      "id": "exio_eu_agriculture",
+      "name": "Agriculture & Forestry - European Union",
+      "category": "spend_based",
+      "subcategory": "Agriculture & Forestry",
+      "fuel_type": "agriculture",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.1,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_fishing",
+      "name": "Fishing - European Union",
+      "category": "spend_based",
+      "subcategory": "Fishing",
+      "fuel_type": "fishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.9,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_mining_coal",
+      "name": "Mining of Coal - European Union",
+      "category": "spend_based",
+      "subcategory": "Mining of Coal",
+      "fuel_type": "mining_coal",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.8,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_mining_oil_gas",
+      "name": "Extraction of Oil & Gas - European Union",
+      "category": "spend_based",
+      "subcategory": "Extraction of Oil & Gas",
+      "fuel_type": "mining_oil_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.3,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_mining_metals",
+      "name": "Mining of Metal Ores - European Union",
+      "category": "spend_based",
+      "subcategory": "Mining of Metal Ores",
+      "fuel_type": "mining_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.0,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_mining_other",
+      "name": "Other Mining & Quarrying - European Union",
+      "category": "spend_based",
+      "subcategory": "Other Mining & Quarrying",
+      "fuel_type": "mining_other",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_food_processing",
+      "name": "Food Processing - European Union",
+      "category": "spend_based",
+      "subcategory": "Food Processing",
+      "fuel_type": "food_processing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_textiles",
+      "name": "Textiles & Wearing Apparel - European Union",
+      "category": "spend_based",
+      "subcategory": "Textiles & Wearing Apparel",
+      "fuel_type": "textiles",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.65,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_wood_products",
+      "name": "Wood & Wood Products - European Union",
+      "category": "spend_based",
+      "subcategory": "Wood & Wood Products",
+      "fuel_type": "wood_products",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_paper_publishing",
+      "name": "Paper, Publishing & Printing - European Union",
+      "category": "spend_based",
+      "subcategory": "Paper, Publishing & Printing",
+      "fuel_type": "paper_publishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_chemicals",
+      "name": "Chemical Products - European Union",
+      "category": "spend_based",
+      "subcategory": "Chemical Products",
+      "fuel_type": "chemicals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.9,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_rubber_plastics",
+      "name": "Rubber & Plastic Products - European Union",
+      "category": "spend_based",
+      "subcategory": "Rubber & Plastic Products",
+      "fuel_type": "rubber_plastics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.7,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_non_metallic_minerals",
+      "name": "Non-metallic Mineral Products - European Union",
+      "category": "spend_based",
+      "subcategory": "Non-metallic Mineral Products",
+      "fuel_type": "non_metallic_minerals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.4,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_basic_metals",
+      "name": "Basic Metals - European Union",
+      "category": "spend_based",
+      "subcategory": "Basic Metals",
+      "fuel_type": "basic_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.2,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_fabricated_metals",
+      "name": "Fabricated Metal Products - European Union",
+      "category": "spend_based",
+      "subcategory": "Fabricated Metal Products",
+      "fuel_type": "fabricated_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_machinery",
+      "name": "Machinery & Equipment - European Union",
+      "category": "spend_based",
+      "subcategory": "Machinery & Equipment",
+      "fuel_type": "machinery",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_electronics",
+      "name": "Electrical & Electronic Equipment - European Union",
+      "category": "spend_based",
+      "subcategory": "Electrical & Electronic Equipment",
+      "fuel_type": "electronics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_transport_equipment",
+      "name": "Transport Equipment - European Union",
+      "category": "spend_based",
+      "subcategory": "Transport Equipment",
+      "fuel_type": "transport_equipment",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_other_manufacturing",
+      "name": "Other Manufacturing - European Union",
+      "category": "spend_based",
+      "subcategory": "Other Manufacturing",
+      "fuel_type": "other_manufacturing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_electricity_gas",
+      "name": "Electricity, Gas & Water - European Union",
+      "category": "spend_based",
+      "subcategory": "Electricity, Gas & Water",
+      "fuel_type": "electricity_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.2,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_construction",
+      "name": "Construction - European Union",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "construction",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_trade",
+      "name": "Trade & Repair - European Union",
+      "category": "spend_based",
+      "subcategory": "Trade & Repair",
+      "fuel_type": "trade",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_hotels_restaurants",
+      "name": "Hotels & Restaurants - European Union",
+      "category": "spend_based",
+      "subcategory": "Hotels & Restaurants",
+      "fuel_type": "hotels_restaurants",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_land_transport",
+      "name": "Land Transport - European Union",
+      "category": "spend_based",
+      "subcategory": "Land Transport",
+      "fuel_type": "land_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.7,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_water_transport",
+      "name": "Water Transport - European Union",
+      "category": "spend_based",
+      "subcategory": "Water Transport",
+      "fuel_type": "water_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_air_transport",
+      "name": "Air Transport - European Union",
+      "category": "spend_based",
+      "subcategory": "Air Transport",
+      "fuel_type": "air_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.5,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_post_telecom",
+      "name": "Post & Telecommunications - European Union",
+      "category": "spend_based",
+      "subcategory": "Post & Telecommunications",
+      "fuel_type": "post_telecom",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_financial",
+      "name": "Financial Intermediation - European Union",
+      "category": "spend_based",
+      "subcategory": "Financial Intermediation",
+      "fuel_type": "financial",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_real_estate",
+      "name": "Real Estate & Business Activities - European Union",
+      "category": "spend_based",
+      "subcategory": "Real Estate & Business Activities",
+      "fuel_type": "real_estate",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_public_admin",
+      "name": "Public Administration - European Union",
+      "category": "spend_based",
+      "subcategory": "Public Administration",
+      "fuel_type": "public_admin",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_education",
+      "name": "Education - European Union",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "education",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_health",
+      "name": "Health & Social Work - European Union",
+      "category": "spend_based",
+      "subcategory": "Health & Social Work",
+      "fuel_type": "health",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_eu_other_services",
+      "name": "Other Services - European Union",
+      "category": "spend_based",
+      "subcategory": "Other Services",
+      "fuel_type": "other_services",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "EUR",
+      "region": "EU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "eu"
+      ]
+    },
+    {
+      "id": "exio_cn_agriculture",
+      "name": "Agriculture & Forestry - China",
+      "category": "spend_based",
+      "subcategory": "Agriculture & Forestry",
+      "fuel_type": "agriculture",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.54,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_fishing",
+      "name": "Fishing - China",
+      "category": "spend_based",
+      "subcategory": "Fishing",
+      "fuel_type": "fishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.26,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_mining_coal",
+      "name": "Mining of Coal - China",
+      "category": "spend_based",
+      "subcategory": "Mining of Coal",
+      "fuel_type": "mining_coal",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.52,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_mining_oil_gas",
+      "name": "Extraction of Oil & Gas - China",
+      "category": "spend_based",
+      "subcategory": "Extraction of Oil & Gas",
+      "fuel_type": "mining_oil_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.82,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_mining_metals",
+      "name": "Mining of Metal Ores - China",
+      "category": "spend_based",
+      "subcategory": "Mining of Metal Ores",
+      "fuel_type": "mining_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.4,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_mining_other",
+      "name": "Other Mining & Quarrying - China",
+      "category": "spend_based",
+      "subcategory": "Other Mining & Quarrying",
+      "fuel_type": "mining_other",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.12,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_food_processing",
+      "name": "Food Processing - China",
+      "category": "spend_based",
+      "subcategory": "Food Processing",
+      "fuel_type": "food_processing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.77,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_textiles",
+      "name": "Textiles & Wearing Apparel - China",
+      "category": "spend_based",
+      "subcategory": "Textiles & Wearing Apparel",
+      "fuel_type": "textiles",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.91,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_wood_products",
+      "name": "Wood & Wood Products - China",
+      "category": "spend_based",
+      "subcategory": "Wood & Wood Products",
+      "fuel_type": "wood_products",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.7,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_paper_publishing",
+      "name": "Paper, Publishing & Printing - China",
+      "category": "spend_based",
+      "subcategory": "Paper, Publishing & Printing",
+      "fuel_type": "paper_publishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.84,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_chemicals",
+      "name": "Chemical Products - China",
+      "category": "spend_based",
+      "subcategory": "Chemical Products",
+      "fuel_type": "chemicals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.26,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_rubber_plastics",
+      "name": "Rubber & Plastic Products - China",
+      "category": "spend_based",
+      "subcategory": "Rubber & Plastic Products",
+      "fuel_type": "rubber_plastics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.98,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_non_metallic_minerals",
+      "name": "Non-metallic Mineral Products - China",
+      "category": "spend_based",
+      "subcategory": "Non-metallic Mineral Products",
+      "fuel_type": "non_metallic_minerals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.96,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_basic_metals",
+      "name": "Basic Metals - China",
+      "category": "spend_based",
+      "subcategory": "Basic Metals",
+      "fuel_type": "basic_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.68,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_fabricated_metals",
+      "name": "Fabricated Metal Products - China",
+      "category": "spend_based",
+      "subcategory": "Fabricated Metal Products",
+      "fuel_type": "fabricated_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.77,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_machinery",
+      "name": "Machinery & Equipment - China",
+      "category": "spend_based",
+      "subcategory": "Machinery & Equipment",
+      "fuel_type": "machinery",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.42,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_electronics",
+      "name": "Electrical & Electronic Equipment - China",
+      "category": "spend_based",
+      "subcategory": "Electrical & Electronic Equipment",
+      "fuel_type": "electronics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_transport_equipment",
+      "name": "Transport Equipment - China",
+      "category": "spend_based",
+      "subcategory": "Transport Equipment",
+      "fuel_type": "transport_equipment",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.49,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_other_manufacturing",
+      "name": "Other Manufacturing - China",
+      "category": "spend_based",
+      "subcategory": "Other Manufacturing",
+      "fuel_type": "other_manufacturing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.56,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_electricity_gas",
+      "name": "Electricity, Gas & Water - China",
+      "category": "spend_based",
+      "subcategory": "Electricity, Gas & Water",
+      "fuel_type": "electricity_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3.08,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_construction",
+      "name": "Construction - China",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "construction",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.7,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_trade",
+      "name": "Trade & Repair - China",
+      "category": "spend_based",
+      "subcategory": "Trade & Repair",
+      "fuel_type": "trade",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.168,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_hotels_restaurants",
+      "name": "Hotels & Restaurants - China",
+      "category": "spend_based",
+      "subcategory": "Hotels & Restaurants",
+      "fuel_type": "hotels_restaurants",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.42,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_land_transport",
+      "name": "Land Transport - China",
+      "category": "spend_based",
+      "subcategory": "Land Transport",
+      "fuel_type": "land_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.98,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_water_transport",
+      "name": "Water Transport - China",
+      "category": "spend_based",
+      "subcategory": "Water Transport",
+      "fuel_type": "water_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.12,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_air_transport",
+      "name": "Air Transport - China",
+      "category": "spend_based",
+      "subcategory": "Air Transport",
+      "fuel_type": "air_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.1,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_post_telecom",
+      "name": "Post & Telecommunications - China",
+      "category": "spend_based",
+      "subcategory": "Post & Telecommunications",
+      "fuel_type": "post_telecom",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.112,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_financial",
+      "name": "Financial Intermediation - China",
+      "category": "spend_based",
+      "subcategory": "Financial Intermediation",
+      "fuel_type": "financial",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_real_estate",
+      "name": "Real Estate & Business Activities - China",
+      "category": "spend_based",
+      "subcategory": "Real Estate & Business Activities",
+      "fuel_type": "real_estate",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.112,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_public_admin",
+      "name": "Public Administration - China",
+      "category": "spend_based",
+      "subcategory": "Public Administration",
+      "fuel_type": "public_admin",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.14,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_education",
+      "name": "Education - China",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "education",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.112,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_health",
+      "name": "Health & Social Work - China",
+      "category": "spend_based",
+      "subcategory": "Health & Social Work",
+      "fuel_type": "health",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.168,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_cn_other_services",
+      "name": "Other Services - China",
+      "category": "spend_based",
+      "subcategory": "Other Services",
+      "fuel_type": "other_services",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.14,
+      "activity_unit": "USD",
+      "region": "CN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "cn"
+      ]
+    },
+    {
+      "id": "exio_jp_agriculture",
+      "name": "Agriculture & Forestry - Japan",
+      "category": "spend_based",
+      "subcategory": "Agriculture & Forestry",
+      "fuel_type": "agriculture",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.935,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_fishing",
+      "name": "Fishing - Japan",
+      "category": "spend_based",
+      "subcategory": "Fishing",
+      "fuel_type": "fishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.765,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_mining_coal",
+      "name": "Mining of Coal - Japan",
+      "category": "spend_based",
+      "subcategory": "Mining of Coal",
+      "fuel_type": "mining_coal",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.53,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_mining_oil_gas",
+      "name": "Extraction of Oil & Gas - Japan",
+      "category": "spend_based",
+      "subcategory": "Extraction of Oil & Gas",
+      "fuel_type": "mining_oil_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.105,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_mining_metals",
+      "name": "Mining of Metal Ores - Japan",
+      "category": "spend_based",
+      "subcategory": "Mining of Metal Ores",
+      "fuel_type": "mining_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.85,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_mining_other",
+      "name": "Other Mining & Quarrying - Japan",
+      "category": "spend_based",
+      "subcategory": "Other Mining & Quarrying",
+      "fuel_type": "mining_other",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.68,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_food_processing",
+      "name": "Food Processing - Japan",
+      "category": "spend_based",
+      "subcategory": "Food Processing",
+      "fuel_type": "food_processing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4675,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_textiles",
+      "name": "Textiles & Wearing Apparel - Japan",
+      "category": "spend_based",
+      "subcategory": "Textiles & Wearing Apparel",
+      "fuel_type": "textiles",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5525,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_wood_products",
+      "name": "Wood & Wood Products - Japan",
+      "category": "spend_based",
+      "subcategory": "Wood & Wood Products",
+      "fuel_type": "wood_products",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.425,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_paper_publishing",
+      "name": "Paper, Publishing & Printing - Japan",
+      "category": "spend_based",
+      "subcategory": "Paper, Publishing & Printing",
+      "fuel_type": "paper_publishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.51,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_chemicals",
+      "name": "Chemical Products - Japan",
+      "category": "spend_based",
+      "subcategory": "Chemical Products",
+      "fuel_type": "chemicals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.765,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_rubber_plastics",
+      "name": "Rubber & Plastic Products - Japan",
+      "category": "spend_based",
+      "subcategory": "Rubber & Plastic Products",
+      "fuel_type": "rubber_plastics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.595,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_non_metallic_minerals",
+      "name": "Non-metallic Mineral Products - Japan",
+      "category": "spend_based",
+      "subcategory": "Non-metallic Mineral Products",
+      "fuel_type": "non_metallic_minerals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.19,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_basic_metals",
+      "name": "Basic Metals - Japan",
+      "category": "spend_based",
+      "subcategory": "Basic Metals",
+      "fuel_type": "basic_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.02,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_fabricated_metals",
+      "name": "Fabricated Metal Products - Japan",
+      "category": "spend_based",
+      "subcategory": "Fabricated Metal Products",
+      "fuel_type": "fabricated_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4675,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_machinery",
+      "name": "Machinery & Equipment - Japan",
+      "category": "spend_based",
+      "subcategory": "Machinery & Equipment",
+      "fuel_type": "machinery",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.255,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_electronics",
+      "name": "Electrical & Electronic Equipment - Japan",
+      "category": "spend_based",
+      "subcategory": "Electrical & Electronic Equipment",
+      "fuel_type": "electronics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.2125,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_transport_equipment",
+      "name": "Transport Equipment - Japan",
+      "category": "spend_based",
+      "subcategory": "Transport Equipment",
+      "fuel_type": "transport_equipment",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.2975,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_other_manufacturing",
+      "name": "Other Manufacturing - Japan",
+      "category": "spend_based",
+      "subcategory": "Other Manufacturing",
+      "fuel_type": "other_manufacturing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.34,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_electricity_gas",
+      "name": "Electricity, Gas & Water - Japan",
+      "category": "spend_based",
+      "subcategory": "Electricity, Gas & Water",
+      "fuel_type": "electricity_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.87,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_construction",
+      "name": "Construction - Japan",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "construction",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.425,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_trade",
+      "name": "Trade & Repair - Japan",
+      "category": "spend_based",
+      "subcategory": "Trade & Repair",
+      "fuel_type": "trade",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.102,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_hotels_restaurants",
+      "name": "Hotels & Restaurants - Japan",
+      "category": "spend_based",
+      "subcategory": "Hotels & Restaurants",
+      "fuel_type": "hotels_restaurants",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.255,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_land_transport",
+      "name": "Land Transport - Japan",
+      "category": "spend_based",
+      "subcategory": "Land Transport",
+      "fuel_type": "land_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.595,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_water_transport",
+      "name": "Water Transport - Japan",
+      "category": "spend_based",
+      "subcategory": "Water Transport",
+      "fuel_type": "water_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.68,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_air_transport",
+      "name": "Air Transport - Japan",
+      "category": "spend_based",
+      "subcategory": "Air Transport",
+      "fuel_type": "air_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.275,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_post_telecom",
+      "name": "Post & Telecommunications - Japan",
+      "category": "spend_based",
+      "subcategory": "Post & Telecommunications",
+      "fuel_type": "post_telecom",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.068,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_financial",
+      "name": "Financial Intermediation - Japan",
+      "category": "spend_based",
+      "subcategory": "Financial Intermediation",
+      "fuel_type": "financial",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.0425,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_real_estate",
+      "name": "Real Estate & Business Activities - Japan",
+      "category": "spend_based",
+      "subcategory": "Real Estate & Business Activities",
+      "fuel_type": "real_estate",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.068,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_public_admin",
+      "name": "Public Administration - Japan",
+      "category": "spend_based",
+      "subcategory": "Public Administration",
+      "fuel_type": "public_admin",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.085,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_education",
+      "name": "Education - Japan",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "education",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.068,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_health",
+      "name": "Health & Social Work - Japan",
+      "category": "spend_based",
+      "subcategory": "Health & Social Work",
+      "fuel_type": "health",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.102,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_jp_other_services",
+      "name": "Other Services - Japan",
+      "category": "spend_based",
+      "subcategory": "Other Services",
+      "fuel_type": "other_services",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.085,
+      "activity_unit": "USD",
+      "region": "JP",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "jp"
+      ]
+    },
+    {
+      "id": "exio_in_agriculture",
+      "name": "Agriculture & Forestry - India",
+      "category": "spend_based",
+      "subcategory": "Agriculture & Forestry",
+      "fuel_type": "agriculture",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.76,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_fishing",
+      "name": "Fishing - India",
+      "category": "spend_based",
+      "subcategory": "Fishing",
+      "fuel_type": "fishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.44,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_mining_coal",
+      "name": "Mining of Coal - India",
+      "category": "spend_based",
+      "subcategory": "Mining of Coal",
+      "fuel_type": "mining_coal",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.88,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_mining_oil_gas",
+      "name": "Extraction of Oil & Gas - India",
+      "category": "spend_based",
+      "subcategory": "Extraction of Oil & Gas",
+      "fuel_type": "mining_oil_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.08,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_mining_metals",
+      "name": "Mining of Metal Ores - India",
+      "category": "spend_based",
+      "subcategory": "Mining of Metal Ores",
+      "fuel_type": "mining_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.6,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_mining_other",
+      "name": "Other Mining & Quarrying - India",
+      "category": "spend_based",
+      "subcategory": "Other Mining & Quarrying",
+      "fuel_type": "mining_other",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.28,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_food_processing",
+      "name": "Food Processing - India",
+      "category": "spend_based",
+      "subcategory": "Food Processing",
+      "fuel_type": "food_processing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.88,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_textiles",
+      "name": "Textiles & Wearing Apparel - India",
+      "category": "spend_based",
+      "subcategory": "Textiles & Wearing Apparel",
+      "fuel_type": "textiles",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.04,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_wood_products",
+      "name": "Wood & Wood Products - India",
+      "category": "spend_based",
+      "subcategory": "Wood & Wood Products",
+      "fuel_type": "wood_products",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_paper_publishing",
+      "name": "Paper, Publishing & Printing - India",
+      "category": "spend_based",
+      "subcategory": "Paper, Publishing & Printing",
+      "fuel_type": "paper_publishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.96,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_chemicals",
+      "name": "Chemical Products - India",
+      "category": "spend_based",
+      "subcategory": "Chemical Products",
+      "fuel_type": "chemicals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.44,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_rubber_plastics",
+      "name": "Rubber & Plastic Products - India",
+      "category": "spend_based",
+      "subcategory": "Rubber & Plastic Products",
+      "fuel_type": "rubber_plastics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.12,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_non_metallic_minerals",
+      "name": "Non-metallic Mineral Products - India",
+      "category": "spend_based",
+      "subcategory": "Non-metallic Mineral Products",
+      "fuel_type": "non_metallic_minerals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.24,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_basic_metals",
+      "name": "Basic Metals - India",
+      "category": "spend_based",
+      "subcategory": "Basic Metals",
+      "fuel_type": "basic_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.92,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_fabricated_metals",
+      "name": "Fabricated Metal Products - India",
+      "category": "spend_based",
+      "subcategory": "Fabricated Metal Products",
+      "fuel_type": "fabricated_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.88,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_machinery",
+      "name": "Machinery & Equipment - India",
+      "category": "spend_based",
+      "subcategory": "Machinery & Equipment",
+      "fuel_type": "machinery",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.48,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_electronics",
+      "name": "Electrical & Electronic Equipment - India",
+      "category": "spend_based",
+      "subcategory": "Electrical & Electronic Equipment",
+      "fuel_type": "electronics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_transport_equipment",
+      "name": "Transport Equipment - India",
+      "category": "spend_based",
+      "subcategory": "Transport Equipment",
+      "fuel_type": "transport_equipment",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.56,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_other_manufacturing",
+      "name": "Other Manufacturing - India",
+      "category": "spend_based",
+      "subcategory": "Other Manufacturing",
+      "fuel_type": "other_manufacturing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.64,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_electricity_gas",
+      "name": "Electricity, Gas & Water - India",
+      "category": "spend_based",
+      "subcategory": "Electricity, Gas & Water",
+      "fuel_type": "electricity_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3.52,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_construction",
+      "name": "Construction - India",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "construction",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_trade",
+      "name": "Trade & Repair - India",
+      "category": "spend_based",
+      "subcategory": "Trade & Repair",
+      "fuel_type": "trade",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.192,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_hotels_restaurants",
+      "name": "Hotels & Restaurants - India",
+      "category": "spend_based",
+      "subcategory": "Hotels & Restaurants",
+      "fuel_type": "hotels_restaurants",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.48,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_land_transport",
+      "name": "Land Transport - India",
+      "category": "spend_based",
+      "subcategory": "Land Transport",
+      "fuel_type": "land_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.12,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_water_transport",
+      "name": "Water Transport - India",
+      "category": "spend_based",
+      "subcategory": "Water Transport",
+      "fuel_type": "water_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.28,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_air_transport",
+      "name": "Air Transport - India",
+      "category": "spend_based",
+      "subcategory": "Air Transport",
+      "fuel_type": "air_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.4,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_post_telecom",
+      "name": "Post & Telecommunications - India",
+      "category": "spend_based",
+      "subcategory": "Post & Telecommunications",
+      "fuel_type": "post_telecom",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.128,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_financial",
+      "name": "Financial Intermediation - India",
+      "category": "spend_based",
+      "subcategory": "Financial Intermediation",
+      "fuel_type": "financial",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_real_estate",
+      "name": "Real Estate & Business Activities - India",
+      "category": "spend_based",
+      "subcategory": "Real Estate & Business Activities",
+      "fuel_type": "real_estate",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.128,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_public_admin",
+      "name": "Public Administration - India",
+      "category": "spend_based",
+      "subcategory": "Public Administration",
+      "fuel_type": "public_admin",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.16,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_education",
+      "name": "Education - India",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "education",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.128,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_health",
+      "name": "Health & Social Work - India",
+      "category": "spend_based",
+      "subcategory": "Health & Social Work",
+      "fuel_type": "health",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.192,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_in_other_services",
+      "name": "Other Services - India",
+      "category": "spend_based",
+      "subcategory": "Other Services",
+      "fuel_type": "other_services",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.16,
+      "activity_unit": "USD",
+      "region": "IN",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "in"
+      ]
+    },
+    {
+      "id": "exio_br_agriculture",
+      "name": "Agriculture & Forestry - Brazil",
+      "category": "spend_based",
+      "subcategory": "Agriculture & Forestry",
+      "fuel_type": "agriculture",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.77,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_fishing",
+      "name": "Fishing - Brazil",
+      "category": "spend_based",
+      "subcategory": "Fishing",
+      "fuel_type": "fishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.63,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_mining_coal",
+      "name": "Mining of Coal - Brazil",
+      "category": "spend_based",
+      "subcategory": "Mining of Coal",
+      "fuel_type": "mining_coal",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.26,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_mining_oil_gas",
+      "name": "Extraction of Oil & Gas - Brazil",
+      "category": "spend_based",
+      "subcategory": "Extraction of Oil & Gas",
+      "fuel_type": "mining_oil_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.91,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_mining_metals",
+      "name": "Mining of Metal Ores - Brazil",
+      "category": "spend_based",
+      "subcategory": "Mining of Metal Ores",
+      "fuel_type": "mining_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.7,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_mining_other",
+      "name": "Other Mining & Quarrying - Brazil",
+      "category": "spend_based",
+      "subcategory": "Other Mining & Quarrying",
+      "fuel_type": "mining_other",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.56,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_food_processing",
+      "name": "Food Processing - Brazil",
+      "category": "spend_based",
+      "subcategory": "Food Processing",
+      "fuel_type": "food_processing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.385,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_textiles",
+      "name": "Textiles & Wearing Apparel - Brazil",
+      "category": "spend_based",
+      "subcategory": "Textiles & Wearing Apparel",
+      "fuel_type": "textiles",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.455,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_wood_products",
+      "name": "Wood & Wood Products - Brazil",
+      "category": "spend_based",
+      "subcategory": "Wood & Wood Products",
+      "fuel_type": "wood_products",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_paper_publishing",
+      "name": "Paper, Publishing & Printing - Brazil",
+      "category": "spend_based",
+      "subcategory": "Paper, Publishing & Printing",
+      "fuel_type": "paper_publishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.42,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_chemicals",
+      "name": "Chemical Products - Brazil",
+      "category": "spend_based",
+      "subcategory": "Chemical Products",
+      "fuel_type": "chemicals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.63,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_rubber_plastics",
+      "name": "Rubber & Plastic Products - Brazil",
+      "category": "spend_based",
+      "subcategory": "Rubber & Plastic Products",
+      "fuel_type": "rubber_plastics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.49,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_non_metallic_minerals",
+      "name": "Non-metallic Mineral Products - Brazil",
+      "category": "spend_based",
+      "subcategory": "Non-metallic Mineral Products",
+      "fuel_type": "non_metallic_minerals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.98,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_basic_metals",
+      "name": "Basic Metals - Brazil",
+      "category": "spend_based",
+      "subcategory": "Basic Metals",
+      "fuel_type": "basic_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.84,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_fabricated_metals",
+      "name": "Fabricated Metal Products - Brazil",
+      "category": "spend_based",
+      "subcategory": "Fabricated Metal Products",
+      "fuel_type": "fabricated_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.385,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_machinery",
+      "name": "Machinery & Equipment - Brazil",
+      "category": "spend_based",
+      "subcategory": "Machinery & Equipment",
+      "fuel_type": "machinery",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.21,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_electronics",
+      "name": "Electrical & Electronic Equipment - Brazil",
+      "category": "spend_based",
+      "subcategory": "Electrical & Electronic Equipment",
+      "fuel_type": "electronics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.175,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_transport_equipment",
+      "name": "Transport Equipment - Brazil",
+      "category": "spend_based",
+      "subcategory": "Transport Equipment",
+      "fuel_type": "transport_equipment",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.245,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_other_manufacturing",
+      "name": "Other Manufacturing - Brazil",
+      "category": "spend_based",
+      "subcategory": "Other Manufacturing",
+      "fuel_type": "other_manufacturing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.28,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_electricity_gas",
+      "name": "Electricity, Gas & Water - Brazil",
+      "category": "spend_based",
+      "subcategory": "Electricity, Gas & Water",
+      "fuel_type": "electricity_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.54,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_construction",
+      "name": "Construction - Brazil",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "construction",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_trade",
+      "name": "Trade & Repair - Brazil",
+      "category": "spend_based",
+      "subcategory": "Trade & Repair",
+      "fuel_type": "trade",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.084,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_hotels_restaurants",
+      "name": "Hotels & Restaurants - Brazil",
+      "category": "spend_based",
+      "subcategory": "Hotels & Restaurants",
+      "fuel_type": "hotels_restaurants",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.21,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_land_transport",
+      "name": "Land Transport - Brazil",
+      "category": "spend_based",
+      "subcategory": "Land Transport",
+      "fuel_type": "land_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.49,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_water_transport",
+      "name": "Water Transport - Brazil",
+      "category": "spend_based",
+      "subcategory": "Water Transport",
+      "fuel_type": "water_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.56,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_air_transport",
+      "name": "Air Transport - Brazil",
+      "category": "spend_based",
+      "subcategory": "Air Transport",
+      "fuel_type": "air_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.05,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_post_telecom",
+      "name": "Post & Telecommunications - Brazil",
+      "category": "spend_based",
+      "subcategory": "Post & Telecommunications",
+      "fuel_type": "post_telecom",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.056,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_financial",
+      "name": "Financial Intermediation - Brazil",
+      "category": "spend_based",
+      "subcategory": "Financial Intermediation",
+      "fuel_type": "financial",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.035,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_real_estate",
+      "name": "Real Estate & Business Activities - Brazil",
+      "category": "spend_based",
+      "subcategory": "Real Estate & Business Activities",
+      "fuel_type": "real_estate",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.056,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_public_admin",
+      "name": "Public Administration - Brazil",
+      "category": "spend_based",
+      "subcategory": "Public Administration",
+      "fuel_type": "public_admin",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_education",
+      "name": "Education - Brazil",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "education",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.056,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_health",
+      "name": "Health & Social Work - Brazil",
+      "category": "spend_based",
+      "subcategory": "Health & Social Work",
+      "fuel_type": "health",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.084,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_br_other_services",
+      "name": "Other Services - Brazil",
+      "category": "spend_based",
+      "subcategory": "Other Services",
+      "fuel_type": "other_services",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "BR",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "br"
+      ]
+    },
+    {
+      "id": "exio_ru_agriculture",
+      "name": "Agriculture & Forestry - Russia",
+      "category": "spend_based",
+      "subcategory": "Agriculture & Forestry",
+      "fuel_type": "agriculture",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.65,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_fishing",
+      "name": "Fishing - Russia",
+      "category": "spend_based",
+      "subcategory": "Fishing",
+      "fuel_type": "fishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.35,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_mining_coal",
+      "name": "Mining of Coal - Russia",
+      "category": "spend_based",
+      "subcategory": "Mining of Coal",
+      "fuel_type": "mining_coal",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.7,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_mining_oil_gas",
+      "name": "Extraction of Oil & Gas - Russia",
+      "category": "spend_based",
+      "subcategory": "Extraction of Oil & Gas",
+      "fuel_type": "mining_oil_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.95,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_mining_metals",
+      "name": "Mining of Metal Ores - Russia",
+      "category": "spend_based",
+      "subcategory": "Mining of Metal Ores",
+      "fuel_type": "mining_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.5,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_mining_other",
+      "name": "Other Mining & Quarrying - Russia",
+      "category": "spend_based",
+      "subcategory": "Other Mining & Quarrying",
+      "fuel_type": "mining_other",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.2,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_food_processing",
+      "name": "Food Processing - Russia",
+      "category": "spend_based",
+      "subcategory": "Food Processing",
+      "fuel_type": "food_processing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.825,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_textiles",
+      "name": "Textiles & Wearing Apparel - Russia",
+      "category": "spend_based",
+      "subcategory": "Textiles & Wearing Apparel",
+      "fuel_type": "textiles",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.975,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_wood_products",
+      "name": "Wood & Wood Products - Russia",
+      "category": "spend_based",
+      "subcategory": "Wood & Wood Products",
+      "fuel_type": "wood_products",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.75,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_paper_publishing",
+      "name": "Paper, Publishing & Printing - Russia",
+      "category": "spend_based",
+      "subcategory": "Paper, Publishing & Printing",
+      "fuel_type": "paper_publishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.9,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_chemicals",
+      "name": "Chemical Products - Russia",
+      "category": "spend_based",
+      "subcategory": "Chemical Products",
+      "fuel_type": "chemicals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.35,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_rubber_plastics",
+      "name": "Rubber & Plastic Products - Russia",
+      "category": "spend_based",
+      "subcategory": "Rubber & Plastic Products",
+      "fuel_type": "rubber_plastics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.05,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_non_metallic_minerals",
+      "name": "Non-metallic Mineral Products - Russia",
+      "category": "spend_based",
+      "subcategory": "Non-metallic Mineral Products",
+      "fuel_type": "non_metallic_minerals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.1,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_basic_metals",
+      "name": "Basic Metals - Russia",
+      "category": "spend_based",
+      "subcategory": "Basic Metals",
+      "fuel_type": "basic_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.8,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_fabricated_metals",
+      "name": "Fabricated Metal Products - Russia",
+      "category": "spend_based",
+      "subcategory": "Fabricated Metal Products",
+      "fuel_type": "fabricated_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.825,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_machinery",
+      "name": "Machinery & Equipment - Russia",
+      "category": "spend_based",
+      "subcategory": "Machinery & Equipment",
+      "fuel_type": "machinery",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_electronics",
+      "name": "Electrical & Electronic Equipment - Russia",
+      "category": "spend_based",
+      "subcategory": "Electrical & Electronic Equipment",
+      "fuel_type": "electronics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.375,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_transport_equipment",
+      "name": "Transport Equipment - Russia",
+      "category": "spend_based",
+      "subcategory": "Transport Equipment",
+      "fuel_type": "transport_equipment",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.525,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_other_manufacturing",
+      "name": "Other Manufacturing - Russia",
+      "category": "spend_based",
+      "subcategory": "Other Manufacturing",
+      "fuel_type": "other_manufacturing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_electricity_gas",
+      "name": "Electricity, Gas & Water - Russia",
+      "category": "spend_based",
+      "subcategory": "Electricity, Gas & Water",
+      "fuel_type": "electricity_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3.3,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_construction",
+      "name": "Construction - Russia",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "construction",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.75,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_trade",
+      "name": "Trade & Repair - Russia",
+      "category": "spend_based",
+      "subcategory": "Trade & Repair",
+      "fuel_type": "trade",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.18,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_hotels_restaurants",
+      "name": "Hotels & Restaurants - Russia",
+      "category": "spend_based",
+      "subcategory": "Hotels & Restaurants",
+      "fuel_type": "hotels_restaurants",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_land_transport",
+      "name": "Land Transport - Russia",
+      "category": "spend_based",
+      "subcategory": "Land Transport",
+      "fuel_type": "land_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.05,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_water_transport",
+      "name": "Water Transport - Russia",
+      "category": "spend_based",
+      "subcategory": "Water Transport",
+      "fuel_type": "water_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.2,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_air_transport",
+      "name": "Air Transport - Russia",
+      "category": "spend_based",
+      "subcategory": "Air Transport",
+      "fuel_type": "air_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.25,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_post_telecom",
+      "name": "Post & Telecommunications - Russia",
+      "category": "spend_based",
+      "subcategory": "Post & Telecommunications",
+      "fuel_type": "post_telecom",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_financial",
+      "name": "Financial Intermediation - Russia",
+      "category": "spend_based",
+      "subcategory": "Financial Intermediation",
+      "fuel_type": "financial",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.075,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_real_estate",
+      "name": "Real Estate & Business Activities - Russia",
+      "category": "spend_based",
+      "subcategory": "Real Estate & Business Activities",
+      "fuel_type": "real_estate",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_public_admin",
+      "name": "Public Administration - Russia",
+      "category": "spend_based",
+      "subcategory": "Public Administration",
+      "fuel_type": "public_admin",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_education",
+      "name": "Education - Russia",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "education",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_health",
+      "name": "Health & Social Work - Russia",
+      "category": "spend_based",
+      "subcategory": "Health & Social Work",
+      "fuel_type": "health",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.18,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_ru_other_services",
+      "name": "Other Services - Russia",
+      "category": "spend_based",
+      "subcategory": "Other Services",
+      "fuel_type": "other_services",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "RU",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "ru"
+      ]
+    },
+    {
+      "id": "exio_row_agriculture",
+      "name": "Agriculture & Forestry - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Agriculture & Forestry",
+      "fuel_type": "agriculture",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.32,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_fishing",
+      "name": "Fishing - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Fishing",
+      "fuel_type": "fishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.08,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_mining_coal",
+      "name": "Mining of Coal - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Mining of Coal",
+      "fuel_type": "mining_coal",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.16,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_mining_oil_gas",
+      "name": "Extraction of Oil & Gas - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Extraction of Oil & Gas",
+      "fuel_type": "mining_oil_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.56,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_mining_metals",
+      "name": "Mining of Metal Ores - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Mining of Metal Ores",
+      "fuel_type": "mining_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.2,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_mining_other",
+      "name": "Other Mining & Quarrying - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Other Mining & Quarrying",
+      "fuel_type": "mining_other",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.96,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_food_processing",
+      "name": "Food Processing - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Food Processing",
+      "fuel_type": "food_processing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.66,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_textiles",
+      "name": "Textiles & Wearing Apparel - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Textiles & Wearing Apparel",
+      "fuel_type": "textiles",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.78,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_wood_products",
+      "name": "Wood & Wood Products - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Wood & Wood Products",
+      "fuel_type": "wood_products",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_paper_publishing",
+      "name": "Paper, Publishing & Printing - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Paper, Publishing & Printing",
+      "fuel_type": "paper_publishing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.72,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_chemicals",
+      "name": "Chemical Products - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Chemical Products",
+      "fuel_type": "chemicals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.08,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_rubber_plastics",
+      "name": "Rubber & Plastic Products - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Rubber & Plastic Products",
+      "fuel_type": "rubber_plastics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.84,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_non_metallic_minerals",
+      "name": "Non-metallic Mineral Products - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Non-metallic Mineral Products",
+      "fuel_type": "non_metallic_minerals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.68,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_basic_metals",
+      "name": "Basic Metals - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Basic Metals",
+      "fuel_type": "basic_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.44,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_fabricated_metals",
+      "name": "Fabricated Metal Products - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Fabricated Metal Products",
+      "fuel_type": "fabricated_metals",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.66,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_machinery",
+      "name": "Machinery & Equipment - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Machinery & Equipment",
+      "fuel_type": "machinery",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.36,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_electronics",
+      "name": "Electrical & Electronic Equipment - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Electrical & Electronic Equipment",
+      "fuel_type": "electronics",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_transport_equipment",
+      "name": "Transport Equipment - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Transport Equipment",
+      "fuel_type": "transport_equipment",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.42,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_other_manufacturing",
+      "name": "Other Manufacturing - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Other Manufacturing",
+      "fuel_type": "other_manufacturing",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.48,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_electricity_gas",
+      "name": "Electricity, Gas & Water - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Electricity, Gas & Water",
+      "fuel_type": "electricity_gas",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.64,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_construction",
+      "name": "Construction - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "construction",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_trade",
+      "name": "Trade & Repair - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Trade & Repair",
+      "fuel_type": "trade",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.144,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_hotels_restaurants",
+      "name": "Hotels & Restaurants - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Hotels & Restaurants",
+      "fuel_type": "hotels_restaurants",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.36,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_land_transport",
+      "name": "Land Transport - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Land Transport",
+      "fuel_type": "land_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.84,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_water_transport",
+      "name": "Water Transport - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Water Transport",
+      "fuel_type": "water_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.96,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_air_transport",
+      "name": "Air Transport - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Air Transport",
+      "fuel_type": "air_transport",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.8,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_post_telecom",
+      "name": "Post & Telecommunications - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Post & Telecommunications",
+      "fuel_type": "post_telecom",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.096,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_financial",
+      "name": "Financial Intermediation - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Financial Intermediation",
+      "fuel_type": "financial",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_real_estate",
+      "name": "Real Estate & Business Activities - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Real Estate & Business Activities",
+      "fuel_type": "real_estate",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.096,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_public_admin",
+      "name": "Public Administration - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Public Administration",
+      "fuel_type": "public_admin",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_education",
+      "name": "Education - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "education",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.096,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_health",
+      "name": "Health & Social Work - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Health & Social Work",
+      "fuel_type": "health",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.144,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    },
+    {
+      "id": "exio_row_other_services",
+      "name": "Other Services - Rest of World",
+      "category": "spend_based",
+      "subcategory": "Other Services",
+      "fuel_type": "other_services",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "ROW",
+      "year": 2022,
+      "tags": [
+        "spend_based",
+        "mrio",
+        "row"
+      ]
+    }
+  ]
+}

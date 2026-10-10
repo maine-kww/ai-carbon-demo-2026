@@ -1,0 +1,5025 @@
+{
+  "source": "useeio",
+  "version": "1.3",
+  "year": 2023,
+  "description": "US EPA USEEIO v1.3 - Spend-based emission factors by NAICS sector",
+  "url": "https://www.epa.gov/land-research/us-environmentally-extended-input-output-useeio-technical-content",
+  "factors": [
+    {
+      "id": "useeio_1111",
+      "name": "Oilseed farming",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1111",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.2,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1111",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1112",
+      "name": "Grain farming",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1112",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1112",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1113",
+      "name": "Vegetable and melon farming",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1113",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.75,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1113",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1114",
+      "name": "Fruit and tree nut farming",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1114",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1114",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1119",
+      "name": "Other crop farming",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1119",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.95,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1119",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1121",
+      "name": "Cattle ranching",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1121",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.8,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1121",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1122",
+      "name": "Hog and pig farming",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1122",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1122",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1123",
+      "name": "Poultry and egg production",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1123",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1123",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1124",
+      "name": "Sheep and goat farming",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1124",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1124",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1125",
+      "name": "Aquaculture",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1125",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.9,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1125",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1131",
+      "name": "Timber tract operations",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1131",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1131",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1132",
+      "name": "Forest nurseries and timber",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1132",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1132",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1141",
+      "name": "Fishing",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1141",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1141",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1142",
+      "name": "Hunting and trapping",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1142",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1142",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1151",
+      "name": "Support activities for crop production",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1151",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1151",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_1152",
+      "name": "Support activities for animal production",
+      "category": "spend_based",
+      "subcategory": "Agriculture",
+      "fuel_type": "1152",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_1152",
+        "agriculture"
+      ]
+    },
+    {
+      "id": "useeio_2111",
+      "name": "Oil and gas extraction",
+      "category": "spend_based",
+      "subcategory": "Mining",
+      "fuel_type": "2111",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.2,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2111",
+        "mining"
+      ]
+    },
+    {
+      "id": "useeio_2121",
+      "name": "Coal mining",
+      "category": "spend_based",
+      "subcategory": "Mining",
+      "fuel_type": "2121",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2121",
+        "mining"
+      ]
+    },
+    {
+      "id": "useeio_2122",
+      "name": "Metal ore mining",
+      "category": "spend_based",
+      "subcategory": "Mining",
+      "fuel_type": "2122",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.95,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2122",
+        "mining"
+      ]
+    },
+    {
+      "id": "useeio_2123",
+      "name": "Nonmetallic mineral mining",
+      "category": "spend_based",
+      "subcategory": "Mining",
+      "fuel_type": "2123",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2123",
+        "mining"
+      ]
+    },
+    {
+      "id": "useeio_2131",
+      "name": "Support activities for mining",
+      "category": "spend_based",
+      "subcategory": "Mining",
+      "fuel_type": "2131",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.7,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2131",
+        "mining"
+      ]
+    },
+    {
+      "id": "useeio_2211",
+      "name": "Electric power generation",
+      "category": "spend_based",
+      "subcategory": "Utilities",
+      "fuel_type": "2211",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2211",
+        "utilities"
+      ]
+    },
+    {
+      "id": "useeio_2212",
+      "name": "Natural gas distribution",
+      "category": "spend_based",
+      "subcategory": "Utilities",
+      "fuel_type": "2212",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.8,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2212",
+        "utilities"
+      ]
+    },
+    {
+      "id": "useeio_2213",
+      "name": "Water, sewage and other systems",
+      "category": "spend_based",
+      "subcategory": "Utilities",
+      "fuel_type": "2213",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.0,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2213",
+        "utilities"
+      ]
+    },
+    {
+      "id": "useeio_2361",
+      "name": "Residential building construction",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2361",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2361",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2362",
+      "name": "Nonresidential building construction",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2362",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2362",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2371",
+      "name": "Utility system construction",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2371",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2371",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2372",
+      "name": "Land subdivision",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2372",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2372",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2373",
+      "name": "Highway and street construction",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2373",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2373",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2379",
+      "name": "Other heavy construction",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2379",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2379",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2381",
+      "name": "Building foundation and exterior",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2381",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.38,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2381",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2382",
+      "name": "Building equipment contractors",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2382",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2382",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2383",
+      "name": "Building finishing contractors",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2383",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2383",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_2389",
+      "name": "Other specialty trade contractors",
+      "category": "spend_based",
+      "subcategory": "Construction",
+      "fuel_type": "2389",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_2389",
+        "construction"
+      ]
+    },
+    {
+      "id": "useeio_3111",
+      "name": "Animal food manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3111",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.7,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3111",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3112",
+      "name": "Grain and oilseed milling",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3112",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3112",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3113",
+      "name": "Sugar and confectionery",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3113",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3113",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3114",
+      "name": "Fruit and vegetable preserving",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3114",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3114",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3115",
+      "name": "Dairy product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3115",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3115",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3116",
+      "name": "Animal slaughtering and processing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3116",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.75,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3116",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3117",
+      "name": "Seafood product preparation",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3117",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3117",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3118",
+      "name": "Bakeries and tortilla manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3118",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3118",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3119",
+      "name": "Other food manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3119",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3119",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3121",
+      "name": "Beverage manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3121",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3121",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3122",
+      "name": "Tobacco manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3122",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3122",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3131",
+      "name": "Fiber, yarn, and thread mills",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3131",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3131",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3132",
+      "name": "Fabric mills",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3132",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.75,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3132",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3133",
+      "name": "Textile finishing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3133",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.65,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3133",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3141",
+      "name": "Textile furnishings mills",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3141",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3141",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3149",
+      "name": "Other textile product mills",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3149",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3149",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3151",
+      "name": "Apparel knitting mills",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3151",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3151",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3152",
+      "name": "Cut and sew apparel manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3152",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3152",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3159",
+      "name": "Apparel accessories manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3159",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3159",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3211",
+      "name": "Sawmills and wood preservation",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3211",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3211",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3212",
+      "name": "Veneer and plywood manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3212",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3212",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3219",
+      "name": "Other wood product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3219",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3219",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3221",
+      "name": "Pulp, paper, and paperboard mills",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3221",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3221",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3222",
+      "name": "Converted paper product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3222",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.65,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3222",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3231",
+      "name": "Printing and related support",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3231",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3231",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3241",
+      "name": "Petroleum and coal products",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3241",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.4,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3241",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3251",
+      "name": "Basic chemical manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3251",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.2,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3251",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3252",
+      "name": "Resin and synthetic rubber",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3252",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.95,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3252",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3253",
+      "name": "Pesticide and agricultural chemicals",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3253",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.85,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3253",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3254",
+      "name": "Pharmaceutical manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3254",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.18,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3254",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3255",
+      "name": "Paint and coating manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3255",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3255",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3256",
+      "name": "Soap and cleaning compound",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3256",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3256",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3259",
+      "name": "Other chemical manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3259",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.7,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3259",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3261",
+      "name": "Plastics product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3261",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.75,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3261",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3262",
+      "name": "Rubber product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3262",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.65,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3262",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3271",
+      "name": "Clay and refractory manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3271",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.9,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3271",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3272",
+      "name": "Glass and glass product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3272",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.85,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3272",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3273",
+      "name": "Cement and concrete manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3273",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3273",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3274",
+      "name": "Lime and gypsum manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3274",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3274",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3279",
+      "name": "Other nonmetallic mineral products",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3279",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3279",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3311",
+      "name": "Iron and steel mills",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3311",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.0,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3311",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3312",
+      "name": "Steel product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3312",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.85,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3312",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3313",
+      "name": "Alumina and aluminum production",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3313",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.95,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3313",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3314",
+      "name": "Nonferrous metal production",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3314",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3314",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3315",
+      "name": "Foundries",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3315",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.9,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3315",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3321",
+      "name": "Forging and stamping",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3321",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3321",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3322",
+      "name": "Cutlery and handtool manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3322",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3322",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3323",
+      "name": "Architectural and structural metals",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3323",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3323",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3324",
+      "name": "Boiler, tank, and shipping container",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3324",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3324",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3325",
+      "name": "Hardware manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3325",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3325",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3326",
+      "name": "Spring and wire product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3326",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3326",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3327",
+      "name": "Machine shops and threaded products",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3327",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3327",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3328",
+      "name": "Coating, engraving, heat treating",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3328",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3328",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3329",
+      "name": "Other fabricated metal products",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3329",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3329",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3331",
+      "name": "Ag/construction/mining machinery",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3331",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3331",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3332",
+      "name": "Industrial machinery manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3332",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3332",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3333",
+      "name": "Commercial/service industry machinery",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3333",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.2,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3333",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3334",
+      "name": "HVAC and commercial refrigeration",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3334",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.28,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3334",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3335",
+      "name": "Metalworking machinery",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3335",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.22,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3335",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3336",
+      "name": "Engine and turbine manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3336",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3336",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3339",
+      "name": "Other general purpose machinery",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3339",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3339",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3341",
+      "name": "Computer and peripheral equipment",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3341",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3341",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3342",
+      "name": "Communications equipment",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3342",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3342",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3343",
+      "name": "Audio and video equipment",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3343",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3343",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3344",
+      "name": "Semiconductor manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3344",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3344",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3345",
+      "name": "Electronic instruments",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3345",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.13,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3345",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3346",
+      "name": "Magnetic and optical media",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3346",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.18,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3346",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3351",
+      "name": "Electric lighting equipment",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3351",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3351",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3352",
+      "name": "Household appliance manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3352",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.28,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3352",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3353",
+      "name": "Electrical equipment manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3353",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3353",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3359",
+      "name": "Other electrical equipment",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3359",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.22,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3359",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3361",
+      "name": "Motor vehicle manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3361",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3361",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3362",
+      "name": "Motor vehicle body and trailer",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3362",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3362",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3363",
+      "name": "Motor vehicle parts manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3363",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3363",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3364",
+      "name": "Aerospace product manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3364",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.2,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3364",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3365",
+      "name": "Railroad rolling stock manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3365",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.28,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3365",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3366",
+      "name": "Ship and boat building",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3366",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.32,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3366",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3369",
+      "name": "Other transportation equipment",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3369",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3369",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3371",
+      "name": "Household and institutional furniture",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3371",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3371",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3372",
+      "name": "Office furniture manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3372",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3372",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3391",
+      "name": "Medical equipment and supplies",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3391",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3391",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_3399",
+      "name": "Other miscellaneous manufacturing",
+      "category": "spend_based",
+      "subcategory": "Manufacturing",
+      "fuel_type": "3399",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_3399",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "useeio_4231",
+      "name": "Motor vehicle parts wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4231",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4231",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4232",
+      "name": "Furniture wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4232",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4232",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4233",
+      "name": "Lumber wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4233",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.14,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4233",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4234",
+      "name": "Professional equipment wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4234",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4234",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4235",
+      "name": "Metal and mineral wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4235",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.18,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4235",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4236",
+      "name": "Household appliances wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4236",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.09,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4236",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4237",
+      "name": "Hardware and plumbing wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4237",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.11,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4237",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4238",
+      "name": "Machinery wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4238",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4238",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4239",
+      "name": "Miscellaneous durable goods wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4239",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.11,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4239",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4241",
+      "name": "Paper and packaging wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4241",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4241",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4242",
+      "name": "Drugs and sundries wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4242",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4242",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4244",
+      "name": "Grocery wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4244",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.14,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4244",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4245",
+      "name": "Farm product wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4245",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.16,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4245",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4246",
+      "name": "Chemical wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4246",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4246",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4247",
+      "name": "Petroleum wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4247",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.2,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4247",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4248",
+      "name": "Beer, wine, spirits wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4248",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4248",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4249",
+      "name": "Miscellaneous nondurable wholesale",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4249",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.11,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4249",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4411",
+      "name": "Automobile dealers",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4411",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4411",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4413",
+      "name": "Auto parts and accessories stores",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4413",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4413",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4431",
+      "name": "Electronics and appliance stores",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4431",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4431",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4441",
+      "name": "Building material and supplies",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4441",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4441",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4451",
+      "name": "Grocery stores",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4451",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4451",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4461",
+      "name": "Health and personal care stores",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4461",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4461",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4471",
+      "name": "Gasoline stations",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4471",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.22,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4471",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4481",
+      "name": "Clothing stores",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4481",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4481",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4511",
+      "name": "Sporting goods/hobby/book stores",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4511",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4511",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4521",
+      "name": "Department stores",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4521",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.09,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4521",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4529",
+      "name": "Other general merchandise stores",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4529",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4529",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4531",
+      "name": "Florists",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4531",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4531",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4539",
+      "name": "Other miscellaneous store retailers",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4539",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.09,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4539",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4541",
+      "name": "Electronic shopping and mail-order",
+      "category": "spend_based",
+      "subcategory": "Trade",
+      "fuel_type": "4541",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4541",
+        "trade"
+      ]
+    },
+    {
+      "id": "useeio_4811",
+      "name": "Scheduled air transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4811",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4811",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4812",
+      "name": "Nonscheduled air transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4812",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4812",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4821",
+      "name": "Rail transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4821",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4821",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4831",
+      "name": "Deep sea freight transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4831",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4831",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4832",
+      "name": "Inland water transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4832",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4832",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4841",
+      "name": "General freight trucking",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4841",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.8,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4841",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4842",
+      "name": "Specialized freight trucking",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4842",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.75,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4842",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4851",
+      "name": "Urban transit systems",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4851",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.65,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4851",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4852",
+      "name": "Interurban bus transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4852",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.45,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4852",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4853",
+      "name": "Taxi and limousine service",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4853",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.6,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4853",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4854",
+      "name": "School and employee bus",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4854",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.55,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4854",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4859",
+      "name": "Other ground passenger transport",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4859",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4859",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4861",
+      "name": "Pipeline transportation of crude oil",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4861",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4861",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4862",
+      "name": "Pipeline transportation of natural gas",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4862",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4862",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4869",
+      "name": "Other pipeline transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4869",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.32,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4869",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4871",
+      "name": "Scenic and sightseeing transport",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4871",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.4,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4871",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4881",
+      "name": "Support activities for air transport",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4881",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4881",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4882",
+      "name": "Support activities for rail transport",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4882",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4882",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4883",
+      "name": "Support for water transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4883",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.28,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4883",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4884",
+      "name": "Support for road transportation",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4884",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.22,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4884",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4885",
+      "name": "Freight transportation arrangement",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4885",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4885",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4889",
+      "name": "Other transportation support",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4889",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.2,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4889",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4911",
+      "name": "Postal service",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4911",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.18,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4911",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4921",
+      "name": "Couriers and express delivery",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4921",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4921",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4922",
+      "name": "Local messengers and delivery",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4922",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4922",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_4931",
+      "name": "Warehousing and storage",
+      "category": "spend_based",
+      "subcategory": "Transportation",
+      "fuel_type": "4931",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_4931",
+        "transportation"
+      ]
+    },
+    {
+      "id": "useeio_5111",
+      "name": "Newspaper, book, directory publishers",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5111",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5111",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5112",
+      "name": "Software publishers",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5112",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5112",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5121",
+      "name": "Motion picture and video industries",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5121",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5121",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5122",
+      "name": "Sound recording industries",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5122",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5122",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5151",
+      "name": "Radio and television broadcasting",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5151",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5151",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5152",
+      "name": "Cable and subscription programming",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5152",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5152",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5171",
+      "name": "Wired telecommunications",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5171",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5171",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5172",
+      "name": "Wireless telecommunications",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5172",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5172",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5174",
+      "name": "Satellite telecommunications",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5174",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5174",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5179",
+      "name": "Other telecommunications",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5179",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5179",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5182",
+      "name": "Data processing and hosting",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5182",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5182",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5191",
+      "name": "Other information services",
+      "category": "spend_based",
+      "subcategory": "Information",
+      "fuel_type": "5191",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5191",
+        "information"
+      ]
+    },
+    {
+      "id": "useeio_5211",
+      "name": "Monetary authorities - central bank",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5211",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.03,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5211",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5221",
+      "name": "Depository credit intermediation",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5221",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5221",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5222",
+      "name": "Nondepository credit intermediation",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5222",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.03,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5222",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5223",
+      "name": "Activities related to credit",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5223",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.03,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5223",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5231",
+      "name": "Securities and commodity exchanges",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5231",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5231",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5239",
+      "name": "Other financial investment activities",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5239",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5239",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5241",
+      "name": "Insurance carriers",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5241",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5241",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5242",
+      "name": "Insurance agencies and brokerages",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5242",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.03,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5242",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5251",
+      "name": "Insurance and employee benefit funds",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5251",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.03,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5251",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5259",
+      "name": "Other investment pools and funds",
+      "category": "spend_based",
+      "subcategory": "Finance",
+      "fuel_type": "5259",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5259",
+        "finance"
+      ]
+    },
+    {
+      "id": "useeio_5311",
+      "name": "Lessors of real estate",
+      "category": "spend_based",
+      "subcategory": "Real Estate",
+      "fuel_type": "5311",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5311",
+        "real estate"
+      ]
+    },
+    {
+      "id": "useeio_5312",
+      "name": "Offices of real estate agents",
+      "category": "spend_based",
+      "subcategory": "Real Estate",
+      "fuel_type": "5312",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5312",
+        "real estate"
+      ]
+    },
+    {
+      "id": "useeio_5313",
+      "name": "Activities related to real estate",
+      "category": "spend_based",
+      "subcategory": "Real Estate",
+      "fuel_type": "5313",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5313",
+        "real estate"
+      ]
+    },
+    {
+      "id": "useeio_5411",
+      "name": "Legal services",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5411",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5411",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5412",
+      "name": "Accounting and bookkeeping",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5412",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5412",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5413",
+      "name": "Architectural and engineering services",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5413",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5413",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5414",
+      "name": "Specialized design services",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5414",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5414",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5415",
+      "name": "Computer systems design",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5415",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5415",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5416",
+      "name": "Management consulting",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5416",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5416",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5417",
+      "name": "Scientific research and development",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5417",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5417",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5418",
+      "name": "Advertising and related services",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5418",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5418",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5419",
+      "name": "Other professional services",
+      "category": "spend_based",
+      "subcategory": "Professional",
+      "fuel_type": "5419",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5419",
+        "professional"
+      ]
+    },
+    {
+      "id": "useeio_5511",
+      "name": "Management of companies",
+      "category": "spend_based",
+      "subcategory": "Management",
+      "fuel_type": "5511",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5511",
+        "management"
+      ]
+    },
+    {
+      "id": "useeio_5611",
+      "name": "Office administrative services",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5611",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5611",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5612",
+      "name": "Facilities support services",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5612",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5612",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5613",
+      "name": "Employment services",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5613",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5613",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5614",
+      "name": "Business support services",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5614",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5614",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5615",
+      "name": "Travel arrangement services",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5615",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5615",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5616",
+      "name": "Investigation and security services",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5616",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5616",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5617",
+      "name": "Services to buildings and dwellings",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5617",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5617",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5619",
+      "name": "Other support services",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5619",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.05,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5619",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5621",
+      "name": "Waste collection",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5621",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5621",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5622",
+      "name": "Waste treatment and disposal",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5622",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.5,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5622",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_5629",
+      "name": "Remediation services",
+      "category": "spend_based",
+      "subcategory": "Admin",
+      "fuel_type": "5629",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_5629",
+        "admin"
+      ]
+    },
+    {
+      "id": "useeio_6111",
+      "name": "Elementary and secondary schools",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "6111",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6111",
+        "education"
+      ]
+    },
+    {
+      "id": "useeio_6112",
+      "name": "Junior colleges",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "6112",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6112",
+        "education"
+      ]
+    },
+    {
+      "id": "useeio_6113",
+      "name": "Colleges and universities",
+      "category": "spend_based",
+      "subcategory": "Education",
+      "fuel_type": "6113",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6113",
+        "education"
+      ]
+    },
+    {
+      "id": "useeio_6211",
+      "name": "Offices of physicians",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6211",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6211",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6212",
+      "name": "Offices of dentists",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6212",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6212",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6213",
+      "name": "Offices of other health practitioners",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6213",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6213",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6214",
+      "name": "Outpatient care centers",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6214",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6214",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6215",
+      "name": "Medical and diagnostic laboratories",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6215",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6215",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6216",
+      "name": "Home health care services",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6216",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6216",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6219",
+      "name": "Other ambulatory health care",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6219",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6219",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6221",
+      "name": "General medical and surgical hospitals",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6221",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.2,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6221",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6222",
+      "name": "Psychiatric and substance abuse hospitals",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6222",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.18,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6222",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6223",
+      "name": "Specialty hospitals",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6223",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.19,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6223",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6231",
+      "name": "Nursing care facilities",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6231",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6231",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6232",
+      "name": "Residential mental health facilities",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6232",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.14,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6232",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6233",
+      "name": "Continuing care retirement communities",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6233",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.13,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6233",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6239",
+      "name": "Other residential care facilities",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6239",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6239",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6241",
+      "name": "Individual and family services",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6241",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6241",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6242",
+      "name": "Community food/housing services",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6242",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6242",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6243",
+      "name": "Vocational rehabilitation services",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6243",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6243",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_6244",
+      "name": "Child day care services",
+      "category": "spend_based",
+      "subcategory": "Healthcare",
+      "fuel_type": "6244",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_6244",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "useeio_7211",
+      "name": "Traveler accommodation",
+      "category": "spend_based",
+      "subcategory": "Accommodation",
+      "fuel_type": "7211",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7211",
+        "accommodation"
+      ]
+    },
+    {
+      "id": "useeio_7212",
+      "name": "RV parks and recreational camps",
+      "category": "spend_based",
+      "subcategory": "Accommodation",
+      "fuel_type": "7212",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7212",
+        "accommodation"
+      ]
+    },
+    {
+      "id": "useeio_7213",
+      "name": "Rooming and boarding houses",
+      "category": "spend_based",
+      "subcategory": "Accommodation",
+      "fuel_type": "7213",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7213",
+        "accommodation"
+      ]
+    },
+    {
+      "id": "useeio_7221",
+      "name": "Full-service restaurants",
+      "category": "spend_based",
+      "subcategory": "Food Service",
+      "fuel_type": "7221",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.3,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7221",
+        "food service"
+      ]
+    },
+    {
+      "id": "useeio_7222",
+      "name": "Limited-service eating places",
+      "category": "spend_based",
+      "subcategory": "Food Service",
+      "fuel_type": "7222",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.35,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7222",
+        "food service"
+      ]
+    },
+    {
+      "id": "useeio_7223",
+      "name": "Special food services",
+      "category": "spend_based",
+      "subcategory": "Food Service",
+      "fuel_type": "7223",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.28,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7223",
+        "food service"
+      ]
+    },
+    {
+      "id": "useeio_7224",
+      "name": "Drinking places (alcoholic beverages)",
+      "category": "spend_based",
+      "subcategory": "Food Service",
+      "fuel_type": "7224",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.25,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7224",
+        "food service"
+      ]
+    },
+    {
+      "id": "useeio_7111",
+      "name": "Performing arts companies",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7111",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7111",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_7112",
+      "name": "Spectator sports",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7112",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7112",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_7113",
+      "name": "Promoters of events",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7113",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7113",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_7114",
+      "name": "Agents for artists and performers",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7114",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.04,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7114",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_7115",
+      "name": "Independent artists and performers",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7115",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.03,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7115",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_7121",
+      "name": "Museums, historical sites, zoos",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7121",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7121",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_7131",
+      "name": "Amusement parks and arcades",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7131",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7131",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_7132",
+      "name": "Gambling industries",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7132",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7132",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_7139",
+      "name": "Other amusement and recreation",
+      "category": "spend_based",
+      "subcategory": "Arts",
+      "fuel_type": "7139",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.09,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_7139",
+        "arts"
+      ]
+    },
+    {
+      "id": "useeio_8111",
+      "name": "Automotive repair and maintenance",
+      "category": "spend_based",
+      "subcategory": "Services",
+      "fuel_type": "8111",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.12,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_8111",
+        "services"
+      ]
+    },
+    {
+      "id": "useeio_8112",
+      "name": "Electronic equipment repair",
+      "category": "spend_based",
+      "subcategory": "Services",
+      "fuel_type": "8112",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.08,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_8112",
+        "services"
+      ]
+    },
+    {
+      "id": "useeio_8113",
+      "name": "Commercial machinery repair",
+      "category": "spend_based",
+      "subcategory": "Services",
+      "fuel_type": "8113",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_8113",
+        "services"
+      ]
+    },
+    {
+      "id": "useeio_8114",
+      "name": "Personal and household goods repair",
+      "category": "spend_based",
+      "subcategory": "Services",
+      "fuel_type": "8114",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.07,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_8114",
+        "services"
+      ]
+    },
+    {
+      "id": "useeio_8121",
+      "name": "Personal care services",
+      "category": "spend_based",
+      "subcategory": "Services",
+      "fuel_type": "8121",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_8121",
+        "services"
+      ]
+    },
+    {
+      "id": "useeio_8122",
+      "name": "Death care services",
+      "category": "spend_based",
+      "subcategory": "Services",
+      "fuel_type": "8122",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.1,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_8122",
+        "services"
+      ]
+    },
+    {
+      "id": "useeio_8123",
+      "name": "Drycleaning and laundry services",
+      "category": "spend_based",
+      "subcategory": "Services",
+      "fuel_type": "8123",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.15,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_8123",
+        "services"
+      ]
+    },
+    {
+      "id": "useeio_8129",
+      "name": "Other personal services",
+      "category": "spend_based",
+      "subcategory": "Services",
+      "fuel_type": "8129",
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0.06,
+      "activity_unit": "USD",
+      "region": "US",
+      "year": 2023,
+      "tags": [
+        "spend_based",
+        "naics_8129",
+        "services"
+      ]
+    }
+  ]
+}

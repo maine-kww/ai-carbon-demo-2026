@@ -1,0 +1,119 @@
+{
+  "_meta": {
+    "version": "v1.0",
+    "updated_at": "2025-10-09",
+    "description": "全国电网平均排放因子库。按区域和年份组织，供Scope2间接排放核算使用。",
+    "source": "生态环境部发布的年度电网排放因子",
+    "source_note": "排放因子每年更新，使用时请查询对应年份值；如当年因子未发布，可暂用上一年度值并标注"
+  },
+  "factors": [
+    {
+      "year": 2023,
+      "region": "全国",
+      "region_code": "CN",
+      "factor_value": 0.5703,
+      "factor_unit": "tCO₂/MWh",
+      "source": "生态环境部《关于发布2023年度全国碳排放权交易市场配额分配方案等相关事项的通知》",
+      "source_code": "环气候〔2024〕XX号",
+      "status": "正式发布",
+      "applicable_scope": "全国碳市场发电行业以外行业的Scope2核算",
+      "notes": "2023年度因子"
+    },
+    {
+      "year": 2022,
+      "region": "全国",
+      "region_code": "CN",
+      "factor_value": 0.5810,
+      "factor_unit": "tCO₂/MWh",
+      "source": "生态环境部",
+      "source_code": "环气候〔2023〕XX号",
+      "status": "正式发布",
+      "applicable_scope": "2022年度核算",
+      "notes": ""
+    },
+    {
+      "year": 2021,
+      "region": "全国",
+      "region_code": "CN",
+      "factor_value": 0.5810,
+      "factor_unit": "tCO₂/MWh",
+      "source": "生态环境部",
+      "source_code": "",
+      "status": "正式发布",
+      "applicable_scope": "2021年度核算",
+      "notes": ""
+    },
+    {
+      "year": 2023,
+      "region": "华北区域",
+      "region_code": "华北",
+      "factor_value": 0.6823,
+      "factor_unit": "tCO₂/MWh",
+      "source": "参考区域电网排放因子",
+      "source_code": "",
+      "status": "参考值",
+      "applicable_scope": "区域级电网排放因子，产品碳足迹核算",
+      "notes": "含北京、天津、河北、山西、山东、内蒙古西部"
+    },
+    {
+      "year": 2023,
+      "region": "华东区域",
+      "region_code": "华东",
+      "factor_value": 0.5164,
+      "factor_unit": "tCO₂/MWh",
+      "source": "参考区域电网排放因子",
+      "source_code": "",
+      "status": "参考值",
+      "applicable_scope": "区域级电网排放因子，产品碳足迹核算",
+      "notes": "含上海、江苏、浙江、安徽、福建、江西、山东"
+    },
+    {
+      "year": 2023,
+      "region": "华中区域",
+      "region_code": "华中",
+      "factor_value": 0.5469,
+      "factor_unit": "tCO₂/MWh",
+      "source": "参考区域电网排放因子",
+      "source_code": "",
+      "status": "参考值",
+      "applicable_scope": "区域级电网排放因子，产品碳足迹核算",
+      "notes": "含河南、湖北、湖南、重庆、四川、江西"
+    },
+    {
+      "year": 2023,
+      "region": "东北区域",
+      "region_code": "东北",
+      "factor_value": 0.6349,
+      "factor_unit": "tCO₂/MWh",
+      "source": "参考区域电网排放因子",
+      "source_code": "",
+      "status": "参考值",
+      "applicable_scope": "区域级电网排放因子，产品碳足迹核算",
+      "notes": "含辽宁、吉林、黑龙江、内蒙古东部"
+    },
+    {
+      "year": 2023,
+      "region": "西北区域",
+      "region_code": "西北",
+      "factor_value": 0.5996,
+      "factor_unit": "tCO₂/MWh",
+      "source": "参考区域电网排放因子",
+      "source_code": "",
+      "status": "参考值",
+      "applicable_scope": "区域级电网排放因子，产品碳足迹核算",
+      "notes": "含陕西、甘肃、青海、宁夏、新疆、内蒙古西部"
+    },
+    {
+      "year": 2023,
+      "region": "南方区域",
+      "region_code": "南方",
+      "factor_value": 0.4235,
+      "factor_unit": "tCO₂/MWh",
+      "source": "参考区域电网排放因子",
+      "source_code": "",
+      "status": "参考值",
+      "applicable_scope": "区域级电网排放因子，产品碳足迹核算",
+      "notes": "含广东、广西、云南、贵州、海南"
+    }
+  ]
+}

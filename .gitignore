@@ -1,2 +1,20 @@
 # Google App Engine generated folder
 appengine-generated/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# carbon-md 本地运行时噪音
+carbon-md/**/tmp/
+carbon-md/**/__pycache__/
+carbon-md/**/*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

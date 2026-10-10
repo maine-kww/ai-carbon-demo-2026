@@ -1,0 +1,162 @@
+{
+  "_meta": {
+    "version": "v1.0",
+    "updated_at": "2025-10-09",
+    "description": "工业生产过程排放因子库。按行业和排放源组织。",
+    "source": "各行业核算指南、IPCC 2006指南",
+    "update_frequency": "随核算指南修订更新"
+  },
+  "factors_by_industry": [
+    {
+      "industry": "钢铁",
+      "process_emissions": [
+        {
+          "source": "熔剂分解（石灰石）",
+          "factor_name": "石灰石分解排放因子",
+          "ef_value": 0.440,
+          "ef_unit": "tCO₂/t石灰石",
+          "basis": "CaCO3 → CaO + CO2，理论计算值44/100",
+          "source": "钢铁行业核算指南",
+          "confidence": "high"
+        },
+        {
+          "source": "熔剂分解（白云石）",
+          "factor_name": "白云石分解排放因子",
+          "ef_value": 0.477,
+          "ef_unit": "tCO₂/t白云石",
+          "basis": "CaMg(CO3)2 → CaO·MgO + 2CO2，理论计算值88/184.4",
+          "source": "钢铁行业核算指南",
+          "confidence": "high"
+        },
+        {
+          "source": "电极消耗",
+          "factor_name": "电极消耗排放因子",
+          "ef_value": 3.667,
+          "ef_unit": "tCO₂/t电极",
+          "basis": "C → CO2，44/12",
+          "source": "钢铁行业核算指南",
+          "confidence": "high",
+          "notes": "电炉钢使用"
+        },
+        {
+          "source": "生铁含碳量",
+          "factor_name": "生铁碳含量",
+          "ef_value": 0.045,
+          "ef_unit": "tC/t生铁",
+          "basis": "生铁碳含量默认值4.5%",
+          "source": "钢铁行业核算指南",
+          "confidence": "high",
+          "notes": "用于碳平衡法核算"
+        }
+      ]
+    },
+    {
+      "industry": "水泥",
+      "process_emissions": [
+        {
+          "source": "熟料碳酸盐分解",
+          "factor_name": "熟料分解排放因子",
+          "ef_value": 0.525,
+          "ef_unit": "tCO₂/t熟料",
+          "basis": "水泥熟料中CaO和MgO对应的碳酸盐分解",
+          "source": "水泥行业核算指南",
+          "confidence": "high",
+          "notes": "缺省值，有实测数据时应用实测值"
+        },
+        {
+          "source": "熟料中CaO含量",
+          "factor_name": "熟料CaO含量",
+          "ef_value": 0.646,
+          "ef_unit": "tCaO/t熟料",
+          "basis": "缺省值",
+          "source": "水泥行业核算指南",
+          "confidence": "medium",
+          "notes": "优先使用企业实测值"
+        },
+        {
+          "source": "熟料中MgO含量",
+          "factor_name": "熟料MgO含量",
+          "ef_value": 0.024,
+          "ef_unit": "tMgO/t熟料",
+          "basis": "缺省值",
+          "source": "水泥行业核算指南",
+          "confidence": "medium",
+          "notes": "优先使用企业实测值"
+        }
+      ]
+    },
+    {
+      "industry": "铝冶炼",
+      "process_emissions": [
+        {
+          "source": "阳极消耗CO2",
+          "factor_name": "阳极消耗CO2排放因子",
+          "ef_value": 3.000,
+          "ef_unit": "tCO₂/t炭阳极",
+          "basis": "阳极碳氧化生成CO2",
+          "source": "铝冶炼行业核算指南",
+          "confidence": "high",
+          "notes": "理论值，企业应优先使用实测值"
+        },
+        {
+          "source": "PFC排放（CF4）",
+          "factor_name": "CF4排放因子",
+          "ef_value": 0.0008,
+          "ef_unit": "tCF4/t铝液",
+          "basis": "缺省值，应结合实际阳极效应情况",
+          "source": "铝冶炼行业核算指南",
+          "confidence": "medium",
+          "notes": "GWP值：CF4=7390（AR5）/6630（AR6），使用时需明确版本"
+        },
+        {
+          "source": "PFC排放（C2F6）",
+          "factor_name": "C2F6排放因子",
+          "ef_value": 0.00008,
+          "ef_unit": "tC2F6/t铝液",
+          "basis": "缺省值",
+          "source": "铝冶炼行业核算指南",
+          "confidence": "medium",
+          "notes": "GWP值：C2F6=12200（AR5）/11100（AR6）"
+        }
+      ]
+    },
+    {
+      "industry": "电力",
+      "process_emissions": [
+        {
+          "source": "脱硫过程排放",
+          "factor_name": "脱硫CO2排放因子",
+          "ef_value": 0.440,
+          "ef_unit": "tCO₂/tCaCO3",
+          "basis": "石灰石-石膏法脱硫，CaCO3 + SO2 → CaSO4 + CO2",
+          "source": "发电行业核算指南",
+          "confidence": "high",
+          "notes": "若使用CaO脱硫则不产生CO2"
+        }
+      ]
+    }
+  ],
+  "gwp_values": {
+    "说明": "全球增温潜势值，用于非CO2温室气体折算CO2eq",
+    "ipcc_ar5": {
+      "CO2": 1,
+      "CH4": 28,
+      "N2O": 265,
+      "CF4": 7390,
+      "C2F6": 12200,
+      "SF6": 23500,
+      "HFC-23": 12400
+    },
+    "ipcc_ar6": {
+      "CO2": 1,
+      "CH4": 27,
+      "N2O": 273,
+      "CF4": 6630,
+      "C2F6": 11100,
+      "SF6": 25200,
+      "HFC-23": 14600
+    },
+    "china_default": "IPCC AR5（中国核算体系现行使用）",
+    "note": "使用时必须标注GWP版本；如国家标准有更新，以最新标准为准"
+  }
+}

@@ -1,0 +1,349 @@
+{
+  "meta": {
+    "skills_root": "D:\\skills\\carbon-md",
+    "runtime_dir": "D:\\skills\\carbon-md\\_runtime",
+    "created_at": "2026-10-09T17:54:59",
+    "updated_at": "2026-10-09T17:55:00"
+  },
+  "skills": {
+    "carbon-accounting": {
+      "name": "carbon-accounting",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-accounting",
+      "description": "碳排放核算与报告的专业 Skill。当用户需要计算温室气体排放量、确定核算边界与方法学、使用排放因子进行活动数据折算、编制企业/产品/项目层面碳排放报告、核查温室气体清单或处理碳排放核算相关工作（如碳盘查、温室气体排放报告、碳足迹）时使用。覆盖范围 1/2/3 排放、ISO 14064、GHG Protocol、中国温室气体排放核算方法与报告指南，以及基于活动数据×排放因子的自动计算。数据驱动：核算标准、行业规则、排放因子、政策依据均从本地数据层（D:\\skills\\carbon-md\\_data）动态查询，支持碳市场行业扩围与因子年度更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-accounting",
+          "status": "stable",
+          "description": "碳排放核算与报告的专业 Skill。当用户需要计算温室气体排放量、确定核算边界与方法学、使用排放因子进行活动数据折算、编制企业/产品/项目层面碳排放报告、核查温室气体清单或处理碳排放核算相关工作（如碳盘查、温室气体排放报告、碳足迹）时使用。覆盖范围 1/2/3 排放、ISO 14064、GHG Protocol、中国温室气体排放核算方法与报告指南，以及基于活动数据×排放因子的自动计算。数据驱动：核算标准、行业规则、排放因子、政策依据均从本地数据层（D:\\skills\\carbon-md\\_data）动态查询，支持碳市场行业扩围与因子年度更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-esg": {
+      "name": "carbon-esg",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-esg",
+      "description": "ESG 与绿色金融披露的专业 Skill。当用户需要编制 ESG 报告、按披露框架（GRI/SASB/ISSB/气候相关披露）组织内容、认定绿色信贷/绿色债券项目是否符合标准、做环境信息披露或梳理 ESG 指标与数据口径时使用。覆盖 ESG 报告编制、绿色金融认定、气候披露（TCFD/ISSB）与指标管理。数据驱动：披露/核算标准版本、适用监管政策与政策依据文号、行业核算规则、排放因子均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持标准换版与政策更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-esg",
+          "status": "stable",
+          "description": "ESG 与绿色金融披露的专业 Skill。当用户需要编制 ESG 报告、按披露框架（GRI/SASB/ISSB/气候相关披露）组织内容、认定绿色信贷/绿色债券项目是否符合标准、做环境信息披露或梳理 ESG 指标与数据口径时使用。覆盖 ESG 报告编制、绿色金融认定、气候披露（TCFD/ISSB）与指标管理。数据驱动：披露/核算标准版本、适用监管政策与政策依据文号、行业核算规则、排放因子均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持标准换版与政策更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-finance": {
+      "name": "carbon-finance",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-finance",
+      "description": "碳金融产品对接的专业 Skill。当用户需要对接碳质押融资、碳回购、碳远期、碳基金等碳金融产品，评估碳资产融资价值、测算质押/回购额度与成本、了解银行与交易所碳金融产品规则、做碳资产盘活与融资决策时使用。覆盖碳金融产品类型、额度测算、风险与合规提示。数据驱动：碳资产对应的配额方案、激励政策、CCER 规章等政策依据与文号日期从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持碳市场扩围与政策更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-finance",
+          "status": "stable",
+          "description": "碳金融产品对接的专业 Skill。当用户需要对接碳质押融资、碳回购、碳远期、碳基金等碳金融产品，评估碳资产融资价值、测算质押/回购额度与成本、了解银行与交易所碳金融产品规则、做碳资产盘活与融资决策时使用。覆盖碳金融产品类型、额度测算、风险与合规提示。数据驱动：碳资产对应的配额方案、激励政策、CCER 规章等政策依据与文号日期从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持碳市场扩围与政策更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-footprint": {
+      "name": "carbon-footprint",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-footprint",
+      "description": "产品碳足迹核算的专业 Skill。当用户需要按 ISO 14067 / PAS 2050 计算某产品的碳足迹（PCF）、界定产品生命周期系统边界（摇篮到大门/摇篮到坟墓）、收集物料与工艺活动数据、选择背景数据库（Ecoinvent/中国本地数据库）并输出产品碳足迹报告时使用。覆盖生命周期评估（LCA）基本流程、功能单位与分配、产品碳标签认证准备。数据驱动：适用核算标准与版本、行业规则、能源/过程排放因子、GWP 版本与政策依据均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持行业扩围与因子年度更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-footprint",
+          "status": "stable",
+          "description": "产品碳足迹核算的专业 Skill。当用户需要按 ISO 14067 / PAS 2050 计算某产品的碳足迹（PCF）、界定产品生命周期系统边界（摇篮到大门/摇篮到坟墓）、收集物料与工艺活动数据、选择背景数据库（Ecoinvent/中国本地数据库）并输出产品碳足迹报告时使用。覆盖生命周期评估（LCA）基本流程、功能单位与分配、产品碳标签认证准备。数据驱动：适用核算标准与版本、行业规则、能源/过程排放因子、GWP 版本与政策依据均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持行业扩围与因子年度更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-inclusion": {
+      "name": "carbon-inclusion",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-inclusion",
+      "description": "碳普惠体系搭建与碳积分运营的专业 Skill。当用户需要设计碳普惠机制（个人/小微企业低碳行为量化激励）、搭建碳积分账户与减排量核算、设计积分获取/消费/兑换规则、运营碳积分平台或对接碳普惠减排量交易时使用。面向政府、园区、品牌企业开展低碳行为引导与公众参与运营。数据驱动：碳普惠相关政策与减排量进入自愿减排市场的顶层依据从本地数据层（D:\\skills\\carbon-md\\data\\policy\\policy_metadata.json）查询；节电类场景减排因子对应因子库电力排放因子动态查询，数据层无对应记录的行为因子回退 references 并标注 legacy 回退。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-inclusion",
+          "status": "stable",
+          "description": "碳普惠体系搭建与碳积分运营的专业 Skill。当用户需要设计碳普惠机制（个人/小微企业低碳行为量化激励）、搭建碳积分账户与减排量核算、设计积分获取/消费/兑换规则、运营碳积分平台或对接碳普惠减排量交易时使用。面向政府、园区、品牌企业开展低碳行为引导与公众参与运营。数据驱动：碳普惠相关政策与减排量进入自愿减排市场的顶层依据从本地数据层（D:\\skills\\carbon-md\\data\\policy\\policy_metadata.json）查询；节电类场景减排因子对应因子库电力排放因子动态查询，数据层无对应记录的行为因子回退 references 并标注 legacy 回退。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-mrv": {
+      "name": "carbon-mrv",
+      "version": "1.1",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\_runtime\\staging\\carbon-mrv\\v1.1",
+      "description": "MRV 体系搭建与核查准备【灰度 v1.1】：description 已修改，用于区分新旧版本，仅存在于 staging 副本，生产目录未改动。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-mrv",
+          "status": "superseded",
+          "description": "MRV 体系搭建与核查准备的专业 Skill。当用户需要为企业建立碳排放监测（Monitoring）、报告（Reporting）、核查（Verification）体系，编制监测计划、设计数据收集与质量控制流程、准备核查迎检材料、应对第三方核查或主管部门复核时使用。覆盖 MRV 制度要求、监测计划编制、数据管理、核查准备清单。数据驱动：适用 MRV 制度/核算标准、行业监测与核查要求、排放因子、政策依据文号与日期均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持碳市场行业扩围与政策更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        },
+        {
+          "version": "1.1",
+          "path": "D:\\skills\\carbon-md\\_runtime\\staging\\carbon-mrv\\v1.1",
+          "status": "stable",
+          "description": "MRV 体系搭建与核查准备【灰度 v1.1】：description 已修改，用于区分新旧版本，仅存在于 staging 副本，生产目录未改动。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:55:00"
+        },
+        {
+          "version": "1.2",
+          "path": "D:\\skills\\carbon-md\\_runtime\\staging\\carbon-mrv\\v1.2",
+          "status": "rolled-back",
+          "description": "MRV【灰度 v1.2】：本次发版误删了 scripts 目录。",
+          "created_at": "2026-10-09T17:55:00",
+          "promoted_at": null
+        }
+      ]
+    },
+    "carbon-policy": {
+      "name": "carbon-policy",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-policy",
+      "description": "双碳政策法规检索与解读的专业 Skill。当用户需要查找或解读中国碳达峰碳中和相关政策、法规、标准、行业指南、配额分配办法、全国碳市场交易规则，或梳理某行业/地区的双碳政策要点、合规义务与时间节点时使用。覆盖\"1+N\"政策体系、应对气候变化法、全国碳排放权交易市场规则、MRV 制度、行业核算报告指南、CCER 办法等。数据驱动：政策检索以本地数据层（D:\\skills\\carbon-md\\_data\\policy_meta.json）为第一入口，按关键词查询已核实的政策元数据（文号、发布机关、发布/施行日期、时效状态、原文链接、数据状态），再按需联网核验补充；支持政策更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-policy",
+          "status": "stable",
+          "description": "双碳政策法规检索与解读的专业 Skill。当用户需要查找或解读中国碳达峰碳中和相关政策、法规、标准、行业指南、配额分配办法、全国碳市场交易规则，或梳理某行业/地区的双碳政策要点、合规义务与时间节点时使用。覆盖\"1+N\"政策体系、应对气候变化法、全国碳排放权交易市场规则、MRV 制度、行业核算报告指南、CCER 办法等。数据驱动：政策检索以本地数据层（D:\\skills\\carbon-md\\_data\\policy_meta.json）为第一入口，按关键词查询已核实的政策元数据（文号、发布机关、发布/施行日期、时效状态、原文链接、数据状态），再按需联网核验补充；支持政策更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-policy-monitor": {
+      "name": "carbon-policy-monitor",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-policy-monitor",
+      "description": "双碳政策定期监控与数据层联动 Skill。当需要定期扫描白名单来源网站（生态环境部/中国政府网/发改委/工信部/全国碳市场交易机构/省级生态环境主管部门）、检测新政策发布或旧政策更新、与 _data/policy_meta.json 比对生成变更清单、合并更新政策元数据并标记受影响行业与受影响 skill 时使用。本 skill 是 carbon-md 数据驱动体系的\"政策耳目\"：负责发现变化、驱动数据层更新、并提示哪些下游 skill（carbon-accounting/carbon-trading/carbon-mrv/green-factory 等）需要重新引用最新政策版本。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-policy-monitor",
+          "status": "stable",
+          "description": "双碳政策定期监控与数据层联动 Skill。当需要定期扫描白名单来源网站（生态环境部/中国政府网/发改委/工信部/全国碳市场交易机构/省级生态环境主管部门）、检测新政策发布或旧政策更新、与 _data/policy_meta.json 比对生成变更清单、合并更新政策元数据并标记受影响行业与受影响 skill 时使用。本 skill 是 carbon-md 数据驱动体系的\"政策耳目\"：负责发现变化、驱动数据层更新、并提示哪些下游 skill（carbon-accounting/carbon-trading/carbon-mrv/green-factory 等）需要重新引用最新政策版本。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-roadmap": {
+      "name": "carbon-roadmap",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-roadmap",
+      "description": "企业碳中和路径规划的专业 Skill。当用户需要制定企业碳中和/净零目标与实现路径，测算基准排放、设定分阶段减排目标、评估减排措施（能效、可再生能源、电气化、CCUS、碳汇抵消）、编制碳中和发展路线图与实施时间表时使用。覆盖科学碳目标（SBTi）、目标基准年、抵消与残余排放处理。数据驱动：行业核算规则与碳市场扩围节点、配额方案、零碳工厂培育行业清单等政策时间表、排放因子均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持碳市场扩围与政策更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-roadmap",
+          "status": "stable",
+          "description": "企业碳中和路径规划的专业 Skill。当用户需要制定企业碳中和/净零目标与实现路径，测算基准排放、设定分阶段减排目标、评估减排措施（能效、可再生能源、电气化、CCUS、碳汇抵消）、编制碳中和发展路线图与实施时间表时使用。覆盖科学碳目标（SBTi）、目标基准年、抵消与残余排放处理。数据驱动：行业核算规则与碳市场扩围节点、配额方案、零碳工厂培育行业清单等政策时间表、排放因子均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持碳市场扩围与政策更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-sink": {
+      "name": "carbon-sink",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-sink",
+      "description": "碳汇项目开发的专业 Skill。当用户需要开发林业（造林/森林经营）、海洋（蓝碳）、草地等碳汇项目，评估固碳量与碳汇方法学适用性、核算碳汇量、编制项目设计文件、进行碳汇交易或 CCER 开发对接时使用。覆盖造林再造林、森林经营、蓝碳、草地碳汇的核算与开发流程。数据驱动：CCER 顶层制度依据与碳汇方法学政策适用性从本地数据层（D:\\skills\\carbon-md\\data\\policy\\policy_metadata.json）动态查询；项目排放侧排放因子从因子库查询；数据层暂无 LULUCF 碳汇计量因子分库时回退 references 历史参数并标注 legacy 回退，支持政策更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-sink",
+          "status": "stable",
+          "description": "碳汇项目开发的专业 Skill。当用户需要开发林业（造林/森林经营）、海洋（蓝碳）、草地等碳汇项目，评估固碳量与碳汇方法学适用性、核算碳汇量、编制项目设计文件、进行碳汇交易或 CCER 开发对接时使用。覆盖造林再造林、森林经营、蓝碳、草地碳汇的核算与开发流程。数据驱动：CCER 顶层制度依据与碳汇方法学政策适用性从本地数据层（D:\\skills\\carbon-md\\data\\policy\\policy_metadata.json）动态查询；项目排放侧排放因子从因子库查询；数据层暂无 LULUCF 碳汇计量因子分库时回退 references 历史参数并标注 legacy 回退，支持政策更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-system": {
+      "name": "carbon-system",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-system",
+      "description": "企业碳管理体系建设与运营的专业 Skill。当用户需要为企业搭建碳管理组织与制度、设计碳管理目标与治理架构、建立排放数据与报告流程、编制碳管理制度文件（方针、程序、职责）、开展碳管理评审或运营常态化碳管理工作时使用。覆盖碳管理体系框架、组织治理、制度与流程设计。数据驱动：体系所衔接的核算标准版本（GB/T 32150 / GB/T 32151 系列、ISO 14064 方向）、行业核算规则与合规义务、政策依据文号均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持标准换版与碳市场扩围而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-system",
+          "status": "stable",
+          "description": "企业碳管理体系建设与运营的专业 Skill。当用户需要为企业搭建碳管理组织与制度、设计碳管理目标与治理架构、建立排放数据与报告流程、编制碳管理制度文件（方针、程序、职责）、开展碳管理评审或运营常态化碳管理工作时使用。覆盖碳管理体系框架、组织治理、制度与流程设计。数据驱动：体系所衔接的核算标准版本（GB/T 32150 / GB/T 32151 系列、ISO 14064 方向）、行业核算规则与合规义务、政策依据文号均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持标准换版与碳市场扩围而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "carbon-trading": {
+      "name": "carbon-trading",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\carbon-trading",
+      "description": "碳交易与配额管理的专业 Skill。当用户需要测算碳配额履约缺口、评估买入/卖出策略、查询碳价行情、核算 CCER（核证自愿减排量）抵消、做碳资产管理或碳排放配额/减排量交易决策时使用。覆盖全国碳市场与地方试点，支持履约测算、成本测算、交易策略分析。数据驱动：配额分配方法（强度法/总量法）、各行业配额方案文号、CCER 抵消比例上限均从本地数据层（D:\\skills\\carbon-md\\_data）的行业规则表与政策元数据表动态查询，随行业扩围与年度配额方案更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\carbon-trading",
+          "status": "stable",
+          "description": "碳交易与配额管理的专业 Skill。当用户需要测算碳配额履约缺口、评估买入/卖出策略、查询碳价行情、核算 CCER（核证自愿减排量）抵消、做碳资产管理或碳排放配额/减排量交易决策时使用。覆盖全国碳市场与地方试点，支持履约测算、成本测算、交易策略分析。数据驱动：配额分配方法（强度法/总量法）、各行业配额方案文号、CCER 抵消比例上限均从本地数据层（D:\\skills\\carbon-md\\_data）的行业规则表与政策元数据表动态查询，随行业扩围与年度配额方案更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "cbam-compliance": {
+      "name": "cbam-compliance",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\cbam-compliance",
+      "description": "CBAM 碳关税申报与核查应对的专业 Skill。当出口欧盟的企业需要判断产品是否落入 CBAM 适用范围、核算产品隐含碳排放、编制并提交 CBAM 申报、应对欧盟核查或规划 CBAM 合规策略时使用。覆盖 CBAM 覆盖产品、隐含排放核算、申报流程、核查应对与过渡期要求。数据驱动：CBAM 相关政策与国内衔接政策从本地数据层（D:\\skills\\carbon-md\\data\\policy\\policy_metadata.json）动态查询；CBAM 属欧盟外部法规，数据层暂无对应记录时，按设计流程标注\"数据层未覆盖\"并以 references 中保留的欧盟官方规则参考为准。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\cbam-compliance",
+          "status": "stable",
+          "description": "CBAM 碳关税申报与核查应对的专业 Skill。当出口欧盟的企业需要判断产品是否落入 CBAM 适用范围、核算产品隐含碳排放、编制并提交 CBAM 申报、应对欧盟核查或规划 CBAM 合规策略时使用。覆盖 CBAM 覆盖产品、隐含排放核算、申报流程、核查应对与过渡期要求。数据驱动：CBAM 相关政策与国内衔接政策从本地数据层（D:\\skills\\carbon-md\\data\\policy\\policy_metadata.json）动态查询；CBAM 属欧盟外部法规，数据层暂无对应记录时，按设计流程标注\"数据层未覆盖\"并以 references 中保留的欧盟官方规则参考为准。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "ccer-development": {
+      "name": "ccer-development",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\ccer-development",
+      "description": "CCER 自愿减排项目开发的专业 Skill。当用户需要评估、开发、备案或注册国家核证自愿减排量（CCER）项目，选择适用方法学、编制项目设计文件（PDD）、核算项目减排量、完成审定与备案、处理监测报告与核证时使用。覆盖方法学匹配、额外性论证、减排量计算、交易与抵消衔接。数据驱动：CCER 管理办法、方法学制度依据均从本地数据层（D:\\skills\\carbon-md\\data\\policy\\policy_metadata.json）动态查询文号/日期/时效状态，随制度与方法学更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\ccer-development",
+          "status": "stable",
+          "description": "CCER 自愿减排项目开发的专业 Skill。当用户需要评估、开发、备案或注册国家核证自愿减排量（CCER）项目，选择适用方法学、编制项目设计文件（PDD）、核算项目减排量、完成审定与备案、处理监测报告与核证时使用。覆盖方法学匹配、额外性论证、减排量计算、交易与抵消衔接。数据驱动：CCER 管理办法、方法学制度依据均从本地数据层（D:\\skills\\carbon-md\\data\\policy\\policy_metadata.json）动态查询文号/日期/时效状态，随制度与方法学更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "climate-adaptation": {
+      "name": "climate-adaptation",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\climate-adaptation",
+      "description": "气候适应与转型金融对接的专业 Skill。当用户需要评估企业/资产的气候物理风险与转型风险、制定气候适应措施、对接转型金融产品（转型债券、可持续挂钩债券/贷款）、做气候风险管理与信息披露（TCFD/ISSB）时使用。面向高碳行业与金融机构，衔接碳减排与气候风险治理。数据驱动：气候转型相关政策（碳市场扩围、配额方案、激励政策）与行业转型节点从本地数据层（D:\\skills\\carbon-md\\data）动态查询；数据层未覆盖转型金融/气候适应专项政策时，流程显式标注\"数据层未覆盖\"并保留原 references 作为方法参考，不编造政策文号。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\climate-adaptation",
+          "status": "stable",
+          "description": "气候适应与转型金融对接的专业 Skill。当用户需要评估企业/资产的气候物理风险与转型风险、制定气候适应措施、对接转型金融产品（转型债券、可持续挂钩债券/贷款）、做气候风险管理与信息披露（TCFD/ISSB）时使用。面向高碳行业与金融机构，衔接碳减排与气候风险治理。数据驱动：气候转型相关政策（碳市场扩围、配额方案、激励政策）与行业转型节点从本地数据层（D:\\skills\\carbon-md\\data）动态查询；数据层未覆盖转型金融/气候适应专项政策时，流程显式标注\"数据层未覆盖\"并保留原 references 作为方法参考，不编造政策文号。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "green-factory": {
+      "name": "green-factory",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\green-factory",
+      "description": "绿色工厂/绿色园区申报的专业 Skill。当用户需要申报绿色工厂（国家级/省级）、绿色园区，对照绿色工厂评价指标体系自评、梳理基础设施/管理体系/能源资源投入/产品/环境排放指标、编制申报书与证明材料、应对现场评价时使用。覆盖绿色制造体系申报流程与指标自评。数据驱动：零碳工厂培育行业范围与政策依据从本地数据层（D:\\skills\\carbon-md\\data）的行业规则表与政策元数据表动态查询；能耗/排放因子从因子库查询；支持政策依据文号、行业扩围与因子年度更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\green-factory",
+          "status": "stable",
+          "description": "绿色工厂/绿色园区申报的专业 Skill。当用户需要申报绿色工厂（国家级/省级）、绿色园区，对照绿色工厂评价指标体系自评、梳理基础设施/管理体系/能源资源投入/产品/环境排放指标、编制申报书与证明材料、应对现场评价时使用。覆盖绿色制造体系申报流程与指标自评。数据驱动：零碳工厂培育行业范围与政策依据从本地数据层（D:\\skills\\carbon-md\\data）的行业规则表与政策元数据表动态查询；能耗/排放因子从因子库查询；支持政策依据文号、行业扩围与因子年度更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    },
+    "supply-chain-carbon": {
+      "name": "supply-chain-carbon",
+      "version": "1.0",
+      "status": "stable",
+      "path": "D:\\skills\\carbon-md\\supply-chain-carbon",
+      "description": "供应链碳管理（范围3）的专业 Skill。当用户需要核算供应链上下游排放（范围3）、识别高排放供应商与采购环节、评估供应商减排、设置绿色采购门槛、建立供应链碳数据收集与披露流程，或应对客户/监管范围3披露要求时使用。覆盖范围3核算、供应商数据收集、采购决策支持。数据驱动：适用行业规则、燃料/能源类范围3排放因子、支出法因子来源、披露政策（CSRD/ESRS 等）的文号与日期均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持行业扩围与因子更新而无需修改本 Skill 代码。",
+      "registered_at": "2026-10-09T17:54:59",
+      "canary": null,
+      "versions": [
+        {
+          "version": "1.0",
+          "path": "D:\\skills\\carbon-md\\supply-chain-carbon",
+          "status": "stable",
+          "description": "供应链碳管理（范围3）的专业 Skill。当用户需要核算供应链上下游排放（范围3）、识别高排放供应商与采购环节、评估供应商减排、设置绿色采购门槛、建立供应链碳数据收集与披露流程，或应对客户/监管范围3披露要求时使用。覆盖范围3核算、供应商数据收集、采购决策支持。数据驱动：适用行业规则、燃料/能源类范围3排放因子、支出法因子来源、披露政策（CSRD/ESRS 等）的文号与日期均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持行业扩围与因子更新而无需修改本 Skill 代码。",
+          "created_at": "2026-10-09T17:54:59",
+          "promoted_at": "2026-10-09T17:54:59"
+        }
+      ]
+    }
+  }
+}

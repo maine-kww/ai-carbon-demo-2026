@@ -1,0 +1,137 @@
+
+======================================================================
+STEP 0  环境与运行时目录
+======================================================================
+时间: 2026-10-09T17:54:59
+运行时目录: carbon-md/_runtime
+生产根目录: carbon-md （只读，绝不修改）
+
+======================================================================
+STEP 1  重置运行时状态并扫描注册全部 skill
+======================================================================
+扫描注册完成：共 17 个 skill，基线版本均为 v1.0(stable)
+  - carbon-accounting      v1.0  stable
+  - carbon-esg             v1.0  stable
+  - carbon-finance         v1.0  stable
+  - carbon-footprint       v1.0  stable
+  - carbon-inclusion       v1.0  stable
+  - carbon-mrv             v1.0  stable
+  - carbon-policy          v1.0  stable
+  - carbon-policy-monitor  v1.0  stable
+  - carbon-roadmap         v1.0  stable
+  - carbon-sink            v1.0  stable
+  - carbon-system          v1.0  stable
+  - carbon-trading         v1.0  stable
+  - cbam-compliance        v1.0  stable
+  - ccer-development       v1.0  stable
+  - climate-adaptation     v1.0  stable
+  - green-factory          v1.0  stable
+  - supply-chain-carbon    v1.0  stable
+
+======================================================================
+STEP 2  把一个 skill 复制到 staging 生成 v1.1（仅副本改 description）
+======================================================================
+目标 skill: carbon-mrv
+旧 description: MRV 体系搭建与核查准备的专业 Skill。当用户需要为企业建立碳排放监测（Monitoring）、报告（Report...
+新版本: v1.1  状态: canary
+staging 路径: carbon-md/_runtime\staging\carbon-mrv\v1.1
+新 description: MRV 体系搭建与核查准备【灰度 v1.1】：description 已修改，用于区分新旧版本，仅存在于 staging 副本，生产目录未改...
+校验: v1.0 path=carbon-md/carbon-mrv
+校验: v1.1 path=carbon-md/_runtime\staging\carbon-mrv\v1.1（确认生产目录与 staging 副本分离）
+
+======================================================================
+STEP 3  灰度路由 10%：模拟 20 个 user_id 分流
+======================================================================
+  u022   bucket=99   threshold=100  -> CANARY v1.1
+  u027   bucket=66   threshold=100  -> CANARY v1.1
+  u01    bucket=752  threshold=100  -> stable v1.0
+  u02    bucket=748  threshold=100  -> stable v1.0
+  u03    bucket=387  threshold=100  -> stable v1.0
+  u04    bucket=546  threshold=100  -> stable v1.0
+  u05    bucket=573  threshold=100  -> stable v1.0
+  u06    bucket=459  threshold=100  -> stable v1.0
+  u07    bucket=967  threshold=100  -> stable v1.0
+  u08    bucket=322  threshold=100  -> stable v1.0
+  u09    bucket=449  threshold=100  -> stable v1.0
+  u10    bucket=986  threshold=100  -> stable v1.0
+  u11    bucket=540  threshold=100  -> stable v1.0
+  u12    bucket=864  threshold=100  -> stable v1.0
+  u13    bucket=610  threshold=100  -> stable v1.0
+  u14    bucket=603  threshold=100  -> stable v1.0
+  u15    bucket=241  threshold=100  -> stable v1.0
+  u16    bucket=790  threshold=100  -> stable v1.0
+  u17    bucket=468  threshold=100  -> stable v1.0
+  u18    bucket=239  threshold=100  -> stable v1.0
+
+分流结果: canary 2/20 = 10% (u022, u027)；stable 18/20
+一致性验证: 重复路由 u022 -> bucket=99 decision=canary，与首次一致=True
+（规则：bucket = md5(skill|user_id) % 1000，bucket<100 进 canary，其余 stable）
+
+======================================================================
+STEP 4  promote：v1.1 转正为 stable
+======================================================================
+当前: v1.1  status=stable  path=carbon-md/_runtime\staging\carbon-mrv\v1.1
+  历史版本 v1.0: superseded   promoted_at=2026-10-09T17:54:59
+  历史版本 v1.1: stable       promoted_at=2026-10-09T17:55:00
+
+======================================================================
+STEP 5  再造 v1.2 并模拟出问题（canary 主脚本缺失）
+======================================================================
+已在 staging v1.2 副本中删除 scripts/ 目录: carbon-md/_runtime\staging\carbon-mrv\v1.2\scripts
+问题确认：v1.2 canary 加载成功但 entry 主脚本缺失——若放量将导致执行失败。
+
+======================================================================
+STEP 6  rollback：丢弃 v1.2 canary，stable 回指 v1.1
+======================================================================
+rollback 动作: canary-discarded (1.2)
+当前 stable: v1.1  path=carbon-md/_runtime\staging\carbon-mrv\v1.1  status=stable  canary=None
+回滚后默认加载版本: v1.1 [stable]，主脚本存在=True
+
+======================================================================
+STEP 7  最终 registry.json 状态
+======================================================================
+registry.json: carbon-md/_runtime\registry.json
+注册 skill 总数: 17
+
+carbon-mrv 完整记录:
+{
+  "name": "carbon-mrv",
+  "version": "1.1",
+  "status": "stable",
+  "path": "D:\\skills\\carbon-md\\_runtime\\staging\\carbon-mrv\\v1.1",
+  "description": "MRV 体系搭建与核查准备【灰度 v1.1】：description 已修改，用于区分新旧版本，仅存在于 staging 副本，生产目录未改动。",
+  "registered_at": "2026-10-09T17:54:59",
+  "canary": null,
+  "versions": [
+    {
+      "version": "1.0",
+      "path": "D:\\skills\\carbon-md\\carbon-mrv",
+      "status": "superseded",
+      "description": "MRV 体系搭建与核查准备的专业 Skill。当用户需要为企业建立碳排放监测（Monitoring）、报告（Reporting）、核查（Verification）体系，编制监测计划、设计数据收集与质量控制流程、准备核查迎检材料、应对第三方核查或主管部门复核时使用。覆盖 MRV 制度要求、监测计划编制、数据管理、核查准备清单。数据驱动：适用 MRV 制度/核算标准、行业监测与核查要求、排放因子、政策依据文号与日期均从本地数据层（D:\\skills\\carbon-md\\data）动态查询，支持碳市场行业扩围与政策更新而无需修改本 Skill 代码。",
+      "created_at": "2026-10-09T17:54:59",
+      "promoted_at": "2026-10-09T17:54:59"
+    },
+    {
+      "version": "1.1",
+      "path": "D:\\skills\\carbon-md\\_runtime\\staging\\carbon-mrv\\v1.1",
+      "status": "stable",
+      "description": "MRV 体系搭建与核查准备【灰度 v1.1】：description 已修改，用于区分新旧版本，仅存在于 staging 副本，生产目录未改动。",
+      "created_at": "2026-10-09T17:54:59",
+      "promoted_at": "2026-10-09T17:55:00"
+    },
+    {
+      "version": "1.2",
+      "path": "D:\\skills\\carbon-md\\_runtime\\staging\\carbon-mrv\\v1.2",
+      "status": "rolled-back",
+      "description": "MRV【灰度 v1.2】：本次发版误删了 scripts 目录。",
+      "created_at": "2026-10-09T17:55:00",
+      "promoted_at": null
+    }
+  ]
+}
+
+其余 15 个 skill 均保持基线 v1.0/stable，生产目录与 _data 未被修改。
+
+======================================================================
+DEMO 完成
+======================================================================

@@ -1,0 +1,2084 @@
+{
+  "source": "epa_hub",
+  "version": "2025",
+  "year": 2025,
+  "description": "US EPA Emission Factors Hub - Stationary combustion, mobile combustion, and refrigerants",
+  "url": "https://www.epa.gov/climateleadership/ghg-emission-factors-hub",
+  "factors": [
+    {
+      "id": "epa_stat_natural_gas_therm",
+      "name": "Natural Gas (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "natural_gas",
+      "fuel_type": "natural_gas",
+      "co2_factor": 5.302,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 1e-05,
+      "activity_unit": "therm",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_natural_gas_mcf",
+      "name": "Natural Gas (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "natural_gas",
+      "fuel_type": "natural_gas",
+      "co2_factor": 53.06,
+      "ch4_factor": 0.001,
+      "n2o_factor": 0.0001,
+      "activity_unit": "MCF",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_natural_gas_mmbtu",
+      "name": "Natural Gas (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "natural_gas",
+      "fuel_type": "natural_gas",
+      "co2_factor": 53.06,
+      "ch4_factor": 0.001,
+      "n2o_factor": 0.0001,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_natural_gas_ccf",
+      "name": "Natural Gas (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "natural_gas",
+      "fuel_type": "natural_gas",
+      "co2_factor": 5.306,
+      "ch4_factor": 0.0001,
+      "n2o_factor": 1e-05,
+      "activity_unit": "CCF",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_natural_gas_kwh",
+      "name": "Natural Gas (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "natural_gas",
+      "fuel_type": "natural_gas",
+      "co2_factor": 0.18116,
+      "ch4_factor": 3.4e-06,
+      "n2o_factor": 3.4e-07,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_diesel_gallon",
+      "name": "Diesel/Distillate Fuel Oil #2 (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "diesel",
+      "co2_factor": 10.21,
+      "ch4_factor": 0.00041,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_diesel_mmbtu",
+      "name": "Diesel/Distillate Fuel Oil #2 (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "diesel",
+      "co2_factor": 73.96,
+      "ch4_factor": 0.003,
+      "n2o_factor": 0.0006,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_gasoline_gallon",
+      "name": "Motor Gasoline (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "gasoline",
+      "co2_factor": 8.78,
+      "ch4_factor": 0.00035,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_gasoline_mmbtu",
+      "name": "Motor Gasoline (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "gasoline",
+      "co2_factor": 70.22,
+      "ch4_factor": 0.003,
+      "n2o_factor": 0.0006,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_propane_gallon",
+      "name": "Propane (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "propane",
+      "co2_factor": 5.72,
+      "ch4_factor": 0.00023,
+      "n2o_factor": 4e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_propane_mmbtu",
+      "name": "Propane (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "propane",
+      "co2_factor": 62.87,
+      "ch4_factor": 0.003,
+      "n2o_factor": 0.0006,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_fuel_oil_6_gallon",
+      "name": "Residual Fuel Oil #6 (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "fuel_oil_no6",
+      "co2_factor": 11.27,
+      "ch4_factor": 0.00045,
+      "n2o_factor": 9e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_fuel_oil_6_mmbtu",
+      "name": "Residual Fuel Oil #6 (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "fuel_oil_no6",
+      "co2_factor": 75.1,
+      "ch4_factor": 0.003,
+      "n2o_factor": 0.0006,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_kerosene_gallon",
+      "name": "Kerosene (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "kerosene",
+      "co2_factor": 10.15,
+      "ch4_factor": 0.00041,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_kerosene_mmbtu",
+      "name": "Kerosene (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "kerosene",
+      "co2_factor": 75.2,
+      "ch4_factor": 0.003,
+      "n2o_factor": 0.0006,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_lpg_gallon",
+      "name": "Liquefied Petroleum Gas (LPG) (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "lpg",
+      "co2_factor": 5.68,
+      "ch4_factor": 0.00023,
+      "n2o_factor": 4e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_lpg_mmbtu",
+      "name": "LPG (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "lpg",
+      "co2_factor": 61.71,
+      "ch4_factor": 0.003,
+      "n2o_factor": 0.0006,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_fuel_oil_1_gallon",
+      "name": "Distillate Fuel Oil #1 (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "fuel_oil_no2",
+      "co2_factor": 9.96,
+      "ch4_factor": 0.0004,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_fuel_oil_4_gallon",
+      "name": "Distillate Fuel Oil #4 (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "fuel_oil_no2",
+      "co2_factor": 10.69,
+      "ch4_factor": 0.00043,
+      "n2o_factor": 9e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_coal_bituminous_ton",
+      "name": "Bituminous Coal (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "coal",
+      "fuel_type": "coal_bituminous",
+      "co2_factor": 2328.0,
+      "ch4_factor": 0.011,
+      "n2o_factor": 0.016,
+      "activity_unit": "short_ton",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid"
+      ]
+    },
+    {
+      "id": "epa_stat_coal_bituminous_mmbtu",
+      "name": "Bituminous Coal (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "coal",
+      "fuel_type": "coal_bituminous",
+      "co2_factor": 93.28,
+      "ch4_factor": 0.011,
+      "n2o_factor": 0.0016,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid"
+      ]
+    },
+    {
+      "id": "epa_stat_coal_anthracite_ton",
+      "name": "Anthracite Coal (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "coal",
+      "fuel_type": "coal_anthracite",
+      "co2_factor": 2602.0,
+      "ch4_factor": 0.011,
+      "n2o_factor": 0.016,
+      "activity_unit": "short_ton",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid"
+      ]
+    },
+    {
+      "id": "epa_stat_coal_subbituminous_ton",
+      "name": "Subbituminous Coal (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "coal",
+      "fuel_type": "coal_subbituminous",
+      "co2_factor": 1673.0,
+      "ch4_factor": 0.011,
+      "n2o_factor": 0.016,
+      "activity_unit": "short_ton",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid"
+      ]
+    },
+    {
+      "id": "epa_stat_coal_lignite_ton",
+      "name": "Lignite Coal (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "coal",
+      "fuel_type": "coal_subbituminous",
+      "co2_factor": 1389.0,
+      "ch4_factor": 0.011,
+      "n2o_factor": 0.016,
+      "activity_unit": "short_ton",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid"
+      ]
+    },
+    {
+      "id": "epa_stat_wood_ton",
+      "name": "Wood and Wood Residuals (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "biomass",
+      "fuel_type": "wood",
+      "co2_factor": 1640.0,
+      "ch4_factor": 0.0072,
+      "n2o_factor": 0.0036,
+      "activity_unit": "short_ton",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid",
+        "biomass"
+      ]
+    },
+    {
+      "id": "epa_stat_wood_mmbtu",
+      "name": "Wood and Wood Residuals (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "biomass",
+      "fuel_type": "wood",
+      "co2_factor": 93.8,
+      "ch4_factor": 0.0072,
+      "n2o_factor": 0.0036,
+      "activity_unit": "MMBtu",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid",
+        "biomass"
+      ]
+    },
+    {
+      "id": "epa_stat_landfill_gas_scf",
+      "name": "Landfill Gas (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "gas",
+      "fuel_type": "landfill_gas",
+      "co2_factor": 0.0545,
+      "ch4_factor": 3.2e-06,
+      "n2o_factor": 6e-07,
+      "activity_unit": "scf",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas",
+        "biogas"
+      ]
+    },
+    {
+      "id": "epa_stat_pet_coke_ton",
+      "name": "Petroleum Coke (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "coal_bituminous",
+      "co2_factor": 3072.0,
+      "ch4_factor": 0.012,
+      "n2o_factor": 0.018,
+      "activity_unit": "short_ton",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid"
+      ]
+    },
+    {
+      "id": "epa_stat_msw_ton",
+      "name": "Municipal Solid Waste (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "waste",
+      "fuel_type": "wood",
+      "co2_factor": 902.0,
+      "ch4_factor": 0.032,
+      "n2o_factor": 0.004,
+      "activity_unit": "short_ton",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid"
+      ]
+    },
+    {
+      "id": "epa_stat_tires_ton",
+      "name": "Waste Tires (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "waste",
+      "fuel_type": "diesel",
+      "co2_factor": 2407.0,
+      "ch4_factor": 0.032,
+      "n2o_factor": 0.004,
+      "activity_unit": "short_ton",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "solid"
+      ]
+    },
+    {
+      "id": "epa_stat_jet_fuel_gallon",
+      "name": "Jet Fuel (Kerosene-type) (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "jet_fuel",
+      "co2_factor": 9.75,
+      "ch4_factor": 0.00039,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_e85_gallon",
+      "name": "E85 Ethanol Blend (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "biofuel",
+      "fuel_type": "e85",
+      "co2_factor": 5.75,
+      "ch4_factor": 0.00023,
+      "n2o_factor": 5e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid",
+        "biofuel"
+      ]
+    },
+    {
+      "id": "epa_stat_b20_gallon",
+      "name": "B20 Biodiesel Blend (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "biofuel",
+      "fuel_type": "b20",
+      "co2_factor": 8.17,
+      "ch4_factor": 0.00033,
+      "n2o_factor": 7e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid",
+        "biofuel"
+      ]
+    },
+    {
+      "id": "epa_stat_cng_scf",
+      "name": "Compressed Natural Gas (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "gas",
+      "fuel_type": "cng",
+      "co2_factor": 0.0545,
+      "ch4_factor": 2.2e-06,
+      "n2o_factor": 4e-07,
+      "activity_unit": "scf",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "gas"
+      ]
+    },
+    {
+      "id": "epa_stat_lng_gallon",
+      "name": "Liquefied Natural Gas (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "gas",
+      "fuel_type": "lng",
+      "co2_factor": 4.46,
+      "ch4_factor": 0.00018,
+      "n2o_factor": 4e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_stat_residual_fuel_oil_gallon",
+      "name": "Residual Fuel Oil (Stationary)",
+      "category": "stationary_combustion",
+      "subcategory": "petroleum",
+      "fuel_type": "residual_fuel_oil",
+      "co2_factor": 11.27,
+      "ch4_factor": 0.00045,
+      "n2o_factor": 9e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "stationary",
+        "liquid"
+      ]
+    },
+    {
+      "id": "epa_mob_gasoline_passenger_car_mile",
+      "name": "Gasoline Passenger Car (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "passenger_car",
+      "fuel_type": "gasoline",
+      "co2_factor": 0.347,
+      "ch4_factor": 2.5e-05,
+      "n2o_factor": 8e-06,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_gasoline_passenger_car_gallon",
+      "name": "Gasoline Passenger Car (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "passenger_car",
+      "fuel_type": "gasoline",
+      "co2_factor": 8.78,
+      "ch4_factor": 0.00035,
+      "n2o_factor": 0.00022,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_gasoline_light_truck_mile",
+      "name": "Gasoline Light-Duty Truck (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "light_truck",
+      "fuel_type": "gasoline",
+      "co2_factor": 0.462,
+      "ch4_factor": 3.2e-05,
+      "n2o_factor": 1e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_gasoline_light_truck_gallon",
+      "name": "Gasoline Light-Duty Truck (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "light_truck",
+      "fuel_type": "gasoline",
+      "co2_factor": 8.78,
+      "ch4_factor": 0.00046,
+      "n2o_factor": 0.00026,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_gasoline_heavy_duty_mile",
+      "name": "Gasoline Heavy-Duty Vehicle (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "heavy_duty",
+      "fuel_type": "gasoline",
+      "co2_factor": 1.505,
+      "ch4_factor": 4.9e-05,
+      "n2o_factor": 4.7e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_gasoline_heavy_duty_gallon",
+      "name": "Gasoline Heavy-Duty Vehicle (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "heavy_duty",
+      "fuel_type": "gasoline",
+      "co2_factor": 8.78,
+      "ch4_factor": 0.00054,
+      "n2o_factor": 0.0005,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_motorcycle_mile",
+      "name": "Motorcycle (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "motorcycle",
+      "fuel_type": "gasoline",
+      "co2_factor": 0.186,
+      "ch4_factor": 2.1e-05,
+      "n2o_factor": 6e-06,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_motorcycle_gallon",
+      "name": "Motorcycle (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "motorcycle",
+      "fuel_type": "gasoline",
+      "co2_factor": 8.78,
+      "ch4_factor": 0.00035,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_diesel_passenger_car_mile",
+      "name": "Diesel Passenger Car (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "passenger_car",
+      "fuel_type": "diesel",
+      "co2_factor": 0.325,
+      "ch4_factor": 1e-05,
+      "n2o_factor": 1.5e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_diesel_passenger_car_gallon",
+      "name": "Diesel Passenger Car (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "passenger_car",
+      "fuel_type": "diesel",
+      "co2_factor": 10.21,
+      "ch4_factor": 0.00041,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_diesel_light_truck_mile",
+      "name": "Diesel Light-Duty Truck (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "light_truck",
+      "fuel_type": "diesel",
+      "co2_factor": 0.44,
+      "ch4_factor": 1.2e-05,
+      "n2o_factor": 1.8e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_diesel_light_truck_gallon",
+      "name": "Diesel Light-Duty Truck (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "light_truck",
+      "fuel_type": "diesel",
+      "co2_factor": 10.21,
+      "ch4_factor": 0.00041,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_diesel_heavy_duty_mile",
+      "name": "Diesel Heavy-Duty Vehicle (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "heavy_duty",
+      "fuel_type": "diesel",
+      "co2_factor": 1.692,
+      "ch4_factor": 5.1e-05,
+      "n2o_factor": 4.8e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_diesel_heavy_duty_gallon",
+      "name": "Diesel Heavy-Duty Vehicle (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "heavy_duty",
+      "fuel_type": "diesel",
+      "co2_factor": 10.21,
+      "ch4_factor": 0.00041,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_gasoline_medium_duty_mile",
+      "name": "Gasoline Medium-Duty Vehicle (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "medium_duty",
+      "fuel_type": "gasoline",
+      "co2_factor": 0.826,
+      "ch4_factor": 3.8e-05,
+      "n2o_factor": 2.5e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_diesel_medium_duty_mile",
+      "name": "Diesel Medium-Duty Vehicle (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "medium_duty",
+      "fuel_type": "diesel",
+      "co2_factor": 0.91,
+      "ch4_factor": 3e-05,
+      "n2o_factor": 3.2e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_jet_fuel_gallon",
+      "name": "Jet Fuel (Aviation) (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "aviation",
+      "fuel_type": "jet_fuel",
+      "co2_factor": 9.75,
+      "ch4_factor": 5e-05,
+      "n2o_factor": 9e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "aviation"
+      ]
+    },
+    {
+      "id": "epa_mob_aviation_gasoline_gallon",
+      "name": "Aviation Gasoline (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "aviation",
+      "fuel_type": "aviation_gasoline",
+      "co2_factor": 8.31,
+      "ch4_factor": 0.0007,
+      "n2o_factor": 2e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "aviation"
+      ]
+    },
+    {
+      "id": "epa_mob_marine_diesel_gallon",
+      "name": "Marine Diesel Oil (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "marine",
+      "fuel_type": "diesel",
+      "co2_factor": 10.21,
+      "ch4_factor": 0.00041,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "marine"
+      ]
+    },
+    {
+      "id": "epa_mob_marine_residual_gallon",
+      "name": "Marine Residual Fuel Oil (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "marine",
+      "fuel_type": "residual_fuel_oil",
+      "co2_factor": 11.27,
+      "ch4_factor": 0.00045,
+      "n2o_factor": 9e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "marine"
+      ]
+    },
+    {
+      "id": "epa_mob_rail_diesel_gallon",
+      "name": "Rail Diesel (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "rail",
+      "fuel_type": "diesel",
+      "co2_factor": 10.21,
+      "ch4_factor": 0.00041,
+      "n2o_factor": 8e-05,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "rail"
+      ]
+    },
+    {
+      "id": "epa_mob_offroad_gasoline_gallon",
+      "name": "Off-Road Gasoline Equipment (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "off_road",
+      "fuel_type": "gasoline",
+      "co2_factor": 8.78,
+      "ch4_factor": 0.0005,
+      "n2o_factor": 0.00022,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "off_road",
+        "gasoline"
+      ]
+    },
+    {
+      "id": "epa_mob_offroad_diesel_gallon",
+      "name": "Off-Road Diesel Equipment (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "off_road",
+      "fuel_type": "diesel",
+      "co2_factor": 10.21,
+      "ch4_factor": 0.00059,
+      "n2o_factor": 0.00026,
+      "activity_unit": "gallon",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "off_road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_diesel_bus_mile",
+      "name": "Diesel Transit Bus (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "bus",
+      "fuel_type": "diesel",
+      "co2_factor": 2.68,
+      "ch4_factor": 1.6e-05,
+      "n2o_factor": 1e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "diesel"
+      ]
+    },
+    {
+      "id": "epa_mob_cng_bus_mile",
+      "name": "CNG Transit Bus (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "bus",
+      "fuel_type": "cng",
+      "co2_factor": 2.364,
+      "ch4_factor": 0.0372,
+      "n2o_factor": 1e-05,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "cng"
+      ]
+    },
+    {
+      "id": "epa_mob_hybrid_car_mile",
+      "name": "Hybrid Passenger Car (Mobile)",
+      "category": "mobile_combustion",
+      "subcategory": "passenger_car",
+      "fuel_type": "gasoline",
+      "co2_factor": 0.213,
+      "ch4_factor": 1.5e-05,
+      "n2o_factor": 5e-06,
+      "activity_unit": "mile",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "mobile",
+        "road",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_23",
+      "name": "HFC-23",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 12400,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_32",
+      "name": "HFC-32",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 677,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_125",
+      "name": "HFC-125",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3170,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_134a",
+      "name": "HFC-134a",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1300,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_143a",
+      "name": "HFC-143a",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 4800,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_152a",
+      "name": "HFC-152a",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 138,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_227ea",
+      "name": "HFC-227ea",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3350,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_236fa",
+      "name": "HFC-236fa",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 8060,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_245fa",
+      "name": "HFC-245fa",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 858,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_365mfc",
+      "name": "HFC-365mfc",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 804,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_hfc_4310mee",
+      "name": "HFC-43-10mee",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1650,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc"
+      ]
+    },
+    {
+      "id": "epa_fug_pfc_cf4",
+      "name": "CF4 (PFC-14)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 6630,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "pfc"
+      ]
+    },
+    {
+      "id": "epa_fug_pfc_c2f6",
+      "name": "C2F6 (PFC-116)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 11100,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "pfc"
+      ]
+    },
+    {
+      "id": "epa_fug_pfc_c3f8",
+      "name": "C3F8 (PFC-218)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 8900,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "pfc"
+      ]
+    },
+    {
+      "id": "epa_fug_pfc_c4f10",
+      "name": "C4F10 (PFC-3-1-10)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 9200,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "pfc"
+      ]
+    },
+    {
+      "id": "epa_fug_pfc_c5f12",
+      "name": "C5F12 (PFC-4-1-12)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 8550,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "pfc"
+      ]
+    },
+    {
+      "id": "epa_fug_pfc_c6f14",
+      "name": "C6F14 (PFC-5-1-14)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 7910,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "pfc"
+      ]
+    },
+    {
+      "id": "epa_fug_sf6",
+      "name": "Sulfur Hexafluoride (SF6)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 23500,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "sf6"
+      ]
+    },
+    {
+      "id": "epa_fug_nf3",
+      "name": "Nitrogen Trifluoride (NF3)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 16100,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "nf3"
+      ]
+    },
+    {
+      "id": "epa_fug_r404a",
+      "name": "R-404A Blend",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3922,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend"
+      ]
+    },
+    {
+      "id": "epa_fug_r407a",
+      "name": "R-407A Blend",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2107,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend"
+      ]
+    },
+    {
+      "id": "epa_fug_r407c",
+      "name": "R-407C Blend",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1774,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend"
+      ]
+    },
+    {
+      "id": "epa_fug_r410a",
+      "name": "R-410A Blend",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2088,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend"
+      ]
+    },
+    {
+      "id": "epa_fug_r507a",
+      "name": "R-507A Blend",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3985,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend"
+      ]
+    },
+    {
+      "id": "epa_fug_r508b",
+      "name": "R-508B Blend",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 13396,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend"
+      ]
+    },
+    {
+      "id": "epa_fug_r22",
+      "name": "R-22 (HCFC-22)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1760,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hcfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r123",
+      "name": "R-123 (HCFC-123)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 77,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hcfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r11",
+      "name": "R-11 (CFC-11)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 4660,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "cfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r12",
+      "name": "R-12 (CFC-12)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 10200,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "cfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r113",
+      "name": "R-113 (CFC-113)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 5820,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "cfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r114",
+      "name": "R-114 (CFC-114)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 8590,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "cfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r141b",
+      "name": "R-141b (HCFC-141b)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 782,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hcfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r142b",
+      "name": "R-142b (HCFC-142b)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1980,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hcfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r225ca",
+      "name": "R-225ca (HCFC-225ca)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 127,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hcfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r225cb",
+      "name": "R-225cb (HCFC-225cb)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 525,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hcfc",
+        "legacy"
+      ]
+    },
+    {
+      "id": "epa_fug_r134a_blend",
+      "name": "R-134a Automotive AC",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1300,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc",
+        "automotive"
+      ]
+    },
+    {
+      "id": "epa_fug_r404a_commercial",
+      "name": "R-404A Commercial Refrigeration",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3922,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend",
+        "commercial"
+      ]
+    },
+    {
+      "id": "epa_fug_r410a_residential",
+      "name": "R-410A Residential AC",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 2088,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend",
+        "residential"
+      ]
+    },
+    {
+      "id": "epa_fug_r407c_chillers",
+      "name": "R-407C Chillers",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1774,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend",
+        "commercial"
+      ]
+    },
+    {
+      "id": "epa_fug_r32_new",
+      "name": "R-32 Low-GWP Alternative",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 677,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfc",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r1234yf",
+      "name": "R-1234yf (HFO)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfo",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r1234ze",
+      "name": "R-1234ze(E) (HFO)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "hfo",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r448a",
+      "name": "R-448A (Solstice N40)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1273,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r449a",
+      "name": "R-449A (Opteon XP40)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1282,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r452a",
+      "name": "R-452A (Opteon XP44)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1945,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r513a",
+      "name": "R-513A (Opteon XP10)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 573,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r454b",
+      "name": "R-454B (Opteon XL41)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 467,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "blend",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r290",
+      "name": "R-290 Propane (Natural Refrigerant)",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "natural",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r600a",
+      "name": "R-600a Isobutane",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 3,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "natural",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r717",
+      "name": "R-717 Ammonia",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 0,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "natural",
+        "low_gwp"
+      ]
+    },
+    {
+      "id": "epa_fug_r744",
+      "name": "R-744 CO2 Refrigerant",
+      "category": "fugitive_emissions",
+      "subcategory": "refrigerant",
+      "fuel_type": null,
+      "co2_factor": 0,
+      "ch4_factor": 0,
+      "n2o_factor": 0,
+      "co2e_factor": 1,
+      "activity_unit": "kg",
+      "region": "US",
+      "year": 2025,
+      "tags": [
+        "fugitive",
+        "refrigerant",
+        "natural",
+        "low_gwp"
+      ]
+    }
+  ]
+}

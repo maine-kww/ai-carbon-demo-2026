@@ -1,0 +1,2209 @@
+{
+  "source": "egrid",
+  "version": "2024",
+  "year": 2024,
+  "description": "US EPA eGRID - Electricity grid emission factors by subregion",
+  "url": "https://www.epa.gov/egrid",
+  "factors": [
+    {
+      "id": "egrid_akgd",
+      "name": "eGRID ASCC Alaska Grid (AKGD)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.476272,
+      "ch4_factor": 1.55e-05,
+      "n2o_factor": 1.49e-06,
+      "activity_unit": "kWh",
+      "region": "AKGD",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_akms",
+      "name": "eGRID ASCC Miscellaneous (AKMS)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.158757,
+      "ch4_factor": 8.5e-06,
+      "n2o_factor": 6.967e-07,
+      "activity_unit": "kWh",
+      "region": "AKMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_aznm",
+      "name": "eGRID WECC Southwest (AZNM)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.371945,
+      "ch4_factor": 1.32e-05,
+      "n2o_factor": 1.2293e-06,
+      "activity_unit": "kWh",
+      "region": "AZNM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_camx",
+      "name": "eGRID WECC California (CAMX)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.240404,
+      "ch4_factor": 1.03e-05,
+      "n2o_factor": 9.007e-07,
+      "activity_unit": "kWh",
+      "region": "CAMX",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_erct",
+      "name": "eGRID ERCOT All (ERCT)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.36741,
+      "ch4_factor": 1.31e-05,
+      "n2o_factor": 1.218e-06,
+      "activity_unit": "kWh",
+      "region": "ERCT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_frcc",
+      "name": "eGRID FRCC All (FRCC)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.376481,
+      "ch4_factor": 1.33e-05,
+      "n2o_factor": 1.2407e-06,
+      "activity_unit": "kWh",
+      "region": "FRCC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_hims",
+      "name": "eGRID HICC Miscellaneous (HIMS)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.249476,
+      "ch4_factor": 1.05e-05,
+      "n2o_factor": 9.233e-07,
+      "activity_unit": "kWh",
+      "region": "HIMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_hioa",
+      "name": "eGRID HICC Oahu (HIOA)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.657708,
+      "ch4_factor": 1.95e-05,
+      "n2o_factor": 1.9433e-06,
+      "activity_unit": "kWh",
+      "region": "HIOA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_mroe",
+      "name": "eGRID MRO East (MROE)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.476272,
+      "ch4_factor": 1.55e-05,
+      "n2o_factor": 1.49e-06,
+      "activity_unit": "kWh",
+      "region": "MROE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_mrow",
+      "name": "eGRID MRO West (MROW)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.385553,
+      "ch4_factor": 1.35e-05,
+      "n2o_factor": 1.2633e-06,
+      "activity_unit": "kWh",
+      "region": "MROW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_newe",
+      "name": "eGRID NPCC New England (NEWE)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.235868,
+      "ch4_factor": 1.02e-05,
+      "n2o_factor": 8.893e-07,
+      "activity_unit": "kWh",
+      "region": "NEWE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_nwpp",
+      "name": "eGRID WECC Northwest (NWPP)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.285763,
+      "ch4_factor": 1.13e-05,
+      "n2o_factor": 1.014e-06,
+      "activity_unit": "kWh",
+      "region": "NWPP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_nycw",
+      "name": "eGRID NPCC NYC/Westchester (NYCW)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.254012,
+      "ch4_factor": 1.06e-05,
+      "n2o_factor": 9.347e-07,
+      "activity_unit": "kWh",
+      "region": "NYCW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_nyli",
+      "name": "eGRID NPCC Long Island (NYLI)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.476272,
+      "ch4_factor": 1.55e-05,
+      "n2o_factor": 1.49e-06,
+      "activity_unit": "kWh",
+      "region": "NYLI",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_nyup",
+      "name": "eGRID NPCC Upstate NY (NYUP)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.127006,
+      "ch4_factor": 7.8e-06,
+      "n2o_factor": 6.173e-07,
+      "activity_unit": "kWh",
+      "region": "NYUP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_prms",
+      "name": "eGRID Puerto Rico Miscellaneous (PRMS)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.639565,
+      "ch4_factor": 1.91e-05,
+      "n2o_factor": 1.898e-06,
+      "activity_unit": "kWh",
+      "region": "PRMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_rfce",
+      "name": "eGRID RFC East (RFCE)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.294835,
+      "ch4_factor": 1.15e-05,
+      "n2o_factor": 1.0367e-06,
+      "activity_unit": "kWh",
+      "region": "RFCE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_rfcm",
+      "name": "eGRID RFC Michigan (RFCM)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.521631,
+      "ch4_factor": 1.65e-05,
+      "n2o_factor": 1.6033e-06,
+      "activity_unit": "kWh",
+      "region": "RFCM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_rfcw",
+      "name": "eGRID RFC West (RFCW)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.44452,
+      "ch4_factor": 1.48e-05,
+      "n2o_factor": 1.4107e-06,
+      "activity_unit": "kWh",
+      "region": "RFCW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_rmpa",
+      "name": "eGRID WECC Rockies (RMPA)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.498951,
+      "ch4_factor": 1.6e-05,
+      "n2o_factor": 1.5467e-06,
+      "activity_unit": "kWh",
+      "region": "RMPA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_spno",
+      "name": "eGRID SPP North (SPNO)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.462664,
+      "ch4_factor": 1.52e-05,
+      "n2o_factor": 1.456e-06,
+      "activity_unit": "kWh",
+      "region": "SPNO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_spso",
+      "name": "eGRID SPP South (SPSO)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.412769,
+      "ch4_factor": 1.41e-05,
+      "n2o_factor": 1.3313e-06,
+      "activity_unit": "kWh",
+      "region": "SPSO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srmv",
+      "name": "eGRID SERC Mississippi Valley (SRMV)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.353802,
+      "ch4_factor": 1.28e-05,
+      "n2o_factor": 1.184e-06,
+      "activity_unit": "kWh",
+      "region": "SRMV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srmw",
+      "name": "eGRID SERC Midwest (SRMW)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.657708,
+      "ch4_factor": 1.95e-05,
+      "n2o_factor": 1.9433e-06,
+      "activity_unit": "kWh",
+      "region": "SRMW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srso",
+      "name": "eGRID SERC South (SRSO)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.385553,
+      "ch4_factor": 1.35e-05,
+      "n2o_factor": 1.2633e-06,
+      "activity_unit": "kWh",
+      "region": "SRSO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srtv",
+      "name": "eGRID SERC Tennessee Valley (SRTV)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.376481,
+      "ch4_factor": 1.33e-05,
+      "n2o_factor": 1.2407e-06,
+      "activity_unit": "kWh",
+      "region": "SRTV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srvc",
+      "name": "eGRID SERC Virginia/Carolina (SRVC)",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.308443,
+      "ch4_factor": 1.18e-05,
+      "n2o_factor": 1.0707e-06,
+      "activity_unit": "kWh",
+      "region": "SRVC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_akgd_mwh",
+      "name": "eGRID ASCC Alaska Grid (AKGD) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 476.2716,
+      "ch4_factor": 0.0155,
+      "n2o_factor": 0.00149,
+      "activity_unit": "MWh",
+      "region": "AKGD",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_akms_mwh",
+      "name": "eGRID ASCC Miscellaneous (AKMS) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 158.7572,
+      "ch4_factor": 0.0085,
+      "n2o_factor": 0.0006967,
+      "activity_unit": "MWh",
+      "region": "AKMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_aznm_mwh",
+      "name": "eGRID WECC Southwest (AZNM) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 371.9454,
+      "ch4_factor": 0.0132,
+      "n2o_factor": 0.0012293,
+      "activity_unit": "MWh",
+      "region": "AZNM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_camx_mwh",
+      "name": "eGRID WECC California (CAMX) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 240.4038,
+      "ch4_factor": 0.0103,
+      "n2o_factor": 0.0009007,
+      "activity_unit": "MWh",
+      "region": "CAMX",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_erct_mwh",
+      "name": "eGRID ERCOT All (ERCT) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 367.4095,
+      "ch4_factor": 0.0131,
+      "n2o_factor": 0.001218,
+      "activity_unit": "MWh",
+      "region": "ERCT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_frcc_mwh",
+      "name": "eGRID FRCC All (FRCC) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 376.4814,
+      "ch4_factor": 0.0133,
+      "n2o_factor": 0.0012407,
+      "activity_unit": "MWh",
+      "region": "FRCC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_hims_mwh",
+      "name": "eGRID HICC Miscellaneous (HIMS) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 249.4756,
+      "ch4_factor": 0.0105,
+      "n2o_factor": 0.0009233,
+      "activity_unit": "MWh",
+      "region": "HIMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_hioa_mwh",
+      "name": "eGRID HICC Oahu (HIOA) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 657.7084,
+      "ch4_factor": 0.0195,
+      "n2o_factor": 0.0019433,
+      "activity_unit": "MWh",
+      "region": "HIOA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_mroe_mwh",
+      "name": "eGRID MRO East (MROE) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 476.2716,
+      "ch4_factor": 0.0155,
+      "n2o_factor": 0.00149,
+      "activity_unit": "MWh",
+      "region": "MROE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_mrow_mwh",
+      "name": "eGRID MRO West (MROW) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 385.5532,
+      "ch4_factor": 0.0135,
+      "n2o_factor": 0.0012633,
+      "activity_unit": "MWh",
+      "region": "MROW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_newe_mwh",
+      "name": "eGRID NPCC New England (NEWE) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 235.8678,
+      "ch4_factor": 0.0102,
+      "n2o_factor": 0.0008893,
+      "activity_unit": "MWh",
+      "region": "NEWE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_nwpp_mwh",
+      "name": "eGRID WECC Northwest (NWPP) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 285.763,
+      "ch4_factor": 0.0113,
+      "n2o_factor": 0.001014,
+      "activity_unit": "MWh",
+      "region": "NWPP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_nycw_mwh",
+      "name": "eGRID NPCC NYC/Westchester (NYCW) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 254.0115,
+      "ch4_factor": 0.0106,
+      "n2o_factor": 0.0009347,
+      "activity_unit": "MWh",
+      "region": "NYCW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_nyli_mwh",
+      "name": "eGRID NPCC Long Island (NYLI) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 476.2716,
+      "ch4_factor": 0.0155,
+      "n2o_factor": 0.00149,
+      "activity_unit": "MWh",
+      "region": "NYLI",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_nyup_mwh",
+      "name": "eGRID NPCC Upstate NY (NYUP) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 127.0058,
+      "ch4_factor": 0.0078,
+      "n2o_factor": 0.0006173,
+      "activity_unit": "MWh",
+      "region": "NYUP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_prms_mwh",
+      "name": "eGRID Puerto Rico Miscellaneous (PRMS) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 639.5647,
+      "ch4_factor": 0.0191,
+      "n2o_factor": 0.001898,
+      "activity_unit": "MWh",
+      "region": "PRMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_rfce_mwh",
+      "name": "eGRID RFC East (RFCE) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 294.8348,
+      "ch4_factor": 0.0115,
+      "n2o_factor": 0.0010367,
+      "activity_unit": "MWh",
+      "region": "RFCE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_rfcm_mwh",
+      "name": "eGRID RFC Michigan (RFCM) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 521.6308,
+      "ch4_factor": 0.0165,
+      "n2o_factor": 0.0016033,
+      "activity_unit": "MWh",
+      "region": "RFCM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_rfcw_mwh",
+      "name": "eGRID RFC West (RFCW) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 444.5202,
+      "ch4_factor": 0.0148,
+      "n2o_factor": 0.0014107,
+      "activity_unit": "MWh",
+      "region": "RFCW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_rmpa_mwh",
+      "name": "eGRID WECC Rockies (RMPA) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 498.9512,
+      "ch4_factor": 0.016,
+      "n2o_factor": 0.0015467,
+      "activity_unit": "MWh",
+      "region": "RMPA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_spno_mwh",
+      "name": "eGRID SPP North (SPNO) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 462.6638,
+      "ch4_factor": 0.0152,
+      "n2o_factor": 0.001456,
+      "activity_unit": "MWh",
+      "region": "SPNO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_spso_mwh",
+      "name": "eGRID SPP South (SPSO) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 412.7687,
+      "ch4_factor": 0.0141,
+      "n2o_factor": 0.0013313,
+      "activity_unit": "MWh",
+      "region": "SPSO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srmv_mwh",
+      "name": "eGRID SERC Mississippi Valley (SRMV) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 353.8018,
+      "ch4_factor": 0.0128,
+      "n2o_factor": 0.001184,
+      "activity_unit": "MWh",
+      "region": "SRMV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srmw_mwh",
+      "name": "eGRID SERC Midwest (SRMW) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 657.7084,
+      "ch4_factor": 0.0195,
+      "n2o_factor": 0.0019433,
+      "activity_unit": "MWh",
+      "region": "SRMW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srso_mwh",
+      "name": "eGRID SERC South (SRSO) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 385.5532,
+      "ch4_factor": 0.0135,
+      "n2o_factor": 0.0012633,
+      "activity_unit": "MWh",
+      "region": "SRSO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srtv_mwh",
+      "name": "eGRID SERC Tennessee Valley (SRTV) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 376.4814,
+      "ch4_factor": 0.0133,
+      "n2o_factor": 0.0012407,
+      "activity_unit": "MWh",
+      "region": "SRTV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_srvc_mwh",
+      "name": "eGRID SERC Virginia/Carolina (SRVC) per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 308.4426,
+      "ch4_factor": 0.0118,
+      "n2o_factor": 0.0010707,
+      "activity_unit": "MWh",
+      "region": "SRVC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based"
+      ]
+    },
+    {
+      "id": "egrid_us_avg",
+      "name": "eGRID US National Average",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 0.390089,
+      "ch4_factor": 1.36e-05,
+      "n2o_factor": 1.2747e-06,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "national_average"
+      ]
+    },
+    {
+      "id": "egrid_us_avg_mwh",
+      "name": "eGRID US National Average per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity",
+      "co2_factor": 390.0891,
+      "ch4_factor": 0.0136,
+      "n2o_factor": 0.0012747,
+      "activity_unit": "MWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "national_average"
+      ]
+    },
+    {
+      "id": "egrid_green_wind",
+      "name": "Green Power - Wind Power",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "wind"
+      ]
+    },
+    {
+      "id": "egrid_green_wind_mwh",
+      "name": "Green Power - Wind Power per MWh",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "MWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "wind"
+      ]
+    },
+    {
+      "id": "egrid_green_solar",
+      "name": "Green Power - Solar Power",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "solar"
+      ]
+    },
+    {
+      "id": "egrid_green_solar_mwh",
+      "name": "Green Power - Solar Power per MWh",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "MWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "solar"
+      ]
+    },
+    {
+      "id": "egrid_green_nuclear",
+      "name": "Green Power - Nuclear Power",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "nuclear"
+      ]
+    },
+    {
+      "id": "egrid_green_nuclear_mwh",
+      "name": "Green Power - Nuclear Power per MWh",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "MWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "nuclear"
+      ]
+    },
+    {
+      "id": "egrid_green_hydro",
+      "name": "Green Power - Hydroelectric Power",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "hydro"
+      ]
+    },
+    {
+      "id": "egrid_green_hydro_mwh",
+      "name": "Green Power - Hydroelectric Power per MWh",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "MWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "hydro"
+      ]
+    },
+    {
+      "id": "egrid_green_biomass",
+      "name": "Green Power - Biomass Power",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "biomass"
+      ]
+    },
+    {
+      "id": "egrid_green_biomass_mwh",
+      "name": "Green Power - Biomass Power per MWh",
+      "category": "electricity",
+      "subcategory": "green_electricity",
+      "co2_factor": 0.0,
+      "ch4_factor": 0.0,
+      "n2o_factor": 0.0,
+      "activity_unit": "MWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "renewable",
+        "market_based",
+        "biomass"
+      ]
+    },
+    {
+      "id": "egrid_akgd_nb",
+      "name": "eGRID ASCC Alaska Grid (AKGD) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.523899,
+      "ch4_factor": 1.655e-05,
+      "n2o_factor": 1.609e-06,
+      "activity_unit": "kWh",
+      "region": "AKGD",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_akgd_nb_mwh",
+      "name": "eGRID ASCC Alaska Grid (AKGD) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 523.8988,
+      "ch4_factor": 0.01655,
+      "n2o_factor": 0.001609,
+      "activity_unit": "MWh",
+      "region": "AKGD",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_akms_nb",
+      "name": "eGRID ASCC Miscellaneous (AKMS) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.214322,
+      "ch4_factor": 9.725e-06,
+      "n2o_factor": 8.355e-07,
+      "activity_unit": "kWh",
+      "region": "AKMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_akms_nb_mwh",
+      "name": "eGRID ASCC Miscellaneous (AKMS) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 214.3222,
+      "ch4_factor": 0.009725,
+      "n2o_factor": 0.0008355,
+      "activity_unit": "MWh",
+      "region": "AKMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_aznm_nb",
+      "name": "eGRID WECC Southwest (AZNM) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.446335,
+      "ch4_factor": 1.484e-05,
+      "n2o_factor": 1.4152e-06,
+      "activity_unit": "kWh",
+      "region": "AZNM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_aznm_nb_mwh",
+      "name": "eGRID WECC Southwest (AZNM) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 446.3345,
+      "ch4_factor": 0.01484,
+      "n2o_factor": 0.0014152,
+      "activity_unit": "MWh",
+      "region": "AZNM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_camx_nb",
+      "name": "eGRID WECC California (CAMX) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.312525,
+      "ch4_factor": 1.189e-05,
+      "n2o_factor": 1.0809e-06,
+      "activity_unit": "kWh",
+      "region": "CAMX",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_camx_nb_mwh",
+      "name": "eGRID WECC California (CAMX) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 312.5249,
+      "ch4_factor": 0.01189,
+      "n2o_factor": 0.0010809,
+      "activity_unit": "MWh",
+      "region": "CAMX",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_erct_nb",
+      "name": "eGRID ERCOT All (ERCT) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.440891,
+      "ch4_factor": 1.472e-05,
+      "n2o_factor": 1.4016e-06,
+      "activity_unit": "kWh",
+      "region": "ERCT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_erct_nb_mwh",
+      "name": "eGRID ERCOT All (ERCT) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 440.8914,
+      "ch4_factor": 0.01472,
+      "n2o_factor": 0.0014016,
+      "activity_unit": "MWh",
+      "region": "ERCT",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_frcc_nb",
+      "name": "eGRID FRCC All (FRCC) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.451778,
+      "ch4_factor": 1.496e-05,
+      "n2o_factor": 1.4288e-06,
+      "activity_unit": "kWh",
+      "region": "FRCC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_frcc_nb_mwh",
+      "name": "eGRID FRCC All (FRCC) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 451.7776,
+      "ch4_factor": 0.01496,
+      "n2o_factor": 0.0014288,
+      "activity_unit": "MWh",
+      "region": "FRCC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_hims_nb",
+      "name": "eGRID HICC Miscellaneous (HIMS) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.324318,
+      "ch4_factor": 1.215e-05,
+      "n2o_factor": 1.1103e-06,
+      "activity_unit": "kWh",
+      "region": "HIMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_hims_nb_mwh",
+      "name": "eGRID HICC Miscellaneous (HIMS) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 324.3183,
+      "ch4_factor": 0.01215,
+      "n2o_factor": 0.0011103,
+      "activity_unit": "MWh",
+      "region": "HIMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_hioa_nb",
+      "name": "eGRID HICC Oahu (HIOA) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.723479,
+      "ch4_factor": 2.095e-05,
+      "n2o_factor": 2.1077e-06,
+      "activity_unit": "kWh",
+      "region": "HIOA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_hioa_nb_mwh",
+      "name": "eGRID HICC Oahu (HIOA) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 723.4792,
+      "ch4_factor": 0.02095,
+      "n2o_factor": 0.0021077,
+      "activity_unit": "MWh",
+      "region": "HIOA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_mroe_nb",
+      "name": "eGRID MRO East (MROE) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.523899,
+      "ch4_factor": 1.655e-05,
+      "n2o_factor": 1.609e-06,
+      "activity_unit": "kWh",
+      "region": "MROE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_mroe_nb_mwh",
+      "name": "eGRID MRO East (MROE) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 523.8988,
+      "ch4_factor": 0.01655,
+      "n2o_factor": 0.001609,
+      "activity_unit": "MWh",
+      "region": "MROE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_mrow_nb",
+      "name": "eGRID MRO West (MROW) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.462664,
+      "ch4_factor": 1.52e-05,
+      "n2o_factor": 1.456e-06,
+      "activity_unit": "kWh",
+      "region": "MROW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_mrow_nb_mwh",
+      "name": "eGRID MRO West (MROW) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 462.6638,
+      "ch4_factor": 0.0152,
+      "n2o_factor": 0.001456,
+      "activity_unit": "MWh",
+      "region": "MROW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_newe_nb",
+      "name": "eGRID NPCC New England (NEWE) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.306628,
+      "ch4_factor": 1.176e-05,
+      "n2o_factor": 1.0661e-06,
+      "activity_unit": "kWh",
+      "region": "NEWE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_newe_nb_mwh",
+      "name": "eGRID NPCC New England (NEWE) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 306.6282,
+      "ch4_factor": 0.01176,
+      "n2o_factor": 0.0010661,
+      "activity_unit": "MWh",
+      "region": "NEWE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_nwpp_nb",
+      "name": "eGRID WECC Northwest (NWPP) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.371492,
+      "ch4_factor": 1.319e-05,
+      "n2o_factor": 1.2282e-06,
+      "activity_unit": "kWh",
+      "region": "NWPP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_nwpp_nb_mwh",
+      "name": "eGRID WECC Northwest (NWPP) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 371.4918,
+      "ch4_factor": 0.01319,
+      "n2o_factor": 0.0012282,
+      "activity_unit": "MWh",
+      "region": "NWPP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_nycw_nb",
+      "name": "eGRID NPCC NYC/Westchester (NYCW) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.330215,
+      "ch4_factor": 1.228e-05,
+      "n2o_factor": 1.1251e-06,
+      "activity_unit": "kWh",
+      "region": "NYCW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_nycw_nb_mwh",
+      "name": "eGRID NPCC NYC/Westchester (NYCW) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 330.215,
+      "ch4_factor": 0.01228,
+      "n2o_factor": 0.0011251,
+      "activity_unit": "MWh",
+      "region": "NYCW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_nyli_nb",
+      "name": "eGRID NPCC Long Island (NYLI) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.523899,
+      "ch4_factor": 1.655e-05,
+      "n2o_factor": 1.609e-06,
+      "activity_unit": "kWh",
+      "region": "NYLI",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_nyli_nb_mwh",
+      "name": "eGRID NPCC Long Island (NYLI) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 523.8988,
+      "ch4_factor": 0.01655,
+      "n2o_factor": 0.001609,
+      "activity_unit": "MWh",
+      "region": "NYLI",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_nyup_nb",
+      "name": "eGRID NPCC Upstate NY (NYUP) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.171458,
+      "ch4_factor": 8.78e-06,
+      "n2o_factor": 7.284e-07,
+      "activity_unit": "kWh",
+      "region": "NYUP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_nyup_nb_mwh",
+      "name": "eGRID NPCC Upstate NY (NYUP) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 171.4578,
+      "ch4_factor": 0.00878,
+      "n2o_factor": 0.0007284,
+      "activity_unit": "MWh",
+      "region": "NYUP",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_prms_nb",
+      "name": "eGRID Puerto Rico Miscellaneous (PRMS) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.703521,
+      "ch4_factor": 2.051e-05,
+      "n2o_factor": 2.0578e-06,
+      "activity_unit": "kWh",
+      "region": "PRMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_prms_nb_mwh",
+      "name": "eGRID Puerto Rico Miscellaneous (PRMS) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 703.5212,
+      "ch4_factor": 0.02051,
+      "n2o_factor": 0.0020578,
+      "activity_unit": "MWh",
+      "region": "PRMS",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_rfce_nb",
+      "name": "eGRID RFC East (RFCE) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.383285,
+      "ch4_factor": 1.345e-05,
+      "n2o_factor": 1.2577e-06,
+      "activity_unit": "kWh",
+      "region": "RFCE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_rfce_nb_mwh",
+      "name": "eGRID RFC East (RFCE) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 383.2852,
+      "ch4_factor": 0.01345,
+      "n2o_factor": 0.0012577,
+      "activity_unit": "MWh",
+      "region": "RFCE",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_rfcm_nb",
+      "name": "eGRID RFC Michigan (RFCM) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.573794,
+      "ch4_factor": 1.765e-05,
+      "n2o_factor": 1.7337e-06,
+      "activity_unit": "kWh",
+      "region": "RFCM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_rfcm_nb_mwh",
+      "name": "eGRID RFC Michigan (RFCM) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 573.7939,
+      "ch4_factor": 0.01765,
+      "n2o_factor": 0.0017337,
+      "activity_unit": "MWh",
+      "region": "RFCM",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_rfcw_nb",
+      "name": "eGRID RFC West (RFCW) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.533424,
+      "ch4_factor": 1.676e-05,
+      "n2o_factor": 1.6328e-06,
+      "activity_unit": "kWh",
+      "region": "RFCW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_rfcw_nb_mwh",
+      "name": "eGRID RFC West (RFCW) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 533.4242,
+      "ch4_factor": 0.01676,
+      "n2o_factor": 0.0016328,
+      "activity_unit": "MWh",
+      "region": "RFCW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_rmpa_nb",
+      "name": "eGRID WECC Rockies (RMPA) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.548846,
+      "ch4_factor": 1.71e-05,
+      "n2o_factor": 1.6713e-06,
+      "activity_unit": "kWh",
+      "region": "RMPA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_rmpa_nb_mwh",
+      "name": "eGRID WECC Rockies (RMPA) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 548.8463,
+      "ch4_factor": 0.0171,
+      "n2o_factor": 0.0016713,
+      "activity_unit": "MWh",
+      "region": "RMPA",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_spno_nb",
+      "name": "eGRID SPP North (SPNO) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.50893,
+      "ch4_factor": 1.622e-05,
+      "n2o_factor": 1.5716e-06,
+      "activity_unit": "kWh",
+      "region": "SPNO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_spno_nb_mwh",
+      "name": "eGRID SPP North (SPNO) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 508.9302,
+      "ch4_factor": 0.01622,
+      "n2o_factor": 0.0015716,
+      "activity_unit": "MWh",
+      "region": "SPNO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_spso_nb",
+      "name": "eGRID SPP South (SPSO) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.495322,
+      "ch4_factor": 1.592e-05,
+      "n2o_factor": 1.5376e-06,
+      "activity_unit": "kWh",
+      "region": "SPSO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_spso_nb_mwh",
+      "name": "eGRID SPP South (SPSO) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 495.3225,
+      "ch4_factor": 0.01592,
+      "n2o_factor": 0.0015376,
+      "activity_unit": "MWh",
+      "region": "SPSO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srmv_nb",
+      "name": "eGRID SERC Mississippi Valley (SRMV) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.424562,
+      "ch4_factor": 1.436e-05,
+      "n2o_factor": 1.3608e-06,
+      "activity_unit": "kWh",
+      "region": "SRMV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srmv_nb_mwh",
+      "name": "eGRID SERC Mississippi Valley (SRMV) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 424.5621,
+      "ch4_factor": 0.01436,
+      "n2o_factor": 0.0013608,
+      "activity_unit": "MWh",
+      "region": "SRMV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srmw_nb",
+      "name": "eGRID SERC Midwest (SRMW) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.723479,
+      "ch4_factor": 2.095e-05,
+      "n2o_factor": 2.1077e-06,
+      "activity_unit": "kWh",
+      "region": "SRMW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srmw_nb_mwh",
+      "name": "eGRID SERC Midwest (SRMW) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 723.4792,
+      "ch4_factor": 0.02095,
+      "n2o_factor": 0.0021077,
+      "activity_unit": "MWh",
+      "region": "SRMW",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srso_nb",
+      "name": "eGRID SERC South (SRSO) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.462664,
+      "ch4_factor": 1.52e-05,
+      "n2o_factor": 1.456e-06,
+      "activity_unit": "kWh",
+      "region": "SRSO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srso_nb_mwh",
+      "name": "eGRID SERC South (SRSO) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 462.6638,
+      "ch4_factor": 0.0152,
+      "n2o_factor": 0.001456,
+      "activity_unit": "MWh",
+      "region": "SRSO",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srtv_nb",
+      "name": "eGRID SERC Tennessee Valley (SRTV) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.451778,
+      "ch4_factor": 1.496e-05,
+      "n2o_factor": 1.4288e-06,
+      "activity_unit": "kWh",
+      "region": "SRTV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srtv_nb_mwh",
+      "name": "eGRID SERC Tennessee Valley (SRTV) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 451.7776,
+      "ch4_factor": 0.01496,
+      "n2o_factor": 0.0014288,
+      "activity_unit": "MWh",
+      "region": "SRTV",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srvc_nb",
+      "name": "eGRID SERC Virginia/Carolina (SRVC) Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.400975,
+      "ch4_factor": 1.384e-05,
+      "n2o_factor": 1.3019e-06,
+      "activity_unit": "kWh",
+      "region": "SRVC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_srvc_nb_mwh",
+      "name": "eGRID SERC Virginia/Carolina (SRVC) Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 400.9753,
+      "ch4_factor": 0.01384,
+      "n2o_factor": 0.0013019,
+      "activity_unit": "MWh",
+      "region": "SRVC",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal"
+      ]
+    },
+    {
+      "id": "egrid_us_avg_nb",
+      "name": "eGRID US National Average Non-Baseload",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 0.468107,
+      "ch4_factor": 1.532e-05,
+      "n2o_factor": 1.4696e-06,
+      "activity_unit": "kWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal",
+        "national_average"
+      ]
+    },
+    {
+      "id": "egrid_us_avg_nb_mwh",
+      "name": "eGRID US National Average Non-Baseload per MWh",
+      "category": "electricity",
+      "subcategory": "grid_electricity_nonbaseload",
+      "co2_factor": 468.1069,
+      "ch4_factor": 0.01532,
+      "n2o_factor": 0.0014696,
+      "activity_unit": "MWh",
+      "region": "US",
+      "year": 2024,
+      "tags": [
+        "electricity",
+        "grid",
+        "location_based",
+        "non_baseload",
+        "marginal",
+        "national_average"
+      ]
+    }
+  ]
+}
