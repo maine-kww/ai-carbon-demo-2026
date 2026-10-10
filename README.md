@@ -1,43 +1,52 @@
 # AI Carbon Demo 2026
 
 **双碳 AI 咨询落地**：用 AI 推动双碳咨询服务落地。  
-根目录 `index.html` 是 V1.0 前端原型（本地双击即可打开）：售前诊断 → 公司情况填报 → 双碳方案生成 → 五阶段交付框架 → 证据链与变更留痕。
+打开 [`index.html`](index.html) 即可使用**活数据双碳方案页**（双击离线可算）。
 
 ## 仓库结构
 
 | 路径 | 说明 |
 |------|------|
-| [`index.html`](index.html) | 双碳方案落地系统 · 资深双碳管理咨询顾问控制台（前端原型） |
-| [`carbon-md/`](carbon-md/) | **17 个双碳 Skill + 数据层 + 热更新运行时**（能力内核） |
+| [`index.html`](index.html) | **活数据双碳方案模板（当前主页面）** |
+| [`css/`](css/) · [`js/`](js/) | 样式与计算引擎、来源收集、导出、手动编辑 |
+| [`carbon-md/`](carbon-md/) | 17 个双碳 Skill + 数据层 + 热更新运行时 |
+| [`console-v1-legacy.html`](console-v1-legacy.html) | 旧版方案落地系统静态控制台（归档） |
 
-## carbon-md 能力摘要
+## 活数据页能力（index.html）
 
-数据驱动 Skill 体系 v2.0：行业规则 / 排放因子 / 政策元数据集中在 `_data/`，Skill 只写流程，参数动态查询。
+- **企业自助**：行业（33 个分组，含金融/新能源/2027 零碳工厂/碳市场扩围）、基准年 2019–2099、目标与降幅
+- **数据来源**：PDF/发票/台账上传识别提示，登记凭证号、来源类型、状态（已查证/估算/待补充）
+- **核算**：范围一/二/三实时计算，因子带**出处与数据状态**
+- **可视化**：范围占比、数据完整度、减排路径
+- **方案报告**：执行摘要 → 边界 → 来源 → 方法 → 行动 → 17 Skills → **治理机制** → **交付框架** → 附录
+- **行业政策**：按行业过滤、换旧更新、标注现行有效/被替代/已废止与来源链接
+- **导出**：Word（.doc）+ PDF（打印）
+- **手动编辑**：页面内改文案并本地保存
 
-| 类别 | Skill |
-|------|--------|
-| 核算与足迹 | `carbon-accounting` `carbon-footprint` `supply-chain-carbon` |
-| 目标与路径 | `carbon-roadmap` `carbon-system` `climate-adaptation` |
-| 市场与金融 | `carbon-trading` `carbon-finance` `ccer-development` `carbon-sink` `carbon-inclusion` |
-| 合规与披露 | `carbon-policy` `carbon-esg` `carbon-mrv` `cbam-compliance` `green-factory` |
-| 知识保鲜 | `carbon-policy-monitor` |
+## carbon-md（Skill 能力包）
 
-完整说明、查询接口与热更新命令见 [`carbon-md/README.md`](carbon-md/README.md)。
+17 个 Skill + `_data` 数据层 + `_runtime`，详见 [`carbon-md/README.md`](carbon-md/README.md)。
 
 ## 本地预览
 
 ```bash
-# 仅前端
-start index.html
-
-# Skill 数据层自检（在 carbon-md/ 下）
-cd carbon-md
-python _data/query.py stats
-python _runtime/entry.py manage list
+# 直接双击 index.html
+# 或
+python -m http.server 8787
+# 打开 http://127.0.0.1:8787/
 ```
 
-## 项目进展
+可选 Skill API（增强）：见历史目录 `skill_server/`（本地 `python server.py`）。
 
-- ✅ V1.0 前端原型（`index.html`，含 GHG / ISO / CCER 框架）
-- ✅ 17 个双碳 Skill 数据驱动化（`carbon-md/`，含验收报告）
-- ⏭ 下一阶段：招募 5 位行业专家验证业务逻辑并收集真实反馈
+## 版本说明
+
+### 2026-10 · 活数据页替换主 index
+
+| 变更 | 说明 |
+|------|------|
+| 新 `index.html` | 离线可算活页：来源收集、因子溯源、动态治理/交付、17 Skills、Word/PDF |
+| 行业全覆盖 | 碳市场/报告阶段/2027 零碳工厂/2030 拓展/金融/新能源等 33 项 |
+| 基准年 2019–2099 | 目标年可到 2099 |
+| 政策灵活库 | 按行业识别；换旧更新；标注有效来源 |
+| 手动编辑 | 页面内改显示文字并保存 |
+| 旧控制台 | 移至 `console-v1-legacy.html` |
