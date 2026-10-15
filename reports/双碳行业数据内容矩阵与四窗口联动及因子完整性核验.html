@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>双碳行业数据内容矩阵与四窗口联动及因子完整性核验</title>
+<style>body{font-family:-apple-system,"Microsoft YaHei",sans-serif;max-width:1180px;margin:0 auto;padding:24px;color:#1f2937;line-height:1.6;background:#f7f8fa}
+h1{color:#0f766e;border-bottom:3px solid #0f766e;padding-bottom:8px}h2{color:#0f766e;margin-top:34px;border-left:5px solid #14b8a6;padding-left:10px}h3{color:#334155;margin-top:22px}
+.sub{color:#64748b;font-size:13px;margin:6px 0 18px}.note{background:#fff7ed;border:1px solid #fdba74;padding:12px 14px;border-radius:8px;font-size:13px;margin:14px 0;color:#7c2d12}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;margin-right:4px}.cov{background:#dcfce7;color:#166534}.dyn{background:#dbeafe;color:#1e40af}.gap{background:#fee2e2;color:#991b1b}.part{background:#fef9c3;color:#854d0e}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:10px 0}th,td{border:1px solid #cbd5e1;padding:6px 8px;text-align:left;vertical-align:top}th{background:#0f766e;color:#fff}tr:nth-child(even){background:#f1f5f9}
+.ok{color:#166534;font-weight:600}.no{color:#991b1b;font-weight:600}.pend{color:#854d0e}.small{font-size:11.5px;color:#475569}.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;margin:12px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.sec-dyn{background:#eff6ff;border-left:4px solid #2563eb;padding:10px 12px;border-radius:6px;margin:10px 0}.sec-gap{background:#fef2f2;border-left:4px solid #dc2626;padding:10px 12px;border-radius:6px;margin:10px 0}
+.foot{margin-top:30px;color:#94a3b8;font-size:12px;border-top:1px solid #e2e8f0;padding-top:10px}</style></head><body>
+<h1>双碳行业数据内容矩阵 · 四窗口联动确认 · 行业排放因子收集完整性核验</h1>
+<div class="sub">生成日期：2026-10-15 ｜ 数据来源：运行时执行 shuangtan.html（VM + DOM 桩）抽取真实知识库与渲染函数 ｜ 行业：共 17 个 ｜ 离线单文件 · 框架级/占位级内容</div>
+<div class="note"><b>诚实声明（虚拟内容，不编造实测数字）：</b>本报告的「数据内容」为<b>框架级与占位级</b>——即各标准/市场要求企业准备的数据项、系统当前知识库已覆盖的部分、以及明确缺口。所有强度基准值凡标注「待官方发布」者不得写成已纳入；排放因子凡注明「来源与版本待逐项核实」者须以企业实测/官方指南为准。本报告用于确认系统能力边界与数据收集完整性，非真实咨询交付物。</div>
+<h2>一、行业覆盖与因子库现状</h2>
+<div class="card"><b>运行时行业数：</b>17 个（基础 14 + 加载时合并追加 化肥/氢/民航）。
+<br><b>FACTOR_LIB 因子库：</b>共 25 项，分四类 —— scope1（行业专属，11 项，实质为<b>水泥建材</b>因子集：clinkerEF/coalNCV/coalCC/dieselNCV/dieselEF…）、scope2（2 项：gridEF 区域电网/heatEF 热力）、scope3（8 项：lossEF/s3Freight/s3Capital/s3Waste…）、market（4 项：ceaPrice/ccerPrice/cbamPrice/fxEUR）。
+<br><b>关键事实：</b>scope1 的 11 项行业因子<b>全部属于水泥建材</b>；其余 16 行业在 KB_INDUSTRY_EXT.factors 中仅为「因子名称清单 + 来源与版本待逐项核实」占位，<b>无实测值</b>；gridEF 为单一区域示例值 0.45 tCO2/MWh（西南区域 2022 参考），<b>未分省差异化</b>。</div>
+<h2>二、六大框架数据内容矩阵（行业 × 框架 适用性）</h2>
+<p class="small">下表为各行业标准/市场要求的「数据内容」与系统当前覆盖。单元格 = 该行业在此框架下的适用状态；具体数据项见各框架卡片。</p>
+<table><tr><th>行业</th><th>GHG Protocol</th><th>ISO 14064-1</th><th>ISO 14067</th><th>全国碳市场/试点</th><th>CBAM</th><th>ESG/TCFD/CDP</th></tr>
+<tr><td><b>电力热力</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">已纳管</td>
+<td class="ok">覆盖</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>钢铁</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">已纳管</td>
+<td class="ok">覆盖</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>水泥建材</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">已纳管</td>
+<td class="ok">覆盖</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>石化化工</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">扩容候选</td>
+<td class="no">不适用</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>有色金属</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">已纳管</td>
+<td class="ok">覆盖</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>造纸</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">扩容候选</td>
+<td class="no">不适用</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>纺织</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="pend">候选</td>
+<td class="no">不适用</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>食品饮料</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="pend">候选</td>
+<td class="no">不适用</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>电子半导体</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="pend">候选</td>
+<td class="no">不适用</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>汽车零部件</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="pend">候选</td>
+<td class="pend">下游传导</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>装备制造</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="pend">候选</td>
+<td class="pend">下游传导</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>物流运输</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">扩容候选（民航方向）</td>
+<td class="no">不适用</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>房地产建筑</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="pend">候选</td>
+<td class="no">不适用</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>其他</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="pend">候选</td>
+<td class="pend">下游传导</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>化肥</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">未纳管</td>
+<td class="ok">覆盖</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>氢</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="">未纳管</td>
+<td class="ok">覆盖</td>
+<td class="ok">适用</td>
+</tr>
+<tr><td><b>民航</b></td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="ok">适用</td>
+<td class="pend">候选</td>
+<td class="no">不适用</td>
+<td class="ok">适用</td>
+</tr>
+</table>
+<h3>各框架数据内容明细（虚拟/框架级）</h3>
+<div class="card"><b>GHG Protocol（范围1/2/3）</b> <span class="tag cov">适用：全行业适用</span><br><b>所需数据项：</b><ul>
+<li>范围1 直接排放：固定燃烧/移动燃烧/过程排放/逸散</li>
+<li>范围2 外购电力与热力（位置法+市场法）</li>
+<li>范围3 价值链15类：采购商品与服务、资本品、上游运输、废弃物、商务差旅、员工通勤、上下游运输分销、产品使用、报废处理、特许/租赁/投资等</li>
+<li>核算边界与方法学选择（运营控制/股权/财务控制）</li>
+</ul><b>系统当前覆盖：</b><span class="small">系统已建 scope1/2/3 采集框架（ensureL2 生成源行）；行业专属因子值待补</span></div>
+<div class="card"><b>ISO 14064-1（组织碳盘查）</b> <span class="tag cov">适用：全行业适用（组织级）</span><br><b>所需数据项：</b><ul>
+<li>组织边界与运营边界确定</li>
+<li>基准年选定与重算</li>
+<li>温室气体清册（量化方法：计算/测量）</li>
+<li>不确定性评估与 MRV</li>
+<li>内部核查与第三方核查</li>
+</ul><b>系统当前覆盖：</b><span class="small">窗口一采集组织边界/基准年；措施库含盘查方法；QD-REUSE1 复用已有底稿</span></div>
+<div class="card"><b>ISO 14067（产品碳足迹/LCA）</b> <span class="tag cov">适用：全行业（出口/品牌/供应链更迫切）</span><br><b>所需数据项：</b><ul>
+<li>功能单位与系统边界（摇篮到大门/到坟墓）</li>
+<li>初级数据：物料/能源/过程排放</li>
+<li>次级数据：LCA 数据库（Ecoinvent/CPCD 等）</li>
+<li>分配规则与 PCR 产品类别规则</li>
+<li>LCA 软件量化与 PCR 符合性</li>
+</ul><b>系统当前覆盖：</b><span class="small">窗口二 pathway 提及产品碳足迹LCA 服务；LCA 量化引擎/初级-次级数据库未建（仅框架）</span></div>
+<div class="card"><b>全国碳市场与试点（配额/履约/CCER）</b> <span class="tag cov">适用：已纳管/扩容候选行业适用</span><br><b>所需数据项：</b><ul>
+<li>纳入行业与门槛（电力/钢铁/水泥/有色/石化/化工/造纸/民航等）</li>
+<li>配额分配：基准法/历史强度法</li>
+<li>履约清缴与核查（MRV）</li>
+<li>CCER 方法学与抵消比例（≤5%）</li>
+<li>地方试点（北京/上海/广东/湖北等）差异</li>
+</ul><b>系统当前覆盖：</b><span class="small">isETS 触发 QD-ETS1 履约年度；窗口二/四含配额履约章；措施库含 CCER开发；配额测算引擎未建（基准值待官方发布）</span></div>
+<div class="card"><b>CBAM（欧盟碳边境调节机制）</b> <span class="tag cov">适用：6 覆盖行业（含出口）；下游经传导</span><br><b>所需数据项：</b><ul>
+<li>覆盖行业：水泥/钢铁/铝/化肥/电力/氢</li>
+<li>隐含碳排放：直接+间接（电力）</li>
+<li>产品 CN 编码与嵌入式排放报告</li>
+<li>默认值 vs 企业实测值</li>
+<li>第三方核查与季度申报</li>
+</ul><b>系统当前覆盖：</b><span class="small">KB_CBAM_BY_INDUSTRY + 窗口二 CBAM 适用行 + 窗口四 CBAM 章；实测排放默认值未建（仅覆盖标记）</span></div>
+<div class="card"><b>ESG / TCFD / CDP</b> <span class="tag cov">适用：全行业（上市/出口/供应链要求）</span><br><b>所需数据项：</b><ul>
+<li>TCFD 四支柱：治理/战略/风险管理/指标目标</li>
+<li>CDP 气候问卷 C1–C14（治理/风险/排放/战略）</li>
+<li>范围1/2/3 披露与目标（SBTi）</li>
+<li>气候情景分析（2℃/1.5℃）</li>
+</ul><b>系统当前覆盖：</b><span class="small">disclose 字段采集 ESG/TCFD/CDP；窗口四含披露章；CDP 逐题问卷未建</span></div>
+<h2>三、四窗口联动确认（基于行业 + 企业数据 + 适用政策的运行时复核）</h2>
+<div class="sec-dyn"><span class="tag dyn">动态联动</span> <b>复跑结果：</b><span class="ok">通过 — 四窗口均随行业/企业数据/适用政策变化</span><br><span class="small">W1序列: 电子771 / 纺织674 / 钢铁760 字；W2渲染长度: 28075/28020/28118；W4文档长度: 36866/36344/37896</span></div>
+<div class="card"><b>窗口一 · 企业诊断对话：</b><code>stageQuestionSeq()</code> 融合行业题（QI-EG1 特气/电子、QI-TX1 染整/纺织、QI-ST1 冶炼路线/钢铁…）+ 数据驱动追问（出口→QD-CBAM1、纳管→QD-ETS1、CBAM/ETS→QD-GREEN1、已盘查→QD-REUSE1）。三行业题目序列互不相同。</div>
+<div class="card"><b>窗口二 · 行业政策落地方案：</b><code>renderPlan()</code> 随 KB_INDUSTRY[行业] 渲染政策卡/途径库/方案模板/范围清单/五阶段任务；并新增「CBAM 适用」行（覆盖/不适用/下游传导）。钢铁≠纺织渲染内容不同。</div>
+<div class="card"><b>窗口三 · 落地台账 L2 行级采集：</b><code>ensureL2()</code> 按 SCOPE_COLLECTION_BY_INDUSTRY[行业] 切换逐行业模板（14 行业专属 + 水泥基准；食品饮料/其他回退水泥默认并黄横幅提示）。钢铁含烧结/球团源、电子半导体含特气 PFC/SF6、纺织含工艺热力。</div>
+<div class="card"><b>窗口四 · 方案文档工作台：</b><code>buildDoc(c)</code> 依行业政策/基准/CBAM 与企业数据/成熟度/披露生成多章节报告；钢铁含配额履约章 + CBAM 覆盖章，纺织无 CBAM 章，电子半导体含 CBAM 不适用说明。</div>
+<p class="small">结论：窗口一/二/三/四现已全部随「企业行业 + 企业数据(isETS/isCBAM) + 适用政策(CBAM/碳市场)」动态联动，T1~T3 改造闭环。</p>
+<h2>四、行业排放因子收集完整性核验（对照国家/地方指南）</h2>
+<p class="small">判定口径：国家层面参照《企业温室气体排放核算方法与报告指南》（发改委 24 行业默认因子）+ 分省电网排放因子；地方层面参照省级电网因子与省级政策。系统「已收集」= L2 行 factorRefs 已填系统预置因子值；「未收集」= 因子位置为空、需企业实测或等官方发布。</p>
+<table><tr><th>行业</th><th>scope1 因子<br>(已填/空)</th><th>scope2 因子<br>(已填/空)</th><th>scope3 因子<br>(已填/空)</th><th>ext.factors 状态</th><th>完整性判定</th></tr>
+<tr><td><b>电力热力</b></td>
+<td>0/6</td>
+<td>2/0</td>
+<td>0/5</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>钢铁</b></td>
+<td>0/9</td>
+<td>1/0</td>
+<td>0/5</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>水泥建材</b></td>
+<td>6/0</td>
+<td>3/1</td>
+<td>0/15</td>
+<td class="small">水泥因子已入库</td>
+<td class="ok">接近完全</td></tr>
+<tr><td><b>石化化工</b></td>
+<td>0/9</td>
+<td>2/0</td>
+<td>0/5</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>有色金属</b></td>
+<td>0/5</td>
+<td>1/0</td>
+<td>0/4</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>造纸</b></td>
+<td>0/4</td>
+<td>2/0</td>
+<td>0/5</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>纺织</b></td>
+<td>0/4</td>
+<td>2/0</td>
+<td>0/4</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>食品饮料</b> <span class="tag part">回退</span></td>
+<td>6/0</td>
+<td>3/1</td>
+<td>0/15</td>
+<td class="small">—</td>
+<td class="pend">部分·借用</td></tr>
+<tr><td><b>电子半导体</b></td>
+<td>0/5</td>
+<td>2/0</td>
+<td>0/4</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>汽车零部件</b></td>
+<td>0/5</td>
+<td>2/0</td>
+<td>0/4</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>装备制造</b></td>
+<td>0/5</td>
+<td>2/0</td>
+<td>0/4</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>物流运输</b></td>
+<td>0/4</td>
+<td>2/0</td>
+<td>0/5</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>房地产建筑</b></td>
+<td>0/3</td>
+<td>2/0</td>
+<td>0/4</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>其他</b> <span class="tag part">回退</span></td>
+<td>6/0</td>
+<td>3/1</td>
+<td>0/15</td>
+<td class="small">—</td>
+<td class="pend">部分·借用</td></tr>
+<tr><td><b>化肥</b></td>
+<td>0/5</td>
+<td>2/0</td>
+<td>0/2</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>氢</b></td>
+<td>0/4</td>
+<td>1/0</td>
+<td>0/2</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+<tr><td><b>民航</b></td>
+<td>0/4</td>
+<td>2/0</td>
+<td>0/5</td>
+<td class="small">占位："名称清单+待逐项核实"</td>
+<td class="pend">部分·占位</td></tr>
+</table>
+<div class="sec-gap"><b>国家/地方指南对照结论：</b>
+<br>① <b>国家（发改委 24 行业核算指南默认因子）：</b>仅<b>水泥建材</b>在 FACTOR_LIB.scope1 实现（11 项行业因子已填），其余 16 行业指南默认因子<b>未入库</b>——系统仅提示"来源与版本待逐项核实"，不预填默认值。→ <span class="no">未按国家指南预填完全</span>。
+<br>② <b>地方（分省电网排放因子）：</b>gridEF 为单一区域示例值（西南 0.45），KB_PROVINCE 24 省<b>0 省</b>含分省电网因子。→ <span class="no">地方分省因子未收集完全</span>。
+<br>③ <b>通用因子（scope2 电网/热力、market 碳价/CCER/CBAM/汇率）：</b>已入库可用 → <span class="ok">收集完全</span>。
+<br>④ <b>scope3 因子（运输/资本/废弃等 8 项）：</b>仅有引用名、无数值 → <span class="pend">未填值，需企业实测</span>。
+<br>⑤ <b>面板收集能力：</b>所有源行均可人工录入因子（采集框架具备），但<b>系统预置的"国家/地方默认因子"仅水泥行业完整</b>；其余行业需企业自建或等官方发布。</div>
+<details><summary>逐行业因子完整性说明（展开）</summary>
+<div class="small" style="margin:6px 0"><b>电力热力：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>钢铁：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>水泥建材：</b>行业因子完整：scope1 用 FACTOR_LIB.scope1（11 项水泥专属：clinkerEF/coalNCV/coalCC/dieselNCV…）已填；scope2 gridEF/heatEF 通用；market 4 项已填。仅 scope3 15 源因子值待补（引用名已就位）。</div>
+<div class="small" style="margin:6px 0"><b>石化化工：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>有色金属：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>造纸：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>纺织：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>食品饮料：</b>无本行业专属 L2 模板，回退水泥默认（scope1 借用熟料/燃料水泥因子，非本行业对口）；scope2 通用因子可用；scope3 因子未入库。</div>
+<div class="small" style="margin:6px 0"><b>电子半导体：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>汽车零部件：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>装备制造：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>物流运输：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>房地产建筑：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>其他：</b>无本行业专属 L2 模板，回退水泥默认（scope1 借用熟料/燃料水泥因子，非本行业对口）；scope2 通用因子可用；scope3 因子未入库。</div>
+<div class="small" style="margin:6px 0"><b>化肥：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>氢：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+<div class="small" style="margin:6px 0"><b>民航：</b>scope2 通用因子(gridEF/heatEF)已填可用；scope1 行业专属因子 factorRefs 留空（KB_INDUSTRY_EXT.factors 仅"名称清单+待逐项核实"占位，无实测值）；scope3 因子未入库（仅引用名）。</div>
+</details>
+<h2>五、缺口收敛清单</h2>
+<div class="sec-gap"><ul>
+<li><b>行业专属 scope1 因子缺失（16 行业）：</b>燃料 NCV/EF、过程排放因子未入库，L2 行 factorRefs 留空，标"缺因子待补"（诚实，不编造）。</li>
+<li><b>地方分省电网因子缺失：</b>gridEF 单一区域值，未分省差异化；KB_PROVINCE 无分省因子。</li>
+<li><b>scope3 因子未填值：</b>8 项仅有引用名，无数值（运输/资本/废弃等）。</li>
+<li><b>仅食品饮料/其他 窗口三无专属 L2 模板：</b>回退水泥默认（黄横幅提示非本行业对口）。</li>
+<li><b>窗口一行业题新字段已采集但窗口二/四暂未消费：</b>c.egProcessGas 等作采集留痕。</li>
+<li><b>配额测算引擎/CBAM 实测排放/LCA 量化引擎/ISO 14067 数据库/CDP 逐题问卷：</b>均未建（框架级占位）。</li>
+<li><b>省级政策：</b>仅贵州带真实文号，其余"以最新官方发布为准"承载。</li>
+</ul></div>
+<div class="foot">本报告由离线单文件系统自动抽取生成 · 框架级/占位级内容，不替代真实咨询交付物 · 凡「待官方发布/待核实」均须以企业实测与官方最新发布为准</div>
+</body></html>

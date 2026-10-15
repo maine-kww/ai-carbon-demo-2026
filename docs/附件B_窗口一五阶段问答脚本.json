@@ -1,0 +1,477 @@
+{
+  "_meta": {
+    "用途": "窗口一「五阶段情报采集」的问题脚本，可直接贴入 shuangtan.html 作为 QUESTIONS_ALL 数据源",
+    "核验基准日": "2026-10-13",
+    "兼容性": "QUESTIONS_CORE（Q1-Q7）沿用现有 QUESTIONS（965-973 行）与 answer() 逻辑，不改 key、不破坏 judgeStage/matchProducts",
+    "落库约定": "所有答案进 chat.ans；企业级字段进 customer 对象；排放与物理数据统一进 customer.em.*，再整体序列化存云端长文本字段（方案见说明书 3.8）"
+  },
+
+  "MODES": {
+    "quick": {
+      "label": "快速诊断",
+      "desc": "7 问约 1 分钟，先出成熟度判断与产品线建议",
+      "questionIds": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7"]
+    },
+    "full": {
+      "label": "完整诊断",
+      "desc": "27 问约 10 分钟，采集到能生成完整方案书与技经测算的数据粒度",
+      "questionIds": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15", "Q16", "Q17", "Q18", "Q19", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27"]
+    }
+  },
+
+  "QUESTIONS_CORE": {
+    "_说明": "与现有代码完全一致，仅登记在此便于比对，不要改 key 与顺序",
+    "list": [
+      { "id": "Q1", "k": "name", "q": "先认识一下：贵司名称是？", "tip": "直接输入公司全称", "chips": null },
+      { "id": "Q2", "k": "industry", "q": "贵司属于哪个行业？（决定核算边界与产品线）", "tip": "选择行业", "chips": "IND" },
+      { "id": "Q3", "k": "province", "q": "企业注册与主要生产地在哪个省/市？（决定适用地方政策）", "tip": "如：江苏 / 广东 / 四川", "chips": "PROV" },
+      { "id": "Q4", "k": "scale", "q": "企业规模大致是？", "tip": "规模决定交付深度与预算量级", "chips": "SCALE" },
+      { "id": "Q5", "k": "force", "q": "是否已被要求做碳核算或履约？（成熟度第一问）", "tip": "可多选", "chips": [["forceCompliance", "是，被要求核算或履约"], ["hasData", "已建过台账/核算体系"], ["hasTarget", "已主动设双碳目标"], ["wantsValue", "想做碳资产变现/品牌/融资"], ["none", "以上都没有"]] },
+      { "id": "Q6", "k": "pains", "q": "核心痛点是哪些？（可多选）", "tip": "最多选3项", "chips": "PAIN" },
+      { "id": "Q7", "k": "chain", "q": "预算区间与决策链？（成熟度第三问）", "tip": "如：80-200万，EHS总监→总经理", "chips": "BUDGET" }
+    ]
+  },
+
+  "QUESTIONS_STAGE": [
+    {
+      "group": 1,
+      "stage": "售前诊断",
+      "title": "第一组 · 售前诊断（企业物理边界与合规身份）",
+      "why": "决定方案范围与是否生成履约/CBAM 章节；这一组答完就能判断这家企业最短的合规路径",
+      "items": [
+        {
+          "id": "Q8",
+          "key": "creditCode",
+          "ask": "贵司统一社会信用代码或行业代码是？（用于核对行业分类与纳管范围）",
+          "tip": "18 位；也可只报行业代码，如 C3011 水泥制造",
+          "type": "text",
+          "validate": { "len": 18, "soft": true, "skipLabel": "暂不提供" },
+          "excel": "00_企业基本信息",
+          "weight": 0.5
+        },
+        {
+          "id": "Q9",
+          "key": "productsLine",
+          "ask": "主营产品与产线情况？（例：P·O42.5 水泥 220 万吨/年，1 条 5000t/d 熟料线）",
+          "tip": "产品 + 产能 + 产线条数，一句话即可",
+          "type": "text",
+          "followUp": { "when": "文本中未出现条数或产量数字", "ask": "方便补充一下产线条数与单线规模吗？这会影响核算边界与数据量估算" },
+          "excel": "00_企业基本信息",
+          "weight": 1
+        },
+        {
+          "id": "Q10",
+          "key": "isETS",
+          "ask": "贵司是否属于全国碳市场重点排放单位？",
+          "tip": "直接影响是否生成履约章节与配额盈缺测算",
+          "type": "chips",
+          "options": ["是，已纳入", "否", "不确定，需核实"],
+          "secondKey": "isCBAM",
+          "secondAsk": "是否有产品出口欧盟（含经第三国转口）？",
+          "secondOptions": ["是", "否", "不确定"],
+          "excel": "00_企业基本信息、09_政策清单",
+          "weight": 1.5
+        },
+        {
+          "id": "Q11",
+          "key": "siteCount",
+          "ask": "是否还有其他厂区/子公司需纳入本次范围？",
+          "tip": "决定组织边界是单厂还是集团口径",
+          "type": "chips",
+          "options": ["仅 1 个厂区", "2-5 个", "5 个以上", "暂不确定"],
+          "followUp": { "when": "回答不是『仅 1 个厂区』", "ask": "各厂区是否独立核算？是否需要分别出报表？" },
+          "excel": "00_企业基本信息",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "group": 2,
+      "stage": "项目启动",
+      "title": "第二组 · 项目启动（边界、年度与既有体系）",
+      "why": "把口径钉死在开工之前，避免后期返工与边界变更",
+      "items": [
+        {
+          "id": "Q12",
+          "key": "boundary",
+          "ask": "本次核算的法人/组织边界是？核算年度选哪一年？",
+          "tip": "组织边界与核算年度都会写进 SOW",
+          "type": "chips+text",
+          "options": ["单一法人单一厂区", "多厂区合并", "集团口径"],
+          "secondKey": "baseYear",
+          "secondOptions": ["2023 年度", "2024 年度", "2025 年度"],
+          "excel": "00_企业基本信息",
+          "weight": 1.5
+        },
+        {
+          "id": "Q13",
+          "key": "existingSys",
+          "ask": "是否已做过：碳盘查 / 第三方核查 / ISO 14064 / ESG 披露？",
+          "tip": "可多选；已有体系可复用大量底稿",
+          "type": "multi",
+          "options": ["组织碳盘查", "第三方核查", "ISO 14064 体系", "ESG 披露", "以上都没有"],
+          "followUp": { "when": "勾选任一已有项", "ask": "最近一次是哪一年？由哪家机构出具？能否提供报告或底稿样例？" },
+          "excel": "00_企业基本信息、09_政策清单",
+          "weight": 1
+        },
+        {
+          "id": "Q14",
+          "key": "dataAvail",
+          "ask": "数据能否提供？请逐项勾选",
+          "tip": "标『无』的项目会进入资料缺口清单，并影响报告可出章节",
+          "type": "matrix",
+          "items": ["月度能耗台账", "产量与质量台账", "化验室煤质报告", "电费单与用电记录", "计量器具台账", "运输台账"],
+          "levels": ["有", "部分", "无"],
+          "excel": "01/02/03 表",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "group": 3,
+      "stage": "现状调研",
+      "title": "第三组 · 现状调研（核心数据组，决定报告能不能算）",
+      "why": "这一组决定窗口二能不能出技经测算、窗口四能不能出核算结果章节",
+      "items": [
+        {
+          "id": "Q15",
+          "key": "em.production",
+          "ask": "主要产品产量：熟料 ___ 万吨/年、水泥 ___ 万吨/年、设计产能 ___ 万吨/年",
+          "tip": "三个数字用空格或顿号分隔，例如：150 215 155",
+          "type": "number3",
+          "fields": ["em.clinkerOut", "em.cementOut", "em.capacity"],
+          "units": ["万吨", "万吨", "万吨"],
+          "validate": [{ "rule": "水泥产量 >= 熟料产量", "else": "水泥产量低于熟料产量，是否外销熟料？" }],
+          "excel": "00_企业基本信息 B13-B16",
+          "weight": 3
+        },
+        {
+          "id": "Q16",
+          "key": "em.energy",
+          "ask": "能源结构：原煤 ___ 万吨、替代燃料 ___ 万吨、柴油 ___ 吨、外购电 ___ 万kWh、余热自发电 ___ 万kWh、绿电 ___ 万kWh",
+          "tip": "六个数字依次输入，没有的填 0；单位统一用万kWh，系统内部自动换算 MWh",
+          "type": "number6",
+          "fields": ["em.coal", "em.af", "em.diesel", "em.gridBuy", "em.whr", "em.greenPower"],
+          "units": ["万吨", "万吨", "吨", "万kWh", "万kWh", "万kWh"],
+          "validate": [{ "rule": "余热自发电以万kWh 录入并 ×10 得 MWh", "else": "余热自发电单位易错，请确认是万kWh 还是 MWh" }],
+          "excel": "00_企业基本信息 B17-B21、01 表、02 表",
+          "weight": 3
+        },
+        {
+          "id": "Q17",
+          "key": "em.raw",
+          "ask": "原料与工艺：石灰石 ___ 万吨、替代原料（电石渣/钢渣等）___ 万吨",
+          "tip": "替代原料会带来非碳酸盐分解的排放扣减",
+          "type": "number2",
+          "fields": ["em.limestone", "em.altRaw"],
+          "units": ["万吨", "万吨"],
+          "validate": [{ "rule": "石灰石 ÷ 熟料产量 落在 1.1-1.4", "else": "石灰石单耗偏离常规区间，请核对是否含替代原料或矿山剥离量未计入" }],
+          "excel": "00_企业基本信息 B19、01 表第 8 行",
+          "weight": 2
+        },
+        {
+          "id": "Q18",
+          "key": "em.metering",
+          "ask": "计量与数据基础：① 电子皮带秤/磅秤检定是否有效？② 中控 DCS 能否导出煤量与电耗？③ 煤质化验频次？",
+          "tip": "三问分别选；检定超期与 DCS 缺失都会降低数据质量等级",
+          "type": "chips3",
+          "questions": [
+            { "key": "em.metering", "options": ["检定有效", "部分超期", "不清楚"] },
+            { "key": "em.dcs", "options": ["可导出", "仅人工记录", "无 DCS"] },
+            { "key": "em.labFreq", "options": ["每日/每批", "每周", "每月", "很少"] }
+          ],
+          "excel": "01/02 表备注列",
+          "weight": 1.5
+        },
+        {
+          "id": "Q19",
+          "key": "em.transport",
+          "ask": "运输与流向：原料平均运距 ___ km、产品主要销往 ___、是否有出口",
+          "tip": "运输量与流向用于范围 3 类别 1/4/9",
+          "type": "number+text+chips",
+          "fields": ["em.haulIn", "em.marketDir"],
+          "options": ["有出口", "无出口"],
+          "excel": "03 表类别 1/4/9",
+          "weight": 1
+        },
+        {
+          "id": "Q20",
+          "key": "em.otherS3",
+          "ask": "其他范围 3 数据（废弃物 / 差旅 / 通勤 / 包装材料）可得性？",
+          "tip": "全有或部分都可以，缺项会标为『未纳入本次核算』",
+          "type": "chips",
+          "options": ["全有", "部分", "无"],
+          "excel": "03 表类别 5-7",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "group": 4,
+      "stage": "方案设计",
+      "title": "第四组 · 方案设计（目标、措施与约束）",
+      "why": "决定减排路径的取舍与技经测算的排序",
+      "items": [
+        {
+          "id": "Q21",
+          "key": "hasTarget",
+          "ask": "是否已有双碳目标？例如：2030 年吨熟料碳强度较 2024 年下降 10%",
+          "tip": "有量化目标时，系统会拿现状强度对比并提示可达性",
+          "type": "chips+text",
+          "options": ["无", "有定性目标", "有量化目标"],
+          "secondKey": "targetText",
+          "validate": [{ "rule": "有量化目标时起止年份不能为空", "else": "量化目标需要起止年份才能校验可达性" }],
+          "excel": "08_ESG_TCFD_CDP",
+          "weight": 1
+        },
+        {
+          "id": "Q22",
+          "key": "techPlan",
+          "ask": "已确定或已立项的技改/替代计划？",
+          "tip": "勾选项在方案里会标为『已有基础』，不再重复建议",
+          "type": "multi",
+          "options": ["原料替代", "燃料替代（RDF/生物质）", "余热发电扩容", "粉磨系统节能", "光伏/绿电", "CCUS 预研", "暂无"],
+          "excel": "09_政策清单",
+          "weight": 1
+        },
+        {
+          "id": "Q23",
+          "key": "investRule",
+          "ask": "投资与回报约束是什么？",
+          "tip": "决定措施排序；超出约束的措施会单列为中长期选项",
+          "type": "chips",
+          "options": ["回收期 ≤2 年", "≤3 年", "≤5 年", "仅合规必需投入", "待评估"],
+          "excel": "—",
+          "weight": 1
+        },
+        {
+          "id": "Q24",
+          "key": "policyAsk",
+          "ask": "有哪些政策诉求？",
+          "tip": "勾选项会触发对应补贴申报路径",
+          "type": "multi",
+          "options": ["节能技改专项资金", "绿色工厂", "超低排放改造", "CCER 开发", "碳足迹标识", "暂不需要"],
+          "excel": "09_政策清单",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "group": 5,
+      "stage": "交付落地",
+      "title": "第五组 · 交付落地（交付形态与披露要求）",
+      "why": "决定窗口四生成哪些章节、导出什么格式",
+      "items": [
+        {
+          "id": "Q25",
+          "key": "deliverForm",
+          "ask": "需要什么形态的交付物？语言要求？",
+          "tip": "可多选；勾选结果直接决定窗口四的章节清单",
+          "type": "multi",
+          "options": ["诊断报告", "核算底稿与台账模板", "LCA 模型", "碳资产管理制度", "培训", "核查对接"],
+          "secondKey": "docLang",
+          "secondOptions": ["中文", "中英双语"],
+          "excel": "—",
+          "weight": 1
+        },
+        {
+          "id": "Q26",
+          "key": "disclose",
+          "ask": "是否有对外披露或客户问卷需求？",
+          "tip": "勾选 CBAM 申报时会强制生成 CBAM 章节并校验出口量",
+          "type": "multi",
+          "options": ["ESG/TCFD", "CDP", "CBAM 申报", "主机厂或客户碳问卷", "无"],
+          "validate": [{ "rule": "勾选 CBAM 申报 → isCBAM 必须为『是』且出口量 > 0", "else": "CBAM 章节需要出口量数据，请补充出口量" }],
+          "excel": "07_CBAM、08_ESG_TCFD_CDP",
+          "weight": 1
+        },
+        {
+          "id": "Q27",
+          "key": "needVerify",
+          "ask": "是否需要预留第三方核查接口？是否设置内部碳价并纳入考核？",
+          "tip": "内部碳价为空时，技经测算沿用外部碳价并标注来源",
+          "type": "chips2",
+          "questions": [
+            { "key": "needVerify", "options": ["需要", "不需要"] },
+            { "key": "internalCarbonPrice", "options": ["已设置", "计划设置", "暂不设置"] }
+          ],
+          "excel": "08_ESG_TCFD_CDP",
+          "weight": 1
+        }
+      ]
+    }
+  ],
+
+  "COMPLETENESS_WEIGHTS": {
+    "_说明": "完整度 = Σ(权重×已填) ÷ Σ权重；用于窗口一进度环与三档提示",
+    "group0_identity_maturity": 0.2,
+    "group1_boundary": 0.1,
+    "group2_kickoff": 0.1,
+    "group3_core_data": 0.4,
+    "group4_solution": 0.1,
+    "group5_delivery": 0.1
+  },
+
+  "COMPLETENESS_TIERS": [
+    { "min": 80, "level": "green", "msg": "可出完整方案书（含核算结果与技经测算）" },
+    { "min": 50, "level": "warn", "msg": "可出方案框架 + 数据待补清单；技经测算部分置灰" },
+    { "min": 0, "level": "danger", "msg": "仅出诊断结论与数据需求清单，不生成完整章节（避免看着完整但不能用）" }
+  ],
+
+  "QUALITY_GATES": [
+    { "id": "V1", "when": "Q15 完成", "rule": "熟料产量 ≤ 设计产能 且 水泥产量 ≥ 熟料产量", "ask": "水泥产量低于熟料产量，是否外销熟料？" },
+    { "id": "V2", "when": "Q17 完成", "rule": "石灰石 ÷ 熟料产量 落在 1.1-1.4", "ask": "石灰石单耗为 {v} t/t，低于常规区间，请核对是否含替代原料或矿山损耗未计入" },
+    { "id": "V3", "when": "Q15 与 Q16 完成", "rule": "按产能折算的运转天数处于 250-330 天", "ask": "按产能折算运转天数异常，是否存在错峰生产或长期停机？" },
+    { "id": "V4", "when": "Q16 完成", "rule": "外购电 + 余热自发电 + 绿电 ≈ 综合电耗 × 产量（±10%）", "ask": "电量与产量推算的综合电耗偏差较大，请核对计量口径" },
+    { "id": "V5", "when": "Q16 完成", "rule": "余热自发电以万kWh 录入，内部 ×10 换算 MWh", "ask": "余热自发电 {v} 万kWh 将按 {v10} MWh 抵扣，请确认口径（历史数据集存在 10 倍差异）" },
+    { "id": "V6", "when": "Q16 完成", "rule": "替代燃料占比按热量口径计算", "ask": "替代燃料占比是按重量还是按热量口径？两者结果差异较大" },
+    { "id": "V7", "when": "Q10 与 Q26 完成", "rule": "isCBAM 为是且出口量 > 0 才生成 CBAM 章节；抵扣比例口径需注明", "ask": "CBAM 抵扣按 5% 固定比例还是按已付碳价折算（约 8.5%）？两者费用差异明显" },
+    { "id": "V8", "when": "Q10 与 Q14 完成", "rule": "isETS 为是且月度能耗台账标记为无 → 置顶高风险缺口", "ask": "纳管企业缺少月度台账，核查风险高，建议 30 天内补齐并指定数据 owner" }
+  ],
+
+  "GAP_LIST_RULES": {
+    "_说明": "资料缺口清单条目结构，展示在窗口一问答区下方，可点击跳回对应问题",
+    "fields": ["missing", "impact", "askWho", "due", "gotoKey"],
+    "examples": [
+      { "missing": "吨熟料碳强度所需活动数据（原煤、熟料产量）", "impact": "第四章核算结果、第六章技经测算", "askWho": "生产运营部 + 化验室", "due": "5 个工作日内", "gotoKey": "em.energy" },
+      { "missing": "出口量与嵌入排放参数", "impact": "第八章 CBAM 影响测算", "askWho": "外贸/销售部", "due": "3 个工作日内", "gotoKey": "isCBAM" },
+      { "missing": "属地（市级）政策清单", "impact": "第十一章政策适配与补贴申报路径", "askWho": "EHS 环保部", "due": "5 个工作日内", "gotoKey": "province" }
+    ]
+  },
+
+  "ANSWER_TO_STAGE_MAP": {
+    "_说明": "哪些答案喂给窗口二哪个阶段，渲染时用于动态裁剪与联动高亮",
+    "售前诊断": ["name", "industry", "province", "scale", "force", "pains", "chain", "isETS", "isCBAM", "siteCount", "creditCode", "productsLine"],
+    "项目启动": ["boundary", "baseYear", "existingSys", "dataAvail"],
+    "现状调研": ["em.production", "em.energy", "em.raw", "em.metering", "em.transport", "em.otherS3"],
+    "方案设计": ["hasTarget", "targetText", "techPlan", "investRule", "policyAsk"],
+    "交付落地": ["deliverForm", "docLang", "disclose", "needVerify", "internalCarbonPrice"]
+  },
+
+  "SCOPE_COLLECTION": {
+    "_说明": "L2 排放源级采集行模板。每行落 em.scope1[] / em.scope2[] / em.scope3[]，行内即时算排放量；factorRefs 指向 FACTOR_LIB 的键",
+    "rowFields": ["id", "source", "activity", "unit", "formula", "factorRefs", "factorSrc", "quality", "evidenceNo", "judgment", "note"],
+    "qualityLevels": ["实测", "供应商实测", "区域平均", "国家缺省"],
+    "judgments": ["纳入", "未纳入", "不适用"],
+    "scope1": [
+      { "id": "S1-01", "source": "熟料煅烧—原煤", "activity": "原煤消耗量", "unit": "t", "formula": "fuelByMass", "factorRefs": ["coalNCV", "coalCC", "coalOX"], "quality": ["实测", "国家缺省"], "required": ["化验室煤质报告或能源结算单"] },
+      { "id": "S1-02", "source": "熟料煅烧—替代燃料", "activity": "替代燃料消耗量", "unit": "t", "formula": "fuelByCarbon", "factorRefs": ["rdfC", "rdfNonBio"], "quality": ["实测", "国家缺省"], "required": ["替代燃料化验/供应商说明"] },
+      { "id": "S1-03", "source": "辅助燃油（柴油）", "activity": "柴油消耗量", "unit": "t", "formula": "fuelByEF", "factorRefs": ["dieselNCV", "dieselEF"], "quality": ["实测", "国家缺省"], "required": ["油料结算单"] },
+      { "id": "S1-04", "source": "工业生产过程", "activity": "熟料产量", "unit": "t", "formula": "process", "factorRefs": ["clinkerEF"], "quality": ["国家缺省"], "required": ["生产报表"] },
+      { "id": "S1-05", "source": "替代原料扣减", "activity": "非碳酸盐原料用量", "unit": "t", "formula": "deduct", "factorRefs": [], "quality": ["实测"], "required": ["化学成分分析报告"], "note": "无化验报告不得扣减" },
+      { "id": "S1-06", "source": "逸散排放", "activity": "是否涉及 SF6/HFC", "unit": "—", "formula": "none", "factorRefs": ["gwpCH4", "gwpN2O"], "judgment": "不适用（水泥行业一般无）" }
+    ],
+    "scope2": [
+      { "id": "S2-01", "source": "外购电力", "activity": "外购电量", "unit": "MWh", "formula": "grid", "factorRefs": ["gridEF"], "quality": ["区域平均"], "required": ["电费单与用电记录"] },
+      { "id": "S2-02", "source": "余热自发自用抵扣", "activity": "抵扣电量", "unit": "MWh", "formula": "grid", "factorRefs": ["gridEF"], "quality": ["实测"], "required": ["余热发电记录"], "note": "录入单位统一用万kWh，内部 ×10 得 MWh" },
+      { "id": "S2-03", "source": "绿电（市场法）", "activity": "绿电电量", "unit": "MWh", "formula": "zero", "factorRefs": [], "quality": ["实测"], "required": ["绿电交易合同 + 绿证注销凭证"], "note": "无注销凭证不得按 0 计" },
+      { "id": "S2-04", "source": "外购热力/蒸汽", "activity": "热量", "unit": "GJ|t", "formula": "heat", "factorRefs": ["heatEF"], "quality": ["国家缺省"], "required": ["热力结算单"] }
+    ],
+    "scope3": [
+      { "id": "S3-01", "category": "类别1：购买的商品和服务", "activity": "采购运输量", "unit": "t·km", "factorRef": "s3Freight", "defaultJudgment": "纳入" },
+      { "id": "S3-02", "category": "类别2：资本商品", "activity": "设备采购分摊", "unit": "tCO2/年", "factorRef": "s3Capital", "defaultJudgment": "纳入" },
+      { "id": "S3-03", "category": "类别3：燃料和能源相关活动", "activity": "电力传输损耗", "unit": "MWh", "factorRef": "lossEF", "defaultJudgment": "纳入" },
+      { "id": "S3-04", "category": "类别4：上游运输", "activity": "原料运入", "unit": "t·km", "factorRef": "s3FreightUp", "defaultJudgment": "纳入" },
+      { "id": "S3-05", "category": "类别5：运营产生的废弃物", "activity": "废弃物处置量", "unit": "tCO2/年", "factorRef": "s3Waste", "defaultJudgment": "纳入" },
+      { "id": "S3-06", "category": "类别6：商务差旅", "activity": "差旅", "unit": "tCO2/年", "factorRef": "s3Travel", "defaultJudgment": "纳入" },
+      { "id": "S3-07", "category": "类别7：员工通勤", "activity": "通勤", "unit": "tCO2/年", "factorRef": "s3Commute", "defaultJudgment": "纳入" },
+      { "id": "S3-08", "category": "类别8：上游租赁资产", "activity": "—", "unit": "—", "factorRef": "", "defaultJudgment": "未纳入" },
+      { "id": "S3-09", "category": "类别9：下游运输", "activity": "产品外销运输", "unit": "t·km", "factorRef": "s3FreightDown", "defaultJudgment": "纳入" },
+      { "id": "S3-10", "category": "类别10：售出产品的加工", "activity": "—", "unit": "—", "factorRef": "", "defaultJudgment": "不适用（水泥为成品）" },
+      { "id": "S3-11", "category": "类别11：售出产品使用", "activity": "—", "unit": "—", "factorRef": "", "defaultJudgment": "不适用（无燃烧排放）" },
+      { "id": "S3-12", "category": "类别12：售出产品报废处理", "activity": "建材废弃阶段", "unit": "—", "factorRef": "", "defaultJudgment": "未纳入（碳化回收暂不计）" },
+      { "id": "S3-13", "category": "类别13：下游租赁资产", "activity": "—", "unit": "—", "factorRef": "", "defaultJudgment": "未纳入" },
+      { "id": "S3-14", "category": "类别14：特许经营", "activity": "—", "unit": "—", "factorRef": "", "defaultJudgment": "未纳入" },
+      { "id": "S3-15", "category": "类别15：投资", "activity": "—", "unit": "—", "factorRef": "", "defaultJudgment": "未纳入" }
+    ]
+  },
+
+  "FACTOR_LIB": {
+    "_说明": "因子库：PARAMS 是全局默认值，em.ef 是项目覆盖值（覆盖优先）。每个因子必须带 source + version + quality，来源为空禁止保存",
+    "scope1": {
+      "clinkerEF": { "v": 0.535, "u": "tCO2/t熟料", "source": "《企业温室气体排放核算与报告指南 水泥行业》2024-09", "version": "2024", "quality": "国家缺省" },
+      "coalNCV": { "v": 21, "u": "GJ/t", "source": "企业化验室实测 NCV，缺失时用指南缺省值", "version": "核算年度", "quality": "实测" },
+      "coalCC": { "v": 26.18, "u": "tC/TJ", "source": "核算指南缺省值", "version": "2024", "quality": "国家缺省" },
+      "coalOX": { "v": 0.99, "u": "-", "source": "核算指南缺省值", "version": "2024", "quality": "国家缺省" },
+      "dieselNCV": { "v": 42.65, "u": "GJ/t", "source": "核算指南", "version": "2024", "quality": "国家缺省" },
+      "dieselEF": { "v": 74100, "u": "kgCO2/TJ", "source": "核算指南", "version": "2024", "quality": "国家缺省" },
+      "rdfC": { "v": 0.3, "u": "-", "source": "替代燃料检验报告", "version": "核算年度", "quality": "实测" },
+      "rdfNonBio": { "v": 0.6, "u": "-", "source": "替代燃料检验报告", "version": "核算年度", "quality": "实测" },
+      "gwpCH4": { "v": 28, "u": "kgCO2e/kg", "source": "IPCC AR5", "version": "AR5", "quality": "国家缺省" },
+      "gwpN2O": { "v": 265, "u": "kgCO2e/kg", "source": "IPCC AR5", "version": "AR5", "quality": "国家缺省" }
+    },
+    "scope2": {
+      "gridEF": { "v": 0.45, "u": "tCO2/MWh", "source": "区域电网年度排放因子（示例为西南区域 2022 参考值）", "version": "按最新年度因子更新", "quality": "区域平均" },
+      "heatEF": { "v": 0.11, "u": "tCO2/GJ", "source": "核算指南", "version": "2024", "quality": "国家缺省" }
+    },
+    "scope3": {
+      "lossEF": { "v": 0.025, "u": "tCO2/MWh", "source": "电网线损分摊估算", "version": "估算", "quality": "区域平均" },
+      "s3Freight": { "v": 0.0001, "u": "tCO2/t·km", "source": "道路货运排放因子估算", "version": "估算", "quality": "区域平均" },
+      "s3FreightUp": { "v": 0.00012, "u": "tCO2/t·km", "source": "上游运输因子估算", "version": "估算", "quality": "区域平均" },
+      "s3FreightDown": { "v": 0.0001, "u": "tCO2/t·km", "source": "下游运输因子估算", "version": "估算", "quality": "区域平均" },
+      "s3Capital": { "v": 3200, "u": "tCO2/年", "source": "按年折旧分摊估算", "version": "估算", "quality": "国家缺省" },
+      "s3Waste": { "v": 180, "u": "tCO2/年", "source": "废弃物处置估算", "version": "估算", "quality": "国家缺省" },
+      "s3Travel": { "v": 320, "u": "tCO2/年", "source": "差旅估算", "version": "估算", "quality": "国家缺省" },
+      "s3Commute": { "v": 450, "u": "tCO2/年", "source": "员工通勤估算", "version": "估算", "quality": "国家缺省" }
+    },
+    "market": {
+      "ceaPrice": { "v": 80, "u": "元/tCO2", "source": "全国碳市场收盘价参考", "version": "2025", "quality": "区域平均" },
+      "ccerPrice": { "v": 60, "u": "元/tCO2", "source": "全国 CCER 市场参考", "version": "2025", "quality": "区域平均" },
+      "cbamPrice": { "v": 75, "u": "欧元/tCO2", "source": "EU ETS 联动参考", "version": "2026", "quality": "区域平均" },
+      "fxEUR": { "v": 7.8, "u": "CNY/EUR", "source": "汇率假设", "version": "假设", "quality": "国家缺省" }
+    }
+  },
+
+  "SCOPE_DEPTH_RULES": {
+    "_meta": {
+      "用途": "第 13 章「内容采集范围与深度规范」的可执行版本：范围筛子、深度档位、降级规则、知识库收录规则、行业化判定",
+      "核验基准日": "2026-10-13"
+    },
+    "terminationRule": "交付物清单里每个字段都必须有来源、能被第三方复算、能过退回清单；做不到的不采（或只作背景资料）",
+    "rangeFilters": [
+      { "id": "F1", "name": "交付物倒推", "ask": "这个数据项出现在哪份成品的哪个字段里？", "drop": "不出现在任何交付物字段中的内容不进必采清单" },
+      { "id": "F2", "name": "结论敏感度", "ask": "这项数据变化后结论/优先级/达标判断会不会变？", "drop": "不会变的降到缺省值" },
+      { "id": "F3", "name": "可得性与成本", "ask": "企业能否拿到、多久拿到？", "drop": "拿不到的走缺省值+声明+改进时限" }
+    ],
+    "rangeRule": "必采 = F1 ∩ F2 ∩ F3；其余进可选池",
+    "depthTiers": [
+      { "tier": "L0", "name": "定性", "capture": "是/否、类型、有无、人员与责任", "supports": ["诊断结论", "方案框架", "SOW", "治理类披露"], "who": "所有企业（含初访）" },
+      { "tier": "L1", "name": "总量级", "capture": "年度总量（总煤、总电、总产量、总投资）", "supports": ["粗算强度", "量级判断", "措施排序", "框架方案"], "who": "售前诊断、初访" },
+      { "tier": "L2", "name": "排放源级", "capture": "逐排放源：活动数据+单位+因子+因子来源与版本+数据质量", "supports": ["年度排放报告", "技经测算", "PCF", "ESG 指标"], "who": "所有正式项目" },
+      { "tier": "L3", "name": "证据级", "capture": "凭证编号、计量器具与检定、化验报告、结算单、页码索引", "supports": ["过核查", "应对退回", "配额清缴", "CBAM 正式申报"], "who": "纳管企业、出口企业、需核查企业" }
+    ],
+    "downgradeRules": [
+      { "case": "字段未达最低档位", "action": "报告渲染 .missing 占位并标红，不生成数字" },
+      { "case": "整章数据未达档位", "action": "该章替换为「数据需求清单」（要什么/向谁要/何时要）" },
+      { "case": "缺省值可用", "action": "允许用于 L1 级判断，但报告须标『缺省值』并说明未实测原因" }
+    ],
+    "fieldAttributes": ["数值", "单位", "来源", "质量等级"],
+    "knowledgeBaseRules": {
+      "types": ["法律", "行政法规（条例）", "部门规章与规范性文件（工作方案/核算与报告指南/核查技术指南/配额分配方案）", "国家标准 GB/HJ", "团体标准 T/CBMF 等", "地方文件（省/市）", "CCER 方法学", "国际规则（CBAM/EU ETS/ISO 14064/14067/GHG Protocol）"],
+      "depthL1": "名称 + 文号 + 要点 3 条 + 『以最新文件为准』（够做诊断）",
+      "depthL2": "名称 + 文号 + 发布机构 + 生效状态与日期 + 对本企业的要求动作 + 引用到报告哪一章 + 原文链接与版本快照（够写报告、应对核查）",
+      "currentGap": "KB_PROVINCE 目前是 L1 摘要级，需升级到 L2，并新增『生效状态』『基准年度是否适用』两个字段",
+      "sourceWhitelist": ["生态环境部及应对气候变化司", "国务院", "省市生态环境厅局", "国家标准全文公开系统", "全国标准信息公共服务平台", "全国温室气体自愿减排交易市场"],
+      "thirdParty": "第三方解读仅作线索，不得作为报告依据",
+      "traceFields": ["文号", "链接", "抓取时间", "版本快照"],
+      "retention": "过期文件移入历史库并标失效日期，不删除（核查需核对基准年度生效版本）",
+      "reviewFrequency": [
+        { "item": "政策文件", "freq": "每季度复核 + 年度报送前必复" },
+        { "item": "排放因子与行业基准值", "freq": "每年度更新" },
+        { "item": "CCER 方法学", "freq": "按备案发布跟" },
+        { "item": "CBAM 实施细则", "freq": "按欧盟更新跟" },
+        { "item": "标准（GB/HJ/团体）", "freq": "每半年复核，修订即更新" }
+      ]
+    },
+    "industryDepthRules": {
+      "mustIndustrialize": ["核算边界与排放源清单", "排放因子与强度基准值", "减排措施库", "术语与指标口径"],
+      "canShare": ["项目管理类：SOW、评审、变更、培训、档案"],
+      "priority": [
+        { "level": 1, "scope": "已纳入全国或地方碳市场", "industries": ["电力热力", "钢铁", "水泥建材", "有色金属", "造纸"] },
+        { "level": 2, "scope": "被 CBAM 覆盖", "industries": ["钢铁", "铝", "水泥", "化肥", "电力", "氢"] },
+        { "level": 3, "scope": "地方支柱产业", "industries": ["按客户分布确定"] }
+      ],
+      "readinessCheck": ["术语无外溢", "因子已配齐", "强度基准值已填", "措施库已替换"]
+    }
+  }
+}

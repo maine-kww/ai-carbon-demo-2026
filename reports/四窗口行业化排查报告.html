@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>双碳系统 · 四窗口行业化排查报告</title>
+<style>
+  :root{ --brand:#2f6df6; --brand-d:#1b46b8; --ok:#0a9d5a; --warn:#e08600; --danger:#d93636; --t1:#1a2233; --t2:#5a6678; --t3:#8a93a6; --t6:#f4f7fc; --line:#e3e8f0; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#eef2f8;color:var(--t1);line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 22px 60px}
+  header{background:linear-gradient(135deg,#1b46b8,#2f6df6);color:#fff;border-radius:16px;padding:26px 28px;box-shadow:0 8px 24px rgba(47,109,246,.22)}
+  header h1{margin:0 0 6px;font-size:23px}
+  header p{margin:0;opacity:.92;font-size:14px}
+  .badges{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:5px 12px;border-radius:999px;font-size:12.5px}
+  section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:18px}
+  h2{font-size:17px;margin:0 0 14px;padding-left:11px;border-left:4px solid var(--brand)}
+  h3{font-size:14.5px;margin:18px 0 8px;color:var(--brand-d)}
+  .card{background:var(--t6);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px 18px;font-size:13.5px}
+  .kv div{display:flex;gap:8px}
+  .kv .k{color:var(--t2);min-width:72px}
+  .kv .v{color:var(--t1);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--t6);color:var(--t2);font-weight:600}
+  .tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:600}
+  .t-ok{background:#e6f7ef;color:var(--ok)}
+  .t-fix{background:#fff4e3;color:var(--warn)}
+  .t-clean{background:#e6f7ef;color:var(--ok);border:1px solid #b6e8cf}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+  .hit{background:#fdeeee;border-left:3px solid var(--danger);padding:8px 12px;border-radius:0 8px 8px 0;margin:6px 0;font-size:12.5px;color:#7a2222}
+  .win{display:grid;grid-template-columns:1fr;gap:0}
+  .row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:0}
+  .wname{flex:0 0 230px;font-weight:600;font-size:13.5px}
+  .res{flex:0 0 120px}
+  .detail{flex:1;color:var(--t2);font-size:12.5px}
+  .note{font-size:12.5px;color:var(--t2);background:#fbfcfe;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px}
+  .done{background:#e6f7ef;border:1px solid #b6e8cf;color:#0a6b3c;border-radius:8px;padding:10px 14px;font-size:13px;margin-top:10px}
+  code{background:#eef2f8;padding:1px 6px;border-radius:5px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>双碳咨询系统 · 四窗口行业化排查报告</h1>
+    <p>虚拟非水泥企业跑通全部四个窗口，排查并清除固定水泥板块内容（批次丁）</p>
+    <div class="badges">
+      <span class="badge">虚拟企业：唐山宏远钢铁集团（钢铁·河北·ETS·CBAM）</span>
+      <span class="badge">对照：示例食品公司（其他·广东·无数据）</span>
+      <span class="badge">验证：smoke 538/0 · 页面质量 CI 绿 · DBSDK CI 绿</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>一、虚拟企业画像（用于跑通四窗口）</h2>
+    <div class="card">
+      <div class="kv">
+        <div><span class="k">企业名称</span><span class="v">唐山宏远钢铁集团</span></div>
+        <div><span class="k">行业</span><span class="v">钢铁</span></div>
+        <div><span class="k">属地</span><span class="v">河北 · 唐山</span></div>
+        <div><span class="k">纳管</span><span class="v">全国碳市场（ETS 是）</span></div>
+        <div><span class="k">CBAM</span><span class="v">是（出口欧盟）</span></div>
+        <div><span class="k">主产品产量</span><span class="v">1,500 万吨钢</span></div>
+        <div><span class="k">出口量</span><span class="v">120 万吨</span></div>
+        <div><span class="k">L2 活动</span><span class="v">范围1 320万t燃料 · 范围2 12万MWh电 · 范围3 1,500t</span></div>
+      </div>
+    </div>
+    <div class="note">该客户为<b>非水泥行业</b>且含完整 L2 活动数据，是有史以来最易暴露"固定水泥板块"的测试场景；另以"其他·无数据"企业为对照，验证"无数据也不露水泥文案"。</div>
+  </section>
+
+  <section>
+    <h2>二、四窗口跑通结果（行业化脱水泥后）</h2>
+    <div class="win">
+      <div class="row"><div class="wname">窗口一 · 诊断题库 / 问答</div><div class="res"><span class="tag t-clean">清洁 · 0 命中</span></div><div class="detail">行业诊断题随行业切换；钢铁显示焦化/烧结/高炉/转炉等本行业排放源，无熟料/水泥字样。</div></div>
+      <div class="row"><div class="wname">窗口二 · 政策落地</div><div class="res"><span class="tag t-clean">清洁 · 0 命中</span></div><div class="detail">五阶段实施内容（KB_STAGE_DETAIL）经脱水泥函数中性化；原"吨熟料/吨水泥碳强度 BP0.88""原煤/替代燃料/柴油""熟料外销""余热自发电×10"等均已转为行业中性表述。</div></div>
+      <div class="row"><div class="wname">窗口三 · 参数面板</div><div class="res"><span class="tag t-clean">清洁 · 0 命中</span></div><div class="detail">水泥专属参数（clinkerEF / bp2025 等）整组隐藏，改显示"仅水泥建材适用的配额与过程专属参数本行业不适用，已隐藏"；通用参数 + 分省电网占位照常。</div></div>
+      <div class="row"><div class="wname">窗口三 · 计算引擎</div><div class="res"><span class="tag t-clean">清洁 · 0 命中</span></div><div class="detail">按当前行业自适应汇总 L1/L2，强度口径取本行业基准值。</div></div>
+      <div class="row"><div class="wname">窗口三 · L2 采集</div><div class="res"><span class="tag t-clean">清洁 · 0 命中</span></div><div class="detail">钢铁 L2 模板含"熔剂分解（石灰石/白云石）"——属钢铁真实排放源，为<b>正确内容</b>，非固定水泥板块。</div></div>
+      <div class="row"><div class="wname">窗口四 · 方案书</div><div class="res"><span class="tag t-clean">清洁 · 0 命中</span></div><div class="detail">buildDoc 全文（3.4 万字符）扫描 0 命中；方法论注"余热自发电×10"、成果物 DL-01 水泥行业指南、DL-04 字段标签均已行业中性化。</div></div>
+    </div>
+    <div class="done">✓ 钢铁企业固定水泥文案命中：<b>18 → 0</b>；其他（无数据）企业：<b>17 → 0</b>。四窗口 + 方案书全文全部清零。</div>
+  </section>
+
+  <section>
+    <h2>三、排查发现的固定水泥模块（改造前）</h2>
+    <table>
+      <thead><tr><th style="width:42px">#</th><th>位置（窗口 / 函数）</th><th>固定水泥文案（示例）</th><th>性质</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>窗口二§5 / 窗口四 · KB_STAGE_DETAIL 基准版</td><td>吨熟料/吨水泥碳强度 BP0.88、原煤/替代燃料/柴油、熟料/水泥/熟料外销、窑燃料/碳酸盐分解、余热自发电×10、水泥先进值 0.85-0.90 tCO₂/t熟料、替代燃料比例提升、篦冷机改造</td><td>基准版骨架为水泥撰写，非水泥直接兜底</td></tr>
+        <tr><td>2</td><td>窗口三 · renderParams 参数面板</td><td>clinkerEF 行 <code>tCO₂/t熟料</code>、bp2025 行"《水泥行业核算指南》2024"</td><td>水泥专属参数行对非水泥也渲染</td></tr>
+        <tr><td>3</td><td>窗口四 · buildDoc 方法论注</td><td>"范围2 已按余热自发电×10 修正口径处理"</td><td>仅水泥适用的口径写死</td></tr>
+        <tr><td>4</td><td>窗口四 · DELIVERABLE_LIB DL-01</td><td>basis 硬编码"《企业温室气体排放核算与报告指南 水泥行业》"、commonRejectReasons"替代原料扣减无化验报告"</td><td>成果物依据写死水泥</td></tr>
+        <tr><td>5</td><td>窗口四 · DELIVERABLE_LIB DL-04</td><td>字段标签"主产品产量（熟料/水泥/本行业主产品）"</td><td>通用字段标签带水泥示例</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>四、改造内容（批次丁）</h2>
+    <h3>丁D · 集中脱水泥函数（核心）</h3>
+    <div class="card">
+      <p style="margin:0 0 6px;font-size:13.5px">新增 <code>deCementText()</code> / <code>decementStage()</code>，挂入 <code>mergeStageDetail()</code>：当 <code>industry !== '水泥建材'</code> 时，对五阶段所有文本字段做行业中性替换。</p>
+      <div class="mono">吨熟料/吨水泥碳强度 → 单位产品碳强度 · 原煤/替代燃料/柴油 → 主要燃料（煤/气/油等） · 窑/篦冷机/粉磨 → 主要工艺设备 · 水泥先进值 → 行业先进值 · tCO₂/t熟料 → tCO₂/单位产品 · 替代燃料 → 燃料替代 · 碳酸盐分解 → 工艺过程分解排放 …</div>
+      <div class="note">窗口二§5 与窗口四 五阶段内容<b>一处改、全清除</b>；水泥建材行业走豁免分支，原有正确内容完全保留。</div>
+    </div>
+    <h3>丁A · 参数面板（窗口三）</h3>
+    <p style="font-size:13.5px;margin:4px 0">非水泥行业整组隐藏水泥专属参数行，改渲染一行说明："仅水泥建材适用的配额与过程专属参数本行业不适用，已隐藏"——不再露出 <code>tCO₂/t熟料</code> 与"水泥行业指南"文案。</p>
+    <h3>丁B · 方法论注（窗口四）</h3>
+    <p style="font-size:13.5px;margin:4px 0"><code>余热自发电×10</code> 仅在水 miserable 建材行业输出，其他行业省略该句。</p>
+    <h3>丁C · 成果物库（DELIVERABLE_LIB）</h3>
+    <p style="font-size:13.5px;margin:4px 0">DL-01 basis 水泥行业指南 → "本行业"；commonRejectReasons 替代原料扣减 → 非碳酸盐原料扣减；DL-04 字段标签"主产品产量（熟料/水泥/本行业主产品）" → "主产品产量（本行业主产品）"。</p>
+    <div class="done">✓ 三道验证门全绿：<b>smoke.js 538/0</b> · 页面质量 CI 绿 · DBSDK CI 绿。水泥行业自身断言（S1-04 工艺过程、clinkerEF、配额测算等）全部仍通过——脱水泥函数对水泥行业豁免，无回归。</div>
+  </section>
+
+  <section>
+    <h2>五、诚实边界（残余事项，非缺陷）</h2>
+    <ul style="font-size:13px;color:var(--t2);margin:6px 0;padding-left:20px">
+      <li><b>KB_STAGE_DETAIL 基准版</b>仍为水泥撰写骨架，但对非水泥已逐字段脱敏；彻底按行业重写需为各行业补 KB_STAGE_PATCH 完整内容（钢铁/电子半导体等已有差异补丁，其余行业暂用脱敏兜底）。</li>
+      <li><b>跨行业实测数据</b>：专属排放因子、分省电网真实数值、配额分配参数、CBAM 出口实测仍按"待补 / 占位 / 待官方发布"承载，不编造；非水泥客户在窗口一/三录入主产品产量与出口量后，成果物即显示真实值。</li>
+      <li><b>钢铁 L2 模板</b>中的"熔剂分解（石灰石/白云石）"为钢铁真实排放源，属正确内容，非固定水泥板块。</li>
+    </ul>
+  </section>
+</div>
+</body>
+</html>

@@ -1,20 +1,19 @@
-# Google App Engine generated folder
-appengine-generated/
+# WorkBuddy 内部项目数据（含工作日志 / 记忆，禁止提交）
+.workbuddy/
 
-# Python
-__pycache__/
-*.py[cod]
+# Python 虚拟环境
 .venv/
-venv/
-*.egg-info/
 
-# carbon-md 本地运行时噪音
-carbon-md/**/tmp/
-carbon-md/**/__pycache__/
-carbon-md/**/*.pyc
+# 备份文件
+*.bak.html
 
-# OS / editor
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# 生成过程临时脚本（非交付物，仅构建期使用）
+_gen_*.js
+
+# 过程临时 JSON（探针/构建中间产物）
+comb.json
+s1.json
+s2.json
+schema1.json
+schema2.json
+factor_probe.json
