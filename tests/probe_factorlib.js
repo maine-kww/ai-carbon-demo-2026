@@ -1,6 +1,6 @@
 // 聚焦探针：FACTOR_LIB 嵌套结构 + 行业 ext.factors 文案 + 省级电网因子
 const fs=require('fs'),path=require('path');
-const html=fs.readFileSync(path.join(__dirname, '..', 'shuangtan.html'),'utf8');
+const html=fs.readFileSync(path.join(__dirname, '..', 'index.html'),'utf8');
 const code=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]).join('\n;\n');
 const store={};function mkEl(id){return{id,innerHTML:'',textContent:'',value:'',disabled:false,className:'',checked:false,children:[],style:{},classList:{_s:{},add(c){this._s[c]=1;},remove(c){delete this._s[c];},toggle(c){this._s[c]?delete this._s[c]:this._s[c]=1;},contains(c){return !!this._s[c];}},setAttribute(k,v){this[k]=v;},getAttribute(k){return this[k];},addEventListener(){},removeEventListener(){},appendChild(c){this.children.push(c);return c;},removeChild(c){return c;},querySelector(){return null;},querySelectorAll(){return [];},reset(){},closest(){return null;},focus(){},click(){},scrollTop:0,scrollHeight:0};}
 const getEl=id=>{if(!store[id])store[id]=mkEl(id);return store[id];};

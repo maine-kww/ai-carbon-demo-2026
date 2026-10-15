@@ -1,7 +1,7 @@
 // 运行时探针：逐行业抽取 L2 排放因子收集实况 + 全局因子库，输出 factor_probe.json
 const fs = require('fs');
 const path = require('path');
-const html = fs.readFileSync(path.join(__dirname, '..', 'shuangtan.html'), 'utf8');
+const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
 const code = scripts.join('\n;\n');
 

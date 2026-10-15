@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>双碳方案落地系统 · 活数据规划</title>
+<meta name="description" content="双击即可使用的双碳规划活页：PDF/单据收集、数据溯源、因子出处、范围一二三核算、可视化报告、17 Skills、导出 Word/PDF。">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="top no-print">
+  <div class="wrap">
+    <div class="brand">双碳方案落地系统 · LIVE</div>
+    <nav class="nav">
+      <a href="#company">企业</a>
+      <a href="#sources">数据来源</a>
+      <a href="#calc">核算</a>
+      <a href="#charts">可视化</a>
+      <a href="#report">方案报告</a>
+      <a href="#skills">17 Skills</a>
+    </nav>
+    <button class="btn btn-line btn-sm" id="btn-edit">手动编辑</button>
+    <button class="btn btn-line btn-sm" id="btn-word">导出 Word</button>
+    <button class="btn btn-sm" id="btn-pdf">导出 PDF</button>
+  </div>
+</header>
+
+<section class="hero no-print">
+  <div class="wrap">
+    <h1>任何企业，填入数据与单据，生成可核查的双碳规划方案</h1>
+    <p class="sub">支持 PDF / 发票 / 台账收集与识别提示 · 逐项注明数据来源与因子出处 · 范围一/二/三实时核算 · 可视化报告 · 一键导出 Word / PDF。双击本页即可离线使用。</p>
+    <div class="pills">
+      <span class="pill">离线可算</span>
+      <span class="pill">PDF / 单据收集</span>
+      <span class="pill">来源与因子溯源</span>
+      <span class="pill">17 Skills</span>
+      <span class="pill">Word + PDF 导出</span>
+    </div>
+  </div>
+</section>
+
+<!-- 企业 -->
+<section id="company">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">01 · Company</div>
+      <h2>企业与目标</h2>
+      <p>改任意字段，下方核算、图表与方案报告会立即重算。示例数据可清空后填入真实客户。</p>
+    </div>
+    <div class="grid g3">
+      <div class="panel">
+        <div class="field"><label>企业名称</label><input id="c-name" value="华东某精密机械制造有限公司"></div>
+        <div class="field"><label>行业（全覆盖：碳市场 / 零碳工厂2027 / 金融 / 新能源…）</label>
+          <select id="c-industry"></select>
+        </div>
+        <div class="field"><label>组织边界口径</label>
+          <select id="c-caliber">
+            <option value="ops">运营控制权法</option>
+            <option value="equity">股权比例法</option>
+          </select>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="field"><label>基准年（2019–2099）</label>
+          <select id="c-year"></select>
+        </div>
+        <div class="field"><label>目标年</label><input type="number" id="c-target" value="2030" min="2020" max="2099"></div>
+        <div class="field"><label>目标年降幅 %</label><input type="number" id="c-reduction" value="20" min="0" max="95"></div>
+      </div>
+      <div class="panel">
+        <div class="field"><label>年产值（亿元）</label><input type="number" id="c-output" value="18.6" step="0.1" min="0"></div>
+        <div class="field"><label>综合能耗（万 tce，选填）</label><input type="number" id="c-energy" value="4.9" step="0.1" min="0"></div>
+        <div class="field"><label>说明</label>
+          <textarea id="c-note" rows="3" placeholder="客户背景、出口市场、履约压力、资料完整度…"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 行业政策（动态） -->
+<section id="policy-live">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">01B · Industry Policy</div>
+      <h2>行业政策识别 · 换旧更新 · 标注有效来源</h2>
+      <p>选择行业后自动匹配适用政策：<strong>现行有效</strong>作为依据；<strong>被替代 / 已废止</strong>单独标注并不参与建议。含 2027 零碳工厂、碳市场扩围、金融 PCAF/ISSB、CCER、CBAM 等。</p>
+    </div>
+    <div class="grid g2">
+      <div class="panel">
+        <h3 style="margin-bottom:10px">当前行业画像</h3>
+        <div id="industry-profile">—</div>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-sm" id="btn-policies-only">只看现行有效</button>
+          <button class="btn btn-line btn-sm" id="btn-policies-all">含历史/废止</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 style="margin-bottom:10px">政策清单（随行业过滤）</h3>
+        <div class="tbl-wrap" style="max-height:320px;overflow:auto">
+          <table style="min-width:520px">
+            <thead>
+              <tr><th>政策</th><th>文号</th><th>时效</th><th>来源</th></tr>
+            </thead>
+            <tbody id="policy-tbody">
+              <tr><td colspan="4">选择行业后加载…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="note" id="policy-note">—</p>
+  </div>
+</section>
+
+<!-- 活动数据 + 来源 -->
+<section id="sources" style="background:#EAF1ED">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">02 · Activity Data & Sources</div>
+      <h2>活动数据 + 数据来源（PDF / 单据可收集）</h2>
+      <p>每一项数据都能回答「从哪来」：上传 PDF/发票/台账，系统会尽量识别数值并生成来源记录；扫描件可手工填写。确认后一键写入下方活动数据，并标注<strong>来源类型、凭证号、状态、因子出处</strong>。</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="panel">
+        <h3 style="margin-bottom:12px">① 活动数据（算排放用）</h3>
+        <div class="field">
+          <label>范围一 · 天然气（万 Nm³）</label>
+          <div class="unit-row"><input type="number" id="a-gas" value="320" step="1" min="0"><span class="unit">万 Nm³</span></div>
+        </div>
+        <div class="field">
+          <label>范围一 · 柴油（t）</label>
+          <div class="unit-row"><input type="number" id="a-diesel" value="860" step="1" min="0"><span class="unit">t</span></div>
+        </div>
+        <div class="field">
+          <label>范围二 · 外购电力（万 kWh）</label>
+          <div class="unit-row"><input type="number" id="a-elec" value="6800" step="50" min="0"><span class="unit">万 kWh</span></div>
+        </div>
+        <div class="field">
+          <label>范围三 · 合计（万 tCO₂e，可按台账拆分）</label>
+          <div class="unit-row"><input type="number" id="a-s3" value="6.2" step="0.1" min="0"><span class="unit">万 tCO₂e</span></div>
+        </div>
+        <div class="field">
+          <label>范围三拆分备注（采购/物流/差旅等）</label>
+          <textarea id="a-s3-note" rows="2" placeholder="例：原材料采购 4.8 / 运输 1.1 / 差旅 0.3（估算，待供应商数据）"></textarea>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin-bottom:12px">② 收集单据 / PDF（自动识别提示）</h3>
+        <div class="drop" id="drop">
+          <div class="big">拖入或点击上传 PDF / 发票 / 台账</div>
+          <div class="small">支持 PDF、Excel/CSV、图片。PDF 将尝试提取用电量/气量/金额/日期/单号；扫描件请手工确认数值。</div>
+          <input type="file" id="file-input" multiple accept=".pdf,.xlsx,.xls,.csv,.jpg,.jpeg,.png,.webp" style="display:none">
+        </div>
+        <div class="src-form">
+          <div class="field"><label>归属范围</label>
+            <select id="src-scope">
+              <option value="1">范围一</option>
+              <option value="2">范围二</option>
+              <option value="3">范围三</option>
+              <option value="meta">产量/产值等</option>
+            </select>
+          </div>
+          <div class="field"><label>来源类型</label>
+            <select id="src-type">
+              <option value="pdf">PDF 单据</option>
+              <option value="invoice">发票/结算单</option>
+              <option value="ledger">台账/Excel</option>
+              <option value="system">系统导出</option>
+              <option value="survey">问卷/访谈</option>
+              <option value="public">公开披露</option>
+              <option value="manual">人工录入</option>
+            </select>
+          </div>
+          <div class="field"><label>凭证号 / 文件名</label><input id="src-doc" placeholder="如 EC-2023-041"></div>
+          <div class="field"><label>责任部门</label><input id="src-dept" placeholder="如 能源管理部"></div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-sm" id="btn-add-source">登记来源</button>
+          <button class="btn btn-line btn-sm" id="btn-apply-guess">将识别值写入活动数据</button>
+          <button class="btn btn-ghost btn-sm" id="btn-clear-sources">清空来源台账</button>
+        </div>
+        <p class="note" id="src-hint">提示：上传后可在台账中修改识别值与状态（已查证 / 待补充 / 估算）。</p>
+      </div>
+    </div>
+
+    <div style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+        <h3 style="font-size:16px">来源台账（数据从哪来）</h3>
+        <div class="chips" id="src-stats" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      </div>
+      <div class="tbl-wrap">
+        <table id="src-table">
+          <thead>
+            <tr>
+              <th>范围</th><th>来源类型</th><th>凭证/文件</th><th>日期</th>
+              <th>识别/登记数值</th><th>因子/依据</th><th>状态</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="src-tbody">
+            <tr><td colspan="8" style="text-align:center;color:#6B817A">暂无来源记录。上传 PDF/单据或点击「登记来源」。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 核算 -->
+<section id="calc">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">03 · Accounting</div>
+      <h2>核算结果与因子出处</h2>
+      <p>排放量 = 活动数据 × 排放因子。每个因子标明数值、单位、出处与<strong>数据状态</strong>（已查证 / 估算 / 占位-待核实），禁止混用口径。</p>
+    </div>
+    <div class="grid g4" id="kpis">
+      <div class="kpi"><div class="v" id="k-total">—</div><div class="l">综合排放（万 tCO₂e）</div></div>
+      <div class="kpi"><div class="v" id="k-s1">—</div><div class="l">范围一</div></div>
+      <div class="kpi"><div class="v" id="k-s2">—</div><div class="l">范围二</div></div>
+      <div class="kpi"><div class="v" id="k-s3">—</div><div class="l">范围三</div></div>
+    </div>
+
+    <div class="tbl-wrap" style="margin-top:16px">
+      <table>
+        <thead>
+          <tr><th>数据项</th><th>活动数据</th><th>因子</th><th>单位</th><th>排放（万 tCO₂e）</th><th>因子出处</th><th>状态</th></tr>
+        </thead>
+        <tbody id="factor-tbody"></tbody>
+      </table>
+    </div>
+    <p class="note">口径说明：组织核算用官方 CO₂ 因子（如电力 tCO₂/MWh）；产品碳足迹/出口对标可用电力碳足迹因子（kgCO₂e/kWh），两套<strong>不可混用</strong>。</p>
+  </div>
+</section>
+
+<!-- 可视化 -->
+<section id="charts" style="background:#EAF1ED">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">04 · Visualization</div>
+      <h2>一页看懂：排放在哪、数据齐不齐、路怎么走</h2>
+    </div>
+    <div class="grid g2">
+      <div class="chart-box">
+        <h3>范围结构</h3>
+        <div class="cap">范围一 / 二 / 三 排放占比</div>
+        <div class="bar-row"><div class="bar-label">范围一</div><div class="bar-track"><div class="bar-fill" id="bar-s1" style="width:0"></div></div><div class="bar-val" id="val-s1">—</div></div>
+        <div class="bar-row"><div class="bar-label">范围二</div><div class="bar-track"><div class="bar-fill s2" id="bar-s2" style="width:0"></div></div><div class="bar-val" id="val-s2">—</div></div>
+        <div class="bar-row"><div class="bar-label">范围三</div><div class="bar-track"><div class="bar-fill s3" id="bar-s3" style="width:0"></div></div><div class="bar-val" id="val-s3">—</div></div>
+        <div class="legend">
+          <span><i style="background:#14614C"></i>范围一 直接排放</span>
+          <span><i style="background:#65D7D0"></i>范围二 外购电力</span>
+          <span><i style="background:#E6C85C"></i>范围三 价值链</span>
+        </div>
+      </div>
+      <div class="chart-box">
+        <h3>数据完整度</h3>
+        <div class="cap">按来源台账状态估算（已查证/可追溯计满分）</div>
+        <div class="bar-row"><div class="bar-label">完整度</div><div class="bar-track"><div class="bar-fill" id="bar-complete" style="width:0;background:#1E8266"></div></div><div class="bar-val" id="val-complete">—</div></div>
+        <div class="legend" id="complete-legend">上传并确认单据后，完整度上升。</div>
+        <h3 style="margin-top:18px">减排路径（示意）</h3>
+        <div class="cap">基准年 → 目标年（降幅 {{pct}}%）</div>
+        <div class="bar-row"><div class="bar-label">基准</div><div class="bar-track"><div class="bar-fill" id="bar-base" style="width:100%"></div></div><div class="bar-val" id="val-base">—</div></div>
+        <div class="bar-row"><div class="bar-label">目标</div><div class="bar-track"><div class="bar-fill" id="bar-target" style="width:0;background:#B7E36B"></div></div><div class="bar-val" id="val-target">—</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 方案报告 -->
+<section id="report-wrap">
+  <div class="wrap">
+    <div class="sec-head no-print">
+      <div class="eyebrow">05 · Plan</div>
+      <h2>双碳规划方案（自动生成）</h2>
+      <p>以下内容随企业数据变化自动更新，可直接打印或导出 Word/PDF。附录含完整数据来源清单。</p>
+    </div>
+
+    <article class="report" id="report">
+      <div class="report-hd">
+        <div>
+          <div style="font-size:11px;letter-spacing:.12em;color:#1E8266;font-weight:700">DUAL-CARBON PLAN</div>
+          <h3 id="r-title" style="margin-top:8px">企业 · 双碳规划方案</h3>
+          <div style="margin-top:10px;font-size:12px;color:#6B817A">
+            <span id="r-stamp"></span> · 版本 v1.0 · 口径：<span id="r-caliber">运营控制权法</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <span class="chip chip-info" id="r-complete">数据完整度 —</span>
+          <span class="chip chip-warn" id="r-warn">因子待核实 —</span>
+        </div>
+      </div>
+
+      <div class="rsec">
+        <h4><span class="n">01</span>执行摘要 · 这份方案回答什么</h4>
+        <p id="exec-1">—</p>
+        <p id="exec-2">—</p>
+        <div class="grid g4" style="margin-top:14px">
+          <div class="kpi"><div class="v" id="e-total">—</div><div class="l">基准年排放（万 tCO₂e）</div></div>
+          <div class="kpi"><div class="v" id="e-cut">—</div><div class="l">目标累计减排（万 tCO₂e）</div></div>
+          <div class="kpi"><div class="v" id="e-int">—</div><div class="l">碳强度（tCO₂e/万元）</div></div>
+          <div class="kpi"><div class="v" id="e-annual">—</div><div class="l">年均减排（万 tCO₂e）</div></div>
+        </div>
+      </div>
+
+      <div class="rsec">
+        <h4><span class="n">02</span>边界与范围 · 算了什么</h4>
+        <p id="scope-text">—</p>
+        <div class="tbl-wrap" style="margin-top:12px">
+          <table>
+            <thead><tr><th>范围</th><th>内容</th><th>排放（万 tCO₂e）</th><th>主要数据来源类型</th></tr></thead>
+            <tbody id="scope-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="rsec">
+        <h4><span class="n">03</span>数据从哪来 · 来源与因子出处</h4>
+        <p>本方案所有活动数据均要求可追溯。下表为来源台账摘要；完整明细见第 07 章附录。</p>
+        <div class="tbl-wrap" style="margin-top:12px">
+          <table>
+            <thead><tr><th>数据项</th><th>数值</th><th>来源（凭证/文件）</th><th>来源类型</th><th>状态</th></tr></thead>
+            <tbody id="source-tbody"></tbody>
+          </table>
+        </div>
+        <div class="note" id="factor-note">—</div>
+      </div>
+
+      <div class="rsec">
+        <h4><span class="n">04</span>核算方法 · 怎么算的</h4>
+        <p>核心公式：<strong>排放量 = 活动数据 × 排放因子</strong>。组织边界按所选口径；时间边界为基准年完整日历年度。范围三为申报估算时，须在状态列标注「估算/待补充」。</p>
+        <div class="tbl-wrap" style="margin-top:12px">
+          <table>
+            <thead><tr><th>排放源</th><th>公式</th><th>因子</th><th>数据状态</th></tr></thead>
+            <tbody id="method-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="rsec">
+        <h4><span class="n">05</span>减排路径与行动 · 做什么</h4>
+        <p id="roadmap-text">—</p>
+        <div class="tbl-wrap" style="margin-top:12px">
+          <table>
+            <thead><tr><th>阶段</th><th>行动</th><th>责任建议</th><th>验收标准</th></tr></thead>
+            <tbody id="action-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="rsec">
+        <h4><span class="n">06</span>17 Skills 调用结果</h4>
+        <p>以下能力模块按本企业数据实时计算，用于支撑报告章节与落地工作包。</p>
+        <div class="skill-grid" id="skills-grid"></div>
+      </div>
+
+      <div class="rsec">
+        <h4><span class="n">07</span>治理机制 · 谁来管、怎么管（随方案动态生成）</h4>
+        <p id="gov-intro">—</p>
+        <div class="grid g3" style="margin-top:14px" id="gov-cards"></div>
+        <div class="tbl-wrap" style="margin-top:14px">
+          <table>
+            <thead><tr><th>治理事项</th><th>依据（来自本方案/数据）</th><th>制度/机制</th><th>频次</th><th>责任人（建议）</th></tr></thead>
+            <tbody id="gov-tbody"></tbody>
+          </table>
+        </div>
+        <div class="note" id="gov-note">—</div>
+      </div>
+
+      <div class="rsec">
+        <h4><span class="n">08</span>交付框架 · 真实可验收（有依有据）</h4>
+        <p id="del-intro">—</p>
+        <div class="tbl-wrap" style="margin-top:12px">
+          <table>
+            <thead><tr><th>阶段</th><th>交付物</th><th>关键证据 / 依据</th><th>验收标准（可判定）</th><th>时点</th></tr></thead>
+            <tbody id="del-tbody"></tbody>
+          </table>
+        </div>
+        <div class="note" id="del-note">—</div>
+      </div>
+
+      <div class="rsec" style="border-bottom:0">
+        <h4><span class="n">09</span>附录 · 数据来源总表与因子清单</h4>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>#</th><th>范围</th><th>类型</th><th>凭证/文件</th><th>数值</th><th>部门</th><th>状态</th><th>备注</th></tr></thead>
+            <tbody id="appendix-tbody"></tbody>
+          </table>
+        </div>
+        <div class="tbl-wrap" style="margin-top:14px">
+          <table>
+            <thead><tr><th>因子</th><th>数值</th><th>单位</th><th>出处</th><th>状态</th></tr></thead>
+            <tbody id="appendix-factor-tbody"></tbody>
+          </table>
+        </div>
+        <p class="note">声明：本方案为咨询交付工作底稿。正式履约/认证/披露须以主管部门核查、适用标准与原始凭证为准。数据状态为「估算/待补充/占位」的项不得当作已查证结论使用。</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills" class="no-print" style="background:#EAF1ED">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">06 · Skill Packs</div>
+      <h2>17 个双碳 Skill（活数据调用）</h2>
+      <p>与报告 06 章一致：核算、足迹、路径、交易、政策、ESG、供应链、MRV、碳金融、碳汇、CCER、CBAM、绿色工厂、气候适应、体系、政策监控。</p>
+    </div>
+    <div class="skill-grid" id="skills-grid-2"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between">
+    <div><b>双碳方案落地系统 · 活数据</b>　双击 index.html 即可离线生成方案</div>
+    <div class="actions no-print">
+      <button class="btn btn-line btn-sm" id="btn-word-2">导出 Word</button>
+      <button class="btn btn-sm" id="btn-pdf-2">导出 / 打印 PDF</button>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/sources.js"></script>
+<script src="js/export.js"></script>
+<script src="js/app.js"></script>
+<script src="js/edit.js"></script>
+</body>
+</html>

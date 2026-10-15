@@ -1,6 +1,6 @@
 # 双碳行业联动单文件系统（shuangtan）
 
-一个**单文件、离线、零外链**的「双碳 / 碳核算」行业联动工作台。一份 `shuangtan.html` 即可在浏览器打开运行，覆盖诊断、政策落地、落地台账（L2 排放源级）、方案文档四个窗口，并随企业所处行业自适应联动。
+一个**单文件、离线、零外链**的「双碳 / 碳核算」行业联动工作台。一份 `index.html` 即可在浏览器打开运行，覆盖诊断、政策落地、落地台账（L2 排放源级）、方案文档四个窗口，并随企业所处行业自适应联动。
 
 ## 核心特性
 
@@ -16,7 +16,8 @@
 ## 目录结构
 
 ```
-shuangtan.html                          # 主交付：单文件离线系统（产品本体）
+index.html                          # 主交付：单文件离线系统（产品本体）；GitHub Pages 主页
+legacy.html                         # 旧 carbon-md 项目入口（保留，非双碳系统）
 docs/                                   # 规范与附件（来源 / 参考，非运行时依赖）
   交给WorkBuddy的开工指令.md
   双碳系统改造说明书_给WorkBuddy.md
@@ -39,7 +40,7 @@ reports/                                # 生成的核验报告（HTML）
 
 ## 运行
 
-直接用浏览器打开 `shuangtan.html` 即可（无需服务器、无需联网）。
+直接用浏览器打开 `index.html` 即可（无需服务器、无需联网）。
 
 ## 验证（三道门，从仓库根目录执行）
 
@@ -48,10 +49,10 @@ reports/                                # 生成的核验报告（HTML）
 node tests/smoke.js
 
 # 门二：页面质量
-python tests/ci_lint_page_quality.py shuangtan.html --has-database
+python tests/ci_lint_page_quality.py index.html --has-database
 
 # 门三：数据库 SDK 用法
-python tests/ci_lint_database_sdk_usage.py shuangtan.html
+python tests/ci_lint_database_sdk_usage.py index.html
 ```
 
 `tests/` 下的审计 / 验证探针可单独复跑：

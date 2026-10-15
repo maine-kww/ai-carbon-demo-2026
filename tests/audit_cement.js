@@ -2,7 +2,7 @@
    复用页面运行外壳（vm + DOM 桩）。结论仅依赖运行时事实。 */
 const fs = require('fs');
 const vm = require('vm');
-const html = fs.readFileSync('shuangtan.html', 'utf8');
+const html = fs.readFileSync('index.html', 'utf8');
 const code = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).join('\n;\n');
 
 const store = {};

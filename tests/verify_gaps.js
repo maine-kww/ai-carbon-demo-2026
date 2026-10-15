@@ -1,6 +1,6 @@
 // 缺口清单硬验证探针：逐条断言 7 项缺口真实存在（诚实，不编造）
 const fs=require('fs'),path=require('path');
-const html=fs.readFileSync(path.join(__dirname, '..', 'shuangtan.html'),'utf8');
+const html=fs.readFileSync(path.join(__dirname, '..', 'index.html'),'utf8');
 const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
 const code=scripts.join('\n;\n');
 const store={};function mkEl(id){return{id,innerHTML:'',textContent:'',value:'',disabled:false,className:'',checked:false,children:[],style:{},classList:{_s:{},add(c){this._s[c]=1;},remove(c){delete this._s[c];},toggle(c){this._s[c]?delete this._s[c]:this._s[c]=1;},contains(c){return !!this._s[c];}},setAttribute(k,v){this[k]=v;},getAttribute(k){return this[k];},addEventListener(){},removeEventListener(){},appendChild(c){this.children.push(c);return c;},removeChild(c){return c;},querySelector(){return null;},querySelectorAll(){return [];},reset(){},closest(){return null;},focus(){},click(){},scrollTop:0,scrollHeight:0};}
