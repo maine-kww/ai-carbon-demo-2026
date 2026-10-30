@@ -46,6 +46,7 @@ getEl('docBody').innerHTML = '';
 api.exportPdf();
 check('空方案书导出被拦截并提示', getEl('toast').textContent.indexOf('方案书为空') >= 0, getEl('toast').textContent);
 getEl('docBody').innerHTML = '<h2>有内容</h2>';
+getEl('docBody').textContent = '有内容';   // stub 中 textContent 不随 innerHTML 联动，手动同步
 api.exportPdf();
 check('有内容时提示打印对话框流程', getEl('toast').textContent.indexOf('另存为 PDF') >= 0, getEl('toast').textContent);
 check('printRoot 已渲染内容', getEl('printRoot').innerHTML.indexOf('有内容') >= 0);
