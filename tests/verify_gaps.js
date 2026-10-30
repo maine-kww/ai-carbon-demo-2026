@@ -51,10 +51,10 @@ var s3count=Object.keys(fl.scope3||{}).length;
 ck('C1: scope3 因子库共 8 项(仅引用名)', s3count===8, 's3='+s3count);
 ck('C2: 全 17 行业 L2 scope3 factorRefs 全空(无数值)', cAllEmpty, cEx||'全部空');
 
-// ===== 缺口 D：仅食品饮料/其他 窗口三无专属 L2 模板（回退水泥默认）=====
+// ===== 缺口 D：行业专属 L2 模板覆盖（曾仅食品饮料/其他回退水泥，现已全覆盖）=====
 var fallbackInds=[];
 inds.forEach(function(ind){var c={name:ind,industry:ind,province:'广东',em:{}};api.ensureL2(c);if(c._l2TplFallback)fallbackInds.push(ind);});
-ck('D1: 回退水泥默认(无专属L2)仅 食品饮料/其他', fallbackInds.length===2&&fallbackInds.indexOf('食品饮料')>=0&&fallbackInds.indexOf('其他')>=0, fallbackInds.join(','));
+ck('D1: 0 行业回退水泥默认（17 行业模板全覆盖，缺口已闭合）', fallbackInds.length===0, fallbackInds.join(','));
 
 // ===== 缺口 E：窗口一行业题新字段已采集但窗口二/四暂未消费 =====
 var rp=fnBody('renderPlan'), bd=fnBody('buildDoc');

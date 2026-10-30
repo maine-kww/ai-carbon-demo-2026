@@ -29,17 +29,36 @@ function mk(ind, prov){
     pains:['成本'], products:['诊断'], deliverForm:['报告'], boundary:'运营边界',
     baseYear:'2025', siteCount:'1', existingSys:'部分', dataAvail:{} };
 }
-// 让 completeness 尽量高：CORE 全填 + 5 组跳过
+// 让 completeness >50%：核心 7 问已答 + 填满前 4 个阶段组（组1-4），第二章/附录B 走真实渲染分支
+function fillCompleteness(c){
+  var groups = api.QUESTIONS_STAGE || [];
+  var picked = 0;
+  groups.forEach(function(g){
+    if (picked >= 4) return;
+    if (!g.items || !g.items.length) return;
+    picked++;
+    g.items.forEach(function(it){
+      var fields = (it.fields && it.fields.length) ? it.fields : (it.key ? [it.key] : []);
+      fields.forEach(function(f){
+        if (f && !api.getPath(c, f)) api.setPath(c, f, '已填');
+      });
+    });
+  });
+}
+// 让 completeness 尽量高：CORE 全填 + 前 4 组阶段问已答（>50%）
 const cC = api.QUESTIONS_CORE || [];
 const elec = mk('电子半导体', '广东');
-cC.forEach(q => { if (q.k !== 'force' && q.k !== 'pains') elec[q.k] = 'x'; });
+cC.forEach(q => { if (q.k !== 'force' && q.k !== 'pains' && q.k !== 'name' && q.k !== 'industry' && q.k !== 'province') elec[q.k] = 'x'; });
 elec.force = ['hasData'];
 api.chat2.coreForce = { hasData:1 };
-api.chat2.skipped = { 1:true, 2:true, 3:true, 4:true, 5:true };
+api.chat2.skipped = { 5:true };   // 只跳过交付组，组1-4 已填 → completeness>50，第二章/附录B 走真实渲染分支
+fillCompleteness(elec);
 const cement = mk('水泥建材', '贵州');
-cC.forEach(q => { if (q.k !== 'force' && q.k !== 'pains') cement[q.k] = 'x'; });
+cC.forEach(q => { if (q.k !== 'force' && q.k !== 'pains' && q.k !== 'name' && q.k !== 'industry' && q.k !== 'province') cement[q.k] = 'x'; });
 cement.force = ['forceCompliance'];
 api.chat2.coreForce = { forceCompliance:1 };
+api.chat2.skipped = { 5:true };
+fillCompleteness(cement);
 
 api.ensureL2(elec); api.ensureL2(cement);
 api.state.cur = elec;

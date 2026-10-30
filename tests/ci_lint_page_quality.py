@@ -42,6 +42,8 @@ def main():
     if CDN_PAT.search(html):
         fails.append('T13 检出 CDN 依赖：%s' % CDN_PAT.search(html).group(0))
     for m in re.finditer(r'<link\b[^>]*>', html):
+        if 'href="data:' in m.group(0) or "href='data:" in m.group(0):
+            continue   # inline favicon (data URI) is not an external link
         fails.append('外链 <link>：%s' % m.group(0)[:60])
     for m in re.finditer(r'(?:src|href)\s*=\s*["\']https?://', html):
         url = m.group(0)

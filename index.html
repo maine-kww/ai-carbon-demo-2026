@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230d7a5f'/%3E%3Cpath d='M6 16c3-5 9-5 12-2v3H6z' fill='%23fff'/%3E%3C/svg%3E">
 <title>双碳咨询落地方案系统</title>
 <!-- 本工作台通过 WorkBuddy「资料库」skill 搭建、存储和部署 -->
 <style>
@@ -489,7 +490,7 @@ footer.foot{margin-top:16px;text-align:center;font-size:11.5px;color:var(--t3);l
       <div class="chat-log" id="chatLog"></div>
       <div class="ask" id="askBox"></div>
       <div class="chat-in">
-        <input type="text" id="chatText" placeholder="或直接输入，如：浙江 · 水泥 · 大型企业">
+        <input type="text" id="chatText" placeholder="或直接输入，如：浙江 · 水泥 · 年营收12亿">
         <button class="btn pri" id="chatSend">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           发送</button>
@@ -532,8 +533,26 @@ footer.foot{margin-top:16px;text-align:center;font-size:11.5px;color:var(--t3);l
       <div class="toolbar">
         <button class="btn sm pri" id="btnAddClient">+ 新建客户</button>
         <button class="btn sm" id="btnGenTasks">生成五阶段任务</button>
+        <button class="btn sm" id="btnEditClient">编辑档案</button>
       </div>
       <div class="lst" id="clientList"></div>
+      <div id="clientEditBox" style="display:none;border:1px solid var(--line);border-radius:9px;padding:11px 12px;margin-bottom:11px;background:#fcfdfe">
+        <div class="sec-hd" style="margin-bottom:8px"><span class="bar"></span><h3>编辑客户档案</h3></div>
+        <div class="fld2">
+          <div class="fld"><label>所属行业</label><select id="ceIndustry"></select></div>
+          <div class="fld"><label>所在省份</label><select id="ceProvince"></select></div>
+        </div>
+        <div class="fld2">
+          <div class="fld"><label>企业规模</label><select id="ceScale"><option value="待评估">待评估</option><option value="大型企业">大型企业（10亿以上）</option><option value="中型企业">中型企业（1-10亿）</option><option value="小微企业">小微企业（1亿以下）</option></select></div>
+          <div class="fld"><label>预算区间</label><select id="ceBudget"><option value="待评估">待评估</option><option value="30万以下">30万以下</option><option value="30-80万">30-80万</option><option value="80-200万">80-200万</option><option value="200万以上">200万以上</option></select></div>
+        </div>
+        <div class="fld"><label>核心痛点（逗号分隔，最多3项）</label><input type="text" id="cePains" placeholder="如：合规履约压力,出口CBAM门槛"></div>
+        <div class="fld"><label>决策链</label><input type="text" id="ceChain" placeholder="如：EHS总监→总经理"></div>
+        <div class="fld" style="display:flex;gap:8px">
+          <button class="btn pri" id="btnSaveClientEdit" style="flex:1;justify-content:center">保存档案</button>
+          <button class="btn" id="btnCancelClientEdit">收起</button>
+        </div>
+      </div>
 
       <form id="taskForm" autocomplete="off">
         <div class="fld2">
@@ -624,6 +643,9 @@ var LS_CUST = 'wb_shuangtan_customers_';
 var LS_TASK = 'wb_shuangtan_tasks_';
 var LS_DRAFT = 'wb_shuangtan_chatdraft_';
 var LS_DOC = 'wb_shuangtan_doc_';        // 方案书版本快照（按客户名分桶）
+var LS_TOMB = 'wb_shuangtan_tomb';       // 清空示例后的墓碑名单：云端同名记录不再被合并回来
+var LS_LASTSYNC = 'wb_shuangtan_lastsync'; // 上次云端合并时间：比它新的本地修改视为「未推送」，保留本地
+var L1L2_DEV_TOL = 0.15;   // L1/L2 交叉核对偏差阈值（集中参数，不再散落硬编码）
 
 var state = {
   customers: [], tasks: [],
@@ -679,6 +701,7 @@ function serializeEm(c){
   ];
   keys.forEach(function(k){ if (isFilled(getPath(c, k))) pick[k] = getPath(c, k); });
   if (c.em && Object.keys(c.em).length) pick.em = c.em;
+  if (c.paramOverride && Object.keys(c.paramOverride).length) pick.paramOverride = c.paramOverride;
   if (c.acceptance && Object.keys(c.acceptance).length) pick.acceptance = c.acceptance;
   // 一项都没采到时返回空串，避免往云端写 "{}" 噪声
   if (!Object.keys(pick).length) return '';
@@ -752,10 +775,12 @@ function recToTask(row){
 }
 
 /* ---------- 读写 ---------- */
-function pullAll(db, databaseId, done){
+/* 翻页拉取共享实现：queryFn 在调用点内联 databaseId（DSDK002：字面量/DATABASE_ID 红线，
+   且修掉旧 pullAll 写死客户表导致任务表永远拉错的 bug）。 */
+function pullAllBy(queryFn, done){
   var acc = [], guard = 0, cursor = undefined;
   (function step(){
-    db.query({ databaseId: DATABASE_ID, pageSize: 200, startCursor: cursor })
+    queryFn(cursor)
       .then(function(res){
         acc = acc.concat(res.results || []);
         var next = res.nextCursor;
@@ -767,40 +792,81 @@ function pullAll(db, databaseId, done){
       .catch(function(e){ console.warn('[cloud] pull fail', e); toast('云端数据拉取失败，已回退本地缓存'); done(acc); });
   })();
 }
+function pullAllCust(db, done){
+  pullAllBy(function(cursor){ return db.query({ databaseId: DATABASE_ID, pageSize: 200, startCursor: cursor }); }, done);
+}
+function pullAllTask(db, done){
+  pullAllBy(function(cursor){ return db.query({ databaseId: '39INs1CYHtjSF6gv0Bl5Bl', pageSize: 200, startCursor: cursor }); }, done);
+}
+/* 墓碑：清空示例后云端同名记录不再回魂；同名新建视为用户反悔，自动移出墓碑 */
+function tombGet(){ return lsGet(LS_TOMB, []); }
+function tombAdd(names){
+  var t = tombGet();
+  (names || []).forEach(function(n){ if (n && t.indexOf(n) < 0) t.push(n); });
+  lsSet(LS_TOMB, t);
+}
+function tombRemove(name){
+  var t = tombGet();
+  var i = t.indexOf(name);
+  if (i >= 0){ t.splice(i, 1); lsSet(LS_TOMB, t); }
+}
+function tombHas(name){ return tombGet().indexOf(name) >= 0; }
 function loadCloud(){
   var db = getSDK();
   if (!db) { setSync('offline'); loadLocal(); return; }
   setSync('syncing');
-  pullAll(db, DATABASE_ID, function(rowsC){
-    pullAll(db, DB_TASK_ID, function(rowsT){
+  pullAllCust(db, function(rowsC){
+    pullAllTask(db, function(rowsT){
       var cloudC = rowsC.map(recToCust);
       var cloudT = rowsT.map(recToTask);
-      // 合并策略：以云端为准，保留本地新增
+      // 合并策略：云端为准；本地在上次同步后有未推送修改（updatedAt 更新）→ 本地优先
+      var prevSync = lsGet(LS_LASTSYNC, '');
       var lc = lsGet(LS_CUST + DB_CUST, []);
       var lt = lsGet(LS_TASK + DB_TASK, []);
-      state.customers = mergeByName(cloudC, lc);
-      state.tasks = mergeByKey(cloudT, lt, 'name');
+      state.customers = mergeByName(cloudC, lc, prevSync);
+      state.tasks = mergeByKey(cloudT, lt, 'name', 'client', prevSync);   // 复合键：不同客户的同名任务不再互盖
       lsSet(LS_CUST + DB_CUST, state.customers);
       lsSet(LS_TASK + DB_TASK, state.tasks);
+      lsSet(LS_LASTSYNC, new Date().toISOString());
+      var kept = 0;
+      (lc.concat(lt)).forEach(function(x){ if (x.updatedAt && (!prevSync || x.updatedAt > prevSync)) kept++; });
+      toast(kept ? ('同步完成：保留 ' + kept + ' 处本机未推送修改（请及时导出备份）') : '已同步');
       setSync('online');
       afterLoad();
     });
   });
 }
-function mergeByName(cloud, local){
+function mergeByName(cloud, local, prevSync){
   var map = {}, out = [];
   local.forEach(function(c){ map[c.name] = c; out.push(c); });
   cloud.forEach(function(c){
-    if (map[c.name]) { var i = out.indexOf(map[c.name]); if (i>=0) out[i] = c; }
+    if (tombHas(c.name)) return;                       // 已清空示例：云端同名不再回魂
+    var lc = map[c.name];
+    if (lc) {
+      var i = out.indexOf(lc);
+      if (i >= 0){
+        if (prevSync && lc.updatedAt && lc.updatedAt > prevSync) return;   // 本地未推送修改优先
+        out[i] = c;
+      }
+    }
     else { out.push(c); }
   });
   return out;
 }
-function mergeByKey(cloud, local, k){
+function mergeByKey(cloud, local, k1, k2, prevSync){
   var map = {}, out = [];
-  local.forEach(function(t){ map[t.name] = t; out.push(t); });
+  local.forEach(function(t){ var key = k2 ? (t[k1] || '') + '\u0001' + (t[k2] || '') : t[k1]; map[key] = t; out.push(t); });
   cloud.forEach(function(t){
-    if (map[t[k]]) { var i = out.indexOf(map[t[k]]); if (i>=0) out[i] = t; }
+    if (tombHas(t.name)) return;
+    var key = k2 ? (t[k1] || '') + '\u0001' + (t[k2] || '') : t[k1];
+    var lt = map[key];
+    if (lt) {
+      var i = out.indexOf(lt);
+      if (i >= 0){
+        if (prevSync && lt.updatedAt && lt.updatedAt > prevSync) return;   // 本地未推送修改优先
+        out[i] = t;
+      }
+    }
     else { out.push(t); }
   });
   return out;
@@ -812,6 +878,7 @@ function loadLocal(){
 }
 
 function saveCustomer(c){
+  markDocStale();   // 客户数据/验收/诊断变更 → 已生成方案书标记过期
   var db = getSDK();
   var exist = state.customers.filter(function(x){ return x.name === c.name; })[0];
   if (db) {
@@ -831,6 +898,8 @@ function localSaveCustomer(c){
   var i = -1;
   state.customers.forEach(function(x, idx){ if (x.name === c.name) i = idx; });
   if (i >= 0) state.customers[i] = c; else state.customers.push(c);
+  c.updatedAt = new Date().toISOString();   // 本地修改时间戳：同步冲突时「最近写入者胜」的依据
+  tombRemove(c.name);   // 用户重新保存同名客户 = 撤销墓碑
   lsSet(LS_CUST + DB_CUST, state.customers);
   refreshAll();
 }
@@ -851,9 +920,12 @@ function saveTask(t){
   } else { localSaveTask(t); toast('离线模式：已存本地'); }
 }
 function localSaveTask(t){
+  markDocStale();   // 台账任务变更 → 已生成方案书标记过期
   var i = -1;
   state.tasks.forEach(function(x, idx){ if (x.name === t.name && x.client === t.client) i = idx; });
   if (i >= 0) state.tasks[i] = t; else state.tasks.push(t);
+  t.updatedAt = new Date().toISOString();   // 同上：最近写入者胜
+  tombRemove(t.name);   // 同上：新建同名任务撤销墓碑
   lsSet(LS_TASK + DB_TASK, state.tasks);
   refreshAll();
 }
@@ -861,7 +933,7 @@ function localSaveTask(t){
 /* ---------- 示例数据（铁律6）---------- */
 function demoCustomers(){
   var today = new Date();
-  function d(off){ var x = new Date(today.getTime() + off*86400000); return x.toISOString().slice(0,10); }
+  function d(off){ var x = new Date(today.getTime() + off*86400000); return fmtLocalDate(x); }
   return [
     { name:'示例·华西水泥（德阳）', industry:'水泥建材', province:'四川', scale:'大型企业', stage:'合规阶段',
       pains:['合规履约压力','能耗成本上升'], products:['碳盘查核算','碳履约与交易'], budget:'80-200万',
@@ -882,7 +954,7 @@ function demoCustomers(){
 }
 function demoTasks(){
   var today = new Date();
-  function d(off){ var x = new Date(today.getTime() + off*86400000); return x.toISOString().slice(0,10); }
+  function d(off){ var x = new Date(today.getTime() + off*86400000); return fmtLocalDate(x); }
   return [
     { name:'月度能耗与熟料产量台账补录', client:'示例·华西水泥（德阳）', stage:'现状调研', dept:'生产运营部', prio:'P0', stat:'进行中', due:d(-2), invest:0, cut:0, deliver:'数据台账v1', remark:'逾期项，边界扩至6条窑线后数据量翻倍' },
     { name:'配额盈缺测算与履约方案', client:'示例·华西水泥（德阳）', stage:'方案设计', dept:'EHS环保部', prio:'P0', stat:'未开始', due:d(1), invest:120000, cut:0, deliver:'履约方案+盈缺测算表', remark:'' },
@@ -892,59 +964,111 @@ function demoTasks(){
     { name:'屋顶光伏可研（自发自用比例测算）', client:'示例·华南食品（佛山）', stage:'方案设计', dept:'财务部', prio:'P2', stat:'未开始', due:d(20), invest:1800000, cut:1450, deliver:'可研报告+技经分析', remark:'减排量为初筛值，需现场实测复核' }
   ];
 }
-function seedDemo(){
-  if (state.demo) return;
-  state.demo = true;
-  demoCustomers().forEach(function(c){ localSaveCustomer(c); });
-  demoTasks().forEach(function(t){ localSaveTask(t); });
-  toast('已恢复示例数据');
-}
 function clearDemo(){
   var cd = demoCustomers().map(function(c){ return c.name; });
   var td = demoTasks().map(function(t){ return t.name; });
   state.customers = state.customers.filter(function(c){ return cd.indexOf(c.name) < 0; });
   state.tasks = state.tasks.filter(function(t){ return td.indexOf(t.name) < 0; });
   state.demo = false;
+  tombAdd(cd.concat(td));   // 云端同名示例同步时不再回魂
   lsSet(LS_CUST + DB_CUST, state.customers);
   lsSet(LS_TASK + DB_TASK, state.tasks);
-  toast('已清空示例数据');
+  toast('已清空示例数据（云端同名示例不再同步回来）');
   refreshAll();
 }
 
 /* ---------- 导入导出 ---------- */
 function exportJSON(){
-  var data = { customers: state.customers, tasks: state.tasks, ts: new Date().toISOString() };
+  var data = { customers: state.customers, tasks: state.tasks, tomb: tombGet(), ts: new Date().toISOString() };
   var blob = new Blob([JSON.stringify(data, null, 2)], { type:'application/json' });
   var a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = '双碳台账备份_' + new Date().toISOString().slice(0,10) + '.json';
+  a.download = '双碳台账备份_' + todayStr() + '.json';
   a.click();
   setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
   toast('备份已导出');
+}
+/* 导入：先做结构校验（必填名、类型强制），再批量落库，单次落盘 + 单次渲染；
+   旧实现逐条 localSave* → N 次全量 refreshAll，且无任何字段校验。 */
+function parseImportPayload(d){
+  var custs = Array.isArray(d && d.customers) ? d.customers : [];
+  var tasks = Array.isArray(d && d.tasks) ? d.tasks : [];
+  var skippedC = 0, skippedT = 0;
+  var outC = [], outT = [];
+  custs.forEach(function(c){
+    if (!c || typeof c !== 'object' || !String(c.name || '').trim()){ skippedC++; return; }
+    if (!c.id) delete c.id;
+    c.name = String(c.name).trim();
+    if (c.pains && !Array.isArray(c.pains)) c.pains = String(c.pains).split(/[,，、]/).map(function(s){ return s.trim(); }).filter(Boolean);
+    if (c.products && !Array.isArray(c.products)) c.products = String(c.products).split(/[,，、]/).map(function(s){ return s.trim(); }).filter(Boolean);
+    outC.push(c);
+  });
+  tasks.forEach(function(t){
+    if (!t || typeof t !== 'object' || !String(t.name || '').trim() || !String(t.client || '').trim()){ skippedT++; return; }
+    if (!t.id) delete t.id;
+    t.name = String(t.name).trim();
+    t.client = String(t.client).trim();
+    t.invest = Number(t.invest) || 0;
+    t.cut = Number(t.cut) || 0;
+    outT.push(t);
+  });
+  return { customers: outC, tasks: outT, tomb: Array.isArray(d && d.tomb) ? d.tomb.filter(function(n){ return typeof n === 'string' && n; }) : [],
+    skippedC: skippedC, skippedT: skippedT };
+}
+function applyImport(p){
+  tombAdd(p.tomb || []);   // 备份自带墓碑：换机导入后「已清空示例」语义跨端延续
+  p.customers.forEach(function(c){
+    var i = -1;
+    state.customers.forEach(function(x, idx){ if (x.name === c.name) i = idx; });
+    if (i >= 0) state.customers[i] = c; else state.customers.push(c);
+    c.updatedAt = new Date().toISOString();
+    tombRemove(c.name);
+  });
+  p.tasks.forEach(function(t){
+    var i = -1;
+    state.tasks.forEach(function(x, idx){ if (x.name === t.name && x.client === t.client) i = idx; });
+    if (i >= 0) state.tasks[i] = t; else state.tasks.push(t);
+    t.updatedAt = new Date().toISOString();
+    tombRemove(t.name);
+  });
+  lsSet(LS_CUST + DB_CUST, state.customers);
+  lsSet(LS_TASK + DB_TASK, state.tasks);
+  var stale = p.customers.some(function(c){ return state.docHtml && state.docHtml[c.name]; });
+  if (stale) markDocStale();
+  refreshAll();
+  toast('导入完成：客户 ' + p.customers.length + ' 条' + (p.skippedC ? '（跳过格式不符 ' + p.skippedC + ' 条）' : '') +
+    '、任务 ' + p.tasks.length + ' 条' + (p.skippedT ? '（跳过 ' + p.skippedT + ' 条）' : ''));
 }
 function importJSON(file){
   var rd = new FileReader();
   rd.onload = function(){
     try {
-      var d = JSON.parse(rd.result);
-      (d.customers||[]).forEach(function(c){ if(!c.id) delete c.id; localSaveCustomer(c); });
-      (d.tasks||[]).forEach(function(t){ if(!t.id) delete t.id; localSaveTask(t); });
-      toast('导入完成：客户'+(d.customers||[]).length+' 条，任务'+(d.tasks||[]).length+' 条');
-      refreshAll();
+      var p = parseImportPayload(JSON.parse(rd.result));
+      applyImport(p);
     } catch(e){ toast('文件格式有误，导入失败'); }
   };
   rd.readAsText(file);
 }
 
 /* ---------- 计算层 ---------- */
-function todayStr(){ return new Date().toISOString().slice(0,10); }
+/* 本地日期（修 UTC 偏移：旧 toISOString 在北京时间 0–8 点会得到前一天） */
+function fmtLocalDate(x){
+  return x.getFullYear() + '-' + String(x.getMonth() + 1).padStart(2, '0') + '-' + String(x.getDate()).padStart(2, '0');
+}
+function todayStr(){ return fmtLocalDate(new Date()); }
 function todayTasks(){
   var t = todayStr();
+  var prioRank = { 'P0':0, 'P1':1, 'P2':2 };
   return state.tasks.filter(function(x){
     if (x.stat === '已完成') return false;
     if (!x.due) return false;
     return x.due <= t;   // 逾期或今天到期 —— 昨天未完成的自动顺延
-  }).sort(function(a,b){ return a.due < b.due ? -1 : 1; });
+  }).sort(function(a,b){
+    var pa = prioRank[a.prio] !== undefined ? prioRank[a.prio] : 3;
+    var pb = prioRank[b.prio] !== undefined ? prioRank[b.prio] : 3;
+    if (pa !== pb) return pa - pb;          // P0 逾期置顶
+    return a.due < b.due ? -1 : 1;
+  });
 }
 function taskStat(s){ return s === '已完成' ? 2 : (s === '进行中' ? 1 : 0); }
 </script>
@@ -1086,11 +1210,12 @@ var KB_POLICY = {
     { id:'POL-09', name:'欧盟碳边境调节机制（CBAM）法规', docNo:'Regulation (EU) 2023/956 及最新实施细则', issuer:'欧盟', level:'国际规则', status:'现行有效（正式实施期自 2026-01 起）', effective:'过渡期 2023-10 至 2025-12；正式期 2026-01 起', industries:['钢铁','水泥建材','有色金属','化肥','电力热力','氢'], actions:'CBAM 列明 6 类（水泥/钢铁/铝/化肥/电力/氢）：出口企业按功能单位申报嵌入排放，关注默认值→实测切换与抵扣口径；石化化工/纺织/电子半导体/汽车零部件/装备制造等经下游传导（含钢铝部件）', chapter:'第八章', source:'欧盟官方公报（以最新实施细则为准）' }
   ]
 };
-/* 省级政策条目升级：新增「生效状态」「基准年度是否适用」两个 L2 字段（不虚构文号，文号待查实时标注） */
+/* 省级政策条目升级：新增「生效状态」「基准年度是否适用」两个 L2 字段（不虚构文号，文号待查实时标注）。
+   诚实原则：程序不再默认赋「现行有效」——未逐条核验的状态一律标待核实，由顾问核验后改写。 */
 Object.keys(KB_PROVINCE).forEach(function(k){
   var p = KB_PROVINCE[k];
-  if (!p.status) p.status = '现行有效';
-  if (!p.baseYear) p.baseYear = '2025—2026 报送年度适用（以年度官方通知为准）';
+  if (!p.status) p.status = '待核实（以最新官方发布为准）';
+  if (!p.baseYear) p.baseYear = '适用年度待核实（以年度官方通知为准）';
   if (!p.asOf) p.asOf = '2026-10-13';
 });
 /* 贵州省级政策带真实文号（附录B 已核对），示范 L2 深度 */
@@ -1533,7 +1658,7 @@ var KB_STAGE_PATCH = {
 /* 参数与因子默认值（第 3 批计算引擎使用；此处先入库，供窗口二标注来源）*/
 var PARAMS = {
   clinkerEF: {"v": 0.535, "u": "tCO2/t熟料", "src": "生态环境部《水泥行业核算指南》2024"},
-  coalNCV: {"v": 21, "u": "GJ/t", "src": "企业化验室实测/缺省值"},
+  coalNCV: {"v": 21, "u": "GJ/t", "src": "核算指南缺省值21 GJ/t（实测低位发热量后替换）"},
   coalCC: {"v": 26.18, "u": "tC/TJ", "src": "核算指南缺省值"},
   coalOX: {"v": 0.99, "u": "-", "src": "核算指南缺省值"},
   dieselNCV: {"v": 42.65, "u": "GJ/t", "src": "核算指南"},
@@ -1566,7 +1691,7 @@ var PARAMS = {
    ================================================================== */
 var MODES = {"quick": {"label": "快速诊断", "desc": "7 问约 1 分钟，先出成熟度判断与产品线建议", "questionIds": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7"]}, "full": {"label": "完整诊断", "desc": "27 问约 10 分钟，采集到能生成完整方案书与技经测算的数据粒度", "questionIds": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11", "Q12", "Q13", "Q14", "Q15", "Q16", "Q17", "Q18", "Q19", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27"]}};
 /* 核心 7 问：与现有 QUESTIONS 逐字一致，仅登记便于比对 */
-var QUESTIONS_CORE = [{"id": "Q1", "k": "name", "q": "先认识一下：贵司名称是？", "tip": "直接输入公司全称", "chips": null}, {"id": "Q2", "k": "industry", "q": "贵司属于哪个行业？（决定核算边界与产品线）", "tip": "选择行业", "chips": "IND"}, {"id": "Q3", "k": "province", "q": "企业注册与主要生产地在哪个省/市？（决定适用地方政策）", "tip": "如：江苏 / 广东 / 四川", "chips": "PROV"}, {"id": "Q4", "k": "scale", "q": "企业规模大致是？", "tip": "规模决定交付深度与预算量级", "chips": "SCALE"}, {"id": "Q5", "k": "force", "q": "是否已被要求做碳核算或履约？（成熟度第一问）", "tip": "可多选", "chips": [["forceCompliance", "是，被要求核算或履约"], ["hasData", "已建过台账/核算体系"], ["hasTarget", "已主动设双碳目标"], ["wantsValue", "想做碳资产变现/品牌/融资"], ["none", "以上都没有"]]}, {"id": "Q6", "k": "pains", "q": "核心痛点是哪些？（可多选）", "tip": "最多选3项", "chips": "PAIN"}, {"id": "Q7", "k": "chain", "q": "预算区间与决策链？（成熟度第三问）", "tip": "如：80-200万，EHS总监→总经理", "chips": "BUDGET"}];
+var QUESTIONS_CORE = [{"id": "Q1", "k": "name", "q": "先认识一下：贵司名称是？", "tip": "直接输入公司全称", "chips": null}, {"id": "Q2", "k": "industry", "q": "贵司属于哪个行业？（决定核算边界与产品线）", "tip": "选择行业", "chips": "IND"}, {"id": "Q3", "k": "province", "q": "企业注册与主要生产地在哪个省/市？（决定适用地方政策）", "tip": "如：江苏 / 广东 / 四川", "chips": "PROV"}, {"id": "Q4", "k": "scale", "q": "企业规模大致是？（按年营业收入分档）", "tip": "分档标准：1亿以下=小微，1-10亿=中型，10亿以上=大型；可直接输入如「12亿」", "chips": "SCALE"}, {"id": "Q5", "k": "force", "q": "是否已被要求做碳核算或履约？（成熟度第一问）", "tip": "可多选", "chips": [["forceCompliance", "是，被要求核算或履约"], ["hasData", "已建过台账/核算体系"], ["hasTarget", "已主动设双碳目标"], ["wantsValue", "想做碳资产变现/品牌/融资"], ["none", "以上都没有"]]}, {"id": "Q6", "k": "pains", "q": "核心痛点是哪些？（可多选）", "tip": "最多选3项", "chips": "PAIN"}, {"id": "Q7", "k": "chain", "q": "预算区间与决策链？（成熟度第三问）", "tip": "点预算档直接记录；决策链直接输入，如：80-200万，EHS总监→总经理", "chips": "BUDGET"}];
 /* 五阶段 20 问（Q8–Q27）*/
 var QUESTIONS_STAGE = [{"group": 1, "stage": "售前诊断", "title": "第一组 · 售前诊断（企业物理边界与合规身份）", "why": "决定方案范围与是否生成履约/CBAM 章节；这一组答完就能判断这家企业最短的合规路径", "items": [{"id": "Q8", "key": "creditCode", "ask": "贵司统一社会信用代码或行业代码是？（用于核对行业分类与纳管范围）", "tip": "18 位；也可只报行业代码，如 C3011 水泥制造", "type": "text", "validate": {"len": 18, "soft": true, "skipLabel": "暂不提供"}, "excel": "00_企业基本信息", "weight": 0.5}, {"id": "Q9", "key": "productsLine", "ask": "主营产品与产线情况？（例：P·O42.5 水泥 220 万吨/年，1 条 5000t/d 熟料线）", "tip": "产品 + 产能 + 产线条数，一句话即可", "type": "text", "followUp": {"when": "文本中未出现条数或产量数字", "ask": "方便补充一下产线条数与单线规模吗？这会影响核算边界与数据量估算"}, "excel": "00_企业基本信息", "weight": 1}, {"id": "Q10", "key": "isETS", "ask": "贵司是否属于全国碳市场重点排放单位？", "tip": "直接影响是否生成履约章节与配额盈缺测算", "type": "chips", "options": ["是，已纳入", "否", "不确定，需核实"], "secondKey": "isCBAM", "secondAsk": "是否有产品出口欧盟（含经第三国转口）？", "secondOptions": ["是", "否", "不确定"], "excel": "00_企业基本信息、09_政策清单", "weight": 1.5}, {"id": "Q11", "key": "siteCount", "ask": "是否还有其他厂区/子公司需纳入本次范围？", "tip": "决定组织边界是单厂还是集团口径", "type": "chips", "options": ["仅 1 个厂区", "2-5 个", "5 个以上", "暂不确定"], "followUp": {"when": "回答不是『仅 1 个厂区』", "ask": "各厂区是否独立核算？是否需要分别出报表？"}, "excel": "00_企业基本信息", "weight": 1}]}, {"group": 2, "stage": "项目启动", "title": "第二组 · 项目启动（边界、年度与既有体系）", "why": "把口径钉死在开工之前，避免后期返工与边界变更", "items": [{"id": "Q12", "key": "boundary", "ask": "本次核算的法人/组织边界是？核算年度选哪一年？", "tip": "组织边界与核算年度都会写进 SOW", "type": "chips+text", "options": ["单一法人单一厂区", "多厂区合并", "集团口径"], "secondKey": "baseYear", "secondOptions": ["2023 年度", "2024 年度", "2025 年度"], "excel": "00_企业基本信息", "weight": 1.5}, {"id": "Q13", "key": "existingSys", "ask": "是否已做过：碳盘查 / 第三方核查 / ISO 14064 / ESG 披露？", "tip": "可多选；已有体系可复用大量底稿", "type": "multi", "options": ["组织碳盘查", "第三方核查", "ISO 14064 体系", "ESG 披露", "以上都没有"], "followUp": {"when": "勾选任一已有项", "ask": "最近一次是哪一年？由哪家机构出具？能否提供报告或底稿样例？"}, "excel": "00_企业基本信息、09_政策清单", "weight": 1}, {"id": "Q14", "key": "dataAvail", "ask": "数据能否提供？请逐项勾选", "tip": "标『无』的项目会进入资料缺口清单，并影响报告可出章节", "type": "matrix", "items": ["月度能耗台账", "产量与质量台账", "化验室煤质报告", "电费单与用电记录", "计量器具台账", "运输台账"], "levels": ["有", "部分", "无"], "excel": "01/02/03 表", "weight": 2}]}, {"group": 3, "stage": "现状调研", "title": "第三组 · 现状调研（核心数据组，决定报告能不能算）", "why": "这一组决定窗口二能不能出技经测算、窗口四能不能出核算结果章节", "items": [{"id": "Q15", "key": "em.production", "ask": "主要产品产量：熟料 ___ 万吨/年、水泥 ___ 万吨/年、设计产能 ___ 万吨/年", "tip": "三个数字用空格或顿号分隔，例如：150 215 155", "type": "number3", "fields": ["em.clinkerOut", "em.cementOut", "em.capacity"], "units": ["万吨", "万吨", "万吨"], "validate": [{"rule": "水泥产量 >= 熟料产量", "else": "水泥产量低于熟料产量，是否外销熟料？"}], "excel": "00_企业基本信息 B13-B16", "weight": 3}, {"id": "Q16", "key": "em.energy", "ask": "能源结构：原煤 ___ 万吨、替代燃料 ___ 万吨、柴油 ___ 吨、外购电 ___ 万kWh、余热自发电 ___ 万kWh、绿电 ___ 万kWh", "tip": "六个数字依次输入，没有的填 0；单位统一用万kWh，系统内部自动换算 MWh", "type": "number6", "fields": ["em.coal", "em.af", "em.diesel", "em.gridBuy", "em.whr", "em.greenPower"], "units": ["万吨", "万吨", "吨", "万kWh", "万kWh", "万kWh"], "validate": [{"rule": "余热自发电以万kWh 录入并 ×10 得 MWh", "else": "余热自发电单位易错，请确认是万kWh 还是 MWh"}], "excel": "00_企业基本信息 B17-B21、01 表、02 表", "weight": 3}, {"id": "Q17", "key": "em.raw", "ask": "原料与工艺：石灰石 ___ 万吨、替代原料（电石渣/钢渣等）___ 万吨", "tip": "替代原料会带来非碳酸盐分解的排放扣减", "type": "number2", "fields": ["em.limestone", "em.altRaw"], "units": ["万吨", "万吨"], "validate": [{"rule": "石灰石 ÷ 熟料产量 落在 1.1-1.4", "else": "石灰石单耗偏离常规区间，请核对是否含替代原料或矿山剥离量未计入"}], "excel": "00_企业基本信息 B19、01 表第 8 行", "weight": 2}, {"id": "Q18", "key": "em.metering", "ask": "计量与数据基础：① 电子皮带秤/磅秤检定是否有效？② 中控 DCS 能否导出煤量与电耗？③ 煤质化验频次？", "tip": "三问分别选；检定超期与 DCS 缺失都会降低数据质量等级", "type": "chips3", "questions": [{"key": "em.metering", "options": ["检定有效", "部分超期", "不清楚"]}, {"key": "em.dcs", "options": ["可导出", "仅人工记录", "无 DCS"]}, {"key": "em.labFreq", "options": ["每日/每批", "每周", "每月", "很少"]}], "excel": "01/02 表备注列", "weight": 1.5}, {"id": "Q19", "key": "em.transport", "ask": "运输与流向：原料平均运距 ___ km、产品主要销往 ___、是否有出口", "tip": "运输量与流向用于范围 3 类别 1/4/9", "type": "number+text+chips", "fields": ["em.haulIn", "em.marketDir"], "options": ["有出口", "无出口"], "excel": "03 表类别 1/4/9", "weight": 1}, {"id": "Q20", "key": "em.otherS3", "ask": "其他范围 3 数据（废弃物 / 差旅 / 通勤 / 包装材料）可得性？", "tip": "全有或部分都可以，缺项会标为『未纳入本次核算』", "type": "chips", "options": ["全有", "部分", "无"], "excel": "03 表类别 5-7", "weight": 0.5}]}, {"group": 4, "stage": "方案设计", "title": "第四组 · 方案设计（目标、措施与约束）", "why": "决定减排路径的取舍与技经测算的排序", "items": [{"id": "Q21", "key": "hasTarget", "ask": "是否已有双碳目标？例如：2030 年吨熟料碳强度较 2024 年下降 10%", "tip": "有量化目标时，系统会拿现状强度对比并提示可达性", "type": "chips+text", "options": ["无", "有定性目标", "有量化目标"], "secondKey": "targetText", "validate": [{"rule": "有量化目标时起止年份不能为空", "else": "量化目标需要起止年份才能校验可达性"}], "excel": "08_ESG_TCFD_CDP", "weight": 1}, {"id": "Q22", "key": "techPlan", "ask": "已确定或已立项的技改/替代计划？", "tip": "勾选项在方案里会标为『已有基础』，不再重复建议", "type": "multi", "options": ["原料替代", "燃料替代（RDF/生物质）", "余热发电扩容", "粉磨系统节能", "光伏/绿电", "CCUS 预研", "暂无"], "excel": "09_政策清单", "weight": 1}, {"id": "Q23", "key": "investRule", "ask": "投资与回报约束是什么？", "tip": "决定措施排序；超出约束的措施会单列为中长期选项", "type": "chips", "options": ["回收期 ≤2 年", "≤3 年", "≤5 年", "仅合规必需投入", "待评估"], "excel": "—", "weight": 1}, {"id": "Q24", "key": "policyAsk", "ask": "有哪些政策诉求？", "tip": "勾选项会触发对应补贴申报路径", "type": "multi", "options": ["节能技改专项资金", "绿色工厂", "超低排放改造", "CCER 开发", "碳足迹标识", "暂不需要"], "excel": "09_政策清单", "weight": 1}]}, {"group": 5, "stage": "交付落地", "title": "第五组 · 交付落地（交付形态与披露要求）", "why": "决定窗口四生成哪些章节、导出什么格式", "items": [{"id": "Q25", "key": "deliverForm", "ask": "需要什么形态的交付物？语言要求？", "tip": "可多选；勾选结果直接决定窗口四的章节清单", "type": "multi", "options": ["诊断报告", "核算底稿与台账模板", "LCA 模型", "碳资产管理制度", "培训", "核查对接"], "secondKey": "docLang", "secondOptions": ["中文", "中英双语"], "excel": "—", "weight": 1}, {"id": "Q26", "key": "disclose", "ask": "是否有对外披露或客户问卷需求？", "tip": "勾选 CBAM 申报时会强制生成 CBAM 章节并校验出口量", "type": "multi", "options": ["ESG/TCFD", "CDP", "CBAM 申报", "主机厂或客户碳问卷", "无"], "validate": [{"rule": "勾选 CBAM 申报 → isCBAM 必须为『是』且出口量 > 0", "else": "CBAM 章节需要出口量数据，请补充出口量"}], "excel": "07_CBAM、08_ESG_TCFD_CDP", "weight": 1}, {"id": "Q27", "key": "needVerify", "ask": "是否需要预留第三方核查接口？是否设置内部碳价并纳入考核？", "tip": "内部碳价为空时，技经测算沿用外部碳价并标注来源", "type": "chips2", "questions": [{"key": "needVerify", "options": ["需要", "不需要"]}, {"key": "internalCarbonPrice", "options": ["已设置", "计划设置", "暂不设置"]}], "excel": "08_ESG_TCFD_CDP", "weight": 1}]}];
 var KB_Q_BY_INDUSTRY = {
@@ -2508,32 +2633,44 @@ function emHasActivity(em){
   function any(sc){ return (em[sc] || []).some(function(r){ return r.judgment !== '不适用' && Number(r.activity) > 0; }); }
   return any('scope1') || any('scope2') || any('scope3');
 }
+/* 是否已有 L2 行模板（不要求已填活动数据：模板存在即具备采集能力，不再误裁为缺数据） */
+function emHasL2Rows(em){
+  em = em || {};
+  return (em.scope1 || []).some(function(r){ return r.judgment !== '不适用'; }) ||
+         (em.scope2 || []).some(function(r){ return r.judgment !== '不适用'; }) ||
+         (em.scope3 || []).some(function(r){ return r.judgment === '纳入'; });
+}
 /* 阶段内容是否依赖尚未采集的排放数据 → 用于动态裁剪 */
 function stageNeedsData(stageKey, c){
   var d = mergeStageDetail(stageKey, c ? c.industry : '其他');
   if (!d) return false;
   if (stageKey === '现状调研' || stageKey === '方案设计') {
     var em = c && c.em ? c.em : {};
-    var hasCore = emHasActivity(em);
+    var hasCore = emHasL2Rows(em) || emHasActivity(em);
     d._pending = !hasCore;
   }
   return d._pending === true;
 }
-function judgeStage(a){
+function judgeStageDetail(a){
   // a: 诊断答案集合 —— 成熟度四阶段判定（合规 / 数据 / 战略 / 价值）
   // 权重设计：被强制履约只说明「合规阶段」；已有体系才进数据阶段；
   // 主动设目标进战略；碳资产变现/融资品牌才是价值阶段。避免跨阶段硬推。
-  var s = 0;
-  if (a.forceCompliance) s += 1;      // 已被要求核算或履约 → 合规底线
-  if (a.hasData) s += 2;              // 已建台账/核算体系 → 数据阶段
-  if (a.hasTarget) s += 2;            // 主动设双碳目标 → 战略阶段
-  if (a.wantsValue) s += 3;           // 碳资产变现/品牌/融资 → 价值阶段
-  if (s >= 5) return '价值阶段';
-  if (s >= 4) return '战略阶段';
-  if (s >= 2) return '数据阶段';
-  return '合规阶段';
+  // 返回分档 + 可追溯的评分依据，供诊断结论展示（满分 1+2+2+3=8）。
+  var s = 0, reasons = [];
+  if (a.forceCompliance){ s += 1; reasons.push('已被要求核算或履约 +1'); }
+  if (a.hasData){ s += 2; reasons.push('已建台账/核算体系 +2'); }
+  if (a.hasTarget){ s += 2; reasons.push('已主动设双碳目标 +2'); }
+  if (a.wantsValue){ s += 3; reasons.push('想做碳资产变现/品牌/融资 +3'); }
+  var stage = '合规阶段';
+  if (s >= 5) stage = '价值阶段';
+  else if (s >= 4) stage = '战略阶段';
+  else if (s >= 2) stage = '数据阶段';
+  return { score: s, reasons: reasons, stage: stage };
 }
-function matchProducts(stage, pains, industry){
+function judgeStage(a){
+  return judgeStageDetail(a).stage;
+}
+function matchProducts(stage, pains, industry, scale){
   var base = {
     '合规阶段': ['碳盘查核算','碳履约与交易'],
     '数据阶段': ['碳盘查核算','节能降碳技术咨询'],
@@ -2546,6 +2683,9 @@ function matchProducts(stage, pains, industry){
   if (pains.indexOf('能耗成本上升') >= 0) base.push('节能降碳技术咨询');
   if (pains.indexOf('客户供应链要求') >= 0) base.push('产品碳足迹LCA');
   if (industry === '食品饮料' || industry === '房地产建筑') base.push('碳中和认证');
+  // 规模加权（售前定交付深度的轻量差异化）：
+  if (scale === '大型企业') base.push('碳履约与交易', 'ESG/TCFD/CDP');
+  else if (scale === '小微企业') base.push('双碳规划');
   // 去重
   var seen = {}, out = [];
   base.forEach(function(p){ if (!seen[p]) { seen[p] = 1; out.push(p); } });
@@ -2576,17 +2716,29 @@ var SCOPE3_CATS = [
   { id:'S3-15', name:'类别15 投资', fk:'' }
 ];
 
-/* 读取因子：项目覆盖 em.ef / PARAM_OVERRIDE 优先，否则 PARAMS 缺省值（绝不硬编码数字） */
+/* 读取因子：项目覆盖 em.ef / PARAM_OVERRIDE 优先，其次 PARAMS，最后 FACTOR_LIB 兜底。
+   gridEF 特例：分省因子 gridEFProv 优先于通用覆盖（面板专项录入即对两个引擎生效）。 */
 function getFac(P, ef, key){
+  // 客户级覆盖优先（参数面板在选中客户下的修改，只影响该客户，避免多客户互相污染）
+  var cur = (typeof state !== 'undefined' && state.cur && state.cur.paramOverride) ? state.cur.paramOverride : null;
+  var cv = (cur && cur[key] !== undefined && cur[key] !== '') ? Number(cur[key]) : NaN;
+  if (!isNaN(cv)) return cv;
+  if (cur && key === 'gridEF' && cur.gridEFProv !== undefined && cur.gridEFProv !== ''){ var cg = Number(cur.gridEFProv); if (!isNaN(cg)) return cg; }
   var ov = (ef && ef[key] !== undefined && ef[key] !== null && ef[key] !== '') ? Number(ef[key]) : undefined;
+  if (ov === undefined && key === 'gridEF' && PARAM_OVERRIDE && PARAM_OVERRIDE.gridEFProv !== undefined && PARAM_OVERRIDE.gridEFProv !== '') {
+    ov = Number(PARAM_OVERRIDE.gridEFProv);
+  }
   if (ov === undefined) ov = (PARAM_OVERRIDE && PARAM_OVERRIDE[key] !== undefined && PARAM_OVERRIDE[key] !== '') ? Number(PARAM_OVERRIDE[key]) : undefined;
   if (ov === undefined) ov = (P && P[key]) ? Number(P[key].v) : undefined;
+  if (ov === undefined) { var L = libFactor(key); if (L && L.v !== '' && L.v !== undefined && L.v !== null) ov = Number(L.v); }
   return (ov === undefined || isNaN(ov)) ? 0 : ov;
 }
 function facSrc(P, ef, key){
   if (ef && ef[key + '_src']) return ef[key + '_src'];
   if (PARAM_OVERRIDE && PARAM_OVERRIDE[key + '_src']) return PARAM_OVERRIDE[key + '_src'];
   if (P && P[key] && P[key].src) return P[key].src;
+  var L = libFactor(key);
+  if (L && L.source) return L.source;
   return '—';
 }
 
@@ -2774,11 +2926,11 @@ function getApplicablePolicies(c){
 }
 
 
-var LINKAGE_MAP = {"_meta":{"用途":"第 9 章联动矩阵的可执行版本：事件 → 各窗口副作用；实现时按此表逐行接线","去抖":"300ms","统一出口":"fire(event) → 执行副作用 → refreshAll()"},"events":[{"event":"answersChanged","trigger":"改答 Q2 行业 / Q3 属地 / Q10 纳管与出口","w1":["完整度重算"],"w2":["行业核算要点重渲染","属地政策重渲染","条件章节（履约/CBAM/ESG）增删"],"w3":["任务模板责任部门与阶段高亮"],"w4":["章节级联增删"],"extras":["提示「方案需重建」","changeLog 记录"]},{"event":"emChanged","trigger":"填写任一 L2 排放源级数据行","w1":["该行状态变绿","缺口条目自动消除"],"w2":["技经测算由「待数据补齐」转为可用","行业核算要点旁显示「本项目实测口径」"],"w3":["对应数据采集任务自动关闭"],"w4":["第四章核算结果表实时更新"],"extras":["行内即时算排放量","L1/L2 汇总偏差 >15% 提示口径不一致","calcCache 失效"]},{"event":"factorChanged","trigger":"覆盖排放因子或修改参数","w1":["因子徽标变「已覆盖」"],"w2":["措施回收期与排序重排"],"w3":["关联任务备注追加参数版本"],"w4":["附录 B 更新","顶部提示「报告需重新生成」"],"extras":["changeLog 记旧值→新值、依据、确认人","calcCache 失效"]},{"event":"stageChanged","trigger":"成熟度结论变化","w1":["成熟度标签更新"],"w2":["产品线组合与措施优先级重排"],"w3":["任务优先级重排"],"w4":["第一、二章重写（跳过锁定章节）"],"extras":["锁定章节不动"]},{"event":"acceptanceChanged","trigger":"阶段验收勾选达标","w2":["卡片状态变「已验收」"],"w3":["该阶段任务可一键置「已完成」"],"w4":["第五章对应段标注「已验收」"],"extras":["changeLog 记录"]},{"event":"taskChanged","trigger":"窗口三新增或修改任务","w2":["卡片头显示「已在办 N 项」"],"w4":["第十二章实施计划表更新"],"extras":["任务 remark 带验收编号与证据链编号"]},{"event":"gapChanged","trigger":"资料缺口新增或消除","w1":["缺口清单刷新"],"w2":["卡片头显示缺口数","对应章节标红或取消标红"],"w3":["缺口对应任务置顶"],"w4":["相关章节标「待补充」或取消"]},{"event":"docEdited","trigger":"窗口四人工编辑章节","w4":["生成版本快照","标记「人工已改」并锁定该章节"],"extras":["再次生成时不覆盖锁定章节"]}],"gotoAttrs":{"w2Row":"data-goto（值为字段 key，如 em.energy）","gapItem":"gotoKey","docPlaceholder":".missing[data-key]","task":"data-stage","handler":"统一委托到 onGoto(key)，定位窗口一分组与题号并高亮"},"freshnessRules":[{"where":"窗口一 / 窗口三头部","show":"数据更新于 YYYY-MM-DD HH:mm"},{"where":"窗口四头部","show":"报告生成于 X · 数据更新于 Y"},{"where":"窗口四头部（Y > X 时）","show":"参数或采集数据已更新，当前报告可能过期 → [重新生成（保留已锁定章节）]"}],"forbidden":["缺省值冒充实测值向其他窗口扩散","任何窗口硬编码数字（碳价、基准值等一律读 PARAMS / em.ef）","重新生成时覆盖人工修改的章节","渲染函数互相调用成环","多处各存一份派生值"]};
+var LINKAGE_MAP = {"_meta":{"用途":"第 9 章联动矩阵的可执行版本：事件 → 各窗口副作用；实现时按此表逐行接线","去抖":"300ms","统一出口":"fire(event) → 执行副作用 → refreshAll()"},"events":[{"event":"answersChanged","trigger":"改答 Q2 行业 / Q3 属地 / Q10 纳管与出口","w1":["完整度重算"],"w2":["行业核算要点重渲染","属地政策重渲染","条件章节（履约/CBAM/ESG）增删"],"w3":["任务模板责任部门与阶段高亮"],"w4":["章节级联增删"],"extras":["提示「方案需重建」","changeLog 记录"]},{"event":"emChanged","trigger":"填写任一 L2 排放源级数据行","w1":["该行状态变绿","缺口条目自动消除"],"w2":["技经测算由「待数据补齐」转为可用","行业核算要点旁显示「本项目实测口径」"],"w3":["对应数据采集任务自动关闭"],"w4":["第四章核算结果表实时更新"],"extras":["行内即时算排放量","L1/L2 汇总偏差 >15% 提示口径不一致","calcCache 失效"]},{"event":"factorChanged","trigger":"覆盖排放因子或修改参数","w1":["因子徽标变「已覆盖」"],"w2":["措施回收期与排序重排"],"w3":["关联任务备注追加参数版本"],"w4":["附录 B 更新","顶部提示「报告需重新生成」"],"extras":["changeLog 记旧值→新值、依据、确认人","calcCache 失效"]},{"event":"stageChanged","trigger":"成熟度结论变化","w1":["成熟度标签更新"],"w2":["产品线组合与措施优先级重排"],"w3":["任务优先级重排"],"w4":["第一、二章重写（跳过锁定章节）"],"extras":["锁定章节不动"]},{"event":"acceptanceChanged","trigger":"阶段验收勾选达标","w2":["卡片状态变「已验收」"],"w3":["该阶段任务可一键置「已完成」"],"w4":["第五章对应段标注「已验收」"],"extras":["changeLog 记录"]},{"event":"taskChanged","trigger":"窗口三新增或修改任务","w2":["卡片头显示「已在办 N 项」"],"w4":["第十二章实施计划表更新"],"extras":["任务 remark 带验收编号与证据链编号"]},{"event":"gapChanged","trigger":"资料缺口新增或消除","w1":["缺口清单刷新"],"w2":["卡片头显示缺口数","对应章节标红或取消标红"],"w3":["缺口对应任务置顶"],"w4":["相关章节标「待补充」或取消"]},{"event":"docEdited","trigger":"窗口四人工编辑章节","w4":["生成版本快照","标记「人工已改」并锁定该章节"],"extras":["重建前自动快照，并在确认后覆盖人工编辑（不静默清空）"]}],"gotoAttrs":{"w2Row":"data-goto（值为字段 key，如 em.energy）","gapItem":"gotoKey","docPlaceholder":".missing[data-key]","task":"data-stage","handler":"统一委托到 onGoto(key)，定位窗口一分组与题号并高亮"},"freshnessRules":[{"where":"窗口一 / 窗口三头部","show":"数据更新于 YYYY-MM-DD HH:mm"},{"where":"窗口四头部","show":"报告生成于 X · 数据更新于 Y"},{"where":"窗口四头部（Y > X 时）","show":"参数或采集数据已更新，当前报告可能过期 → [重新生成（保留已锁定章节）]"}],"forbidden":["缺省值冒充实测值向其他窗口扩散","任何窗口硬编码数字（碳价、基准值等一律读 PARAMS / em.ef）","「生成/重建」遇人工编辑先确认并自动快照，确认后才覆盖","渲染函数互相调用成环","多处各存一份派生值"]};
 
 /* ===== 第6批 六类对外成果物库（附件A DELIVERABLE_LIB · 字段级定义即最终结果）=====
    缺数据处一律渲染「待补充」.missing 占位，不编造数字；核验基准日 2026-10-13 */
-var DELIVERABLE_LIB = {"_meta":{"用途":"窗口二「本阶段对外成果物」区块 + 窗口四章节模板的数据源；即「最终结果定义」","原则":"每条成品的章节与字段都写死，做成模板；缺数据时渲染「待补充」占位，不编造","核验基准日":"2026-10-13"},"items":[{"id":"DL-01","name":"年度温室气体排放报告","receiver":"省级生态环境主管部门","trigger":"isETS = 是","stage":"现状调研 / 交付落地","docChapter":"第四、十三章","basis":["《碳排放权交易管理暂行条例》（国务院令第 775 号）","《企业温室气体排放核算与报告指南 本行业》（2024-09）","年度报送通知"],"deadline":"每年 3 月 31 日前报送上一年度报告（以年度通知为准）","sections":[{"n":"1 报告主体信息","fields":["企业名称","统一社会信用代码","行业代码","注册地址","生产地址","法定代表人","联系人及电话","报告年度"]},{"n":"2 核算边界","fields":["组织边界（法人/厂区/设施清单）","核算年度","纳入排放源清单","纳入与排除依据"]},{"n":"3 活动数据及其来源","fields":["分排放源数值","单位","数据来源","证据编号","数据质量等级"]},{"n":"4 排放因子及其来源","fields":["分排放源取值","单位","来源文件与版本","是否缺省值"]},{"n":"5 排放量计算","fields":["分排放源计算式","范围 1 合计","范围 2 合计（含余热/绿电抵扣说明）","范围 3（如报告）"]},{"n":"6 数据质量控制","fields":["计量器具与检定","化验频次","数据缺失与替代处理","内审记录","数据质量控制计划执行情况"]},{"n":"7 不确定性分析","fields":["主要不确定来源","量级","改进方向"]},{"n":"8 附件","fields":["月度活动数据表","凭证清单","计量器具清单","化验报告","替代原料化验报告","绿证凭证"]}],"commonRejectReasons":["数据与凭证不一致","因子未标来源或版本","计量器具超期未检","边界与上年度不一致未说明","非碳酸盐原料扣减无化验报告"]},{"id":"DL-02","name":"数据质量控制计划","receiver":"企业内部执行 / 核查机构查阅","trigger":"全部纳管企业","stage":"现状调研","docChapter":"第十三章","basis":["《碳排放权交易管理暂行条例》与核查技术指南对数据质量控制的要求"],"deadline":"首次编制，并在年度报送前更新","sections":[{"n":"1 排放源与数据清单","fields":["排放源","数据项","单位","频次"]},{"n":"2 获取方式与责任","fields":["获取方式（计量/结算单/化验）","责任部门","责任人"]},{"n":"3 计量与检测要求","fields":["计量器具清单","精度","检定周期","化验项目与频次"]},{"n":"4 记录与保存","fields":["记录形式","保存期限","归档位置"]},{"n":"5 缺失与异常处理","fields":["缺失数据替代方法","异常值判定规则","处理流程"]},{"n":"6 内审与自查","fields":["自查频次","内审内容","签字确认"]},{"n":"7 变更管理","fields":["变更情形","评估方式","确认人"]}],"commonRejectReasons":["计划与实际执行两张皮","责任人未落实","缺失数据处理无记录"]},{"id":"DL-03","name":"排放源清单与活动数据/排放因子台账","receiver":"企业内部（核查时提交）","trigger":"全部项目","stage":"现状调研","docChapter":"第四章 + 附录 A","basis":["核算与报告指南数据要求"],"deadline":"月度次月 10 日前更新；年度与报告同步","sections":[{"n":"排放源清单","fields":["范围","排放源名称","是否纳入","纳入依据","对应设施"]},{"n":"月度台账","fields":["月份","产量","燃料消耗","电量","运输量","数据来源","凭证编号","填报人","复核人"]},{"n":"年度汇总","fields":["活动数据","单位","因子","因子来源","排放量"]},{"n":"数据质量标注","fields":["质量等级","替代说明"]}],"commonRejectReasons":["月度台账缺月","无填报人与复核人","台账与报表数字不一致"]},{"id":"DL-04","name":"核查配合材料包","receiver":"主管部门委托的核查机构","trigger":"年度核查","stage":"交付落地","docChapter":"附录 A + 第十三章","basis":["《企业温室气体排放核查技术指南 本行业》（2024-09）"],"deadline":"收到核查通知后 3–5 个工作日内（按约定）","sections":[{"n":"核算底稿","fields":["活动数据→因子→排放量逐项可复算"]},{"n":"数据链索引","fields":["数据","对应凭证","凭证页码"]},{"n":"计量器具台账与检定证书","fields":["名称","编号","精度","检定有效期"]},{"n":"化验报告","fields":["煤质 NCV 与含碳量","替代原料化学成分"]},{"n":"生产报表","fields":["主产品产量（本行业主产品）","主产品外销记录"]},{"n":"绿证/绿电凭证","fields":["采购合同","注销证明"]},{"n":"上年度报告与核查整改情况","fields":["整改项","闭环记录"]},{"n":"变更记录","fields":["边界/因子/口径变更留痕"]}],"commonRejectReasons":["底稿公式无法复算","数据链索引缺失","凭证页码对不上"]},{"id":"DL-05","name":"配额清缴与履约材料","receiver":"省级生态环境主管部门","trigger":"isETS = 是","stage":"交付落地","docChapter":"第七章","basis":["配额总量和分配方案","年度清缴通知"],"deadline":"以年度清缴通知为准（数据集示例：2024 年度于 2025-12-31 前完成）","sections":[{"n":"履约要素","fields":["经核查排放量","配额分配量","缺口/盈余","CCER 抵销量（≤5%）","清缴操作记录","内部审批记录"]}],"commonRejectReasons":["CCER 抵销超上限","配额核定与核查量口径不一致"]},{"id":"DL-06","name":"CBAM 申报材料","receiver":"欧盟进口商 / 欧盟主管机构","trigger":"isCBAM = 是 且 出口量 > 0","stage":"交付落地","docChapter":"第八章","basis":["欧盟 CBAM 法规（EU 2023/956）及最新实施细则"],"deadline":"过渡期已结束（2023.10–2025.12）；正式实施期自 2026.1 起，首次正式申报 2027 年（修订后至 9 月 30 日），以最新细则为准","sections":[{"n":"申报要素","fields":["产品与 HS 编码","出口量（按本行业功能单位）","单位嵌入排放（直接+间接）","计算方法与数据来源","已付国内碳价与抵扣计算","证书数量与费用测算","企业与核查声明"]}],"commonRejectReasons":["功能单位错误","抵扣口径与法规不符","数据来源不可追溯"]},{"id":"DL-07","name":"ESG / TCFD / CDP 披露章节","receiver":"投资人 / 银行 / 客户","trigger":"勾选 Q26 披露需求","stage":"交付落地","docChapter":"第十章","basis":["TCFD 四支柱建议","CDP 气候问卷口径"],"deadline":"按客户披露节奏","sections":[{"n":"治理","fields":["董事会监督","管理层职责"]},{"n":"战略","fields":["物理风险","转型风险","情景分析"]},{"n":"风险管理","fields":["识别流程","更新频次"]},{"n":"指标与目标","fields":["范围 1/2/3 排放量","强度","内部碳价","达峰与中和目标"]}],"commonRejectReasons":["与财报口径不一致","缺范围 3 说明"]},{"id":"DL-08","name":"绿色工厂 / 节能技改等申报材料","receiver":"工信部门 / 属地主管部门","trigger":"勾选 Q24 政策诉求","stage":"方案设计","docChapter":"第十一章","basis":["绿色工厂评价要求","地方节能技改专项资金申报指南"],"deadline":"按申报窗口（每年一批或两批，以通知为准）","sections":[{"n":"申报要素","fields":["单位产品能耗","碳排放强度","对标结果","改造方案","减排量","投资与回收期"]}],"commonRejectReasons":["对标基准值版本错误","减排量与节能量重复计算"]},{"id":"DL-09","name":"产品碳足迹报告","receiver":"客户 / 认证机构","trigger":"交付形态含 LCA 或客户要求","stage":"方案设计","docChapter":"第九章","basis":["ISO 14067:2018","GB/T 24067","T/CBMF 277-2024"],"deadline":"按客户要求","sections":[{"n":"报告要素","fields":["功能单位","系统边界","各生命周期阶段排放","数据来源与质量","与行业均值对比"]}],"commonRejectReasons":["系统边界未写清","上游数据用行业均值未声明"]}]};
+var DELIVERABLE_LIB = {"_meta":{"用途":"窗口二「本阶段对外成果物」区块 + 窗口四章节模板的数据源；即「最终结果定义」","原则":"每条成品的章节与字段都写死，做成模板；缺数据时渲染「待补充」占位，不编造","核验基准日":"2026-10-13"},"items":[{"id":"DL-01","name":"年度温室气体排放报告","receiver":"省级生态环境主管部门","trigger":"isETS = 是","stage":"现状调研 / 交付落地","docChapter":"第四、十三章","basis":["《碳排放权交易管理暂行条例》（国务院令第 775 号）","《企业温室气体排放核算与报告指南 本行业》（2024-09）","年度报送通知"],"deadline":"重点排放单位口径：每年 3 月 31 日前报送上一年度报告（以年度通知为准；非履约/自愿核算客户不适用此法定时限）","sections":[{"n":"1 报告主体信息","fields":["企业名称","统一社会信用代码","行业代码","注册地址","生产地址","法定代表人","联系人及电话","报告年度"]},{"n":"2 核算边界","fields":["组织边界（法人/厂区/设施清单）","核算年度","纳入排放源清单","纳入与排除依据"]},{"n":"3 活动数据及其来源","fields":["分排放源数值","单位","数据来源","证据编号","数据质量等级"]},{"n":"4 排放因子及其来源","fields":["分排放源取值","单位","来源文件与版本","是否缺省值"]},{"n":"5 排放量计算","fields":["分排放源计算式","范围 1 合计","范围 2 合计（含余热/绿电抵扣说明）","范围 3（如报告）"]},{"n":"6 数据质量控制","fields":["计量器具与检定","化验频次","数据缺失与替代处理","内审记录","数据质量控制计划执行情况"]},{"n":"7 不确定性分析","fields":["主要不确定来源","量级","改进方向"]},{"n":"8 附件","fields":["月度活动数据表","凭证清单","计量器具清单","化验报告","替代原料化验报告","绿证凭证"]}],"commonRejectReasons":["数据与凭证不一致","因子未标来源或版本","计量器具超期未检","边界与上年度不一致未说明","非碳酸盐原料扣减无化验报告"]},{"id":"DL-02","name":"数据质量控制计划","receiver":"企业内部执行 / 核查机构查阅","trigger":"全部纳管企业","stage":"现状调研","docChapter":"第十三章","basis":["《碳排放权交易管理暂行条例》与核查技术指南对数据质量控制的要求"],"deadline":"首次编制，并在年度报送前更新","sections":[{"n":"1 排放源与数据清单","fields":["排放源","数据项","单位","频次"]},{"n":"2 获取方式与责任","fields":["获取方式（计量/结算单/化验）","责任部门","责任人"]},{"n":"3 计量与检测要求","fields":["计量器具清单","精度","检定周期","化验项目与频次"]},{"n":"4 记录与保存","fields":["记录形式","保存期限","归档位置"]},{"n":"5 缺失与异常处理","fields":["缺失数据替代方法","异常值判定规则","处理流程"]},{"n":"6 内审与自查","fields":["自查频次","内审内容","签字确认"]},{"n":"7 变更管理","fields":["变更情形","评估方式","确认人"]}],"commonRejectReasons":["计划与实际执行两张皮","责任人未落实","缺失数据处理无记录"]},{"id":"DL-03","name":"排放源清单与活动数据/排放因子台账","receiver":"企业内部（核查时提交）","trigger":"全部项目","stage":"现状调研","docChapter":"第四章 + 附录 A","basis":["核算与报告指南数据要求"],"deadline":"月度次月 10 日前更新；年度与报告同步","sections":[{"n":"排放源清单","fields":["范围","排放源名称","是否纳入","纳入依据","对应设施"]},{"n":"月度台账","fields":["月份","产量","燃料消耗","电量","运输量","数据来源","凭证编号","填报人","复核人"]},{"n":"年度汇总","fields":["活动数据","单位","因子","因子来源","排放量"]},{"n":"数据质量标注","fields":["质量等级","替代说明"]}],"commonRejectReasons":["月度台账缺月","无填报人与复核人","台账与报表数字不一致"]},{"id":"DL-04","name":"核查配合材料包","receiver":"主管部门委托的核查机构","trigger":"年度核查","stage":"交付落地","docChapter":"附录 A + 第十三章","basis":["《企业温室气体排放核查技术指南 本行业》（2024-09）"],"deadline":"收到核查通知后 3–5 个工作日内（按约定）","sections":[{"n":"核算底稿","fields":["活动数据→因子→排放量逐项可复算"]},{"n":"数据链索引","fields":["数据","对应凭证","凭证页码"]},{"n":"计量器具台账与检定证书","fields":["名称","编号","精度","检定有效期"]},{"n":"化验报告","fields":["煤质 NCV 与含碳量","替代原料化学成分"]},{"n":"生产报表","fields":["主产品产量（本行业主产品）","主产品外销记录"]},{"n":"绿证/绿电凭证","fields":["采购合同","注销证明"]},{"n":"上年度报告与核查整改情况","fields":["整改项","闭环记录"]},{"n":"变更记录","fields":["边界/因子/口径变更留痕"]}],"commonRejectReasons":["底稿公式无法复算","数据链索引缺失","凭证页码对不上"]},{"id":"DL-05","name":"配额清缴与履约材料","receiver":"省级生态环境主管部门","trigger":"isETS = 是","stage":"交付落地","docChapter":"第七章","basis":["配额总量和分配方案","年度清缴通知"],"deadline":"以年度清缴通知为准（数据集示例：2024 年度于 2025-12-31 前完成）","sections":[{"n":"履约要素","fields":["经核查排放量","配额分配量","缺口/盈余","CCER 抵销量（≤5%）","清缴操作记录","内部审批记录"]}],"commonRejectReasons":["CCER 抵销超上限","配额核定与核查量口径不一致"]},{"id":"DL-06","name":"CBAM 申报材料","receiver":"欧盟进口商 / 欧盟主管机构","trigger":"isCBAM = 是 且 出口量 > 0","stage":"交付落地","docChapter":"第八章","basis":["欧盟 CBAM 法规（EU 2023/956）及最新实施细则"],"deadline":"过渡期已结束（2023.10–2025.12）；正式实施期自 2026.1 起，首次正式申报 2027 年（修订后至 9 月 30 日），以最新细则为准","sections":[{"n":"申报要素","fields":["产品与 HS 编码","出口量（按本行业功能单位）","单位嵌入排放（直接+间接）","计算方法与数据来源","已付国内碳价与抵扣计算","证书数量与费用测算","企业与核查声明"]}],"commonRejectReasons":["功能单位错误","抵扣口径与法规不符","数据来源不可追溯"]},{"id":"DL-07","name":"ESG / TCFD / CDP 披露章节","receiver":"投资人 / 银行 / 客户","trigger":"勾选 Q26 披露需求","stage":"交付落地","docChapter":"第十章","basis":["TCFD 四支柱建议","CDP 气候问卷口径"],"deadline":"按客户披露节奏","sections":[{"n":"治理","fields":["董事会监督","管理层职责"]},{"n":"战略","fields":["物理风险","转型风险","情景分析"]},{"n":"风险管理","fields":["识别流程","更新频次"]},{"n":"指标与目标","fields":["范围 1/2/3 排放量","强度","内部碳价","达峰与中和目标"]}],"commonRejectReasons":["与财报口径不一致","缺范围 3 说明"]},{"id":"DL-08","name":"绿色工厂 / 节能技改等申报材料","receiver":"工信部门 / 属地主管部门","trigger":"勾选 Q24 政策诉求","stage":"方案设计","docChapter":"第十一章","basis":["绿色工厂评价要求","地方节能技改专项资金申报指南"],"deadline":"按申报窗口（每年一批或两批，以通知为准）","sections":[{"n":"申报要素","fields":["单位产品能耗","碳排放强度","对标结果","改造方案","减排量","投资与回收期"]}],"commonRejectReasons":["对标基准值版本错误","减排量与节能量重复计算"]},{"id":"DL-09","name":"产品碳足迹报告","receiver":"客户 / 认证机构","trigger":"交付形态含 LCA 或客户要求","stage":"方案设计","docChapter":"第九章","basis":["ISO 14067:2018","GB/T 24067","T/CBMF 277-2024"],"deadline":"按客户要求","sections":[{"n":"报告要素","fields":["功能单位","系统边界","各生命周期阶段排放","数据来源与质量","与行业均值对比"]}],"commonRejectReasons":["系统边界未写清","上游数据用行业均值未声明"]}]};
 
 /* ===== 第6批 派生值缓存（说明书 9.2 单一数据源：只算不存，任何写入即失效）===== */
 var calcCache = { sig: null, R: null };
@@ -2928,6 +3080,7 @@ function calcEngine(D, P, ef, opt){
     dieselNCV: getFac(P,ef,'dieselNCV'), dieselEF: getFac(P,ef,'dieselEF'),
     rdfC: getFac(P,ef,'rdfC'), rdfNonBio: getFac(P,ef,'rdfNonBio'),
     clinkerEF: getFac(P,ef,'clinkerEF'), gridEF: getFac(P,ef,'gridEF'),
+    altRawCF: getFac(P,ef,'altRawCF'),
     ceaPrice: getFac(P,ef,'ceaPrice'), ccerPrice: getFac(P,ef,'ccerPrice'),
     cbamPrice: getFac(P,ef,'cbamPrice'), fxEUR: getFac(P,ef,'fxEUR'),
     cbamDeductRate: getFac(P,ef,'cbamDeductRate'),
@@ -2940,14 +3093,22 @@ function calcEngine(D, P, ef, opt){
   var rdfE = D.afRDF * g.rdfC * g.rdfNonBio * 44/12;
   var dieselE = D.diesel * g.dieselNCV/1000 * g.dieselEF/1000;
   var processE = D.clinkerOut * g.clinkerEF;
-  var altRawE = -Math.abs(D.altRawDeduct);
+  /* 替代原料扣减：altRawDeduct 为活动数据（吨），须乘扣减因子 tCO2/t，与 L2 行级引擎同口径 */
+  var altRawE = -Math.abs(D.altRawDeduct) * (g.altRawCF || 0);
   var scope1 = coalE + rdfE + dieselE + processE + altRawE;
-  /* 7 范围2：净外购电 = 外购 - 余热自发自用 - 绿电；双口径（缺陷① 10 倍） */
+  /* 7 范围2（GHG Protocol 双口径）：
+     - 组织法/位置法 location：外购电 − 余热自发自用，绿电仍按电网平均因子计（不扣）；
+     - 市场法 market：在 location 基础上再扣有凭证的绿电（购电协议/绿证）。
+     scope2Corr/scope2Data 保留（历史「修正/数据集」双列），scope2Corr 即市场法口径。 */
   var whrCorr = D.whrWanKWh * 10;     // 修正口径 MWh（万kWh × 10）
   var whrData = D.whrWanKWh;          // 数据集口径（误把 万kWh 当 MWh）
-  var netGridCorr = D.gridBuyMWh - whrCorr - D.greenPowerMWh;
+  var netGridLoc = D.gridBuyMWh - whrCorr;                 // 组织法：绿电不扣
+  var netGridMkt = netGridLoc - D.greenPowerMWh;            // 市场法：扣凭证绿电
+  var netGridCorr = netGridMkt;                             // 历史修正口径 == 市场法
   var netGridData = D.gridBuyMWh - whrData - D.greenPowerMWh;
-  var scope2Corr = netGridCorr * g.gridEF;
+  var scope2Loc = netGridLoc * g.gridEF;
+  var scope2Mkt = netGridMkt * g.gridEF;
+  var scope2Corr = scope2Mkt;
   var scope2Data = netGridData * g.gridEF;
   /* 8 范围3：Σ(活动数据 × 因子)，逐类别后求合（按实际录入的 s3 条目汇总，名称回查 SCOPE3_CATS） */
   var scope3 = 0, s3rows = [];
@@ -3007,6 +3168,7 @@ function calcEngine(D, P, ef, opt){
     coalE:coalE, rdfE:rdfE, dieselE:dieselE, processE:processE, altRawE:altRawE, scope1:scope1,
     whrCorr:whrCorr, whrData:whrData, netGridCorr:netGridCorr, netGridData:netGridData,
     scope2Corr:scope2Corr, scope2Data:scope2Data,
+    scope2Loc:scope2Loc, scope2Mkt:scope2Mkt,
     s3rows:s3rows, scope3:scope3,
     s12Corr:s12Corr, s12Data:s12Data, totalCorr:totalCorr, totalData:totalData,
     intClinkerCorr:intClinkerCorr, intClinkerData:intClinkerData, intCementCorr:intCementCorr, intCementData:intCementData,
@@ -3032,7 +3194,7 @@ function fmtNum(v, d){
    因子一律读 FACTOR_LIB（覆盖优先已含于行内 factors）；无硬编码数字。 */
 var SCOPE_COLLECTION = {
   rowFields: ["id","source","activity","unit","formula","factorRefs","factorSrc","quality","evidenceNo","judgment","note"],
-  qualityLevels: ["实测","供应商实测","区域平均","国家缺省"],
+  qualityLevels: ["实测","供应商实测","区域平均","国家缺省","占位待实测","估算"],
   judgments: ["纳入","未纳入","不适用"],
   scope1: [
     { id:"S1-01", source:"熟料煅烧—原煤", activity:"原煤消耗量", unit:"t", formula:"fuelByMass", factorRefs:["coalNCV","coalCC","coalOX"], quality:["实测","国家缺省"], required:["化验室煤质报告或能源结算单"] },
@@ -3101,7 +3263,7 @@ mergeIndustryExt();
 /* ===== 第9批：纺织/电子半导体/汽车零部件/装备制造/房地产建筑 行业内容补全（沿用 B8 约定，不编造实测数值） ===== */
 var KB_INDUSTRY_EXT_B9 = {"纺织":{"minUnit":"工序/产线","orgBoundary":["纺纱—织造—印染—成衣 分工序核算","印染环节能耗与排放单列","集团多厂分别核算后汇总","委托加工须声明并避免重复"],"scope1":["锅炉燃煤/燃气","工艺热力（染色/烘干）","导热油炉","污水处理厂甲烷（可选）","叉车燃油"],"scope2":["外购电（印染用电量大）","外购蒸汽（定型/染色用汽）"],"scope3":["类别1 纱线/面料/染化料助剂","类别3 输配损失","类别4 原料与成品运输","类别5 废水处理","类别10/11 下游使用"],"policy":{"ets":"未纳管","quotaMethod":"不适用","keyIndicators":["单位产品综合能耗 kgce/t","吨产品碳排放","再生纤维比例"],"ccer":"按最新备案方法学核实","other":["印染行业规范条件","绿色制造/绿色工厂"],"cbam":"不直接纳入；下游服装受供应链碳要求"},"pathways":{"管理型":["能源计量与台账完善","蒸汽系统平衡与疏水管理","负荷与排产优化"],"工艺型":["高效电机与变频","定型机余热回收","热泵与冷凝水回收","中水回用"],"结构型":["厂区光伏+绿电","电气化替代锅炉","再生纤维替代","园区热电联产"]},"plan":{"keyIndicators":["单位产品综合能耗","吨产品碳排放","再生纤维比例"],"techEcon":["节能收益与绿电降本双口径","再生纤维替代需核算范围3 转移"],"deliverableDelta":["印染工序能耗与蒸汽台账","再生纤维来源证明","供应链碳数据表"],"risks":["印染用汽与用电口径混用","再生纤维比例无来源证明","供应链数据可得性差"]},"factors":[{"name":"单位产品综合能耗 kgce/t","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"吨产品碳排放","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"再生纤维比例","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"}],"benchmark":"待官方发布（纺织行业能耗限额口径待官方核定）","points":["印染环节为能耗与排放重点","再生纤维比例影响范围3","供应链碳要求驱动披露"],"hot":["范围3供应链","产品碳足迹LCA","绿色工厂"]},"电子半导体":{"minUnit":"厂区/产线","orgBoundary":["晶圆/封测/模组 按厂区核算","高纯气体与特气使用单列","公辅（动力站/废水站）纳入","委外加工须声明边界"],"scope1":["工艺加热/锅炉","特气（PFC：CF4/C2F6/NF3，GWP 高）","SF6（蚀刻/腔体清洗）","厂务设备燃料","制冷剂逸散"],"scope2":["外购电（占比极高，常为最大源）","外购蒸汽/冷"],"scope3":["类别1 硅片/特气/化学品/封装材料","类别3 输配损失","类别4 运输","类别11 产品使用（能效）"],"policy":{"ets":"未纳管","quotaMethod":"不适用","keyIndicators":["单位产值碳排放","PUE 能效","绿电占比"],"ccer":"按最新备案方法学核实","other":["数据中心/电子能效标准","绿色工厂"],"cbam":"不直接纳入；品牌商供应链要求"},"pathways":{"管理型":["PUE 优化","特气管理（NF3 替代/回收）","绿电采购组合优化","负荷与厂务优化"],"工艺型":["高效厂务/AHU","余热回收","变频与电机升级","先进制程能效"],"结构型":["厂区光伏+储能","绿电直供","余热发电","电气化替代"]},"plan":{"keyIndicators":["单位产值碳排放","PUE","绿电占比"],"techEcon":["外购电成本与碳成本双口径","特气减排量按 GWP 折算"],"deliverableDelta":["特气（NF3/SF6/PFC）台账与 GWP 折算","PUE 与绿电消纳台账","供应链碳数据表"],"risks":["特气 GWP 折算口径错误致强度高估/低估","外购电与绿电抵扣凭证链断裂","供应链数据可得性差"]},"factors":[{"name":"单位产值碳排放","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"PUE 能效","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"绿电占比","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"}],"benchmark":"待官方发布（电子行业单位产值碳排放口径待官方核定）","points":["外购电为最大排放源","特气 PFC/SF6 GWP 极高须单列","供应链碳要求驱动"],"hot":["范围3供应链","绿电/RE100","产品碳足迹LCA"]},"汽车零部件":{"minUnit":"工厂/产线","orgBoundary":["冲压—焊装—涂装—总装 按工厂核算","涂装环节 VOCs 与能耗单列","多基地分别核算后汇总"],"scope1":["锅炉/工艺热力","涂装烘干","VOCs 治理燃烧","叉车燃油","制冷剂"],"scope2":["外购电","外购蒸汽"],"scope3":["类别1 钢材/铝/塑料/电子件","类别3 输配损失","类别4 运输","类别11 产品使用（随整车）"],"policy":{"ets":"未纳管","quotaMethod":"不适用","keyIndicators":["单位产品能耗","吨产品碳排放","绿电占比"],"ccer":"按最新备案方法学核实","other":["汽车产业链碳要求（主机厂）","绿色工厂"],"cbam":"间接（钢铝前驱物随整车）"},"pathways":{"管理型":["能源管理 EMS","涂装节拍优化","VOCs 治理优化"],"工艺型":["高效电机与变频","涂装烘干余热回收","热泵","光伏屋顶"],"结构型":["绿电采购","电气化替代","轻量化材料替代","余热利用"]},"plan":{"keyIndicators":["单位产品能耗","吨产品碳排放","绿电占比"],"techEcon":["节能收益与绿电降本双口径","轻量化须核算范围3 转移"],"deliverableDelta":["分线能耗台账","涂装 VOCs 与能耗专项","主机厂碳要求对照表"],"risks":["涂装与焊装口径混用","主机厂要求与自身核算口径不一致","钢铝范围3 数据链"]},"factors":[{"name":"单位产品能耗","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"吨产品碳排放","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"绿电占比","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"}],"benchmark":"待官方发布（汽车零部件单位产品能耗口径待官方核定）","points":["涂装环节为重点","主机厂碳要求传导","钢铝材料范围3"],"hot":["供应链碳要求","产品碳足迹LCA","绿色工厂"]},"装备制造":{"minUnit":"工厂/车间","orgBoundary":["下料—机加—焊接—涂装—装配 按工厂核算","焊接与涂装环节单列"],"scope1":["焊接/切割燃料与保护气","涂装烘干","锅炉","制冷剂","叉车燃油"],"scope2":["外购电","外购蒸汽"],"scope3":["类别1 钢材/铸件/电机/外购件","类别3 输配损失","类别4 运输","类别11 产品使用（能效）"],"policy":{"ets":"未纳管","quotaMethod":"不适用","keyIndicators":["单位产值能耗","吨产品碳排放","绿电占比"],"ccer":"按最新备案方法学核实","other":["节能机电/能效提升","绿色工厂","出口（欧盟生态设计）"],"cbam":"间接（钢铝前驱物）"},"pathways":{"管理型":["能源管理 EMS","焊接气体管理","涂装优化"],"工艺型":["高效电机与变频","焊接/涂装余热回收","装配节能"],"结构型":["绿电采购","电气化替代","轻量化","厂区光伏"]},"plan":{"keyIndicators":["单位产值能耗","吨产品碳排放","绿电占比"],"techEcon":["节能收益与绿电降本双口径","轻量化须核算范围3 转移"],"deliverableDelta":["分车间能耗台账","焊接气体与涂装专项","出口生态设计要求对照表"],"risks":["焊接气体与涂装口径混用","出口要求与自身核算不一致","钢铝范围3 数据链"]},"factors":[{"name":"单位产值能耗","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"吨产品碳排放","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"绿电占比","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"}],"benchmark":"待官方发布（装备制造单位产值能耗口径待官方核定）","points":["焊接与涂装为重点","出口生态设计要求","供应链碳"],"hot":["绿色工厂","产品碳足迹LCA","供应链"]},"房地产建筑":{"minUnit":"项目/物业","orgBoundary":["开发项目与运营物业分别核算","建材采购计入范围3","运营能耗单列","租户边界须声明"],"scope1":["自有锅炉/热力","施工机械燃油","制冷剂","绿化（可选）"],"scope2":["运营外购电（商业地产主要源）","外购热/冷"],"scope3":["类别1 钢材/水泥/玻璃/建材","类别5 建筑垃圾","类别11 租户/使用阶段能耗（视边界）","类别12 末端处理"],"policy":{"ets":"未纳管","quotaMethod":"不适用","keyIndicators":["单位建筑面积能耗 kWh/m2","运营碳排放强度","绿建等级"],"ccer":"按最新备案方法学核实","other":["绿色建筑标准（GB/T 50378）","建筑节能","海绵城市"],"cbam":"不适用"},"pathways":{"管理型":["能源管理 EMS","租户能耗管理","绿色租赁"],"工艺型":["高效暖通","照明 LED","屋顶光伏","余热回收"],"结构型":["绿电采购","光伏+储能","近零能耗建筑","低碳建材替代"]},"plan":{"keyIndicators":["单位建筑面积能耗","运营碳排放强度","绿建等级"],"techEcon":["节能收益与绿电降本双口径","低碳建材须核算范围3 转移"],"deliverableDelta":["运营外购电分项台账","建材采购清单（钢材/水泥/玻璃）","绿建等级与认证"],"risks":["运营与施工边界混用","建材范围3 数据可得性差","绿建指标与碳指标脱节"]},"factors":[{"name":"单位建筑面积能耗 kWh/m2","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"运营碳排放强度","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"},{"name":"绿建等级","src":"企业实测 / 官方核算指南（来源与版本待逐项核实，引用以最新官方发布为准）"}],"benchmark":"待官方发布（建筑运营碳排放强度口径待官方核定）","points":["运营外购电为主","建材范围3（水泥钢铁）","绿建认证驱动"],"hot":["绿色建筑","范围3供应链","ESG披露"]}};
 var KB_STAGE_PATCH_ADD_B9 = {"纺织":{"现状调研":{"inputsAdd":["印染工序能耗与蒸汽台账","纱线/面料/染化料采购与上游数据","再生纤维比例与来源证明","废水处理甲烷核算（如适用）"],"methodsAdd":[{"n":"工序分包核算","d":"以 工序/产线 为最小核算单元，印染环节单独列示能耗与排放"}],"redlinesAdd":["印染用汽与用电口径混用","再生纤维比例无来源证明","供应链数据可得性差"]},"方案设计":{"measuresAdd":["蒸汽系统优化","定型机余热回收","高效电机与变频","中水回用","光伏+绿电","再生纤维替代","电气化替代锅炉"]}},"电子半导体":{"现状调研":{"inputsAdd":["厂务与工艺外购电分项台账","特气（NF3/SF6/PFC）用量与 GWP 台账","硅片/特气/化学品采购与上游数据","PUE 与绿电消纳台账"],"methodsAdd":[{"n":"厂区分包核算","d":"以 厂区/产线 为最小核算单元，特气 PFC/SF6 须单列并按 GWP 折算"}],"redlinesAdd":["特气 GWP 折算口径错误致强度高估/低估","外购电与绿电抵扣凭证链断裂","供应链数据可得性差"]},"方案设计":{"measuresAdd":["PUE 优化","特气管理与 NF3 替代/回收","绿电直供+储能","厂区光伏","余热回收","高效厂务与变频","电气化替代"]}},"汽车零部件":{"现状调研":{"inputsAdd":["冲压—焊装—涂装—总装 分线能耗台账","涂装 VOCs 与烘干能耗","钢材/铝/塑料采购与上游数据","主机厂碳要求文件"],"methodsAdd":[{"n":"工厂分包核算","d":"以 工厂/产线 为最小核算单元，涂装环节单列"}],"redlinesAdd":["涂装与焊装口径混用","主机厂要求与自身核算口径不一致","钢铝范围3 数据链"]},"方案设计":{"measuresAdd":["涂装节拍与烘干余热回收","VOCs 治理优化","高效电机与变频","绿电采购","轻量化材料替代","光伏"]}},"装备制造":{"现状调研":{"inputsAdd":["下料—机加—焊接—涂装—装配 分车间能耗","焊接保护气与切割燃气台账","钢材/铸件/外购件采购与上游数据","出口生态设计要求文件"],"methodsAdd":[{"n":"工厂分包核算","d":"以 工厂/车间 为最小核算单元，焊接与涂装单列"}],"redlinesAdd":["焊接气体与涂装口径混用","出口要求与自身核算口径不一致","钢铝范围3 数据链"]},"方案设计":{"measuresAdd":["焊接气体管理","涂装与烘干余热回收","高效电机与变频","绿电采购","轻量化与光伏","电气化替代"]}},"房地产建筑":{"现状调研":{"inputsAdd":["项目与物业运营外购电分项台账","建材采购清单（钢材/水泥/玻璃）与上游数据","绿建等级与认证","租户能耗（如纳入）"],"methodsAdd":[{"n":"项目/物业分包核算","d":"以 项目/物业 为最小核算单元，运营能耗与建材范围3 分列"}],"redlinesAdd":["运营与施工边界混用","建材范围3 数据可得性差","绿建指标与碳指标脱节"]},"方案设计":{"measuresAdd":["能源管理系统 EMS","高效暖通与 LED","屋顶光伏+储能","绿电采购","近零能耗改造","低碳建材替代"]}}};
-var PARAMS_BENCH_ADD_B9 = {"纺织":{"keyIndicators":["单位产品综合能耗 kgce/t","吨产品碳排放","再生纤维比例"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（纺织行业能耗限额口径待官方核定）","asOf":"2026-10-15","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"},"电子半导体":{"keyIndicators":["单位产值碳排放","PUE 能效","绿电占比"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（电子行业单位产值碳排放口径待官方核定）","asOf":"2026-10-15","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"},"汽车零部件":{"keyIndicators":["单位产品能耗","吨产品碳排放","绿电占比"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（汽车零部件单位产品能耗口径待官方核定）","asOf":"2026-10-15","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"},"装备制造":{"keyIndicators":["单位产值能耗","吨产品碳排放","绿电占比"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（装备制造单位产值能耗口径待官方核定）","asOf":"2026-10-15","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"},"房地产建筑":{"keyIndicators":["单位建筑面积能耗 kWh/m2","运营碳排放强度","绿建等级"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（建筑运营碳排放强度口径待官方核定）","asOf":"2026-10-15","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"}};
+var PARAMS_BENCH_ADD_B9 = {"纺织":{"keyIndicators":["单位产品综合能耗 kgce/t","吨产品碳排放","再生纤维比例"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（纺织行业能耗限额口径待官方核定）","asOf":"2026-10-13","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"},"电子半导体":{"keyIndicators":["单位产值碳排放","PUE 能效","绿电占比"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（电子行业单位产值碳排放口径待官方核定）","asOf":"2026-10-13","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"},"汽车零部件":{"keyIndicators":["单位产品能耗","吨产品碳排放","绿电占比"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（汽车零部件单位产品能耗口径待官方核定）","asOf":"2026-10-13","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"},"装备制造":{"keyIndicators":["单位产值能耗","吨产品碳排放","绿电占比"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（装备制造单位产值能耗口径待官方核定）","asOf":"2026-10-13","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"},"房地产建筑":{"keyIndicators":["单位建筑面积能耗 kWh/m2","运营碳排放强度","绿建等级"],"quotaMethod":"不适用（非履约）","ets":"未纳管","benchmark":"待官方发布（建筑运营碳排放强度口径待官方核定）","asOf":"2026-10-13","note":"强度基准值以最新官方发布为准；凡标注待官方发布者不得写成已纳入"}};
 var SCOPE_COLLECTION_B9 = {"纺织":{"scope1":[{"source":"锅炉燃煤/燃气"},{"source":"工艺热力（染色/烘干）"},{"source":"导热油炉"},{"source":"污水处理厂甲烷（可选）"}],"scope2":[{"source":"外购电（印染用电量大）"},{"source":"外购蒸汽（定型/染色用汽）"}],"scope3":[{"source":"类别1 纱线/面料/染化料助剂"},{"source":"类别3 输配损失"},{"source":"类别4 原料与成品运输"},{"source":"类别5 废水处理"}]},"电子半导体":{"scope1":[{"source":"工艺加热/锅炉"},{"source":"特气 PFC（CF4/C2F6/NF3）"},{"source":"SF6（蚀刻/清洗）"},{"source":"厂务设备燃料"},{"source":"制冷剂逸散"}],"scope2":[{"source":"外购电（占比极高）"},{"source":"外购蒸汽/冷"}],"scope3":[{"source":"类别1 硅片/特气/化学品"},{"source":"类别3 输配损失"},{"source":"类别4 运输"},{"source":"类别11 产品使用"}]},"汽车零部件":{"scope1":[{"source":"锅炉/工艺热力"},{"source":"涂装烘干"},{"source":"VOCs 治理燃烧"},{"source":"叉车燃油"},{"source":"制冷剂"}],"scope2":[{"source":"外购电"},{"source":"外购蒸汽"}],"scope3":[{"source":"类别1 钢材/铝/塑料/电子件"},{"source":"类别3 输配损失"},{"source":"类别4 运输"},{"source":"类别11 产品使用"}]},"装备制造":{"scope1":[{"source":"焊接/切割燃料与保护气"},{"source":"涂装烘干"},{"source":"锅炉"},{"source":"制冷剂"},{"source":"叉车燃油"}],"scope2":[{"source":"外购电"},{"source":"外购蒸汽"}],"scope3":[{"source":"类别1 钢材/铸件/电机/外购件"},{"source":"类别3 输配损失"},{"source":"类别4 运输"},{"source":"类别11 产品使用"}]},"房地产建筑":{"scope1":[{"source":"自有锅炉/热力"},{"source":"施工机械燃油"},{"source":"制冷剂"}],"scope2":[{"source":"运营外购电（主要源）"},{"source":"外购热/冷"}],"scope3":[{"source":"类别1 钢材/水泥/玻璃/建材"},{"source":"类别5 建筑垃圾"},{"source":"类别11 租户/使用阶段能耗（视边界）"},{"source":"类别12 末端处理"}]}};
 function mergeIndustryExtB9(){
   Object.keys(KB_INDUSTRY_EXT_B9).forEach(function(k){
@@ -3138,13 +3300,13 @@ Object.keys(SCOPE_COLLECTION_FOOD_OTHER).forEach(function(k){ if (!SCOPE_COLLECT
 var FACTOR_LIB = {
   scope1: {
     clinkerEF:{v:0.535,u:"tCO2/t熟料",source:"《企业温室气体排放核算与报告指南 水泥行业》2024-09",version:"2024",quality:"国家缺省"},
-    coalNCV:{v:21,u:"GJ/t",source:"企业化验室实测 NCV，缺失时用指南缺省值",version:"核算年度",quality:"实测"},
+    coalNCV:{v:21,u:"GJ/t",source:"核算指南缺省值21 GJ/t（实测低位发热量后替换）",version:"2024",quality:"国家缺省"},
     coalCC:{v:26.18,u:"tC/TJ",source:"核算指南缺省值",version:"2024",quality:"国家缺省"},
     coalOX:{v:0.99,u:"-",source:"核算指南缺省值",version:"2024",quality:"国家缺省"},
     dieselNCV:{v:42.65,u:"GJ/t",source:"核算指南",version:"2024",quality:"国家缺省"},
     dieselEF:{v:74100,u:"kgCO2/TJ",source:"核算指南",version:"2024",quality:"国家缺省"},
-    rdfC:{v:0.3,u:"-",source:"替代燃料检验报告",version:"核算年度",quality:"实测"},
-    rdfNonBio:{v:0.6,u:"-",source:"替代燃料检验报告",version:"核算年度",quality:"实测"},
+    rdfC:{v:0.3,u:"-",source:"虚拟占位值，须以替代燃料检验报告实测替换",version:"占位",quality:"占位待实测"},
+    rdfNonBio:{v:0.6,u:"-",source:"虚拟占位值，须以替代燃料检验报告实测替换",version:"占位",quality:"占位待实测"},
     altRawCF:{v:0.44,u:"tCO2/t替代原料",source:"CaCO3 含 CO2 比例 44%（核算指南过程排放）",version:"2024",quality:"国家缺省"},
     gwpCH4:{v:28,u:"kgCO2e/kg",source:"IPCC AR5",version:"AR5",quality:"国家缺省"},
     gwpN2O:{v:265,u:"kgCO2e/kg",source:"IPCC AR5",version:"AR5",quality:"国家缺省"}
@@ -3154,14 +3316,14 @@ var FACTOR_LIB = {
     heatEF:{v:0.11,u:"tCO2/GJ",source:"核算指南",version:"2024",quality:"国家缺省"}
   },
   scope3: {
-    lossEF:{v:0.025,u:"tCO2/MWh",source:"电网线损分摊估算",version:"估算",quality:"区域平均"},
-    s3Freight:{v:0.0001,u:"tCO2/t·km",source:"道路货运排放因子估算",version:"估算",quality:"区域平均"},
-    s3FreightUp:{v:0.00012,u:"tCO2/t·km",source:"上游运输因子估算",version:"估算",quality:"区域平均"},
-    s3FreightDown:{v:0.0001,u:"tCO2/t·km",source:"下游运输因子估算",version:"估算",quality:"区域平均"},
-    s3Capital:{v:3200,u:"tCO2/年",source:"按年折旧分摊估算",version:"估算",quality:"国家缺省"},
-    s3Waste:{v:180,u:"tCO2/年",source:"废弃物处置估算",version:"估算",quality:"国家缺省"},
-    s3Travel:{v:320,u:"tCO2/年",source:"差旅估算",version:"估算",quality:"国家缺省"},
-    s3Commute:{v:450,u:"tCO2/年",source:"员工通勤估算",version:"估算",quality:"国家缺省"}
+    lossEF:{v:0.025,u:"tCO2/MWh",source:"电网线损分摊估算",version:"估算",quality:"估算"},
+    s3Freight:{v:0.0001,u:"tCO2/t·km",source:"道路货运排放因子估算",version:"估算",quality:"估算"},
+    s3FreightUp:{v:0.00012,u:"tCO2/t·km",source:"上游运输因子估算",version:"估算",quality:"估算"},
+    s3FreightDown:{v:0.0001,u:"tCO2/t·km",source:"下游运输因子估算",version:"估算",quality:"估算"},
+    s3Capital:{v:3200,u:"tCO2/年",source:"按年折旧分摊估算",version:"估算",quality:"估算"},
+    s3Waste:{v:180,u:"tCO2/年",source:"废弃物处置估算",version:"估算",quality:"估算"},
+    s3Travel:{v:320,u:"tCO2/年",source:"差旅估算",version:"估算",quality:"估算"},
+    s3Commute:{v:450,u:"tCO2/年",source:"员工通勤估算",version:"估算",quality:"估算"}
   },
   market: {
     ceaPrice:{v:80,u:"元/tCO2",source:"全国碳市场收盘价参考",version:"2025",quality:"区域平均"},
@@ -3193,8 +3355,18 @@ function ensureRowFactors(row, sc){
   refs.forEach(function(k){
     if (!row.factors[k]){
       var L = libFactor(k);
-      if (L){ row.factors[k] = { v:L.v, src:(L.src != null ? L.src : (L.source != null ? L.source : '')), quality:L.quality }; }
-      else { row.factors[k] = { v:'', src:'', quality:'' }; }
+      var v = (L && L.v !== undefined && L.v !== null) ? L.v : '';
+      var src = L ? (L.src != null ? L.src : (L.source != null ? L.source : '')) : '';
+      var quality = L ? L.quality : '';
+      // 参数面板覆盖值直接落到行缺省（行内人工编辑过 custom 的不在此路径）
+      var ovr;
+      if (k === 'gridEF' && PARAM_OVERRIDE && PARAM_OVERRIDE.gridEFProv !== undefined && PARAM_OVERRIDE.gridEFProv !== '') ovr = PARAM_OVERRIDE.gridEFProv;
+      else ovr = (PARAM_OVERRIDE && PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '') ? PARAM_OVERRIDE[k] : undefined;
+      if (ovr !== undefined && ovr !== '' && !isNaN(Number(ovr)) && String(ovr) !== String(v)){
+        v = Number(ovr);
+        src = '参数面板覆盖（缺省 ' + (L && L.v !== undefined ? L.v : '—') + '，原来源：' + (src || '—') + '）';
+      }
+      row.factors[k] = { v:v, src:src, quality:quality };
     }
   });
   return row;
@@ -3242,9 +3414,16 @@ function enrichIndustryScope(list, sc){
         else if (low.indexOf('绿电') >= 0){ row.formula = 'zero'; row.unit = 'MWh'; }
         else { row.formula = 'grid'; row.factorRefs = ['gridEF']; row.unit = 'MWh'; row.quality = ['区域平均']; }
       } else {
+        /* 燃料按物态分派公式（说明性分类，便于台账阅读）：
+           factorRefs 一律保持为空 —— 遵循仓库诚实契约（verify_gaps A1：非水泥行业
+           scope1 缺因子待补，不预填任何因子）。rowEmit 对「计算类公式+空refs」返回 0，
+           不再像旧行为那样用柴油公式替所有燃料代算错数。 */
         if (low.indexOf('逸散') >= 0 || low.indexOf('sf6') >= 0 || low.indexOf('pfc') >= 0 || low.indexOf('特气') >= 0 || low.indexOf('甲烷') >= 0 || low.indexOf('制冷剂') >= 0){ row.formula = 'none'; }
-        else if (low.indexOf('过程') >= 0 || low.indexOf('碳酸盐') >= 0 || low.indexOf('熔剂') >= 0 || low.indexOf('分解') >= 0){ row.formula = 'process'; }
-        else { row.formula = 'fuelByEF'; row.unit = 't'; }
+        else if (low.indexOf('过程') >= 0 || low.indexOf('碳酸盐') >= 0 || low.indexOf('熔剂') >= 0 || low.indexOf('分解') >= 0){ row.formula = 'process'; row.unit = 't'; row.note = (row.note ? row.note + ' ｜ ' : '') + '过程排放因子与本行业工艺相关：缺因子待补（须补行业因子与来源）'; }
+        else if (/煤气|天然气|沼气|燃气|gas/.test(low)){ row.formula = 'fuelGas'; row.unit = '万Nm³'; row.note = (row.note ? row.note + ' ｜ ' : '') + '气态燃料：缺因子待补（须补本行业 NCV/碳含量与来源）'; }
+        else if (/柴油|燃料油|重油|汽油|原油|煤油/.test(low)){ row.formula = 'fuelByEF'; row.unit = 't'; row.note = (row.note ? row.note + ' ｜ ' : '') + '液体燃料：缺因子待补'; }
+        else if (/煤|焦/.test(low)){ row.formula = 'fuelByMass'; row.unit = 't'; row.note = (row.note ? row.note + ' ｜ ' : '') + '固体燃料：缺因子待补'; }
+        else { row.formula = ''; row.unit = 't'; row.note = (row.note ? row.note + ' ｜ ' : '') + '燃料类型未识别：缺因子不代算'; }
       }
     }
     return row;
@@ -3266,13 +3445,37 @@ function ensureL2(c){
 function rowEmit(scope, row){
   var a = Number(row.activity) || 0;
   var f = row.factors || {};
-  function fv(k){ if (f[k] && f[k].v !== undefined && f[k].v !== '') return Number(f[k].v); var L = libFactor(k); return L ? Number(L.v) : 0; }
+  /* 因子优先级：客户级面板覆盖 > 行内人工编辑(custom) > 全局覆盖/分省电网 > 行内缺省副本 > FACTOR_LIB */
+  function fv(k){
+    var cur = (typeof state !== 'undefined' && state.cur && state.cur.paramOverride) ? state.cur.paramOverride : null;
+    var custom = f[k] && f[k].custom;
+    if (!custom && cur) {
+      if (cur[k] !== undefined && cur[k] !== '' && !isNaN(Number(cur[k]))) return Number(cur[k]);
+      if (k === 'gridEF' && cur.gridEFProv !== undefined && cur.gridEFProv !== '' && !isNaN(Number(cur.gridEFProv))) return Number(cur.gridEFProv);
+    }
+    if (!custom && PARAM_OVERRIDE) {
+      if (k === 'gridEF' && PARAM_OVERRIDE.gridEFProv !== undefined && PARAM_OVERRIDE.gridEFProv !== '') return Number(PARAM_OVERRIDE.gridEFProv);
+      if (PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '' && !isNaN(Number(PARAM_OVERRIDE[k]))) return Number(PARAM_OVERRIDE[k]);
+    }
+    if (f[k] && f[k].v !== undefined && f[k].v !== '') return Number(f[k].v);
+    var L = libFactor(k); return (L && L.v !== '' && L.v !== undefined) ? Number(L.v) : 0;
+  }
   var e = 0;
+  /* 缺因子不代算：计算类公式必须有因子引用（或行内已录入因子），否则按「缺因子待补」返回 0，
+     与 factorStatusOf 的徽标一致——旧行业模板 refs 为空仍套柴油公式，出的是错数。 */
+  var COMPUTE_FORMULA = { fuelByMass:1, fuelByCarbon:1, fuelByEF:1, fuelGas:1, process:1, deduct:1, grid:1, heat:1 };
+  if (COMPUTE_FORMULA[row.formula]){
+    var hasRef = (row.factorRefs && row.factorRefs.length > 0);
+    var hasInline = false;
+    Object.keys(f).forEach(function(k){ if (f[k] && f[k].v !== '' && f[k].v !== undefined && f[k].v !== null) hasInline = true; });
+    if (!hasRef && !hasInline) return 0;
+  }
   switch(row.formula){
     case 'fuelByMass': e = a * fv('coalNCV')/1000 * fv('coalCC') * fv('coalOX') * 44/12; break;
     case 'fuelByCarbon': e = a * fv('rdfC') * fv('rdfNonBio') * 44/12; break;
     case 'fuelByEF': e = a * fv('dieselNCV')/1000 * fv('dieselEF')/1000; break;
-    case 'process': e = a * fv('clinkerEF'); break;
+    case 'fuelGas': e = a * fv('gasNCV')/1000 * fv('gasCC') * fv('gasOX') * 44/12; break;
+    case 'process': { var pf = (f.processEF && f.processEF.v !== '' && f.processEF.v !== undefined) ? Number(f.processEF.v) : fv('clinkerEF'); e = a * pf; break; }
     case 'deduct': e = -Math.abs(a) * fv('altRawCF'); break;
     case 'grid': { var mwh = (row.id === 'S2-02') ? a*10 : a; var sign = (row.id === 'S2-02') ? -1 : 1; e = sign * mwh * fv('gridEF'); break; }
     case 'zero': e = 0; break;
@@ -3307,17 +3510,24 @@ function l1l2Check(c){
   var D = normEm(c); var R = calcEngine(D);
   var sums = l2Sums(c);
   function dev(a,b){ if (!a && !b) return 0; var m = Math.max(Math.abs(a), Math.abs(b), 1); return Math.abs(a-b)/m; }
-  var d1 = dev(sums.s1, R.scope1), d2 = dev(sums.s2, R.scope2Corr), d3 = dev(sums.s3, R.scope3);
-  return { l1:{s1:R.scope1, s2:R.scope2Corr, s3:R.scope3}, l2:sums, dev1:d1, dev2:d2, dev3:d3,
-    over: Math.max(d1, d2, d3) > 0.15 };
+  var d1 = dev(sums.s1, R.scope1), d2 = dev(sums.s2, R.scope2Mkt), d3 = dev(sums.s3, R.scope3);
+  return { l1:{s1:R.scope1, s2:R.scope2Mkt, s3:R.scope3}, l2:sums, dev1:d1, dev2:d2, dev3:d3,
+    over: Math.max(d1, d2, d3) > L1L2_DEV_TOL };
 }
 function validateL2(c){
   var bad = [];
+  var COMPUTE = ['fuelByMass','fuelByCarbon','fuelByEF','fuelGas','process','deduct','grid','heat'];
   ['scope1','scope2','scope3'].forEach(function(sc){
     (c.em[sc] || []).forEach(function(r){
       var refs = (sc === 'scope3') ? (r.factorRef ? [r.factorRef] : []) : (r.factorRefs || []);
       var skip = (sc === 'scope3') ? (r.judgment !== '纳入') : (r.judgment === '不适用');
       if (skip) return;
+      // 行业模板空 refs + 计算类公式 → 缺因子，同样不允许保存（旧行为直接跳过，质量门形同虚设）；
+      // 行内已手动补因子（取值+来源齐全）视为已闭环，放行
+      if (!refs.length && COMPUTE.indexOf(r.formula) >= 0){
+        if (sc !== 'scope3' && rowHasManualFactor(r)) return;
+        bad.push(r.id + '·缺因子'); return;
+      }
       refs.forEach(function(k){ var f = r.factors && r.factors[k]; if (!f || !f.src || !String(f.src).trim()) bad.push(r.id + '·' + k); });
     });
   });
@@ -3338,7 +3548,9 @@ function l2SetField(c, sc, rid, f, fk, val){
   if (f === 'activity') row.activity = val;
   else if (f === 'note') row.note = val;
   else if (f === 'j' || f === 's3j') row.judgment = val;
-  else { ensureRowFactors(row, sc); if (!row.factors[fk]) row.factors[fk] = { v:'', src:'', quality:'' }; row.factors[fk][f === 'fv' ? 'v' : (f === 'fsrc' ? 'src' : 'quality')] = val; }
+  else { ensureRowFactors(row, sc); if (!row.factors[fk]) row.factors[fk] = { v:'', src:'', quality:'' };
+    if (f === 'fv') row.factors[fk].custom = true;   // 行内人工取值：优先级高于参数面板覆盖
+    row.factors[fk][f === 'fv' ? 'v' : (f === 'fsrc' ? 'src' : 'quality')] = val; }
 }
 
 /* 自检夹具（来自 附件A TEST_CASE，绝对单位；数据集口径与修正口径双列） */
@@ -3360,12 +3572,12 @@ var SELFTEST_FIXTURE = {
   tol: { emission_t:5, intensity:0.001, money_pct:0.01, pcf:1 },
   expect: {
     coalEmission:478968, rdfEmission:5280, dieselEmission:379.24, processEmission:802500,
-    scope1:1285627, scope2_dataset:110610, scope2_corrected:93600, scope3:15252,
-    total_dataset:1411490, total_corrected:1394480,
-    intensityClinker_dataset:0.9308, intensityClinker_corrected:0.9195, intensityCement_dataset:0.6494,
-    quota2025:1320000, gap2025_dataset:-76237, gap2025_corrected:-59227,
-    ccerCap2025:69812, gapCost2025_cea80:6099006, gapCost2025_cea80_corrected:4738206,
-    emission2026:1411244, quota2026:1275000, gap2026:-136244,
+    scope1:1286467, scope2_dataset:110610, scope2_corrected:93600, scope3:15252,
+    total_dataset:1412330, total_corrected:1395320,
+    intensityClinker_dataset:0.9314, intensityClinker_corrected:0.9200, intensityCement_dataset:0.6498,
+    quota2025:1320000, gap2025_dataset:-77078, gap2025_corrected:-60068,
+    ccerCap2025:69854, gapCost2025_cea80:6166206, gapCost2025_cea80_corrected:4805406,
+    emission2026:1412084, quota2026:1275000, gap2026:-137084,
     cbamUnitEmbedded:0.96, cbamTotalEmbedded:7680, cbamPayable_t:7296,
     cbamFeeEUR:547200, cbamFeeCNY:4268160, pcfTotal:796.22, pcfDiffVsBenchmark:76.22
   }
@@ -3408,8 +3620,8 @@ function runCalcSelfTest(){
   chk('PCF 合计', R.pcf, ex.pcfTotal, tol.pcf, true);
   chk('PCF 与行业均值差', R.pcfDiff, ex.pcfDiffVsBenchmark, tol.pcf, true);
   /* 2026 投影为口径依赖项：gridEF2026 已固化为参数（暂用 2025 官方全国值 0.5306 代理，待查实），标记「假设依赖」，不计入严格判定 */
-  chk('2026 排放（假设·gridEF2026=0.5306 代理）', R.emission2026, ex.emission2026, 1e9, false);
-  chk('2026 缺口（假设·gridEF2026=0.5306 代理）', R.gap2026, ex.gap2026, 1e9, false);
+  chk('2026 排放（gridEF2026=0.5306 代理口径）', R.emission2026, ex.emission2026, tol.emission_t, true);
+  chk('2026 缺口（gridEF2026=0.5306 代理口径）', R.gap2026, ex.gap2026, tol.emission_t, true);
   var strictRows = rows.filter(function(r){ return r.strict; });
   var pass = strictRows.filter(function(r){ return r.ok; }).length;
   return { rows:rows, pass:pass, fail:strictRows.length - pass, total:strictRows.length, R:R };
@@ -3447,8 +3659,71 @@ function esc(s){
   }
   return out;
 }
-/* 纵深防御：所有拼装好的 HTML 在进 DOM 前再过一道消毒，
-   剔除脚本标签、内联事件与 javascript: 协议，防止任何漏网输入执行 */
+/* 纵深防御：所有拼装好的 HTML 在进 DOM 前再过一道消毒。
+   白名单制（修旧版黑名单正则绕过：<img/src=x/onerror=…> 这类无空白分隔写法
+   会漏过 \son[a-z]+\s*= 检测）：
+   1) 标签白名单——未知标签剥壳保文本；script/svg 动画等整段删除；
+   2) 每个允许标签的属性经顺序解析后【重建输出】，事件属性与危险协议属性一律丢弃；
+     重建保证任何属性名与取值都是解析结果，攻击者原始标签文本不可能原样穿过。 */
+var SZ_TAGS = {
+  a:1,abbr:1,article:1,aside:1,b:1,big:1,blockquote:1,br:1,button:1,caption:1,center:1,cite:1,
+  code:1,col:1,colgroup:1,dd:1,del:1,details:1,dfn:1,div:1,dl:1,dt:1,em:1,figcaption:1,figure:1,
+  font:1,footer:1,h1:1,h2:1,h3:1,h4:1,h5:1,h6:1,header:1,hr:1,i:1,img:1,input:1,kbd:1,label:1,
+  li:1,main:1,mark:1,nav:1,ol:1,optgroup:1,option:1,p:1,pre:1,q:1,s:1,samp:1,section:1,select:1,
+  small:1,span:1,strike:1,strong:1,sub:1,summary:1,sup:1,table:1,tbody:1,td:1,textarea:1,tfoot:1,
+  th:1,thead:1,time:1,tr:1,u:1,ul:1,var:1,
+  /* svg：允许但属性同样重建过滤，onload 等无法存活；动画/foreignObject 整段删除 */
+  svg:1,g:1,path:1,circle:1,ellipse:1,line:1,polyline:1,polygon:1,rect:1,text:1,tspan:1,
+  defs:1,marker:1,title:1,desc:1
+};
+var SZ_DROP_CONTENT = {
+  script:1,style:1,iframe:1,object:1,embed:1,link:1,base:1,meta:1,form:1,template:1,
+  noscript:1,frameset:1,frame:1,applet:1,audio:1,video:1,source:1,track:1,
+  animate:1,animateTransform:1,animateMotion:1,set:1,foreignObject:1
+};
+var SZ_BAD_ATTR = { action:1, formaction:1, srcdoc:1, 'xlink:href':1, dynsrc:1, lowsrc:1, background:1, ping:1 };
+function szDecode(s){
+  return String(s)
+    .replace(/&nbsp;/g, '\u00a0')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&apos;/g, "'")
+    .replace(/&#x([0-9a-f]+);/gi, function(m, d){ return String.fromCharCode(parseInt(d, 16)); })
+    .replace(/&#(\d+);/g, function(m, d){ return String.fromCharCode(parseInt(d, 10)); })
+    .replace(/&amp;/g, '&');
+}
+/* 顺序属性解析：分隔符为空白或 /（HTML5 无空白事件属性绕过在此被归一化）；
+   引号/无引号取值皆支持；无引号值贪婪到空白为止（其中的 / 视为值内容）。 */
+function szParseAttrs(s){
+  var attrs = {}, pos = 0, n = s.length;
+  while (pos < n){
+    while (pos < n && /[\s\/]/.test(s.charAt(pos))) pos++;
+    if (pos >= n) break;
+    var ns = pos;
+    while (pos < n && !/[\s=\/>]/.test(s.charAt(pos))) pos++;
+    var name = s.slice(ns, pos).toLowerCase();
+    if (!name){ pos++; continue; }
+    while (pos < n && /\s/.test(s.charAt(pos))) pos++;
+    var val = null;
+    if (s.charAt(pos) === '='){
+      pos++;
+      while (pos < n && /\s/.test(s.charAt(pos))) pos++;
+      var q = s.charAt(pos);
+      if (q === '"' || q === "'"){
+        pos++;
+        var end = s.indexOf(q, pos);
+        if (end < 0) end = n;
+        val = s.slice(pos, end);
+        pos = end < n ? end + 1 : n;
+      } else {
+        var vs = pos;
+        while (pos < n && !/\s/.test(s.charAt(pos))) pos++;
+        val = s.slice(vs, pos);
+      }
+    }
+    if (name) attrs[name] = (val === null ? null : szDecode(val));
+  }
+  return attrs;
+}
 function sanitizeHtml(s){
   var str = String(s == null ? '' : s);
   var out = '', i = 0, n = str.length;
@@ -3456,48 +3731,47 @@ function sanitizeHtml(s){
     var lt = str.indexOf('<', i);
     if (lt < 0){ out += str.slice(i); break; }
     out += str.slice(i, lt);
-    // 危险标签：script / iframe / object / embed / link / style
-    var rest = str.slice(lt);
-    var bad = false;
-    var tags = ['script','iframe','object','embed','link','style','form','base','meta'];
-    for (var t = 0; t < tags.length; t++){
-      var re = new RegExp('^<' + tags[t] + '(\\s|>)', 'i');
-      if (re.test(rest)){
-        var close = str.toLowerCase().indexOf('</' + tags[t] + '>', lt);
-        if (close < 0) close = str.toLowerCase().indexOf('<' + tags[t] + '>', lt + 1);
-        i = close < 0 ? n : close + tags[t].length + 3;
-        bad = true;
-        break;
-      }
+    if (str.slice(lt, lt + 4) === '<!--'){ var ce = str.indexOf('-->', lt); i = ce < 0 ? n : ce + 3; continue; }
+    if (str.charAt(lt + 1) === '!' || str.charAt(lt + 1) === '?'){ var g0 = str.indexOf('>', lt); i = g0 < 0 ? n : g0 + 1; continue; }
+    var g = str.indexOf('>', lt);
+    if (g < 0){ out += str.slice(lt); break; }
+    if (str.charAt(lt + 1) === '/'){
+      var cm = (str.slice(lt + 2, g).match(/^[a-zA-Z][a-zA-Z0-9-]*/) || [''])[0].toLowerCase();
+      if (SZ_TAGS[cm]) out += '</' + cm + '>';
+      i = g + 1; continue;
     }
-    if (bad) continue;
-    // 单个标签内检查 on*= 与 javascript:
-    var gt = str.indexOf('>', lt);
-    if (gt < 0) gt = n - 1;
-    var tagSrc = str.slice(lt, gt + 1);
-    var low = tagSrc.toLowerCase();
-    if (low.length > 1 && (low.charAt(1) === '/' || low.charAt(1) === '!' || low.charAt(1) === '?')){
-      out += tagSrc; i = gt + 1; continue;
+    var tagSrc = str.slice(lt, g + 1);
+    var tm = tagSrc.match(/^<([a-zA-Z][a-zA-Z0-9-]*)/);
+    if (!tm){ i = g + 1; continue; }
+    var tname = tm[1].toLowerCase();
+    if (SZ_DROP_CONTENT[tname]){
+      var closeRe = new RegExp('</' + tname + '\\s*>', 'i');
+      var rest = str.slice(g + 1);
+      var cl = closeRe.exec(rest);
+      i = cl ? g + 1 + cl.index + cl[0].length : n;
+      continue;
     }
-    if (low.indexOf('javascript:') >= 0 || hasEventAttr(tagSrc)){
-      // 只剔除真正的 on* 事件属性（按属性名判定，不做子串误伤）
-      var cleaned = tagSrc;
-      var parts = cleaned.split(/\s+/);
-      for (var p = 0; p < parts.length; p++){
-        var pl = parts[p].toLowerCase();
-        if (/^on[a-z]+\s*=/.test(pl)) parts[p] = 'data-x';
-        if (pl.indexOf('javascript:') >= 0) parts[p] = 'href="#"';
-      }
-      out += parts.join(' '); i = gt + 1; continue;
-    }
-    out += tagSrc; i = gt + 1;
+    if (!SZ_TAGS[tname]){ i = g + 1; continue; }   // 未知标签剥壳：保留内部文本
+    var inner = tagSrc.slice(1 + tm[1].length, g);
+    var attrs = szParseAttrs(inner);
+    var rebuilt = '<' + tname;
+    Object.keys(attrs).forEach(function(k){
+      if (/^on/i.test(k)) return;                    // on* 事件属性一律丢弃
+      if (SZ_BAD_ATTR[k]) return;
+      var v = attrs[k];
+      if (v === null){ rebuilt += ' ' + k; return; }
+      var lv = v.toLowerCase().replace(/[\u0000-\u0020]/g, '');
+      if ((k === 'href' || k === 'src' || k === 'action' || k === 'formaction' || k === 'data' || k === 'background') && lv.indexOf('javascript:') >= 0) return;
+      if (k === 'href' && lv.indexOf('data:') === 0) return;                       // href 禁 data:
+      if (k === 'src' && lv.indexOf('data:') === 0 && lv.indexOf('data:image/') !== 0) return;
+      if (k === 'style' && (/expression\s*\(/.test(lv) || lv.indexOf('javascript:') >= 0 || /url\s*\(\s*['"]?\s*javascript/.test(lv))) return;
+      rebuilt += ' ' + k + '="' + esc(v) + '"';
+    });
+    rebuilt += '>';
+    out += rebuilt;
+    i = g + 1;
   }
   return out;
-}
-/* 判定标签里是否存在 on* 事件属性：取属性名部分（= 之后、值之前）再匹配 */
-function hasEventAttr(tagSrc){
-  var m = tagSrc.match(/\son[a-z]+\s*=/i);
-  return !!m;
 }
 function toast(msg){
   var el = document.getElementById('toast');
@@ -3742,10 +4016,10 @@ var QUESTIONS = [
   { k:'name',    q:'先认识一下：贵司名称是？',              tip:'直接输入公司全称', chips:null },
   { k:'industry',q:'贵司属于哪个行业？（决定核算边界与产品线）', tip:'选择行业', chips:'IND' },
   { k:'province',q:'企业注册与主要生产地在哪个省/市？（决定适用地方政策）', tip:'如：江苏 / 广东 / 四川', chips:'PROV' },
-  { k:'scale',   q:'企业规模大致是？',                    tip:'规模决定交付深度与预算量级', chips:'SCALE' },
+  { k:'scale',   q:'企业规模大致是？（按年营业收入分档）',  tip:'分档：1亿以下=小微 · 1-10亿=中型 · 10亿以上=大型；可直接输入如「12亿」', chips:'SCALE' },
   { k:'force',   q:'是否已被要求做碳核算或履约？（成熟度第一问）', tip:'可多选', chips:[['forceCompliance','是，被要求核算或履约'],['hasData','已建过台账/核算体系'],['hasTarget','已主动设双碳目标'],['wantsValue','想做碳资产变现/品牌/融资'],['none','以上都没有']] },
   { k:'pains',   q:'核心痛点是哪些？（可多选）',            tip:'最多选3项', chips:'PAIN' },
-  { k:'chain',   q:'预算区间与决策链？（成熟度第三问）',      tip:'如：80-200万，EHS总监→总经理', chips:'BUDGET' }
+  { k:'chain',   q:'预算区间与决策链？（成熟度第三问）',      tip:'点预算档直接记录；决策链直接输入，如：EHS总监→总经理', chips:'BUDGET' }
 ];
 
 function renderChat(){
@@ -3765,7 +4039,8 @@ function chipHtml(kind){
   } else if (kind === 'PROV') {
     html = Object.keys(KB_PROVINCE).map(function(k){ return '<button class="chip" data-v="' + k + '">' + k + '<\/button>'; }).join('');
   } else if (kind === 'SCALE') {
-    html = ['大型企业','中型企业','小微企业'].map(function(k){ return '<button class="chip" data-v="' + k + '">' + k + '<\/button>'; }).join('');
+    html = [['大型企业','10亿以上'],['中型企业','1-10亿'],['小微企业','1亿以下']].map(function(p){
+      return '<button class="chip" data-v="' + p[0] + '">' + p[0] + '（年营收' + p[1] + '）<\/button>'; }).join('');
   } else if (kind === 'PAIN') {
     html = ['合规履约压力','出口CBAM门槛','能耗成本上升','数据台账缺失','融资与ESG评级','碳资产变现','客户供应链要求']
       .map(function(k){ return '<button class="chip" data-v="' + k + '">' + k + '<\/button>'; }).join('');
@@ -3801,6 +4076,20 @@ function renderAsk(){
   setHTML(box, '<div class="ask-lb"><span class="n">' + (chat.step + 1) + '<\/span>' + esc(q.q) + '<\/div>' +
     '<div class="chip-row">' + chipHtml(q.chips) + '<\/div>' +
     '<div class="empty-tip" style="margin-top:6px">' + esc(q.tip) + '<\/div>');
+  // 痛点多选：重渲染后恢复已选中态与确认按钮（刷新/回退场景）
+  if (q.k === 'pains' && chat.ans._painSel && chat.ans._painSel.length) {
+    Array.prototype.forEach.call(box.querySelectorAll('.chip'), function(c){
+      if (chat.ans._painSel.indexOf(c.getAttribute('data-v')) >= 0) c.classList.add('on');
+    });
+    ensurePainOkBtn(box);
+  }
+  // 成熟度多选：同样恢复选中态与确认按钮
+  if (q.k === 'force' && chat.ans._forceSel && chat.ans._forceSel.length) {
+    Array.prototype.forEach.call(box.querySelectorAll('.chip'), function(c){
+      if (c.getAttribute && chat.ans._forceSel.indexOf(c.getAttribute('data-mv')) >= 0) c.classList.add('on');
+    });
+    ensureForceOkBtn(box);
+  }
   // 步骤条
   if (st && st.children){
     for (var i = 0; i < QUESTIONS.length; i++){
@@ -3815,10 +4104,14 @@ function askMe(t){ chat.log.push({ r:'me', t:esc(t) }); }
 
 function answer(k, v, mvs){
   if (k === 'force') {
+    // 先清四个标志再写入，避免重复作答时残留旧选项
+    chat.ans.forceCompliance = false;
+    chat.ans.hasData = false;
+    chat.ans.hasTarget = false;
+    chat.ans.wantsValue = false;
     (mvs || []).forEach(function(m){ chat.ans[m] = true; });
     chat2.coreForce = {};
     (mvs || []).forEach(function(m){ chat2.coreForce[m] = true; });
-    askBot('已记录。');
   }
   chat.ans[k] = v;
   chat.step++;
@@ -3840,17 +4133,57 @@ function restoreChat(){
   return false;
 }
 
+/* 痛点 → 咨询动作映射：诊断结论里给出可执行的下一步，而非只报产品名 */
+var PAIN_ACTION_MAP = {
+  '合规履约压力': '先补月度能耗台账，做年度排放报告与配额盈缺测算',
+  '出口CBAM门槛': '按 ISO 14067 重建产品 LCA，核对 CBAM 申报口径',
+  '能耗成本上升': '节能量诊断 + 绿电/余热替代测算，锁定降本空间',
+  '数据台账缺失': '先建数据台账与数据质量控制计划，再谈核算',
+  '融资与ESG评级': '以 ESG/TCFD 披露为切口建指标基线，回应评级问卷',
+  '碳资产变现': 'CCER 方法学筛选与减排量预评估',
+  '客户供应链要求': '产品碳足迹核算，准备客户问卷与声明文件'
+};
+
 function finishDiagnosis(){
   var a = chat.ans;
-  var stage = judgeStage(a);
+  var det = judgeStageDetail(a);
+  var stage = det.stage;
   var pains = a.pains || [];
-  var prods = matchProducts(stage, pains, a.industry);
+  var prods = matchProducts(stage, pains, a.industry, a.scale);
   var ind = KB_INDUSTRY[a.industry] || KB_INDUSTRY['其他'];
-  var provHit = null;
-  Object.keys(KB_PROVINCE).forEach(function(k){ if ((a.province || '').indexOf(k) === 0) provHit = KB_PROVINCE[k]; });
 
-  askBot('\n【诊断结论】\n成熟度阶段：<span class="hl">' + stage + '<\/span>\n推荐产品线：' + prods.join('、') + '\n\n已生成落地方案，请看窗口二。结论挂证据链：行业核算边界与市场属性取自 ' + ind.market + '；地方政策要点取自属地最新文件。');
+  // 缺口清单：哪些关键项没答或答了「待评估」
+  var missing = [];
+  if (!a.scale) missing.push('企业规模');
+  if (!pains.length) missing.push('核心痛点');
+  if (!a.budget || a.budget === '待评估') missing.push('预算区间');
+  if (!a.chain || a.chain === '待补充') missing.push('决策链');
 
+  var lines = [];
+  lines.push('【诊断结论】');
+  lines.push('一、成熟度判定：<span class="hl">' + esc(stage) + '<\/span>（评分 ' + det.score + '/8）');
+  lines.push('评分依据：' + (det.reasons.length ? esc(det.reasons.join('；')) : '四要素均未命中，按合规起步'));
+  lines.push('二、企业画像：' + esc(a.industry || '行业待补充') + ' · ' + esc(a.province || '属地待补充') +
+    ' · ' + esc(scaleBandLabel(a.scale || '')) + ' · 预算 ' + esc(a.budget || '待评估'));
+  lines.push('三、痛点与对应动作：');
+  if (pains.length) {
+    pains.forEach(function(p){
+      lines.push('　· ' + esc(p) + ' → ' + esc(PAIN_ACTION_MAP[p] || '纳入现状调研阶段评估'));
+    });
+  } else {
+    lines.push('　· 未选择痛点，建议点「重新诊断」补选（影响产品线匹配）');
+  }
+  lines.push('四、推荐产品线：' + esc(prods.join('、')));
+  lines.push('五、下一步：① 窗口二查看五阶段落地方案 ② 窗口三点「生成五阶段任务」铺执行计划' +
+    (missing.length ? ' ③ 补录：' + esc(missing.join('、')) : ''));
+  lines.push('依据：行业核算边界与市场属性取自 ' + esc(ind.market) +
+    '；地方政策要点取自属地最新文件，因子/政策以最新官方发布为准。');
+  askBot(lines.join('\n'));
+
+  var existing = state.customers.filter(function(x){ return x.name === (a.name || '未命名企业'); })[0];
+  var logBase = existing && existing.changeLog ? existing.changeLog : '';
+  var logEntry = '[' + todayStr() + '] 诊断' + (existing ? '（重新诊断，结论更新为「' + stage + '」）' : '完成');
+  var changeLog = logBase ? (logBase + ' ｜ ' + logEntry) : logEntry;
   var c = {
     name: a.name || '未命名企业',
     industry: a.industry || '其他',
@@ -3863,12 +4196,16 @@ function finishDiagnosis(){
     chain: a.chain || '待补充',
     date: todayStr(),
     verifyDate: '2026-10-13',
-    conclusion: '成熟度判定为' + stage + '；匹配产品线：' + prods.join('、') + '。核算边界参照' + (a.industry||'其他') + '行业常规口径。',
-    changeLog: ''
+    conclusion: '成熟度判定为' + stage + '（评分' + det.score + '/8：' +
+      (det.reasons.length ? det.reasons.join('、') : '四要素未命中') + '）；痛点：' +
+      (pains.join('、') || '待补充') + '；匹配产品线：' + prods.join('、') +
+      '。核算边界参照' + (a.industry || '其他') + '行业常规口径，政策与因子以最新官方发布为准。',
+    changeLog: changeLog
   };
   state.cur = c;
   saveCustomer(c);
   renderPlan();
+  fire('stageChanged');
 }
 
 /* ---------- 渲染：五阶段实施内容手风琴 ---------- */
@@ -4065,7 +4402,7 @@ function renderPlan(){
   html += '<div class="sec"><div class="sec-hd"><span class="bar"><\/span><h3>一、诊断结论（结论先行）<\/h3><\/div>';
   html += '<div class="kv">' +
     '<div class="r"><span class="k">企业<\/span><span class="v">' + esc(c.name) + '<\/span><\/div>' +
-    '<div class="r"><span class="k">行业<\/span><span class="v">' + esc(c.industry) + ' · ' + esc(c.scale) + '<\/span><\/div>' +
+    '<div class="r"><span class="k">行业<\/span><span class="v">' + esc(c.industry) + ' · ' + esc(scaleBandLabel(c.scale)) + '<\/span><\/div>' +
     '<div class="r"><span class="k">属地<\/span><span class="v">' + esc(c.province) + '<\/span><\/div>' +
     '<div class="r"><span class="k">成熟度<\/span><span class="v"><b>' + esc(c.stage) + '<\/b><\/span><\/div>' +
     '<div class="r"><span class="k">痛点<\/span><span class="v">' + ((c.pains || []).length ? (c.pains || []).map(function(p){ return '<span class="pill w">' + esc(p) + '<\/span>'; }).join('') : '<span style="color:var(--t3)">待补充<\/span>') + '<\/span><\/div>' +
@@ -4107,7 +4444,7 @@ function renderPlan(){
   // 4 地方政策
   html += '<div class="sec"><div class="sec-hd"><span class="bar"><\/span><h3>四、属地政策适配<\/h3><\/div>';
   if (prov) {
-    html += '<div class="kv"><div class="r"><span class="k">属地<\/span><span class="v">' + esc(prov.k) + '<\/span><\/div><div class="r"><span class="k">生效状态<\/span><span class="v">' + esc(prov.d.status || '现行有效') + '<\/span><\/div><div class="r"><span class="k">基准年度<\/span><span class="v">' + esc(prov.d.baseYear || '以年度官方通知为准') + '<\/span><\/div><\/div><div style="margin-top:7px">';
+    html += '<div class="kv"><div class="r"><span class="k">属地<\/span><span class="v">' + esc(prov.k) + '<\/span><\/div><div class="r"><span class="k">生效状态<\/span><span class="v">' + esc(prov.d.status || '待核实（以最新官方发布为准）') + '<\/span><\/div><div class="r"><span class="k">基准年度<\/span><span class="v">' + esc(prov.d.baseYear || '以年度官方通知为准') + '<\/span><\/div><\/div><div style="margin-top:7px">';
     prov.d.pts.forEach(function(p){ html += '<div class="empty-tip" style="padding:3px 2px">· ' + esc(p) + '<\/div>'; });
     if (prov.d.docs && prov.d.docs.length){ html += '<div class="note">已核对文号（可引用）：' + prov.d.docs.map(function(d){ return esc(d.name) + '（' + esc(d.docNo) + '，' + esc(d.status) + '）'; }).join('；') + '<\/div>'; }
     html += '<div class="note">政策要点：' + esc(prov.d.note || '以属地最新官方发布为准') + '。地方碳市场规则、补贴申报窗口与配额分配方案<b>均可能更新，引用前请复核<\/b>。<\/div>';
@@ -4158,11 +4495,61 @@ function renderClients(){
   if (!state.customers.length) { setHTML(box, '<div class="empty-tip" style="padding:14px">暂无客户档案，点「+ 新建客户」或完成左侧诊断。<\/div>'); return; }
   setHTML(box, state.customers.map(function(c){
     var on = state.cur && state.cur.name === c.name ? ' on' : '';
+    var painTxt = (c.pains && c.pains.length) ? c.pains.slice(0, 2).join('、') + (c.pains.length > 2 ? '…' : '') : '无痛点记录';
     return '<div class="lst-i' + on + '" data-cust="' + esc(c.name) + '">' +
-      '<div class="t1">' + esc(c.name) + '<\/div>' +
-      '<div class="t2"><span class="tag">' + esc(c.stage) + '<\/span><span>' + esc(c.industry) + '<\/span><span>' + esc(c.province) + '<\/span><\/div>' +
+      '<div class="t1">' + esc(c.name) +
+      '<button class="btn xs" data-del-cust="' + esc(c.name) + '" style="margin-left:auto;color:var(--danger)" title="删除客户及其全部任务/方案书">删除<\/button>' +
+      '<\/div>' +
+      '<div class="t2"><span class="tag">' + esc(c.stage) + '<\/span><span>' + esc(c.industry) + '<\/span><span>' + esc(c.province) + '<\/span>' +
+      '<span>' + esc(c.scale || '规模待评估') + '<\/span><span>' + esc(c.budget || '预算待评估') + '<\/span><span>' + esc(painTxt) + '<\/span><\/div>' +
       '<\/div>';
   }).join(''));
+}
+/* 客户档案编辑（块2）：不重跑诊断也能改行业/省份/规模/预算/痛点/决策链 */
+function renderClientEdit(c){
+  var box = document.getElementById('clientEditBox');
+  if (!box) return;
+  if (!c || box.style.display === 'none') return;
+  var ind = document.getElementById('ceIndustry');
+  if (ind){
+    setHTML(ind, Object.keys(KB_INDUSTRY).map(function(k){
+      return '<option value="' + esc(k) + '"' + (k === c.industry ? ' selected' : '') + '>' + esc(k) + '<\/option>';
+    }).join(''));
+    if (!ind.value) ind.value = c.industry || '其他';
+  }
+  var prov = document.getElementById('ceProvince');
+  if (prov){
+    setHTML(prov, Object.keys(KB_PROVINCE).map(function(k){
+      return '<option value="' + esc(k) + '"' + (k === c.province ? ' selected' : '') + '>' + esc(k) + '<\/option>';
+    }).join(''));
+    if (!prov.value) prov.value = c.province || '';
+  }
+  var scale = document.getElementById('ceScale'); if (scale) scale.value = c.scale || '待评估';
+  var budget = document.getElementById('ceBudget'); if (budget) budget.value = c.budget || '待评估';
+  var pains = document.getElementById('cePains'); if (pains) pains.value = (c.pains || []).join(',');
+  var chain = document.getElementById('ceChain'); if (chain) chain.value = c.chain || '';
+}
+function toggleClientEdit(){
+  var box = document.getElementById('clientEditBox');
+  if (!box) return;
+  if (box.style.display === 'none'){
+    if (!state.cur){ toast('请先选择客户'); return; }
+    renderClientEdit(state.cur);
+    box.style.display = 'block';
+  } else { box.style.display = 'none'; }
+}
+function saveClientEdit(){
+  var c = state.cur; if (!c){ toast('请先选择客户'); return; }
+  var ind = document.getElementById('ceIndustry'); if (ind && ind.value) c.industry = ind.value;
+  var prov = document.getElementById('ceProvince'); if (prov && prov.value) c.province = prov.value;
+  var scale = document.getElementById('ceScale'); if (scale) c.scale = scale.value;
+  var budget = document.getElementById('ceBudget'); if (budget) c.budget = budget.value;
+  var pains = document.getElementById('cePains');
+  if (pains) c.pains = pains.value.split(/[,，、]/).map(function(s){ return s.trim(); }).filter(Boolean).slice(0, 3);
+  var chain = document.getElementById('ceChain'); if (chain) c.chain = chain.value.trim();
+  saveCustomer(c);
+  document.getElementById('clientEditBox').style.display = 'none';
+  toast('客户档案已更新');
 }
 function renderStats(){
   var all = state.tasks, done = 0, over = 0;
@@ -4191,7 +4578,9 @@ function renderTasks(){
     var over = x.stat !== '已完成' && x.due && x.due < t;
     return '<div class="lst-i" data-task="' + esc(x.id || x.name) + '" data-client="' + esc(x.client) + '">' +
       '<div class="t1"><span class="dot-st s' + taskStat(x.stat) + '"><\/span>' + esc(x.name) +
-      (over ? ' <span class="tag od">逾期<\/span>' : '') + '<\/div>' +
+      (over ? ' <span class="tag od">逾期<\/span>' : '') +
+      '<button class="btn xs" data-del-task="' + esc(x.id || x.name) + '" data-del-client="' + esc(x.client) + '" style="margin-left:auto;color:var(--danger)" title="删除此任务">✕<\/button>' +
+      '<\/div>' +
       '<div class="t2"><span class="tag p' + (x.prio==='P0'?'0':x.prio==='P1'?'1':'2') + '">' + esc(x.prio) + '<\/span>' +
       '<span>' + esc(x.stage) + '<\/span><span>' + esc(x.dept) + '<\/span><span>' + (x.due||'无期限') + '<\/span>' +
       '<span>' + (Number(x.cut) ? Number(x.cut).toLocaleString()+' t' : '') + '<\/span><\/div><\/div>';
@@ -4244,8 +4633,15 @@ function l2AccountingHtml(c){
     h += '<tr class="hlrow"><td><b>范围3 合计<\/b><\/td><td colspan="2"><b>' + fmtNum(sums.s3,0) + ' tCO₂e<\/b><\/td><\/tr><\/tbody><\/table>';
   }
   h += '<table class="tbl"><thead><tr><th>排放汇总</th><th>数值(tCO₂e)</th><\/tr><\/thead><tbody>';
-  h += mrow('范围1+2 合计', fmtNum(sums.s1 + sums.s2,0)) + mrow('范围1+2+3 总排放', fmtNum(sums.total,0));
+  h += mrow('范围1+2 合计（市场法口径）', fmtNum(sums.s1 + sums.s2,0)) + mrow('范围1+2+3 总排放（市场法）', fmtNum(sums.total,0));
+  /* 范围2 双口径对照：组织法/位置法 = 市场法 + 有凭证绿电按电网因子计的部分（绿电只在市场法按凭证扣减） */
+  var gpRow = (c.em.scope2 || []).filter(function(r){ return r.formula === 'zero' && /绿电|green/.test(r.source); })[0];
+  var gpMWh = gpRow ? (Number(gpRow.activity) || 0) : 0;
+  var s2Loc = sums.s2 + (gpMWh > 0 ? gpMWh * getFac(PARAMS, null, 'gridEF') : 0);
+  h += mrow('范围2（组织法/位置法）', fmtNum(s2Loc,0));
+  h += mrow('范围2（市场法，扣凭证绿电）', fmtNum(sums.s2,0));
   h += '<\/tbody><\/table>';
+  if (gpMWh > 0) h += '<div class="note">范围2 双口径：绿电仅在市场法（有购电协议/绿证凭证）下扣减，组织法/位置法按电网平均因子计入，两口径差异 ' + fmtNum(s2Loc - sums.s2,0) + ' tCO₂e。<\/div>';
   h += '<div class="blk-sub">行业排放强度口径（功能单位随行业）<\/div>';
   if (bench){
     h += '<table class="tbl"><thead><tr><th>关键强度指标</th><th>本系统口径</th><\/tr><\/thead><tbody>';
@@ -4290,7 +4686,7 @@ function renderCalc(){
   }
   var hasRows = (c.em.scope1 || []).length + (c.em.scope2 || []).length + (c.em.scope3 || []).length;
   var html = '<div class="blk"><div class="blk-hd">计算引擎 · 核算结果（按当前行业自适应）<\/div>';
-  html += '<div class="note">当前客户：' + esc(c.name || '未命名') + ' · 行业：' + esc(c.industry || '未设定') + ' · 核验基准日 2026-10-15。排放因子以最新官方发布为准；缺因子源显示「待补因子」。<\/div>';
+  html += '<div class="note">当前客户：' + esc(c.name || '未命名') + ' · 行业：' + esc(c.industry || '未设定') + ' · 核验基准日 2026-10-13。排放因子以最新官方发布为准；缺因子源显示「待补因子」。<\/div>';
   if (!hasRows){
     html += '<div class="diag w"><div class="dh">尚未生成行业 L2 模板<\/div>请先在窗口一完成「完整诊断」以生成行业专属排放源模板，或在窗口三点「生成/重建 L2」后录入活动数据。<\/div>';
   } else {
@@ -4314,7 +4710,7 @@ function renderParams(){
   var order = ['clinkerEF','coalNCV','coalCC','coalOX','dieselNCV','dieselEF','rdfC','rdfNonBio','gridEF','gridEF2026','lossEF','gwpCH4','gwpN2O','ceaPrice','ccerPrice','cbamPrice','fxEUR','cbamDeductRate','bp2025','bp2026','ccerCapRate','pcfBenchmark'];
   function rowFor(k){
     var base = PARAMS[k] || { v:'', u:'', src:'' };
-    var ov = (PARAM_OVERRIDE && PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '') ? PARAM_OVERRIDE[k] : base.v;
+    var ov = (state.cur && state.cur.paramOverride && state.cur.paramOverride[k] !== undefined && state.cur.paramOverride[k] !== '') ? state.cur.paramOverride[k] : ((PARAM_OVERRIDE && PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '') ? PARAM_OVERRIDE[k] : base.v);
     var ovsrc = (PARAM_OVERRIDE && PARAM_OVERRIDE[k + '_src'] !== undefined) ? PARAM_OVERRIDE[k + '_src'] : base.src;
     var isCementParam = !!CEMENT_ONLY[k];
     var applies = isCementParam ? isCement : true;
@@ -4618,6 +5014,7 @@ function buildDoc(c){
 
   /* 四、排放核算结果（按当前行业自适应；基于 L2 行级数据通用汇总，不再依赖旧水泥结构） */
   h += '<h2 id="ch4">四、排放核算结果<\/h2>';
+  h += '<div class="note">本章数字均来自窗口三 L2 排放源级底稿（逐行活动数据 × 因子，可在台账逐行复算）；因子取值与来源见附录 B，状态列标注实测/待补因子。<\/div>';
   var hasL2 = (c.em.scope1 || []).length + (c.em.scope2 || []).length + (c.em.scope3 || []).length;
   if (!hasL2){
     h += docGapNote('尚未生成行业 L2 模板或无可核算活动数据；请先在窗口一完整诊断生成行业专属排放源模板、窗口三录入排放源级数据，本章以「数据需求清单」呈现。');
@@ -4643,9 +5040,11 @@ function buildDoc(c){
     });
     h += '<\/tbody><\/table>';
   } else if (full){
-    h += '<div class="empty-tip">尚未生成任务。点窗口三「生成五阶段任务」系统按框架自动铺排；下列为管理型措施基线：' + (c.techPlan && c.techPlan.length ? c.techPlan.join('、') : '原料替代 / 燃料替代 / 余热发电扩容 / 粉磨节能 / 光伏绿电') + '。</div>';
+    var tpFull = Array.isArray(c.techPlan) ? c.techPlan : (typeof c.techPlan === 'string' && c.techPlan ? [c.techPlan] : []);
+    h += '<div class="empty-tip">尚未生成任务。点窗口三「生成五阶段任务」系统按框架自动铺排；下列为管理型措施基线：' + (tpFull.length ? esc(tpFull.join('、')) : '原料替代 / 燃料替代 / 余热发电扩容 / 粉磨节能 / 光伏绿电') + '。</div>';
   } else {
-    h += docGapNote('技经测算需任务与减排量数据；当前完整度不足，先以管理型措施（' + (c.techPlan && c.techPlan.length ? c.techPlan.join('、') : '原料替代/燃料替代/余热发电/绿电') + '）列示，投资与减排量待现场实测。');
+    var tpGap = Array.isArray(c.techPlan) ? c.techPlan : (typeof c.techPlan === 'string' && c.techPlan ? [c.techPlan] : []);
+    h += docGapNote('技经测算需任务与减排量数据；当前完整度不足，先以管理型措施（' + (tpGap.length ? esc(tpGap.join('、')) : '原料替代/燃料替代/余热发电/绿电') + '）列示，投资与减排量待现场实测。');
   }
 
   /* 七、碳市场履约（条件） */
@@ -4660,7 +5059,7 @@ function buildDoc(c){
       h += '<tr><td>配额缺口(修正口径)<\/td><td>' + fmtNum(R.gap2025Corr, 0) + ' tCO₂e<\/td><td>CCER 抵消上限<\/td><td>' + fmtNum(R.ccerCapCorr, 0) + ' tCO₂e<\/td><\/tr>';
       h += '<tr><td>缺口履约成本(碳价' + PARAMS.ceaPrice.v + ')<\/td><td colspan="3">' + (R.gap2025Corr < 0 ? '¥' + fmtNum(R.gapCostCorr, 0) : '盈余，无需购买') + '<\/td><\/tr>';
       h += '<\/tbody><\/table>';
-      h += '<div class="note">配额按本行业方法（' + esc(st7 ? (st7.quotaMethod || '基准法') : '基准法') + '）测算；范围2 已按余热修正口径。CCER 抵销比例上限 ' + (PARAMS.ccerCapRate.v * 100) + '%。履约时间表：年度履约清缴前 30 日完成核查与清缴。<\/div>';
+      h += '<div class="note">配额按本行业方法（' + esc(st7 ? (st7.quotaMethod || '基准法') : '基准法') + '）测算；范围2 已按余热修正口径。CCER 抵销比例上限 ' + (PARAMS.ccerCapRate.v * 100) + '%。履约时间表：年度履约清缴前 30 日完成核查与清缴。配额平衡值与抵销比例均为咨询参考参数，正式测算以最新官方配额分配方案为准。<\/div>';
     } else if (emHasActivity(em)) {
       // 非水泥 / L2 通用：展示经核查排放 + 行业配额方法说明（配额盈缺待录入分配参数）
       var sums7 = l2Sums(c);
@@ -4669,7 +5068,7 @@ function buildDoc(c){
       h += '<tr><td>经核查排放(范围1+2)<\/td><td>' + fmtNum(s12, 0) + ' tCO₂e<\/td><td>配额盈缺<\/td><td>' + (st7 && st7.ets && st7.ets.indexOf('已纳管') >= 0 ? '待录入配额分配参数后量化' : '本行业未纳管/扩容候选，无配额义务') + '<\/td><\/tr>';
       h += '<tr><td>CCER 抵消上限(基数范围1+2)<\/td><td colspan="3">' + fmtNum(s12 * PARAMS.ccerCapRate.v, 0) + ' tCO₂e（上限 ' + (PARAMS.ccerCapRate.v * 100) + '%）<\/td><\/tr>';
       h += '<\/tbody><\/table>';
-      h += '<div class="note">配额按本行业方法（' + esc(st7 ? (st7.quotaMethod || '基准法') : '基准法') + '）测算；范围2 已按余热修正口径。配额盈缺需配额分配方案与经核查排放对比，待录入分配参数后出量化结果。CCER 抵销比例上限 ' + (PARAMS.ccerCapRate.v * 100) + '%。履约清缴前 30 日完成核查与清缴。<\/div>';
+      h += '<div class="note">配额按本行业方法（' + esc(st7 ? (st7.quotaMethod || '基准法') : '基准法') + '）测算；范围2 已按余热修正口径。配额盈缺需配额分配方案与经核查排放对比，待录入分配参数后出量化结果。CCER 抵销比例上限 ' + (PARAMS.ccerCapRate.v * 100) + '%。履约清缴前 30 日完成核查与清缴。配额与抵销参数均为咨询参考值，以最新官方发布为准。<\/div>';
     } else { h += docGapNote('缺少可计算的排放活动数据（请在窗口三 L2 录入排放源级数据），配额盈缺暂无法量化。'); }
   }
 
@@ -4687,7 +5086,7 @@ function buildDoc(c){
       h += '<tr><td>总嵌入排放<\/td><td>' + fmtNum(R.cbamTotal, 0) + ' tCO₂e<\/td><td>可抵扣后应缴<\/td><td>' + fmtNum(R.cbamPayable, 0) + ' tCO₂e（抵扣 ' + (PARAMS.cbamDeductRate.v * 100) + '%）<\/td><\/tr>';
       h += '<tr><td>CBAM 费用<\/td><td colspan="3">€' + fmtNum(R.cbamFeeEUR, 0) + ' ≈ ¥' + fmtNum(R.cbamFeeCNY, 0) + '（汇率 ' + PARAMS.fxEUR.v + '）<\/td><\/tr>';
       h += '<\/tbody><\/table>';
-      h += '<div class="note">抵扣比例 ' + (PARAMS.cbamDeductRate.v * 100) + '% 为保守口径（按已付碳价折算≈8.5%，正式申报前须复核）。功能单位：' + esc(cbUnit) + '（水泥口径为熟料，其他行业按本行业产品）；出口量来自窗口一。<\/div>';
+      h += '<div class="note">抵扣比例 ' + (PARAMS.cbamDeductRate.v * 100) + '% 为保守口径（按已付碳价折算≈8.5%，正式申报前须复核）。功能单位：' + esc(cbUnit) + '（水泥口径为熟料，其他行业按本行业产品）；出口量来自窗口一。CBAM 碳价 ' + PARAMS.cbamPrice.v + ' €/t 与汇率 ' + PARAMS.fxEUR.v + ' 为咨询参考值，正式申报以欧盟最新官方行情为准。<\/div>';
     } else if (isCBAM){
       h += docGapNote('缺少出口量与嵌入排放参数（em.cbamExport / em.cbamExportClinker），CBAM 章节需补充出口量。');
     } else {
@@ -4731,7 +5130,7 @@ function buildDoc(c){
   if (prov){
     h += '<div class="dlv-sec"><b>11.2 属地（' + esc(prov.k) + '）政策要点<\/b><\/div>';
     h += '<table class="doc-kv"><tbody>' +
-      '<tr><td>生效状态<\/td><td colspan="3">' + esc(prov.d.status || '现行有效') + '<\/td><\/tr>' +
+      '<tr><td>生效状态<\/td><td colspan="3">' + esc(prov.d.status || '待核实（以最新官方发布为准）') + '<\/td><\/tr>' +
       '<tr><td>基准年度适用<\/td><td colspan="3">' + esc(prov.d.baseYear || '以年度官方通知为准') + '<\/td><\/tr>' +
       '<tr><td>核验基准日<\/td><td colspan="3">2026-10-13（每季度 + 年度报送前复核）<\/td><\/tr>' +
       '<\/tbody><\/table><ul>';
@@ -4794,7 +5193,7 @@ function buildDoc(c){
   h += '<table class="tbl"><thead><tr><th>参数<\/th><th>取值<\/th><th>单位<\/th><th>来源<\/th><\/tr><\/thead><tbody>';
   order.forEach(function(k){
     var base = PARAMS[k] || { v:'', u:'', src:'' };
-    var ov = (PARAM_OVERRIDE && PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '') ? PARAM_OVERRIDE[k] : base.v;
+    var ov = (state.cur && state.cur.paramOverride && state.cur.paramOverride[k] !== undefined && state.cur.paramOverride[k] !== '') ? state.cur.paramOverride[k] : ((PARAM_OVERRIDE && PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '') ? PARAM_OVERRIDE[k] : base.v);
     var ovsrc = (PARAM_OVERRIDE && PARAM_OVERRIDE[k + '_src'] !== undefined) ? PARAM_OVERRIDE[k + '_src'] : base.src;
     h += '<tr><td><code>' + esc(k) + '<\/code><\/td><td class="num">' + esc(ov) + (PARAM_OVERRIDE && PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '' ? '（覆盖）' : '') + '<\/td><td>' + esc(base.u || '') + '<\/td><td>' + esc(ovsrc || '') + '<\/td><\/tr>';
   });
@@ -4806,12 +5205,22 @@ function buildDoc(c){
 /* 生成/重建 */
 function genDoc(){
   var c = state.cur; if (!c){ toast('请先选择或新建一家客户'); return; }
+  var box = document.getElementById('docBody');
+  /* 人工编辑保护（LINKAGE_MAP 承诺兑现）：编辑过的文档重建前必须确认，且先自动留快照 */
+  state.docEdited = state.docEdited || {};
+  if (state.docEdited[c.name]){
+    var ok = confirm('检测到人工编辑内容，重建将整篇覆盖。系统会先自动保存一版快照，仍要重建吗？');
+    if (!ok){ toast('已取消重建，人工编辑保留'); return; }
+    try { saveDocVersion('重建前自动快照'); } catch(err){}
+  }
   var html = buildDoc(c);
   state.docHtml[c.name] = html;
   state.docLoadedFor = c.name;
   state.docVer = state.docVer || {};
   state.docVer[c.name] = (state.docVer[c.name] || 0) + 1;
-  var box = document.getElementById('docBody');
+  state.docEdited[c.name] = false;
+  state.docStale = state.docStale || {};
+  state.docStale[c.name] = false;
   setHTML(box, html);
   renderDocToc(); updateDocFoot();
   toast('已生成方案书 v' + state.docVer[c.name] + '（' + c.name + '）');
@@ -4828,17 +5237,21 @@ function regenStageSection(){
   renderDocToc(); updateDocFoot();
   toast('已重新生成「五阶段实施方案」章节');
 }
-/* 保存版本快照 */
-function saveDocVersion(){
+/* 保存版本快照（noteIn 提供时不再弹 prompt，供「重建前自动快照」等内部路径使用） */
+function saveDocVersion(noteIn){
   var c = state.cur; if (!c){ toast('请先选择客户'); return; }
   var box = document.getElementById('docBody');
   var v = (state.docVer && state.docVer[c.name]) || 1;
-  var note = prompt('版本备注（可选）：', '手动保存 v' + v);
+  var note = (noteIn !== undefined) ? noteIn : prompt('版本备注（可选）：', '手动保存 v' + v);
   if (note === null) return;
   var snap = { v:v, at:new Date().toISOString(), note:note || '手动保存', html: box.innerHTML };
   var list = lsGet(LS_DOC + c.name, []);
   list.unshift(snap);
-  lsSet(LS_DOC + c.name, list.slice(0, 20));
+  // 容量双限：最多 20 版且总字节 ≤ 2MB（防整篇 HTML 快照无限膨胀撑爆 localStorage）
+  while (list.length > 20) list.pop();
+  var bytes = 0;
+  for (var i = 0; i < list.length; i++){ bytes += (list[i].html || '').length * 2 + 80; if (bytes > 2000000){ list = list.slice(0, i); break; } }
+  lsSet(LS_DOC + c.name, list);
   state.docHtml[c.name] = box.innerHTML;
   toast('已保存版本 v' + v);
 }
@@ -4895,7 +5308,18 @@ function updateDocFoot(){
   var chars = txt.replace(/\s/g, '').length;
   var secs = body ? body.querySelectorAll('h2').length : 0;
   var miss = body ? body.querySelectorAll('.missing').length : 0;
-  setHTML(f, '字数 ' + chars + ' ｜ 章节 ' + secs + ' ｜ 待补充项 ' + miss + (c ? (' ｜ 当前客户：' + esc(c.name) + ' v' + ((state.docVer && state.docVer[c.name]) || 1)) : ''));
+  var stale = c && state.docStale && state.docStale[c.name];
+  var staleHtml = stale ? '<b style="color:var(--warn)">数据已变更，方案书可能过期——请点「生成/重建」刷新</b> ｜ ' : '';
+  setHTML(f, staleHtml + '字数 ' + chars + ' ｜ 章节 ' + secs + ' ｜ 待补充项 ' + miss + (c ? (' ｜ 当前客户：' + esc(c.name) + ' v' + ((state.docVer && state.docVer[c.name]) || 1)) : ''));
+}
+/* 数据变更联动（窗口三/验收/诊断 → 窗口四）：已生成的方案书标记过期提示 */
+function markDocStale(){
+  var c = state.cur; if (!c) return;
+  if (!state.docHtml || !state.docHtml[c.name]) return;
+  state.docStale = state.docStale || {};
+  if (state.docStale[c.name]) return;
+  state.docStale[c.name] = true;
+  updateDocFoot();
 }
 /* 刷新入口（不覆盖正在编辑的文档） */
 function renderDoc(){
@@ -4909,7 +5333,20 @@ function renderDoc(){
   if (state.docLoadedFor === c.name) return;
   var html = state.docHtml[c.name];
   if (html){ setHTML(box, html); }
-  else { setHTML(box, '<p class="doc-ph">点击「生成/重建」按当前客户（' + esc(c.name) + '）+ 知识库 + 计算引擎产出方案书；也可在下方直接编辑。<\/p>'); }
+  else {
+    // 草稿恢复：自动暂存(draft) 刷新后应还原，不再退回「点击生成/重建」空壳
+    var draft = '';
+    try { draft = localStorage.getItem(LS_DOC + 'draft_' + c.name) || ''; } catch(e){}
+    if (draft){ setHTML(box, draft); state.docHtml[c.name] = draft; }
+    else { setHTML(box, '<p class="doc-ph">点击「生成/重建」按当前客户（' + esc(c.name) + '）+ 知识库 + 计算引擎产出方案书；也可在下方直接编辑。<\/p>'); }
+  }
+  // 版本号恢复：内存 docVer 刷新归零时，从版本快照取最大 v
+  if (!state.docVer || !state.docVer[c.name]){
+    try {
+      var _vl = lsGet(LS_DOC + c.name, []);
+      if (_vl.length){ var _mx = 0; _vl.forEach(function(s){ if (s.v > _mx) _mx = s.v; }); state.docVer = state.docVer || {}; state.docVer[c.name] = _mx; }
+    } catch(e){}
+  }
   state.docLoadedFor = c.name;
   renderDocToc(); updateDocFoot();
 }
@@ -4922,6 +5359,8 @@ function bindDocAutosave(){
     t = setTimeout(function(){
       var c = state.cur; if (!c) return;
       state.docHtml[c.name] = box.innerHTML;
+      state.docEdited = state.docEdited || {};
+      state.docEdited[c.name] = true;      // 人工编辑标记 → 重建时确认 + 自动快照
       lsSet(LS_DOC + 'draft_' + c.name, box.innerHTML);
       updateDocFoot();
     }, 600);
@@ -4936,9 +5375,15 @@ function bindDocAutosave(){
   });
 }
 /* 导出 Word（HTML→.doc，单文件、BOM、写死十六进制色值，不依赖 CSS 变量） */
+function sanitizeForExport(html){
+  var body = sanitizeHtml(html);
+  // 外链图片占位化：离线导出的 .doc 不应在打开时发起外部网络请求
+  return body.replace(/<img[^>]*src=["']https?:[^"']*["'][^>]*>/gi,
+    '<span class="missing">（外部图片未内嵌，打开文档时需联网查看）</span>');
+}
 function exportWord(){
   var src = document.getElementById('docBody'); if (!src){ toast('请先生成方案书'); return; }
-  var body = sanitizeHtml(src.innerHTML);
+  var body = sanitizeForExport(src.innerHTML);
   var c = state.cur;
   var head = '<html xmlns:o="urn:schemas-microsoft-com:office:office"'
     + ' xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
@@ -4960,13 +5405,14 @@ function exportWord(){
   setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
   toast('已导出 Word（.doc），请用 Word 打开继续编辑');
 }
-/* 导出 PDF（克隆到 #printRoot 走浏览器打印） */
+/* 导出 PDF（克隆到 #printRoot 走浏览器打印；延迟触发保证渲染完成） */
 function exportPdf(){
   var src = document.getElementById('docBody'); if (!src){ toast('请先生成方案书'); return; }
+  if (!(src.textContent || '').trim()){ toast('方案书为空，请先点「生成/重建」'); return; }
   var root = document.getElementById('printRoot');
   setHTML(root, src.innerHTML);
-  toast('请在打印对话框选「另存为 PDF」，并关闭「页眉和页脚」');
-  setTimeout(function(){ window.print(); }, 300);
+  toast('即将打开系统打印对话框：请选择「另存为 PDF」，并关闭「页眉和页脚」（打印预览可微调表格分页）');
+  setTimeout(function(){ window.print(); }, 500);
 }
 /* 导出 Markdown */
 function docToMd(){
@@ -5021,13 +5467,36 @@ function exportMd(){
 /* ==================== 第 5 批：L2 分范围采集渲染 ==================== */
 function optsHtml(arr, sel){ return arr.map(function(o){ return '<option' + (o === sel ? ' selected' : '') + '>' + esc(o) + '<\/option>'; }).join(''); }
 function l2QualityOpts(sel){ return SCOPE_COLLECTION.qualityLevels.map(function(o){ return '<option' + (o === sel ? ' selected' : '') + '>' + esc(o) + '<\/option>'; }).join(''); }
+/* 缺因子行的「手动补因子」键位：按行公式给出录入项（F5 行业因子闭环） */
+var FILL_BY_FORMULA = {
+  fuelByMass: ['coalNCV','coalCC','coalOX'],
+  fuelByEF: ['dieselNCV','dieselEF'],
+  fuelGas: ['gasNCV','gasCC','gasOX'],
+  fuelByCarbon: ['rdfC','rdfNonBio'],
+  process: ['processEF'],
+  heat: ['heatEF'],
+  grid: ['gridEF'],
+  deduct: ['altRawCF']
+};
+function rowHasManualFactor(r){
+  var ok = false;
+  Object.keys(r.factors || {}).forEach(function(k){
+    var f = r.factors[k];
+    if (f && f.v !== '' && f.v !== undefined && f.v !== null && f.src && String(f.src).trim()) ok = true;
+  });
+  return ok;
+}
 function factorStatusOf(c, sc, r){
   if (sc === 'scope2' && r.formula === 'grid'){
     var peg = provGridEF(c && c.province);
     if (peg) return { cls:'w', label:'分省电网因子(占位·待核实)', tip: peg.note };
   }
   var refs = (sc === 'scope3') ? (r.factorRef ? [r.factorRef] : []) : (r.factorRefs || []);
-  if (!refs.length) return { cls:'w', label:'缺因子待补', tip:'本源因子未预填，请录入行业实测或国家默认因子' };
+  if (!refs.length){
+    // 行业缺因子闭环（F5）：行内已手动补因子（取值+来源齐全）→ 不再报缺因子
+    if (sc !== 'scope3' && rowHasManualFactor(r)) return { cls:'ok', label:'已手动补因子', tip:'行内录入取值与来源，可用于计算与报送' };
+    return { cls:'w', label:'缺因子待补', tip:'本源因子未预填，请在行内手动补因子（取值+来源）' };
+  }
   var hasVal = false, anyEstimate = false;
   refs.forEach(function(k){
     var f = (r.factors && r.factors[k]) || libFactor(k);
@@ -5035,8 +5504,8 @@ function factorStatusOf(c, sc, r){
     if (f && f.quality === '估算') anyEstimate = true;
   });
   if (!hasVal) return { cls:'w', label:'缺因子待补', tip:'因子值待填，避免以 0 计' };
-  if (sc === 'scope3') return { cls:'info', label:'通用默认因子·待核实', tip:'scope3 通用因子已预填，建议替换为行业实测' };
   if (anyEstimate) return { cls:'info', label:'估算因子·待核实', tip:'通用估算值，建议替换为行业实测' };
+  if (sc === 'scope3') return { cls:'info', label:'通用默认因子·待核实', tip:'scope3 通用因子已预填，建议替换为行业实测' };
   return { cls:'ok', label:'国家默认因子已预填', tip:'因子值已预填（国家缺省 / 区域平均）' };
 }
 function l2RenderRow(c, sc, r){
@@ -5058,7 +5527,8 @@ function l2RenderRow(c, sc, r){
     '<\/div>';
   html += '<div class="l2r-act"><label>活动数据<\/label><input type="number" step="any" data-f="activity" data-rid="' + esc(r.id) + '" data-scope="' + sc + '" value="' + esc(r.activity) + '" placeholder="填活动数据"><\/div>';
   html += '<div class="l2facs">';
-  (r.factorRefs || []).forEach(function(k){
+  var refs = r.factorRefs || [];
+  refs.forEach(function(k){
     var f = (r.factors && r.factors[k]) || { v:'', src:'', quality:'' };
     var L = libFactor(k);
     html += '<div class="l2fac">' +
@@ -5068,6 +5538,21 @@ function l2RenderRow(c, sc, r){
       '<label>质量<\/label><select data-f="fq" data-fk="' + esc(k) + '" data-rid="' + esc(r.id) + '" data-scope="' + sc + '">' + l2QualityOpts(f.quality) + '<\/select>' +
     '<\/div>';
   });
+  /* 行业缺因子闭环（F5）：模板 refs 为空时，按行公式给出「手动补因子」输入区；
+     顾问录入取值+来源后行即可计算并通过校验（factorRefs 保持空，遵守诚实契约）。 */
+  if (!refs.length && sc !== 'scope3' && r.judgment !== '不适用' && r.formula && r.formula !== 'none' && r.formula !== 'zero' && r.formula !== ''){
+    var fillKeys = FILL_BY_FORMULA[r.formula] || [];
+    fillKeys.forEach(function(k){
+      var f = (r.factors && r.factors[k]) || { v:'', src:'', quality:'' };
+      var L = libFactor(k);
+      html += '<div class="l2fac">' +
+        '<div class="lfk">' + esc(k) + (L ? (' <span class="lfu">' + esc(L.u) + '<\/span>') : ' <span class="lfu">行业因子·单位按实际<\/span>') + ' <span class="lfu">（手动补入）<\/span><\/div>' +
+        '<label>取值<\/label><input type="number" step="any" data-f="fv" data-fk="' + esc(k) + '" data-rid="' + esc(r.id) + '" data-scope="' + sc + '" value="' + esc(f.v) + '">' +
+        '<label>来源/版本<\/label><input type="text" data-f="fsrc" data-fk="' + esc(k) + '" data-rid="' + esc(r.id) + '" data-scope="' + sc + '" value="' + esc(f.src) + '" placeholder="文件号/实测报告（必填）">' +
+        '<label>质量<\/label><select data-f="fq" data-fk="' + esc(k) + '" data-rid="' + esc(r.id) + '" data-scope="' + sc + '">' + l2QualityOpts(f.quality) + '<\/select>' +
+      '<\/div>';
+    });
+  }
   html += '<\/div>';
   if (sc === 'scope2' && r.formula === 'grid'){ var _peg = provGridEF(c && c.province); if (_peg) html += '<div class="l2r-note">分省电网因子占位：' + esc(_peg.note) + '（录入贵省实际值后替换示例 ' + PARAMS.gridEF.v + ' tCO₂/MWh）<\/div>'; }
   html += '<div class="l2r-meta">' +
@@ -5111,12 +5596,13 @@ function renderL2Check(c){
   var ck = l1l2Check(c);
   if (!ck.l1.s1 && !ck.l1.s2 && !ck.l1.s3 && !ck.l2.s1 && !ck.l2.s2 && !ck.l2.s3) return '';
   var pct = function(d){ return (d * 100).toFixed(1) + '%'; };
-  var html = '<div class="l2ck-h">L1/L2 交叉核对（偏差 &gt;15% 时提示口径不一致，请核对）<\/div><div class="l2ck-t">';
+  var tolPct = Math.round(L1L2_DEV_TOL * 100);
+  var html = '<div class="l2ck-h">L1/L2 交叉核对（偏差 &gt;' + tolPct + '% 时提示口径不一致，请核对）<\/div><div class="l2ck-t">';
   html += '<span>范围1：L1 ' + fmtNum(ck.l1.s1, 0) + ' / L2 ' + fmtNum(ck.l2.s1, 0) + ' · 偏差 ' + pct(ck.dev1) + '<\/span>';
   html += '<span>范围2：L1 ' + fmtNum(ck.l1.s2, 0) + ' / L2 ' + fmtNum(ck.l2.s2, 0) + ' · 偏差 ' + pct(ck.dev2) + '<\/span>';
   html += '<span>范围3：L1 ' + fmtNum(ck.l1.s3, 0) + ' / L2 ' + fmtNum(ck.l2.s3, 0) + ' · 偏差 ' + pct(ck.dev3) + '<\/span>';
   html += '<\/div>';
-  if (ck.over) html += '<div class="diag w"><div class="dh">口径可能不一致，请核对<\/div>L2 汇总与 L1 总量估算偏差超过 15%，请检查活动数据或因子是否与窗口一总量级一致（尤其原煤、外购电、熟料产量）。<\/div>';
+  if (ck.over) html += '<div class="diag w"><div class="dh">口径可能不一致，请核对<\/div>L2 汇总与 L1 总量估算偏差超过 ' + tolPct + '%，请检查活动数据或因子是否与窗口一总量级一致（尤其原煤、外购电、熟料产量）。<\/div>';
   return html;
 }
 function renderL2(){
@@ -5202,6 +5688,7 @@ function refreshAll(){
   renderCollector();
   renderPlan();
   renderClients();
+  renderClientEdit();
   renderStats();
   renderTasks();
   renderParams();
@@ -5255,11 +5742,48 @@ function pushChangeLog(action, detail){
   c.changeLog = c.changeLog ? (c.changeLog + ' ｜ ' + entry) : entry;
   saveCustomer(c);
 }
+/* 面板覆盖 → L2 行因子同步：只动「缺省副本」（未行内 custom、值仍等于缺省或曾被面板同步过），
+   人工行内取值永远优先；清空面板值时把被同步过的副本还原为库缺省。 */
+function syncRowFactorsFromOverride(){
+  // 只同步当前客户：参数面板覆盖按客户隔离，避免多客户互相污染
+  var c = state.cur;
+  if (!c || !PARAM_OVERRIDE) return;
+  var em = c.em || {};
+  ['scope1','scope2','scope3'].forEach(function(sc){
+    (em[sc] || []).forEach(function(r){
+      var refs = (sc === 'scope3') ? (r.factorRef ? [r.factorRef] : []) : (r.factorRefs || []);
+      refs.forEach(function(k){
+        var f = r.factors && r.factors[k];
+        if (!f || f.custom) return;
+        var L = libFactor(k);
+        var defV = (L && L.v !== undefined && L.v !== null) ? L.v : '';
+        var untouched = (String(f.v) === String(defV)) || f.panelSynced === true;
+        if (!untouched) return;
+        var curOv = c.paramOverride || {};
+        var ovr;
+        if (k === 'gridEF' && curOv.gridEFProv !== undefined && curOv.gridEFProv !== '') ovr = curOv.gridEFProv;
+        else if (curOv[k] !== undefined && curOv[k] !== '') ovr = curOv[k];
+        else if (k === 'gridEF' && PARAM_OVERRIDE.gridEFProv !== undefined && PARAM_OVERRIDE.gridEFProv !== '') ovr = PARAM_OVERRIDE.gridEFProv;
+        else ovr = (PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '') ? PARAM_OVERRIDE[k] : undefined;
+        if (ovr !== undefined && !isNaN(Number(ovr)) && String(ovr) !== String(defV)){
+          f.v = Number(ovr);
+          f.src = '参数面板覆盖（缺省 ' + (defV !== '' ? defV : '—') + '，原来源：' + (L ? (L.source || '—') : '—') + '）';
+          f.panelSynced = true;
+        } else if (f.panelSynced && (ovr === undefined || String(ovr) === String(defV))){
+          f.v = defV;
+          f.src = L ? (L.source || '') : '';
+          f.panelSynced = false;
+        }
+      });
+    });
+  });
+}
 var EVENTS = {
   emChanged:         function(){ calcInvalidate(); },
   answersChanged:    function(){ calcInvalidate(); },
   factorChanged:     function(){
     calcInvalidate();
+    syncRowFactorsFromOverride();
     if (_pendParam){
       var base = PARAMS[_pendParam.k] || {};
       pushChangeLog('覆盖参数/因子 ' + _pendParam.k,
@@ -5268,10 +5792,10 @@ var EVENTS = {
       _pendParam = null;
     }
   },
-  stageChanged:      function(){},
-  acceptanceChanged: function(){},
-  taskChanged:       function(){},
-  gapChanged:        function(){},
+  stageChanged:      function(){ markDocStale(); },
+  acceptanceChanged: function(){ markDocStale(); },
+  taskChanged:       function(){ markDocStale(); },
+  gapChanged:        function(){ markDocStale(); },
   docEdited:         function(){ try { saveDocVersion(); } catch(err){} }
 };
 function fire(name){
@@ -5284,54 +5808,151 @@ function fireDebounced(name){
   clearTimeout(_fireTimer);
   _fireTimer = setTimeout(function(){ fire(name); }, 300);
 }
+function ensurePainOkBtn(box){
+  if (!box) return null;
+  var bar = box.querySelector('.chip-row');
+  var ok = document.getElementById('btnPainOk');
+  if (!ok) {
+    if (!bar || !bar.parentNode) return null;
+    ok = document.createElement('button');
+    ok.id = 'btnPainOk'; ok.className = 'chip pri';
+    ok.style.background = 'var(--brand)'; ok.style.color = '#fff'; ok.style.borderColor = 'var(--brand)';
+    ok.addEventListener('click', function(){
+      var sel = chat.ans._painSel || [];
+      if (!sel.length) { toast('请至少选择1项痛点'); return; }
+      askMe('已选痛点：' + sel.join('、'));
+      answer('pains', sel);
+    });
+    bar.parentNode.appendChild(ok);
+  }
+  ok.textContent = '确认所选(' + ((chat.ans._painSel || []).length) + ')';
+  return ok;
+}
+function ensureForceOkBtn(box){
+  if (!box) return null;
+  var bar = box.querySelector('.chip-row');
+  var ok = document.getElementById('btnForceOk');
+  if (!ok) {
+    if (!bar || !bar.parentNode) return null;
+    ok = document.createElement('button');
+    ok.id = 'btnForceOk'; ok.className = 'chip pri';
+    ok.style.background = 'var(--brand)'; ok.style.color = '#fff'; ok.style.borderColor = 'var(--brand)';
+    ok.addEventListener('click', function(){
+      var sel = chat.ans._forceSel || [];
+      if (!sel.length) { toast('请至少选择1项，或选「以上都没有」'); return; }
+      if (sel.indexOf('none') >= 0) { askMe('以上都没有'); answer('force', 'none', []); return; }
+      var chipsDef = (QUESTIONS[chat.step] && Array.isArray(QUESTIONS[chat.step].chips)) ? QUESTIONS[chat.step].chips : [];
+      var labels = sel.map(function(code){
+        var label = code;
+        chipsDef.forEach(function(p){ if (p[0] === code) label = p[1]; });
+        return label;
+      });
+      askMe('已选成熟度项：' + labels.join('、'));
+      answer('force', sel.join('、'), sel);
+    });
+    bar.parentNode.appendChild(ok);
+  }
+  ok.textContent = '确认所选(' + ((chat.ans._forceSel || []).length) + ')';
+  return ok;
+}
 function onChipClick(e){
   var t = e.target.closest('[data-v],[data-mv]');
   if (!t) return;
   var q = QUESTIONS[chat.step];
   if (t.hasAttribute('data-mv')) {
     var mv = t.getAttribute('data-mv');
-    if (mv === 'none') { askMe('以上都没有'); answer('force', 'none', []); }
-    else {
-      askMe(t.textContent);
-      answer('force', mv, [mv]);
+    var mbox = document.getElementById('askBox');
+    if (q.k !== 'force') {
+      // 非成熟度题的 data-mv 保持单击即答（兼容原行为）
+      if (mv === 'none') { askMe('以上都没有'); answer('force', 'none', []); }
+      else { askMe(t.textContent); answer('force', mv, [mv]); }
+      return;
     }
+    // 成熟度题（提示「可多选」）：切换选中 + 确认后提交；
+    // 旧行为每点一次就 answer() 跳下一题，四标志最多命中一个，
+    // judgeStage 分数被锁死 ≤3，永远到不了战略/价值阶段。
+    chat.ans._forceSel = chat.ans._forceSel || [];
+    if (mv === 'none') {
+      // 「以上都没有」与其他项互斥
+      chat.ans._forceSel = ['none'];
+      Array.prototype.forEach.call(mbox.querySelectorAll('.chip'), function(c){ c.classList.remove('on'); });
+      t.classList.add('on');
+    } else {
+      var fidx = chat.ans._forceSel.indexOf(mv);
+      if (fidx >= 0) { chat.ans._forceSel.splice(fidx, 1); t.classList.remove('on'); }
+      else {
+        var nidx = chat.ans._forceSel.indexOf('none');
+        if (nidx >= 0) {
+          chat.ans._forceSel.splice(nidx, 1);
+          Array.prototype.forEach.call(mbox.querySelectorAll('.chip'), function(c){
+            if (c.getAttribute && c.getAttribute('data-mv') === 'none') c.classList.remove('on');
+          });
+        }
+        chat.ans._forceSel.push(mv);
+        t.classList.add('on');
+      }
+    }
+    ensureForceOkBtn(mbox);
     return;
   }
   var v = t.getAttribute('data-v');
-  askMe(t.textContent);
-  // 标记已选
-  var box = document.getElementById('askBox');
-  Array.prototype.forEach.call(box.querySelectorAll('.chip'), function(c){ c.classList.remove('on'); });
-  t.classList.add('on');
   var key = q.k;
-  if (key === 'scale') answer('scale', v);
-  else if (key === 'pains') {
-    // 多选：最多3项，需二次确认
+  var box = document.getElementById('askBox');
+
+  if (key === 'pains') {
+    // 多选：切换选中态，不触碰其他 chip；计数按钮常驻可点
     chat.ans._painSel = chat.ans._painSel || [];
     var idx = chat.ans._painSel.indexOf(v);
-    if (idx >= 0) { chat.ans._painSel.splice(idx, 1); t.classList.remove('on'); askMe('取消：' + v); }
+    if (idx >= 0) { chat.ans._painSel.splice(idx, 1); t.classList.remove('on'); }
     else if (chat.ans._painSel.length >= 3) { toast('最多选3项，请先取消一项'); return; }
-    else { chat.ans._painSel.push(v); t.classList.add('on'); askMe('选择：' + v); }
-    var bar = document.getElementById('askBox').querySelector('.chip-row');
-    if (!document.getElementById('btnPainOk')) {
-      var ok = document.createElement('button');
-      ok.id = 'btnPainOk'; ok.className = 'chip pri'; ok.textContent = '确认所选(' + chat.ans._painSel.length + ')';
-      ok.style.background = 'var(--brand)'; ok.style.color = '#fff'; ok.style.borderColor = 'var(--brand)';
-      ok.addEventListener('click', function(){
-        var sel = chat.ans._painSel || [];
-        askMe('已选痛点：' + (sel.join('、') || '无'));
-        answer('pains', sel);
-      });
-      bar.parentNode.appendChild(ok);
-    } else {
-      ok.textContent = '确认所选(' + chat.ans._painSel.length + ')';
-    }
+    else { chat.ans._painSel.push(v); t.classList.add('on'); }
+    ensurePainOkBtn(box);
     return;
   }
+
+  // 单选题：先清除同题其他 chip，再标记本项
+  askMe(t.textContent);
+  Array.prototype.forEach.call(box.querySelectorAll('.chip'), function(c){ c.classList.remove('on'); });
+  t.classList.add('on');
+  if (key === 'scale') answer('scale', v);
   else if (key === 'force') answer('force', v, [v]);
+  else if (key === 'chain' && q.chips === 'BUDGET') {
+    // 第7问 chips=BUDGET：旧逻辑写进 chain 字段，导致预算永远「待评估」
+    chat.ans.budget = v;
+    answer('chain', chat.ans.chain || '');
+  }
   else answer(key, v);
 }
 
+/* 规模分档：按年营业收入，1亿以下=小微，1-10亿=中型，10亿以上=大型 */
+function scaleFromText(txt){
+  if (!txt) return null;
+  txt = String(txt);
+  var m = txt.match(/(\d+(?:\.\d+)?)\s*亿/);
+  if (m) {
+    var y = parseFloat(m[1]);
+    var below = /以下|以内|不到|低于|不足/.test(txt);
+    var above = /以上|超过|高于|大于/.test(txt);
+    if (y < 1) return '小微企业';
+    if (below && y <= 1) return '小微企业';   // 「1亿以下」
+    if (above && y >= 10) return '大型企业';  // 「10亿以上」
+    if (y <= 10) return '中型企业';
+    return '大型企业';
+  }
+  if (txt.indexOf('小微') >= 0 || txt.indexOf('小型') >= 0) return '小微企业';
+  if (txt.indexOf('中型') >= 0) return '中型企业';
+  if (txt.indexOf('大型') >= 0) return '大型企业';
+  if (txt.indexOf('大') >= 0) return '大型企业';
+  if (txt.indexOf('小') >= 0) return '小微企业';
+  if (txt.indexOf('中') >= 0) return '中型企业';
+  return null;
+}
+function scaleBandLabel(scale){
+  if (scale === '大型企业') return '大型企业（年营收10亿以上）';
+  if (scale === '中型企业') return '中型企业（年营收1-10亿）';
+  if (scale === '小微企业') return '小微企业（年营收1亿以下）';
+  return scale || '';
+}
 function onSend(){
   var inp = document.getElementById('chatText');
   var txt = inp.value.trim();
@@ -5351,9 +5972,14 @@ function onSend(){
   if (q.k === 'province' && hitProv) { answer('province', hitProv); inp.value = ''; return; }
   if (q.k === 'name') { answer('name', txt); inp.value = ''; return; }
   if (q.k === 'scale') {
-    if (txt.indexOf('大') >= 0) { answer('scale','大型企业'); inp.value=''; return; }
-    if (txt.indexOf('小') >= 0) { answer('scale','小微企业'); inp.value=''; return; }
-    if (txt.indexOf('中') >= 0) { answer('scale','中型企业'); inp.value=''; return; }
+    var band = scaleFromText(txt);
+    if (band) { answer('scale', band); inp.value = ''; return; }
+  }
+  if (q.k === 'chain') {
+    // 决策链问题里顺带识别预算（如「80-200万，EHS总监→总经理」），预算不再漏填
+    var bm = txt.match(/(\d+(?:\s*[-–~]\s*\d+)?)\s*万/);
+    if (bm) chat.ans.budget = bm[1].replace(/\s/g, '') + '万';
+    answer('chain', txt); inp.value = ''; return;
   }
   answer(q.k, txt); inp.value = '';
 }
@@ -5368,7 +5994,34 @@ function onTodayClick(e){
   saveTask(t);
   toast('已标记完成：' + t.name);
 }
+function removeCustomer(name){
+  if (!confirm('删除客户「' + name + '」将同时删除其全部任务与方案书版本，确定？')) return;
+  state.customers = state.customers.filter(function(c){ return c.name !== name; });
+  state.tasks = state.tasks.filter(function(t){ return t.client !== name; });
+  try { localStorage.removeItem(LS_DOC + name); localStorage.removeItem(LS_DOC + 'draft_' + name); } catch(e){}
+  if (state.docHtml) delete state.docHtml[name];
+  if (state.docEdited) delete state.docEdited[name];
+  if (state.docStale) delete state.docStale[name];
+  if (state.docVer) delete state.docVer[name];
+  if (state.cur && state.cur.name === name) state.cur = state.customers[0] || null;
+  lsSet(LS_CUST + DB_CUST, state.customers);
+  lsSet(LS_TASK + DB_TASK, state.tasks);
+  refreshAll();
+  fire('taskChanged');
+  toast('已删除客户及其任务');
+}
+function removeTask(name, client){
+  state.tasks = state.tasks.filter(function(t){ return !(t.name === name && t.client === client); });
+  lsSet(LS_TASK + DB_TASK, state.tasks);
+  refreshAll();
+  fire('taskChanged');
+  toast('已删除任务');
+}
 function onListClick(e){
+  var dc = e.target.closest('[data-del-cust]');
+  if (dc){ removeCustomer(dc.getAttribute('data-del-cust')); return; }
+  var dt = e.target.closest('[data-del-task]');
+  if (dt){ removeTask(dt.getAttribute('data-del-task'), dt.getAttribute('data-del-client')); return; }
   var c = e.target.closest('[data-cust]');
   if (c && !c.hasAttribute('data-task')) {
     var nm = c.getAttribute('data-cust');
@@ -5387,10 +6040,11 @@ function onListClick(e){
     var id = t.getAttribute('data-task');
     var task = state.tasks.filter(function(x){ return (x.id || x.name) === id; })[0];
     if (!task) return;
-    // 一键推进状态：未开始→进行中→已完成
-    task.stat = task.stat === '未开始' ? '进行中' : '已完成';
+    // 一键推进状态（可回退）：未开始→进行中→已完成→进行中
+    task.stat = nextTaskStat(task.stat);
     saveTask(task);
     toast(task.name + ' → ' + task.stat);
+    fire('taskChanged');
   }
 }
 
@@ -5404,7 +6058,7 @@ function genTasks(){
       var nm = c.name + '｜' + tk[0];
       var dup = state.tasks.filter(function(x){ return x.name === nm; })[0];
       if (dup) return;
-      var due = new Date(base + tk[3] * 86400000).toISOString().slice(0,10);
+      var due = fmtLocalDate(new Date(base + tk[3] * 86400000));
       localSaveTask({
         name: nm, client: c.name, stage: st.k, dept: tk[1], prio: tk[2],
         stat: si === 0 ? '进行中' : '未开始', due: due, invest: 0, cut: 0,
@@ -5426,6 +6080,7 @@ function genTasks(){
   }
   toast(made ? ('已生成 ' + made + ' 条任务，日期按相对天数铺排') : '该客户任务已齐全');
   refreshAll();
+  fire('taskChanged');
 }
 
 function addClient(){
@@ -5469,6 +6124,7 @@ function saveTaskFromForm(e){
   f.reset();
   toast('任务已保存到台账');
   if (btn) { btn.disabled = false; btn.textContent = '保存到台账'; }
+  fire('taskChanged');
 }
 
 /* ---------- 表单输入缓存（DSDK008）：仅缓存实际提交的字段 ---------- */
@@ -5625,6 +6281,7 @@ function onCollectClick(e){
     var inp = document.querySelector('#collectBox input[data-q="' + qid + '"]');
     if (qq && inp) setPath(state.cur, qq.q.key, inp.value.trim());
     nextQuestion();
+    fire('gapChanged');
     return;
   }
   // 下一步
@@ -5833,6 +6490,7 @@ function onPlanChange(e){
   saveCustomer(c);
   // 只回写进度条与卡头，不整体重渲染（保持用户当前滚动与展开状态）
   updateStageProgress(sk);
+  fire('acceptanceChanged');
 }
 function updateStageProgress(sk){
   var c = state.cur;
@@ -5872,7 +6530,7 @@ function genStageTasks(stageKey){
   frame.tasks.forEach(function(tk){
     var nm = c.name + '｜' + tk[0];
     if (state.tasks.filter(function(x){ return x.name === nm; })[0]) return;
-    var due = new Date(Date.now() + tk[3] * 86400000).toISOString().slice(0,10);
+    var due = fmtLocalDate(new Date(Date.now() + tk[3] * 86400000));
     localSaveTask({
       name: nm, client: c.name, stage: stageKey, dept: tk[1], prio: tk[2],
       stat: '未开始', due: due, invest: 0, cut: 0,
@@ -5899,6 +6557,21 @@ function genStageTasks(stageKey){
 }
 
 /* ---------- 初始化链路 ---------- */
+/* 首开播种：本地无任何数据且未清空过示例 → 自动播种示例（离线/静态环境不再空白） */
+function maybeSeedDemo(){
+  var hasLocal = (lsGet(LS_CUST + DB_CUST, []).length || lsGet(LS_TASK + DB_TASK, []).length);
+  if (!hasLocal && !tombGet().length){
+    state.demo = true;
+    demoCustomers().forEach(localSaveCustomer);
+    demoTasks().forEach(localSaveTask);
+    return true;
+  }
+  return false;
+}
+/* 任务状态推进（可回退）：未开始→进行中→已完成→进行中 */
+function nextTaskStat(s){
+  return s === '未开始' ? '进行中' : (s === '进行中' ? '已完成' : '进行中');
+}
 function init(){
   // 1 加载态提示（避免数据拉取期间白屏）
   setSync(getSDK() ? 'syncing' : 'offline');
@@ -5910,8 +6583,8 @@ function init(){
   loadCloud();
   // 3.5 加载参数覆盖（参数与因子面板）
   try { var _ps = localStorage.getItem('wb_st_param_override'); if (_ps) PARAM_OVERRIDE = JSON.parse(_ps) || {}; } catch(e){}
-  // 4 初始化状态
-  if (!state.demo) { state.demo = true; demoCustomers().forEach(localSaveCustomer); demoTasks().forEach(localSaveTask); }
+  // 4 初始化状态（首开：本地无任何数据且未清空过示例 → 播种示例；离线/静态环境不再空白）
+  maybeSeedDemo();
   if (!restoreChat()) {
     askBot('你好，我是双碳咨询顾问。\n我会先做<b>售前诊断<\/b>（三问定位成熟度、痛点、预算决策链），再按你所属行业与属地政策给出<b>落地方案<\/b>，全程挂证据链、不夸大不遗漏。\n共 7 个问题，约 1 分钟。');
   }
@@ -5923,17 +6596,30 @@ function init(){
 }
 function afterLoad(){ refreshAll(); }
 
-/* 参数面板输入：改即覆盖缺省值并持久化；第6批经事件总线留痕 + 派生缓存失效（T16 / factorChanged） */
+/* 参数面板输入：改即覆盖缺省值并持久化；覆盖按客户隔离（选中客户 → 客户级 paramOverride，
+   未选中客户 → 全局 PARAM_OVERRIDE 兜底兼容）；经事件总线留痕 + 派生缓存失效（T16 / factorChanged） */
 function onParamInput(e){
   var inp = e.target;
   if (!inp || inp.getAttribute('data-pk') === null) return;
   var k = inp.getAttribute('data-pk');
-  var oldV = (PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '') ? PARAM_OVERRIDE[k] : (PARAMS[k] ? PARAMS[k].v : '');
-  PARAM_OVERRIDE[k] = inp.value;
-  try { localStorage.setItem('wb_st_param_override', JSON.stringify(PARAM_OVERRIDE)); } catch(err){}
-  if (!_pendParam || _pendParam.k !== k) _pendParam = { k: k, oldV: oldV, newV: inp.value };
-  else _pendParam.newV = inp.value;
-  fireDebounced('factorChanged');
+  var cur = state.cur;
+  if (cur){
+    cur.paramOverride = cur.paramOverride || {};
+    var oldV = (cur.paramOverride[k] !== undefined && cur.paramOverride[k] !== '') ? cur.paramOverride[k] : (PARAMS[k] ? PARAMS[k].v : '');
+    cur.paramOverride[k] = inp.value;
+    PARAM_OVERRIDE[k] = inp.value;   // 镜像到全局，兼容旧读取路径；核算优先级：客户级 > 全局
+    if (!_pendParam || _pendParam.k !== k) _pendParam = { k: k, oldV: oldV, newV: inp.value };
+    else _pendParam.newV = inp.value;
+    try { localStorage.setItem('wb_st_param_override', JSON.stringify(PARAM_OVERRIDE)); } catch(err){}
+    fireDebounced('factorChanged');
+  } else {
+    var oldV2 = (PARAM_OVERRIDE[k] !== undefined && PARAM_OVERRIDE[k] !== '') ? PARAM_OVERRIDE[k] : (PARAMS[k] ? PARAMS[k].v : '');
+    PARAM_OVERRIDE[k] = inp.value;
+    try { localStorage.setItem('wb_st_param_override', JSON.stringify(PARAM_OVERRIDE)); } catch(err){}
+    if (!_pendParam || _pendParam.k !== k) _pendParam = { k: k, oldV: oldV2, newV: inp.value };
+    else _pendParam.newV = inp.value;
+    fireDebounced('factorChanged');
+  }
 }
 /* 窗口三标题连点 5 次 → 运行计算自检 */
 var _w3Click = 0, _w3Timer = null;
@@ -5958,6 +6644,9 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('clientList').addEventListener('click', onListClick);
   document.getElementById('taskList').addEventListener('click', onListClick);
   document.getElementById('btnAddClient').addEventListener('click', addClient);
+  document.getElementById('btnEditClient').addEventListener('click', toggleClientEdit);
+  document.getElementById('btnSaveClientEdit').addEventListener('click', saveClientEdit);
+  document.getElementById('btnCancelClientEdit').addEventListener('click', function(){ document.getElementById('clientEditBox').style.display = 'none'; });
   document.getElementById('btnGenTasks').addEventListener('click', genTasks);
   document.getElementById('taskForm').addEventListener('submit', saveTaskFromForm);
   document.getElementById('planBox').addEventListener('click', onPlanClick);
