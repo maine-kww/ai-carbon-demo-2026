@@ -9,7 +9,7 @@ if defined MIMO_PYTHON (set "PY=%MIMO_PYTHON%") else (set "PY=python")
 cd /d "%~dp0.."
 
 echo === [1/3] Probes ===
-for %%t in (probe_batchA probe_batchB probe_batchC probe_batchD probe_batchE probe_f3 probe_f4 probe_f5 probe_f6 probe_f8 probe_f9 probe_f10 probe_f13 probe_f14 probe_scale probe_pains probe_diag) do (
+for %%t in (probe_batchA probe_batchB probe_batchC probe_batchD probe_batchE probe_f3 probe_f4 probe_f5 probe_f6 probe_f8 probe_f9 probe_f10 probe_f13 probe_f14 probe_blk1 probe_blk2 probe_blk3 probe_scale probe_pains probe_diag) do (
   "%NODE%" tests\%%t.js >nul 2>&1
   if errorlevel 1 ( echo   FAIL %%t & exit /b 1 ) else ( echo   PASS %%t )
 )
